@@ -3,8 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Case Studies | Augentic AI - AI Systems Integration</title>
-  <meta name="description" content="Real-world AI systems integration projects delivering measurable business outcomes." />
+  <title>AI-Powered Revenue Intelligence for Fintech | Augentic AI Case Studies</title>
+  <meta name="description" content="The fintech platform was experiencing rapid growth with 500+ enterprise customers, but their revenue forecasting was purely manual. Sales leaders spent 20+ hours per month compiling data from Salesforce, Stripe, and internal systems. Forecasts were often inaccurate due to data lag and human error.
+" />
+  <meta property="og:title" content="AI-Powered Revenue Intelligence for Fintech" />
+  <meta property="og:description" content="The fintech platform was experiencing rapid growth with 500+ enterprise customers, but their revenue forecasting was purely manual. Sales leaders spent 20+ hours per month compiling data from Salesforce, Stripe, and internal systems. Forecasts were often inaccurate due to data lag and human error.
+" />
+  <meta property="og:type" content="article" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -67,20 +72,29 @@
     @media (max-width: 900px) { .nav-links, .nav-cta { display: none; } .hamburger { display: flex; } }
   </style>
   <style>
-    .case-studies-header { padding: 10rem 0 5rem; border-bottom: 1px solid var(--border); }
-    .case-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); margin-top: 5rem; }
-    .case-card { background: var(--bg); transition: background 0.2s; border: 1px solid transparent; }
-    .case-card:hover { background: var(--bg-card); }
-    .case-card-link { display: block; padding: 2.5rem; text-decoration: none; color: inherit; height: 100%; }
-    .case-card-meta { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; flex-wrap: wrap; }
-    .case-date { font-size: 0.72rem; color: var(--text-dim); }
-    .case-card-title { font-size: 1.05rem; font-weight: 500; color: var(--text); margin-bottom: 0.5rem; line-height: 1.4; letter-spacing: -0.01em; }
-    .case-card-client { font-size: 0.8rem; color: var(--text-dim); margin-bottom: 1rem; }
-    .case-card-results { font-size: 0.88rem; line-height: 1.75; margin-bottom: 2rem; }
-    .case-card-footer { display: flex; justify-content: flex-end; align-items: center; }
-    .case-arrow { font-size: 0.8rem; color: var(--accent); }
-    @media (max-width: 900px) { .case-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 600px) { .case-grid { grid-template-columns: 1fr; } }
+    .case-header { padding: 10rem 0 4rem; border-bottom: 1px solid var(--border); }
+    .case-meta { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-bottom: 3rem; }
+    .case-meta-item { }
+    .case-meta-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+    .case-meta-value { font-size: 0.9rem; color: var(--text-muted); }
+    .case-title { margin-bottom: 1.2rem; }
+    .case-body { padding: 5rem 0; }
+    .case-body-inner { max-width: 720px; }
+    .case-body p { margin-bottom: 1.6rem; font-size: 1rem; }
+    .case-body h2 { font-size: 1.5rem; margin: 3rem 0 1rem; color: var(--text); }
+    .case-body strong { color: var(--text); font-weight: 500; }
+    .case-highlights { background: var(--bg-card); border: 1px solid var(--border); padding: 2.5rem; margin: 3rem 0; }
+    .case-highlights h3 { font-size: 1.1rem; margin-bottom: 1.5rem; color: var(--text); }
+    .case-highlight-grid { display: grid; gap: 1.5rem; }
+    .case-highlight-item { }
+    .case-highlight-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+    .case-highlight-value { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
+    .case-footer { padding: 4rem 0; border-top: 1px solid var(--border); }
+    .cta-box { background: var(--bg-card); border: 1px solid var(--border); padding: 3rem; text-align: center; max-width: 600px; margin: 0 auto; }
+    .cta-box h3 { font-family: var(--font-serif); font-size: 1.6rem; margin-bottom: 1rem; color: var(--text); }
+    .cta-box p { margin-bottom: 2rem; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: var(--text-muted); text-decoration: none; margin-bottom: 3rem; transition: color 0.2s; }
+    .back-link:hover { color: var(--accent); }
   </style>
 </head>
 <body>
@@ -119,50 +133,78 @@
   <a href="/book/" onclick="closeMobile()" style="color:var(--accent);">Book Strategy Call</a>
 </div>
 
-<div class="case-studies-header">
+<div class="case-header">
   <div class="container">
-    <span class="label">Case Studies</span>
-    <h1 style="margin-top:1rem;margin-bottom:1rem;">AI Systems That Deliver</h1>
-    <p style="max-width:560px;font-size:1.05rem;">Real-world AI systems integration projects delivering measurable business outcomes for revenue-driven companies.</p>
+    <a href="/case-studies/" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M13 7H1M6 2L1 7l5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to Case Studies
+    </a>
+    <div class="case-meta">
+      <div class="case-meta-item">
+        <div class="case-meta-label">Client</div>
+        <div class="case-meta-value">Global Fintech Platform</div>
+      </div>
+      <div class="case-meta-item">
+        <div class="case-meta-label">Industry</div>
+        <div class="case-meta-value"></div>
+      </div>
+    </div>
+    <h1 class="case-title">AI-Powered Revenue Intelligence for Fintech</h1>
   </div>
 </div>
 
-<div style="padding:0 0 8rem;">
+<div class="case-body">
   <div class="container">
-    <div class="case-grid">
-      <article class="case-card" style="border-color:var(--border-accent);">
-        <a href="/case-studies/cms-test-fintech-ai/" class="case-card-link">
-          <div class="case-card-meta">
-            <span class="label" style="font-size:0.65rem;"></span>
-            <span class="case-date">March 3, 2026</span>
+    <div class="case-body-inner">
+      <div class="case-highlights">
+        <h3>Project Overview</h3>
+        <div class="case-highlight-grid">
+          <div class="case-highlight-item">
+            <div class="case-highlight-label">Challenge</div>
+            <div class="case-highlight-value">The fintech platform was experiencing rapid growth with 500+ enterprise customers, but their revenue forecasting was purely manual. Sales leaders spent 20+ hours per month compiling data from Salesforce, Stripe, and internal systems. Forecasts were often inaccurate due to data lag and human error.
+</div>
           </div>
-          <h3 class="case-card-title">AI-Powered Revenue Intelligence for Fintech</h3>
-          <div class="case-card-client">Global Fintech Platform</div>
-          <p class="case-card-results">Within 60 days of deployment:
+          <div class="case-highlight-item">
+            <div class="case-highlight-label">Solution</div>
+            <div class="case-highlight-value">We built an autonomous AI revenue intelligence system that:
+- Connects to Salesforce, Stripe, and internal data warehouse
+- Analyzes historical win/loss patterns and deal velocity
+- Generates automated weekly forecasts with confidence intervals
+- Sends executive summaries via Slack every Monday morning
+- Identifies at-risk deals based on engagement signals
+</div>
+          </div>
+          <div class="case-highlight-item">
+            <div class="case-highlight-label">Results</div>
+            <div class="case-highlight-value">Within 60 days of deployment:
 - Forecast accuracy improved from 65% to 91%
 - Sales leadership time saved: 85 hours per month
 - At-risk deal identification improved by 3x
 - Revenue team can now focus on strategic deals instead of data wrangling
-</p>
-          <div class="case-card-footer">
-            <span class="case-arrow">View Case Study &rarr;</span>
+</div>
           </div>
-        </a>
-      </article>
-      <article class="case-card" style="border-color:var(--border-accent);">
-        <a href="/case-studies/sample-ai-integration/" class="case-card-link">
-          <div class="case-card-meta">
-            <span class="label" style="font-size:0.65rem;">Software</span>
-            <span class="case-date">March 2026</span>
-          </div>
-          <h3 class="case-card-title">AI Sales Automation for B2B SaaS</h3>
-          <div class="case-card-client">Enterprise SaaS Company</div>
-          <p class="case-card-results">3x qualified lead volume, 60% reduction in manual qualification time</p>
-          <div class="case-card-footer">
-            <span class="case-arrow">View Case Study &rarr;</span>
-          </div>
-        </a>
-      </article>
+        </div>
+      </div>
+      <h2>The Challenge</h2>
+<p>The fintech platform's sales team was closing $50M+ in ARR annually, but their revenue operations were stuck in spreadsheet hell. Every Monday morning, the VP of Sales spent hours manually pulling data from multiple systems to create a forecast for the board.</p>
+<p>The manual process meant forecasts were often outdated by the time they were presented, leading to missed opportunities and resource allocation problems.</p>
+<h2>Our Solution</h2>
+<p>We designed an autonomous AI agent that operates 24/7, continuously analyzing pipeline data and market signals. The system uses machine learning models trained on 3 years of historical deal data to predict close probability with unprecedented accuracy.</p>
+<p>The agent doesn't just generate reports - it actively identifies patterns that humans miss, like subtle engagement drop-offs that signal deal risk.</p>
+<h2>Impact &amp; Results</h2>
+<p>The transformation was immediate. Within the first quarter, forecast accuracy jumped from 65% to 91%, giving the executive team unprecedented visibility into future revenue.</p>
+<p>More importantly, the sales leadership team reclaimed 85 hours per month - time now spent coaching reps and closing strategic deals instead of wrangling spreadsheets.</p>
+<p>The at-risk deal identification feature alone saved multiple six-figure deals that would have silently slipped away under the old manual system.</p>
+    </div>
+  </div>
+</div>
+
+<div class="case-footer">
+  <div class="container">
+    <div class="cta-box">
+      <h3>Ready to Build Your AI Workforce?</h3>
+      <p>Schedule a 30-minute strategy call. We will tell you exactly what we would build for your business - and what it would cost.</p>
+      <a href="/book/" class="btn-primary">Book a Strategy Call</a>
     </div>
   </div>
 </div>
