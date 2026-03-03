@@ -1,0 +1,59 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "static/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "content/blog"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - label: "Slug"
+        name: "slug"
+        widget: "string"
+        hint: "URL-friendly identifier (e.g., 'qwen35-local-ai-business-leaders')"
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "Date"
+        name: "date"
+        widget: "datetime"
+        format: "MMMM D, YYYY"
+        date_format: "MMMM D, YYYY"
+        time_format: false
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options:
+          - "AI Strategy"
+          - "Revenue Operations"
+          - "Sales Automation"
+          - "AI Implementation"
+          - "Business Innovation"
+      - label: "Description"
+        name: "description"
+        widget: "text"
+        hint: "Brief summary shown in blog listings and meta tags"
+      - label: "Reading Time"
+        name: "reading_time"
+        widget: "string"
+        default: "5 min read"
+        hint: "e.g., '5 min read'"
+      - label: "Featured"
+        name: "featured"
+        widget: "boolean"
+        default: false
+        hint: "Display as featured post on blog page"
+      - label: "X Credit"
+        name: "x_credit"
+        widget: "string"
+        required: false
+        hint: "Optional attribution or inspiration credit (e.g., 'Inspired by @user on X')"
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
+        hint: "Main content of the blog post (HTML tags allowed)"
