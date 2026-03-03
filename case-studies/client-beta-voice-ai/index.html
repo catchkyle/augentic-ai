@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Beta: 50K+ Monthly Calls Automated with AI Voice Agents | Augentic AI</title>
+  <meta name="description" content="How a telehealth provider deployed autonomous AI voice agents to handle patient support calls — reducing costs by 73% while maintaining 87% patient satisfaction across 50K+ monthly interactions." />
+  <meta property="og:title" content="Client Beta: 50K+ Monthly Calls Automated with AI Voice Agents" />
+  <meta property="og:description" content="How a telehealth provider deployed autonomous AI voice agents to handle patient support calls — reducing costs by 73% while maintaining 87% patient satisfaction across 50K+ monthly interactions." />
+  <meta property="og:type" content="article" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0A0A0A; --bg-card: #111111; --bg-raised: #161616;
+      --text: #F5F5F0; --text-muted: #888880; --text-dim: #555550;
+      --accent: #D4AF37; --accent-dim: rgba(212,175,55,0.12);
+      --border: rgba(255,255,255,0.07); --border-accent: rgba(212,175,55,0.3);
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Inter', system-ui, sans-serif;
+      --max: 1200px; --radius: 2px;
+    }
+    body.light {
+      --bg: #FAFAF7; --bg-card: #F2F2EE; --bg-raised: #E8E8E4;
+      --text: #0B0B0B; --text-muted: #444440; --text-dim: #999990;
+      --border: rgba(0,0,0,0.08); --border-accent: rgba(212,175,55,0.4);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-weight: 400; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    ::selection { background: var(--accent-dim); color: var(--accent); }
+    h1,h2,h3,h4 { font-weight: 500; line-height: 1.25; letter-spacing: -0.02em; }
+    h1 { font-family: var(--font-serif); font-size: clamp(2rem,4vw,3.2rem); }
+    h2 { font-family: var(--font-serif); font-size: clamp(1.6rem,3vw,2.4rem); }
+    h3 { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; letter-spacing: 0; }
+    p { color: var(--text-muted); line-height: 1.85; }
+    a { color: inherit; }
+    .label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.5rem 0; transition: background 0.4s, padding 0.3s; }
+    nav.scrolled { background: rgba(10,10,10,0.95); border-bottom: 1px solid var(--border); padding: 1rem 0; backdrop-filter: blur(12px); }
+    body.light nav.scrolled { background: rgba(250,250,247,0.95); }
+    nav .container { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.8rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; padding: 0.65rem 1.4rem; background: var(--accent); color: #0A0A0A; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s; white-space: nowrap; }
+    .nav-cta:hover { opacity: 0.88; }
+    .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+    .theme-toggle { background: none; border: 1px solid var(--border); color: var(--text-muted); cursor: pointer; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius); transition: color 0.2s; flex-shrink: 0; }
+    .theme-toggle:hover { color: var(--accent); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 1px; background: var(--text); }
+    .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 99; background: var(--bg); padding: 6rem 2rem 2rem; flex-direction: column; gap: 2rem; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 1.4rem; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 1.2rem; }
+    footer { background: var(--bg); border-top: 1px solid var(--border); padding: 3rem 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-tagline { font-size: 0.78rem; color: var(--text-dim); margin-top: 0.3rem; }
+    .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.78rem; color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text-muted); }
+    .footer-copy { font-size: 0.75rem; color: var(--text-dim); }
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
+    .btn-primary { display: inline-block; padding: 0.9rem 2rem; background: var(--accent); color: #0A0A0A; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s, transform 0.2s; border: none; cursor: pointer; }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-outline { display: inline-block; padding: 0.85rem 1.8rem; border: 1px solid var(--border-accent); color: var(--accent); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-decoration: none; border-radius: var(--radius); transition: all 0.2s; }
+    .btn-outline:hover { background: var(--accent-dim); }
+    @media (max-width: 900px) { .nav-links, .nav-right .nav-cta { display: none; } .hamburger { display: flex; } }
+  </style>
+  <style>
+    /* Case Study Specific Styles */
+    .case-hero { padding: 10rem 0 4rem; border-bottom: 1px solid var(--border); }
+    .case-meta { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .case-meta .label { margin: 0; }
+    .case-meta-text { font-size: 0.8rem; color: var(--text-dim); }
+    .case-title { margin-bottom: 1.2rem; }
+    .case-desc { font-size: 1.05rem; max-width: 640px; line-height: 1.8; }
+
+    /* Hero Stats Grid */
+    .case-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 2.5rem;
+      margin-top: 3rem;
+      padding-top: 3rem;
+      border-top: 1px solid var(--border);
+    }
+    .stat-item {
+      text-align: center;
+      padding: 1rem;
+      position: relative;
+    }
+    .stat-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 30px;
+      height: 2px;
+      background: var(--accent);
+      opacity: 0.4;
+    }
+    .stat-value {
+      font-family: var(--font-serif);
+      font-size: 2.4rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      line-height: 1.1;
+    }
+    .stat-label {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      line-height: 1.5;
+    }
+
+    /* Case Section Layout */
+    .case-section { padding: 5rem 0; }
+    .case-section-inner { max-width: 820px; margin: 0 auto; }
+    .case-section .label { display: block; margin-bottom: 1rem; }
+    .case-section h2 { margin-bottom: 2rem; color: var(--text); line-height: 1.3; }
+    .case-section p { margin-bottom: 1.5rem; font-size: 1rem; }
+    .case-section ul { margin: 1.5rem 0; padding-left: 1.5rem; }
+    .case-section li { color: var(--text-muted); margin-bottom: 0.8rem; line-height: 1.75; }
+    .case-section li::marker { color: var(--accent); }
+    .case-section strong { color: var(--text); font-weight: 500; }
+
+    /* Enhanced Metrics Grid */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin: 3rem 0;
+    }
+    .metric-card {
+      background: var(--bg-raised);
+      border: 1px solid var(--border);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      border-radius: var(--radius);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .metric-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      opacity: 0.6;
+    }
+    .metric-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--border-accent);
+    }
+    .metric-card .metric-value {
+      font-family: var(--font-serif);
+      font-size: 2.8rem;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+      line-height: 1.1;
+      font-weight: 500;
+    }
+    .metric-card .metric-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      letter-spacing: 0.02em;
+    }
+
+    /* Enhanced Testimonial */
+    .testimonial-box {
+      background: var(--bg-raised);
+      border: 1px solid var(--border-accent);
+      border-left: 4px solid var(--accent);
+      padding: 3rem;
+      margin: 3rem 0;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      position: relative;
+    }
+    .testimonial-box::before {
+      content: '"';
+      position: absolute;
+      top: 1.5rem;
+      left: 1.5rem;
+      font-family: var(--font-serif);
+      font-size: 4rem;
+      color: var(--accent);
+      opacity: 0.15;
+      line-height: 1;
+    }
+    .testimonial-quote {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      color: var(--text);
+      margin-bottom: 2rem;
+      font-style: italic;
+      position: relative;
+      z-index: 1;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .testimonial-details { flex: 1; }
+    .testimonial-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.3rem;
+    }
+    .testimonial-role {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      letter-spacing: 0.02em;
+    }
+
+    /* CTA Section */
+    .case-footer { padding: 5rem 0 4rem; border-top: 1px solid var(--border); }
+    .cta-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 3.5rem 3rem;
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto;
+      border-radius: var(--radius);
+    }
+    .cta-box h3 {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      margin-bottom: 1.2rem;
+      color: var(--text);
+      line-height: 1.3;
+    }
+    .cta-box p { margin-bottom: 2rem; font-size: 1rem; }
+
+    /* Back Link */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-bottom: 3rem;
+      transition: color 0.2s, gap 0.2s;
+    }
+    .back-link:hover {
+      color: var(--accent);
+      gap: 0.7rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .metrics-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+      .case-stats { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+      .stat-value { font-size: 2rem; }
+      .metric-card { padding: 2rem 1.5rem; }
+      .metric-card .metric-value { font-size: 2.2rem; }
+      .testimonial-box { padding: 2rem 1.5rem; }
+      .testimonial-quote { font-size: 1.05rem; }
+      .cta-box { padding: 2.5rem 2rem; }
+      .cta-box h3 { font-size: 1.5rem; }
+      .case-hero { padding: 8rem 0 3rem; }
+    }
+
+    @media (max-width: 480px) {
+      .case-stats { grid-template-columns: 1fr; gap: 1.5rem; }
+      .stat-item::before { width: 40px; }
+    }
+  </style>
+</head>
+<body>
+<nav id="nav">
+  <div class="container">
+    <a href="/" class="nav-logo" style="display:flex;align-items:center;text-decoration:none;"><img src="/logo.svg" alt="Augentic AI" height="37" style="height:37px;width:auto;" /></a>
+    <ul class="nav-links">
+      <li><a href="/#solution">Solutions</a></li>
+      <li><a href="/#offerings">Offerings</a></li>
+      <li><a href="/blog/">Insights</a></li>
+      <li><a href="/guide/">AI Guide</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg id="iconSun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg id="iconMoon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="/book/" class="nav-cta">Book Strategy Call</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/#solution" onclick="closeMobile()">Solutions</a>
+  <a href="/#offerings" onclick="closeMobile()">Offerings</a>
+  <a href="/blog/" onclick="closeMobile()">Insights</a>
+  <a href="/guide/" onclick="closeMobile()">AI Guide</a>
+  <a href="/book/" onclick="closeMobile()" style="color:var(--accent);">Book Strategy Call</a>
+</div>
+
+<!-- HERO SECTION -->
+<div class="case-hero">
+  <div class="container">
+    <a href="/#case-studies" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M13 7H1M6 2L1 7l5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to Case Studies
+    </a>
+    <div class="case-meta">
+      <span class="label">Telehealth</span>
+      <span class="case-meta-text">60-Day Deployment</span>
+      <span class="case-meta-text">Patient Support Operations</span>
+    </div>
+    <h1 class="case-title">50K+ Monthly Calls Automated with AI Voice Agents</h1>
+    <p class="case-desc">How a national telehealth provider deployed autonomous AI voice agents to handle patient support calls — reducing operational costs by 73% while maintaining 87% patient satisfaction across 50,000+ monthly interactions.</p>
+
+    <div class="case-stats">
+      <div class="stat-item">
+        <div class="stat-value">50K+</div>
+        <div class="stat-label">Calls Per Month</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">73%</div>
+        <div class="stat-label">Cost Reduction</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">87%</div>
+        <div class="stat-label">Patient Satisfaction</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">60 Days</div>
+        <div class="stat-label">Time to Production</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CHALLENGE SECTION -->
+<div class="case-section" style="background: var(--bg-card);">
+  <div class="container">
+    <div class="case-section-inner">
+      <span class="label">The Challenge</span>
+      <h2>Call Volume Overwhelming Human Support Teams</h2>
+      <p>Client Beta, a national telehealth provider serving 200,000+ patients, was drowning in support call volume. Their 85-person call center handled appointment scheduling, prescription refills, billing questions, and general support — but wait times averaged 18 minutes during peak hours.</p>
+      <p>The cost structure was unsustainable: $42 per call fully loaded, with 60% of calls handling routine, repeatable inquiries that required no clinical judgment. Patient satisfaction scores were declining, staff turnover exceeded 40% annually, and the company was facing a choice between hiring 50+ additional reps or turning away new patients.</p>
+      <p><strong>Key pain points identified:</strong></p>
+      <ul>
+        <li>Average 18-minute wait time during business hours, leading to call abandonment</li>
+        <li>$42 fully-loaded cost per call with 60% handling routine inquiries</li>
+        <li>No after-hours support except for clinical emergencies</li>
+        <li>40%+ annual turnover among call center staff due to repetitive work</li>
+        <li>Limited capacity to scale support without proportional cost increases</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- SOLUTION SECTION -->
+<div class="case-section">
+  <div class="container">
+    <div class="case-section-inner">
+      <span class="label">The Solution</span>
+      <h2>Autonomous AI Voice Agents for Patient Support</h2>
+      <p>Augentic AI designed and deployed a multi-agent voice AI system that automated routine patient support inquiries while seamlessly escalating complex issues to human representatives. The system integrated with Client Beta's EHR, scheduling platform, billing system, and telephony infrastructure.</p>
+      <p><strong>Core capabilities deployed:</strong></p>
+      <ul>
+        <li><strong>Appointment Scheduling Agent:</strong> Handles new appointments, rescheduling, cancellations, and sends confirmations via SMS</li>
+        <li><strong>Prescription Refill Agent:</strong> Verifies patient identity, checks eligibility, and routes refill requests to pharmacy team</li>
+        <li><strong>Billing Support Agent:</strong> Answers payment questions, explains charges, processes payments, and sets up payment plans</li>
+        <li><strong>General Inquiry Agent:</strong> Provides information about services, hours, insurance, and routes clinical questions to nurses</li>
+      </ul>
+      <p>The system was deployed in two phases over 60 days: pilot with 20% of inbound call volume (30 days), then full production rollout with human escalation protocols (30 days). Voice recognition accuracy exceeded 96% across diverse patient demographics and accents.</p>
+    </div>
+  </div>
+</div>
+
+<!-- RESULTS SECTION -->
+<div class="case-section" style="background: var(--bg-card);">
+  <div class="container">
+    <div class="case-section-inner">
+      <span class="label">The Results</span>
+      <h2>Transformational Cost Savings and Patient Experience Gains</h2>
+      <p>Within 60 days of full deployment, Client Beta's AI voice system was handling 50,000+ calls per month with measurable improvements across cost, efficiency, and patient satisfaction metrics.</p>
+
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-value">50K+</div>
+          <div class="metric-label">Calls Handled Per Month</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">73%</div>
+          <div class="metric-label">Cost Reduction Per Call</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">87%</div>
+          <div class="metric-label">Patient Satisfaction Score</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">94%</div>
+          <div class="metric-label">First-Call Issue Resolution</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">< 30 sec</div>
+          <div class="metric-label">Average Wait Time</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">24/7</div>
+          <div class="metric-label">Support Availability</div>
+        </div>
+      </div>
+
+      <p><strong>Additional operational improvements:</strong></p>
+      <ul>
+        <li>Call center staff reallocated from routine inquiries to complex patient support cases</li>
+        <li>After-hours support now available without additional staffing costs</li>
+        <li>Call abandonment rate dropped from 22% to under 3% during peak hours</li>
+        <li>Staff turnover reduced by 28% as roles shifted to more engaging patient interactions</li>
+        <li>Capacity to handle 3x call volume without proportional cost increases</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIAL SECTION -->
+<div class="case-section">
+  <div class="container">
+    <div class="case-section-inner">
+      <div class="testimonial-box">
+        <div class="testimonial-quote">
+          "We were skeptical that AI could handle sensitive patient conversations with the empathy and accuracy required in healthcare. Augentic proved us wrong. The voice agents sound natural, handle complex scheduling scenarios, and escalate appropriately when needed. Most importantly, our patient satisfaction scores went up, not down. This technology fundamentally changed our unit economics."
+        </div>
+        <div class="testimonial-author">
+          <div class="testimonial-details">
+            <div class="testimonial-name">Dr. Marcus Chen</div>
+            <div class="testimonial-role">Chief Operating Officer, Client Beta</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA SECTION -->
+<div class="case-footer">
+  <div class="container">
+    <div class="cta-box">
+      <h3>Ready to Automate Your Support Operations?</h3>
+      <p>Schedule a 30-minute strategy call. We will tell you exactly what we would build for your customer support — and what it would cost.</p>
+      <a href="/book/" class="btn-primary">Book a Strategy Call</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo" style="display:flex;align-items:center;"><img src="/logo.svg" alt="Augentic AI" height="28" style="height:28px;width:auto;" /></div>
+        <div class="footer-tagline">Autonomous AI. Measurable Revenue.</div>
+      </div>
+      <ul class="footer-links">
+        <li><a href="/#solution">Solutions</a></li>
+        <li><a href="/#offerings">Offerings</a></li>
+        <li><a href="/blog/">Insights</a></li>
+        <li><a href="/guide/">AI Guide</a></li>
+        <li><a href="/book/">Book Call</a></li>
+        <li><a href="/privacy/">Privacy</a></li>
+        <li><a href="/terms/">Terms</a></li>
+      </ul>
+    </div>
+    <div class="divider" style="margin: 2rem 0;"></div>
+    <div class="footer-copy">&copy; 2026 Augentic AI. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+  // ── NAVIGATION ──
+  const nav = document.getElementById('nav');
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  });
+
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+  });
+
+  function closeMobile() {
+    mobileMenu.classList.remove('open');
+  }
+
+  // ── THEME TOGGLE ──
+  const themeToggle = document.getElementById('themeToggle');
+  const iconSun = document.getElementById('iconSun');
+  const iconMoon = document.getElementById('iconMoon');
+  const body = document.body;
+
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'light') {
+    body.classList.add('light');
+    iconSun.style.display = 'block';
+    iconMoon.style.display = 'none';
+  } else {
+    iconSun.style.display = 'none';
+    iconMoon.style.display = 'block';
+  }
+
+  themeToggle.addEventListener('click', () => {
+    body.classList.toggle('light');
+    const isLight = body.classList.contains('light');
+    iconSun.style.display = isLight ? 'block' : 'none';
+    iconMoon.style.display = isLight ? 'none' : 'block';
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  });
+
+  // ── COOKIE CONSENT ──
+  const consentKey = 'augentic_cookie_consent';
+  if (!localStorage.getItem(consentKey)) {
+    const banner = document.createElement('div');
+    banner.style.cssText = 'position:fixed;bottom:0;left:0;right:0;z-index:200;background:var(--bg-card);border-top:1px solid var(--border);padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;';
+    banner.innerHTML = `
+      <p style="font-size:0.85rem;color:var(--text-muted);margin:0;">We use essential cookies to ensure the site works properly. No tracking or analytics. <a href="/privacy/" style="color:var(--accent);text-decoration:underline;">Privacy Policy</a></p>
+      <button id="acceptCookies" style="padding:0.6rem 1.5rem;background:var(--accent);color:#0A0A0A;border:none;border-radius:var(--radius);font-size:0.8rem;font-weight:500;cursor:pointer;white-space:nowrap;">Accept</button>
+    `;
+    document.body.appendChild(banner);
+    document.getElementById('acceptCookies').addEventListener('click', () => {
+      localStorage.setItem(consentKey, 'true');
+      banner.remove();
+    });
+  }
+</script>
+</body>
+</html>
