@@ -135,6 +135,19 @@ BASE_CSS = """<link rel="preconnect" href="https://fonts.googleapis.com" />
       outline-offset: 2px;
     }
     @media (max-width: 900px) { .nav-links, .nav-cta { display: none; } .hamburger { display: flex; } }
+    /* Reduce or disable animations for users with motion sensitivity - WCAG 2.1 AA compliance */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+      html { scroll-behavior: auto; }
+      nav { transition: none; }
+      .nav-links a { transition: none; }
+      .nav-cta { transition: none; }
+      .theme-toggle { transition: none; }
+      .footer-links a { transition: none; }
+      .btn-primary { transition: none; transform: none; }
+      .btn-primary:hover { transform: none; }
+      .btn-outline { transition: none; }
+    }
   </style>"""
 
 BASE_JS = """<script>
