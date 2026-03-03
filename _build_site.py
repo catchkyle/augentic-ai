@@ -208,6 +208,61 @@ def load_blog_posts_from_markdown():
     print(f"Blog posts: {len(posts)} loaded from markdown")
     return posts
 
+
+def load_case_studies_from_markdown():
+    """Load case studies from content/case-studies/*.md files with frontmatter."""
+    import os
+    import glob
+
+    studies = []
+    content_dir = "content/case-studies"
+
+    if not os.path.exists(content_dir):
+        print(f"Warning: {content_dir} not found, no case studies to load")
+        return []
+
+    md_files = glob.glob(os.path.join(content_dir, "*.md"))
+
+    if not md_files:
+        print(f"Warning: No markdown files found in {content_dir}, no case studies to load")
+        return []
+
+    md = markdown.Markdown(extensions=['extra', 'codehilite', 'fenced_code'])
+
+    for md_file in md_files:
+        try:
+            with open(md_file, 'r', encoding='utf-8') as f:
+                study = frontmatter.load(f)
+
+                # Convert markdown body to HTML
+                body_html = md.convert(study.content)
+                md.reset()  # Reset for next file
+
+                # Build study dict from frontmatter + body
+                study_data = {
+                    "slug": study.get('slug', os.path.splitext(os.path.basename(md_file))[0]),
+                    "title": study.get('title', 'Untitled'),
+                    "client": study.get('client', ''),
+                    "industry": study.get('industry', ''),
+                    "date": study.get('date', ''),
+                    "challenge": study.get('challenge', ''),
+                    "solution": study.get('solution', ''),
+                    "results": study.get('results', ''),
+                    "featured": study.get('featured', False),
+                    "body": body_html
+                }
+                studies.append(study_data)
+
+        except Exception as e:
+            print(f"Error loading {md_file}: {e}")
+            continue
+
+    # Sort by date (newest first)
+    studies.sort(key=lambda s: s.get('date', ''), reverse=True)
+
+    print(f"Case studies: {len(studies)} loaded from markdown")
+    return studies
+
 # Fallback POSTS array (used if markdown loading fails)
 POSTS_FALLBACK = [
   {
@@ -593,6 +648,9 @@ POSTS = load_blog_posts_from_markdown()
 if POSTS is None:
     POSTS = POSTS_FALLBACK
 
+# Load case studies from markdown files
+CASE_STUDIES = load_case_studies_from_markdown()
+
 def make_blog_post(post):
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -729,6 +787,181 @@ def make_blog_index():
 <div style="padding:0 0 8rem;">
   <div class="container">
     <div class="blog-grid">{cards}
+    </div>
+  </div>
+</div>
+
+{FOOTER}
+{BASE_JS}
+</body>
+</html>"""
+
+
+# ───────────────────────────────────────────────────────────────
+# CASE STUDIES
+# ───────────────────────────────────────────────────────────────
+
+def make_case_study(study):
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{study['title']} | Augentic AI Case Studies</title>
+  <meta name="description" content="{study['challenge']}" />
+  <meta property="og:title" content="{study['title']}" />
+  <meta property="og:description" content="{study['challenge']}" />
+  <meta property="og:type" content="article" />
+  {BASE_CSS}
+  <style>
+    .case-header {{ padding: 10rem 0 4rem; border-bottom: 1px solid var(--border); }}
+    .case-meta {{ display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-bottom: 3rem; }}
+    .case-meta-item {{ }}
+    .case-meta-label {{ font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }}
+    .case-meta-value {{ font-size: 0.9rem; color: var(--text-muted); }}
+    .case-title {{ margin-bottom: 1.2rem; }}
+    .case-body {{ padding: 5rem 0; }}
+    .case-body-inner {{ max-width: 720px; }}
+    .case-body p {{ margin-bottom: 1.6rem; font-size: 1rem; }}
+    .case-body h2 {{ font-size: 1.5rem; margin: 3rem 0 1rem; color: var(--text); }}
+    .case-body strong {{ color: var(--text); font-weight: 500; }}
+    .case-highlights {{ background: var(--bg-card); border: 1px solid var(--border); padding: 2.5rem; margin: 3rem 0; }}
+    .case-highlights h3 {{ font-size: 1.1rem; margin-bottom: 1.5rem; color: var(--text); }}
+    .case-highlight-grid {{ display: grid; gap: 1.5rem; }}
+    .case-highlight-item {{ }}
+    .case-highlight-label {{ font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }}
+    .case-highlight-value {{ font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }}
+    .case-footer {{ padding: 4rem 0; border-top: 1px solid var(--border); }}
+    .cta-box {{ background: var(--bg-card); border: 1px solid var(--border); padding: 3rem; text-align: center; max-width: 600px; margin: 0 auto; }}
+    .cta-box h3 {{ font-family: var(--font-serif); font-size: 1.6rem; margin-bottom: 1rem; color: var(--text); }}
+    .cta-box p {{ margin-bottom: 2rem; }}
+    .back-link {{ display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: var(--text-muted); text-decoration: none; margin-bottom: 3rem; transition: color 0.2s; }}
+    .back-link:hover {{ color: var(--accent); }}
+  </style>
+</head>
+<body>
+{NAV}
+
+<div class="case-header">
+  <div class="container">
+    <a href="/case-studies/" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M13 7H1M6 2L1 7l5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to Case Studies
+    </a>
+    <div class="case-meta">
+      <div class="case-meta-item">
+        <div class="case-meta-label">Client</div>
+        <div class="case-meta-value">{study['client']}</div>
+      </div>
+      <div class="case-meta-item">
+        <div class="case-meta-label">Industry</div>
+        <div class="case-meta-value">{study['industry']}</div>
+      </div>
+    </div>
+    <h1 class="case-title">{study['title']}</h1>
+  </div>
+</div>
+
+<div class="case-body">
+  <div class="container">
+    <div class="case-body-inner">
+      <div class="case-highlights">
+        <h3>Project Overview</h3>
+        <div class="case-highlight-grid">
+          <div class="case-highlight-item">
+            <div class="case-highlight-label">Challenge</div>
+            <div class="case-highlight-value">{study['challenge']}</div>
+          </div>
+          <div class="case-highlight-item">
+            <div class="case-highlight-label">Solution</div>
+            <div class="case-highlight-value">{study['solution']}</div>
+          </div>
+          <div class="case-highlight-item">
+            <div class="case-highlight-label">Results</div>
+            <div class="case-highlight-value">{study['results']}</div>
+          </div>
+        </div>
+      </div>
+      {study['body']}
+    </div>
+  </div>
+</div>
+
+<div class="case-footer">
+  <div class="container">
+    <div class="cta-box">
+      <h3>Ready to Build Your AI Workforce?</h3>
+      <p>Schedule a 30-minute strategy call. We will tell you exactly what we would build for your business - and what it would cost.</p>
+      <a href="/book/" class="btn-primary">Book a Strategy Call</a>
+    </div>
+  </div>
+</div>
+
+{FOOTER}
+{BASE_JS}
+</body>
+</html>"""
+
+
+def make_case_studies_index():
+    cards = ""
+    for study in CASE_STUDIES:
+        featured_class = ' style="border-color:var(--border-accent);"' if study.get('featured') else ''
+        cards += f"""
+      <article class="case-card"{featured_class}>
+        <a href="/case-studies/{study['slug']}/" class="case-card-link">
+          <div class="case-card-meta">
+            <span class="label" style="font-size:0.65rem;">{study['industry']}</span>
+            <span class="case-date">{study['date']}</span>
+          </div>
+          <h3 class="case-card-title">{study['title']}</h3>
+          <div class="case-card-client">{study['client']}</div>
+          <p class="case-card-results">{study['results']}</p>
+          <div class="case-card-footer">
+            <span class="case-arrow">View Case Study &rarr;</span>
+          </div>
+        </a>
+      </article>"""
+
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Case Studies | Augentic AI - AI Systems Integration</title>
+  <meta name="description" content="Real-world AI systems integration projects delivering measurable business outcomes." />
+  {BASE_CSS}
+  <style>
+    .case-studies-header {{ padding: 10rem 0 5rem; border-bottom: 1px solid var(--border); }}
+    .case-grid {{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); margin-top: 5rem; }}
+    .case-card {{ background: var(--bg); transition: background 0.2s; border: 1px solid transparent; }}
+    .case-card:hover {{ background: var(--bg-card); }}
+    .case-card-link {{ display: block; padding: 2.5rem; text-decoration: none; color: inherit; height: 100%; }}
+    .case-card-meta {{ display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; flex-wrap: wrap; }}
+    .case-date {{ font-size: 0.72rem; color: var(--text-dim); }}
+    .case-card-title {{ font-size: 1.05rem; font-weight: 500; color: var(--text); margin-bottom: 0.5rem; line-height: 1.4; letter-spacing: -0.01em; }}
+    .case-card-client {{ font-size: 0.8rem; color: var(--text-dim); margin-bottom: 1rem; }}
+    .case-card-results {{ font-size: 0.88rem; line-height: 1.75; margin-bottom: 2rem; }}
+    .case-card-footer {{ display: flex; justify-content: flex-end; align-items: center; }}
+    .case-arrow {{ font-size: 0.8rem; color: var(--accent); }}
+    @media (max-width: 900px) {{ .case-grid {{ grid-template-columns: 1fr 1fr; }} }}
+    @media (max-width: 600px) {{ .case-grid {{ grid-template-columns: 1fr; }} }}
+  </style>
+</head>
+<body>
+{NAV}
+
+<div class="case-studies-header">
+  <div class="container">
+    <span class="label">Case Studies</span>
+    <h1 style="margin-top:1rem;margin-bottom:1rem;">AI Systems That Deliver</h1>
+    <p style="max-width:560px;font-size:1.05rem;">Real-world AI systems integration projects delivering measurable business outcomes for revenue-driven companies.</p>
+  </div>
+</div>
+
+<div style="padding:0 0 8rem;">
+  <div class="container">
+    <div class="case-grid">{cards}
     </div>
   </div>
 </div>
@@ -1059,29 +1292,40 @@ import os
 
 # Blog posts
 for post in POSTS:
-    path = f"/Users/cora/Projects/augentic-ai/blog/{post['slug']}"
+    path = f"blog/{post['slug']}"
     os.makedirs(path, exist_ok=True)
     with open(f"{path}/index.html", "w") as f:
         f.write(make_blog_post(post))
 
 # Blog index
-os.makedirs("/Users/cora/Projects/augentic-ai/blog", exist_ok=True)
-with open("/Users/cora/Projects/augentic-ai/blog/index.html", "w") as f:
+os.makedirs("blog", exist_ok=True)
+with open("blog/index.html", "w") as f:
     f.write(make_blog_index())
 
+# Case studies
+for study in CASE_STUDIES:
+    path = f"case-studies/{study['slug']}"
+    os.makedirs(path, exist_ok=True)
+    with open(f"{path}/index.html", "w") as f:
+        f.write(make_case_study(study))
+
+# Case studies index
+os.makedirs("case-studies", exist_ok=True)
+with open("case-studies/index.html", "w") as f:
+    f.write(make_case_studies_index())
+
 # Booking page
-os.makedirs("/Users/cora/Projects/augentic-ai/book", exist_ok=True)
-with open("/Users/cora/Projects/augentic-ai/book/index.html", "w") as f:
+os.makedirs("book", exist_ok=True)
+with open("book/index.html", "w") as f:
     f.write(make_booking_page())
 
 # Lead magnet / guide
-os.makedirs("/Users/cora/Projects/augentic-ai/guide", exist_ok=True)
-with open("/Users/cora/Projects/augentic-ai/guide/index.html", "w") as f:
+os.makedirs("guide", exist_ok=True)
+with open("guide/index.html", "w") as f:
     f.write(make_guide_page())
 
 print("All files written.")
 print(f"Blog posts: {len(POSTS)}")
-total_files = len(POSTS) + 1 + 1 + 1  # posts + index + booking + guide
+print(f"Case studies: {len(CASE_STUDIES)}")
+total_files = len(POSTS) + len(CASE_STUDIES) + 2 + 1 + 1  # posts + studies + indices + booking + guide
 print(f"Total pages: {total_files}")
-PYEOF
-python3 /Users/cora/Projects/augentic-ai/_build_site.py
