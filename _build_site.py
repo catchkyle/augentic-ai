@@ -123,6 +123,17 @@ BASE_CSS = """<link rel="preconnect" href="https://fonts.googleapis.com" />
     .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
     .btn-outline { display: inline-block; padding: 0.85rem 1.8rem; border: 1px solid var(--border-accent); color: var(--accent); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-decoration: none; border-radius: var(--radius); transition: all 0.2s; }
     .btn-outline:hover { background: var(--accent-dim); }
+    /* Focus indicators for keyboard navigation - WCAG 2.1 AA compliance */
+    a:focus, button:focus, input:focus, select:focus, textarea:focus, .nav-cta:focus, .btn-primary:focus, .btn-outline:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    .theme-toggle:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .hamburger:focus { outline: 2px solid var(--accent); outline-offset: 4px; }
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
     @media (max-width: 900px) { .nav-links, .nav-cta { display: none; } .hamburger { display: flex; } }
   </style>"""
 
@@ -699,7 +710,7 @@ def make_booking_page():
     .form-group input, .form-group select, .form-group textarea {{
       background: var(--bg-card); border: 1px solid var(--border); color: var(--text);
       font-family: var(--font-sans); font-size: 0.9rem; padding: 0.85rem 1rem;
-      border-radius: var(--radius); transition: border-color 0.2s; width: 100%; outline: none; appearance: none;
+      border-radius: var(--radius); transition: border-color 0.2s; width: 100%; appearance: none;
     }}
     .form-group input:focus, .form-group select:focus, .form-group textarea:focus {{ border-color: var(--accent); }}
     .form-row {{ display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }}
