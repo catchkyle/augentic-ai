@@ -437,6 +437,69 @@
       margin-bottom: 1.5rem;
     }
 
+    /* ── CASE STUDIES ── */
+    #case-studies {
+      background: var(--bg);
+    }
+    .case-studies-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .case-study-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 3rem 2.5rem;
+      transition: border-color 0.3s;
+      position: relative;
+    }
+    .case-study-card:hover { border-color: var(--border-accent); }
+    .case-study-card .line {
+      width: 24px; height: 1px;
+      background: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+    .case-study-card .company {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+      display: block;
+    }
+    .case-study-card .metric {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      color: var(--text);
+      margin-bottom: 0.8rem;
+      line-height: 1.2;
+    }
+    .case-study-card p {
+      font-size: 0.9rem;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+    .case-study-card a {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: opacity 0.2s;
+    }
+    .case-study-card a:hover { opacity: 0.7; }
+    .case-study-card a::after {
+      content: '→';
+      transition: transform 0.2s;
+    }
+    .case-study-card a:hover::after {
+      transform: translateX(3px);
+    }
+
     /* ── CTA ── */
     #contact {
       background: var(--bg);
@@ -499,7 +562,8 @@
       .problem-grid,
       .solution-grid,
       .offerings-grid,
-      .authority-grid { grid-template-columns: 1fr; }
+      .authority-grid,
+      .case-studies-grid { grid-template-columns: 1fr; }
       .who-grid { grid-template-columns: 1fr; }
       .nav-links, .nav-right .nav-cta { display: none; }
       .hamburger { display: flex; }
@@ -931,6 +995,45 @@
         <h3>Enterprise-Grade Infrastructure</h3>
         <p>We design for stability, security, and operational scale. Our deployments are built to handle production workloads and grow with your business - not to impress a demo environment.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── CASE STUDIES ── -->
+<section id="case-studies">
+  <div class="container">
+    <div class="section-header center fade-in" style="margin-bottom:5rem;">
+      <span class="label">Proven Results</span>
+      <h2>Real Companies.<br>Real Revenue Impact.</h2>
+    </div>
+    <div class="case-studies-grid">
+
+      <div class="case-study-card fade-in">
+        <div class="line"></div>
+        <span class="company">Mid-Market SaaS</span>
+        <div class="metric">40% reduction in sales cycle</div>
+        <p>Deployed autonomous AI agents to handle lead qualification, follow-up scheduling, and CRM data entry. Sales team now focuses exclusively on closing deals.</p>
+        <a href="#contact">Explore This Case Study</a>
+      </div>
+
+      <div class="case-study-card fade-in fade-in-delay-1">
+        <div class="line"></div>
+        <span class="company">Professional Services Firm</span>
+        <div class="metric">$180K annual savings</div>
+        <p>Replaced three full-time admin roles with AI voice receptionist and scheduling system. Handles 200+ inbound calls per week with 98% accuracy.</p>
+        <a href="#contact">Explore This Case Study</a>
+      </div>
+
+      <div class="case-study-card fade-in fade-in-delay-2">
+        <div class="line"></div>
+        <span class="company">B2B Services Company</span>
+        <div class="metric">3x increase in qualified pipeline</div>
+        <p>Built multi-agent outreach system that identifies prospects, personalizes messaging, and books meetings autonomously. Generated 47 qualified opportunities in 90 days.</p>
+        <a href="#contact">Explore This Case Study</a>
+      </div>
+
     </div>
   </div>
 </section>
