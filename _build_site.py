@@ -156,7 +156,60 @@ BASE_JS = """<script>
 # BLOG POSTS
 # ───────────────────────────────────────────────────────────────
 
-POSTS = [
+def load_blog_posts_from_markdown():
+    """Load blog posts from content/blog/*.md files with frontmatter."""
+    import os
+    import glob
+
+    posts = []
+    content_dir = "content/blog"
+
+    if not os.path.exists(content_dir):
+        print(f"Warning: {content_dir} not found, using fallback POSTS")
+        return None
+
+    md_files = glob.glob(os.path.join(content_dir, "*.md"))
+
+    if not md_files:
+        print(f"Warning: No markdown files found in {content_dir}, using fallback POSTS")
+        return None
+
+    md = markdown.Markdown(extensions=['extra', 'codehilite', 'fenced_code'])
+
+    for md_file in md_files:
+        try:
+            with open(md_file, 'r', encoding='utf-8') as f:
+                post = frontmatter.load(f)
+
+                # Convert markdown body to HTML
+                body_html = md.convert(post.content)
+                md.reset()  # Reset for next file
+
+                # Build post dict from frontmatter + body
+                post_data = {
+                    "slug": post.get('slug', os.path.splitext(os.path.basename(md_file))[0]),
+                    "title": post.get('title', 'Untitled'),
+                    "date": post.get('date', ''),
+                    "category": post.get('category', 'Uncategorized'),
+                    "description": post.get('description', ''),
+                    "reading_time": post.get('reading_time', ''),
+                    "featured": post.get('featured', False),
+                    "x_credit": post.get('x_credit', ''),
+                    "body": body_html
+                }
+                posts.append(post_data)
+        except Exception as e:
+            print(f"Error loading {md_file}: {e}")
+            continue
+
+    # Sort by date (newest first)
+    posts.sort(key=lambda p: p.get('date', ''), reverse=True)
+
+    print(f"Blog posts: {len(posts)} loaded from markdown")
+    return posts
+
+# Fallback POSTS array (used if markdown loading fails)
+POSTS_FALLBACK = [
   {
     "slug": "qwen35-local-ai-business-leaders",
     "title": "Qwen3.5 and the Era of Free Local AI: What Business Leaders Need to Know",
@@ -534,6 +587,11 @@ POSTS = [
 """
   },
 ]
+
+# Load posts from markdown files, or use fallback
+POSTS = load_blog_posts_from_markdown()
+if POSTS is None:
+    POSTS = POSTS_FALLBACK
 
 def make_blog_post(post):
     return f"""<!DOCTYPE html>
