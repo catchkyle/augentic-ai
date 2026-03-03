@@ -13,7 +13,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --bg: #0A0A0A; --bg-card: #111111; --bg-raised: #161616;
-      --text: #F5F5F0; --text-muted: #888880; --text-dim: #555550;
+      --text: #F5F5F0; --text-muted: #B8B8B0; --text-dim: #9A9A92;
       --accent: #D4AF37; --accent-dim: rgba(212,175,55,0.12);
       --border: rgba(255,255,255,0.07); --border-accent: rgba(212,175,55,0.3);
       --font-serif: 'Playfair Display', Georgia, serif;
@@ -22,7 +22,7 @@
     }
     body.light {
       --bg: #FAFAF7; --bg-card: #F2F2EE; --bg-raised: #E8E8E4;
-      --text: #0B0B0B; --text-muted: #444440; --text-dim: #999990;
+      --text: #0B0B0B; --text-muted: #3F3F3C; --text-dim: #5A5A54;
       --border: rgba(0,0,0,0.08); --border-accent: rgba(212,175,55,0.4);
     }
     html { scroll-behavior: smooth; }
@@ -76,6 +76,19 @@
       outline-offset: 2px;
     }
     @media (max-width: 900px) { .nav-links, .nav-cta { display: none; } .hamburger { display: flex; } }
+    /* Reduce or disable animations for users with motion sensitivity - WCAG 2.1 AA compliance */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+      html { scroll-behavior: auto; }
+      nav { transition: none; }
+      .nav-links a { transition: none; }
+      .nav-cta { transition: none; }
+      .theme-toggle { transition: none; }
+      .footer-links a { transition: none; }
+      .btn-primary { transition: none; transform: none; }
+      .btn-primary:hover { transform: none; }
+      .btn-outline { transition: none; }
+    }
   </style>
   <style>
     .guide-hero { padding: 10rem 0 6rem; text-align: center; position: relative; overflow: hidden; }
