@@ -146,27 +146,16 @@
   <div class="container">
     <div class="post-body-inner">
       
-      
-<p>In January 2025, DeepSeek released R1 - an open source reasoning model that matched the performance of OpenAI's best models at a fraction of the training cost. In March 2026, Alibaba released Qwen3.5, a multimodal model family that runs on consumer hardware with frontier-level capability at the 9-billion parameter scale. In between, dozens of other open source releases have steadily compressed the performance gap between proprietary and open models.</p>
-
+      <p>In January 2025, DeepSeek released R1 - an open source reasoning model that matched the performance of OpenAI's best models at a fraction of the training cost. In March 2026, Alibaba released Qwen3.5, a multimodal model family that runs on consumer hardware with frontier-level capability at the 9-billion parameter scale. In between, dozens of other open source releases have steadily compressed the performance gap between proprietary and open models.</p>
 <p>For enterprise leaders, this trend has implications that go well beyond cost savings.</p>
-
 <h2>What Changes When AI Is Open Source</h2>
-
-<p><strong>Data privacy.</strong> When you run an AI model on your own infrastructure, your data does not leave your environment. For companies handling sensitive customer information, financial data, legal documents, or intellectual property, this is not a nice-to-have. It is a compliance requirement and a competitive necessity.</p>
-
-<p><strong>Vendor independence.</strong> Proprietary AI APIs can change pricing, restrict access, deprecate models, or alter terms of service with limited notice. Open source models run on infrastructure you control. There is no vendor that can raise your prices or shut down your access.</p>
-
-<p><strong>Customization.</strong> Open source models can be fine-tuned on your proprietary data, adapted to your domain-specific terminology, and optimized for your specific use cases. Proprietary models cannot be modified. You use them as-is, within the constraints their vendors define.</p>
-
-<p><strong>Cost structure.</strong> The marginal cost of running an open source model at scale is hardware and electricity. For high-volume workloads - processing thousands of customer interactions per day, for example - the cost differential versus API-based models is substantial.</p>
-
+<p><strong>Data privacy.</strong>When you run an AI model on your own infrastructure, your data does not leave your environment. For companies handling sensitive customer information, financial data, legal documents, or intellectual property, this is not a nice-to-have. It is a compliance requirement and a competitive necessity.</p>
+<p><strong>Vendor independence.</strong>Proprietary AI APIs can change pricing, restrict access, deprecate models, or alter terms of service with limited notice. Open source models run on infrastructure you control. There is no vendor that can raise your prices or shut down your access.</p>
+<p><strong>Customization.</strong>Open source models can be fine-tuned on your proprietary data, adapted to your domain-specific terminology, and optimized for your specific use cases. Proprietary models cannot be modified. You use them as-is, within the constraints their vendors define.</p>
+<p><strong>Cost structure.</strong>The marginal cost of running an open source model at scale is hardware and electricity. For high-volume workloads - processing thousands of customer interactions per day, for example - the cost differential versus API-based models is substantial.</p>
 <h2>What Has Not Changed</h2>
-
 <p>Open source models do not automatically become AI systems. A model is a component. A system is an architecture that connects the model to your data, defines its decision logic, integrates it with your existing tools, and monitors its performance over time. The availability of capable open source models lowers the cost of the model component. It does not reduce the complexity of building the system around it.</p>
-
 <p>The companies that will benefit most from the open source AI revolution are those that combine access to capable models with the systems integration expertise to build around them. Downloading Ollama is day one. Building the system is the work.</p>
-
     </div>
   </div>
 </div>
@@ -227,34 +216,5 @@
     iconMoon.style.display = isLight ? 'none' : 'block';
   });
 </script>
-
-<!-- COOKIE CONSENT BANNER -->
-<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#111111;border-top:1px solid rgba(212,175,55,0.3);padding:1.25rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;">
-  <p style="margin:0;color:#888880;font-size:0.875rem;font-family:Inter,system-ui,sans-serif;line-height:1.6;max-width:700px;">
-    We use cookies to improve your experience and analyze site usage. By continuing, you agree to our
-    <a href="/privacy/" style="color:#D4AF37;text-decoration:underline;">Privacy Policy</a> and
-    <a href="/terms/" style="color:#D4AF37;text-decoration:underline;">Terms</a>.
-  </p>
-  <div style="display:flex;gap:0.75rem;flex-shrink:0;">
-    <button id="cookie-decline" style="padding:0.5rem 1.25rem;background:transparent;border:1px solid rgba(255,255,255,0.15);color:#888880;font-family:Inter,system-ui,sans-serif;font-size:0.8rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;cursor:pointer;border-radius:2px;">Decline</button>
-    <button id="cookie-accept" style="padding:0.5rem 1.25rem;background:#D4AF37;border:none;color:#0A0A0A;font-family:Inter,system-ui,sans-serif;font-size:0.8rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;cursor:pointer;border-radius:2px;">Accept</button>
-  </div>
-</div>
-<script>
-  (function() {
-    var consent = localStorage.getItem('augentic_cookie_consent');
-    var banner = document.getElementById('cookie-banner');
-    if (!consent && banner) { banner.style.display = 'flex'; }
-    document.getElementById('cookie-accept').addEventListener('click', function() {
-      localStorage.setItem('augentic_cookie_consent', 'accepted');
-      banner.style.display = 'none';
-    });
-    document.getElementById('cookie-decline').addEventListener('click', function() {
-      localStorage.setItem('augentic_cookie_consent', 'declined');
-      banner.style.display = 'none';
-    });
-  })();
-</script>
-
 </body>
 </html>

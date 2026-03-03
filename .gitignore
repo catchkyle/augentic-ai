@@ -1,0 +1,12 @@
+# Auto Claude data directory
+.auto-claude/
+.auto-claude-security.json
+.auto-claude-status
+.claude_settings.json
+.claude/
+
+# Python virtual environment
+.venv/
+venv/
+__pycache__/
+*.pyc

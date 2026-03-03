@@ -146,27 +146,16 @@
   <div class="container">
     <div class="post-body-inner">
       
-      
-<p>When companies evaluate AI automation, they typically calculate the time savings: if a task takes 30 minutes and we do it 50 times per month, that is 25 hours. At $75/hour fully-loaded cost, the math suggests $1,875 per month in savings. The automation costs more than that, so the decision stalls.</p>
-
+      <p>When companies evaluate AI automation, they typically calculate the time savings: if a task takes 30 minutes and we do it 50 times per month, that is 25 hours. At $75/hour fully-loaded cost, the math suggests $1,875 per month in savings. The automation costs more than that, so the decision stalls.</p>
 <p>This is almost always the wrong calculation. It understates the cost of manual operations by a factor of two to five, and it ignores the categories of loss that matter most.</p>
-
 <h2>The Five Categories of Manual Operation Cost</h2>
-
-<p><strong>1. Direct labor cost.</strong> This is the calculation most teams do. Hours spent on a task multiplied by fully-loaded compensation. It is real but it is the smallest part of the picture.</p>
-
-<p><strong>2. Opportunity cost.</strong> When skilled, expensive people spend time on manual operational tasks, they are not doing the work that requires their specific expertise. A sales rep logging call notes is not selling. An analyst building a manual report is not analyzing. The opportunity cost of misallocated talent routinely exceeds the direct labor cost.</p>
-
-<p><strong>3. Error cost.</strong> Manual processes have error rates. In data entry, the industry benchmark is one error per 300 keystrokes. In multi-step processes involving judgment calls, error rates are higher. The downstream cost of bad data in a CRM - missed follow-ups, inaccurate forecasts, incorrect routing - compounds over time and is rarely traced back to its source.</p>
-
-<p><strong>4. Latency cost.</strong> Manual processes are slow. Slow lead response, slow contract processing, slow onboarding, slow reporting cycles - each latency point is a revenue leak. The research on lead response time alone shows that a 5-minute response versus a 30-minute response produces a 21x difference in qualification rates.</p>
-
-<p><strong>5. Scaling cost.</strong> Manual operations scale linearly with volume. To double output, you double headcount. AI systems scale with hardware and API costs - which are orders of magnitude lower. Every period of growth makes the decision to automate more financially compelling in retrospect.</p>
-
+<p><strong>1. Direct labor cost.</strong>This is the calculation most teams do. Hours spent on a task multiplied by fully-loaded compensation. It is real but it is the smallest part of the picture.</p>
+<p><strong>2. Opportunity cost.</strong>When skilled, expensive people spend time on manual operational tasks, they are not doing the work that requires their specific expertise. A sales rep logging call notes is not selling. An analyst building a manual report is not analyzing. The opportunity cost of misallocated talent routinely exceeds the direct labor cost.</p>
+<p><strong>3. Error cost.</strong>Manual processes have error rates. In data entry, the industry benchmark is one error per 300 keystrokes. In multi-step processes involving judgment calls, error rates are higher. The downstream cost of bad data in a CRM - missed follow-ups, inaccurate forecasts, incorrect routing - compounds over time and is rarely traced back to its source.</p>
+<p><strong>4. Latency cost.</strong>Manual processes are slow. Slow lead response, slow contract processing, slow onboarding, slow reporting cycles - each latency point is a revenue leak. The research on lead response time alone shows that a 5-minute response versus a 30-minute response produces a 21x difference in qualification rates.</p>
+<p><strong>5. Scaling cost.</strong>Manual operations scale linearly with volume. To double output, you double headcount. AI systems scale with hardware and API costs - which are orders of magnitude lower. Every period of growth makes the decision to automate more financially compelling in retrospect.</p>
 <h2>Running the Real Calculation</h2>
-
 <p>To get an accurate picture of what manual operations are costing you, add all five categories. The result will almost always justify the investment in AI systems automation. The question is not whether the ROI is there. It is whether you have the infrastructure to capture it.</p>
-
     </div>
   </div>
 </div>
@@ -227,34 +216,5 @@
     iconMoon.style.display = isLight ? 'none' : 'block';
   });
 </script>
-
-<!-- COOKIE CONSENT BANNER -->
-<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#111111;border-top:1px solid rgba(212,175,55,0.3);padding:1.25rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;">
-  <p style="margin:0;color:#888880;font-size:0.875rem;font-family:Inter,system-ui,sans-serif;line-height:1.6;max-width:700px;">
-    We use cookies to improve your experience and analyze site usage. By continuing, you agree to our
-    <a href="/privacy/" style="color:#D4AF37;text-decoration:underline;">Privacy Policy</a> and
-    <a href="/terms/" style="color:#D4AF37;text-decoration:underline;">Terms</a>.
-  </p>
-  <div style="display:flex;gap:0.75rem;flex-shrink:0;">
-    <button id="cookie-decline" style="padding:0.5rem 1.25rem;background:transparent;border:1px solid rgba(255,255,255,0.15);color:#888880;font-family:Inter,system-ui,sans-serif;font-size:0.8rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;cursor:pointer;border-radius:2px;">Decline</button>
-    <button id="cookie-accept" style="padding:0.5rem 1.25rem;background:#D4AF37;border:none;color:#0A0A0A;font-family:Inter,system-ui,sans-serif;font-size:0.8rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;cursor:pointer;border-radius:2px;">Accept</button>
-  </div>
-</div>
-<script>
-  (function() {
-    var consent = localStorage.getItem('augentic_cookie_consent');
-    var banner = document.getElementById('cookie-banner');
-    if (!consent && banner) { banner.style.display = 'flex'; }
-    document.getElementById('cookie-accept').addEventListener('click', function() {
-      localStorage.setItem('augentic_cookie_consent', 'accepted');
-      banner.style.display = 'none';
-    });
-    document.getElementById('cookie-decline').addEventListener('click', function() {
-      localStorage.setItem('augentic_cookie_consent', 'declined');
-      banner.style.display = 'none';
-    });
-  })();
-</script>
-
 </body>
 </html>
