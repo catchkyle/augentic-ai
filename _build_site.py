@@ -1,9 +1,6 @@
 #!/usr/bin/env python3
 """Build script for Augentic AI site - blogs, booking, lead magnet."""
 
-import sys
-sys.path.insert(0, "/Users/kyle/Library/Python/3.9/lib/python/site-packages")
-
 import markdown
 import frontmatter
 
