@@ -10,11 +10,13 @@ NAV = """<nav id="nav">
       <li><a href="/blog/">Insights</a></li>
       <li><a href="/guide/">AI Guide</a></li>
     </ul>
-    <a href="/book/" class="nav-cta">Book Strategy Call</a>
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-      <svg id="iconSun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-      <svg id="iconMoon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-    </button>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg id="iconSun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg id="iconMoon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="/book/" class="nav-cta">Book Strategy Call</a>
+    </div>
     <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
@@ -48,7 +50,7 @@ FOOTER = """<footer>
 
 BASE_CSS = """<link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -67,12 +69,12 @@ BASE_CSS = """<link rel="preconnect" href="https://fonts.googleapis.com" />
       --border: rgba(0,0,0,0.08); --border-accent: rgba(212,175,55,0.4);
     }
     html { scroll-behavior: smooth; }
-    body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-weight: 300; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-weight: 400; line-height: 1.7; -webkit-font-smoothing: antialiased; }
     ::selection { background: var(--accent-dim); color: var(--accent); }
-    h1,h2,h3,h4 { font-weight: 400; line-height: 1.25; letter-spacing: -0.02em; }
+    h1,h2,h3,h4 { font-weight: 500; line-height: 1.25; letter-spacing: -0.02em; }
     h1 { font-family: var(--font-serif); font-size: clamp(2rem,4vw,3.2rem); }
     h2 { font-family: var(--font-serif); font-size: clamp(1.6rem,3vw,2.4rem); }
-    h3 { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 500; letter-spacing: 0; }
+    h3 { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; letter-spacing: 0; }
     p { color: var(--text-muted); line-height: 1.85; }
     a { color: inherit; }
     .label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
@@ -86,6 +88,7 @@ BASE_CSS = """<link rel="preconnect" href="https://fonts.googleapis.com" />
     .nav-links a:hover { color: var(--text); }
     .nav-cta { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; padding: 0.65rem 1.4rem; background: var(--accent); color: #0A0A0A; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s; white-space: nowrap; }
     .nav-cta:hover { opacity: 0.88; }
+    .nav-right { display: flex; align-items: center; gap: 0.75rem; }
     .theme-toggle { background: none; border: 1px solid var(--border); color: var(--text-muted); cursor: pointer; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius); transition: color 0.2s; flex-shrink: 0; }
     .theme-toggle:hover { color: var(--accent); }
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
@@ -105,7 +108,7 @@ BASE_CSS = """<link rel="preconnect" href="https://fonts.googleapis.com" />
     .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
     .btn-outline { display: inline-block; padding: 0.85rem 1.8rem; border: 1px solid var(--border-accent); color: var(--accent); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-decoration: none; border-radius: var(--radius); transition: all 0.2s; }
     .btn-outline:hover { background: var(--accent-dim); }
-    @media (max-width: 900px) { .nav-links, .nav-cta { display: none; } .hamburger { display: flex; } }
+    @media (max-width: 900px) { .nav-links, .nav-right .nav-cta { display: none; } .hamburger { display: flex; } }
   </style>"""
 
 BASE_JS = """<script>
@@ -829,7 +832,7 @@ def make_guide_page():
     .guide-content h2 {{ font-size: 1.8rem; margin: 3rem 0 1rem; }}
     .guide-content h2:first-child {{ margin-top: 0; }}
     .guide-content p {{ margin-bottom: 1.4rem; font-size: 0.97rem; }}
-    .guide-content h3 {{ font-size: 1.05rem; font-weight: 500; color: var(--text); margin: 2rem 0 0.6rem; }}
+    .guide-content h3 {{ font-size: 1.05rem; font-weight: 600; color: var(--text); margin: 2rem 0 0.6rem; }}
     .stat-row {{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); margin: 2.5rem 0; }}
     .stat-box {{ background: var(--bg-card); padding: 2rem; text-align: center; }}
     .stat-num {{ font-family: var(--font-serif); font-size: 2.5rem; color: var(--accent); display: block; line-height: 1; margin-bottom: 0.5rem; }}
