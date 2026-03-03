@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Insights | Augentic AI - AI Systems Integration</title>
-  <meta name="description" content="Analysis, frameworks, and perspectives on autonomous AI systems for revenue-driven businesses." />
+  <title>CMS Integration Test: A New Era of Content Management | Augentic AI Insights</title>
+  <meta name="description" content="Testing the new headless CMS integration for Augentic AI's blog. This post verifies that content creators can publish without developer intervention." />
+  <meta property="og:title" content="CMS Integration Test: A New Era of Content Management" />
+  <meta property="og:description" content="Testing the new headless CMS integration for Augentic AI's blog. This post verifies that content creators can publish without developer intervention." />
+  <meta property="og:type" content="article" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -67,20 +70,24 @@
     @media (max-width: 900px) { .nav-links, .nav-cta { display: none; } .hamburger { display: flex; } }
   </style>
   <style>
-    .blog-header { padding: 10rem 0 5rem; border-bottom: 1px solid var(--border); }
-    .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); margin-top: 5rem; }
-    .blog-card { background: var(--bg); transition: background 0.2s; border: 1px solid transparent; }
-    .blog-card:hover { background: var(--bg-card); }
-    .blog-card-link { display: block; padding: 2.5rem; text-decoration: none; color: inherit; height: 100%; }
-    .blog-card-meta { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; flex-wrap: wrap; }
-    .blog-date { font-size: 0.72rem; color: var(--text-dim); }
-    .blog-card-title { font-size: 1.05rem; font-weight: 500; color: var(--text); margin-bottom: 0.8rem; line-height: 1.4; letter-spacing: -0.01em; }
-    .blog-card-desc { font-size: 0.88rem; line-height: 1.75; margin-bottom: 2rem; }
-    .blog-card-footer { display: flex; justify-content: space-between; align-items: center; }
-    .blog-read { font-size: 0.75rem; color: var(--text-dim); }
-    .blog-arrow { font-size: 0.8rem; color: var(--accent); }
-    @media (max-width: 900px) { .blog-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 600px) { .blog-grid { grid-template-columns: 1fr; } }
+    .post-header { padding: 10rem 0 4rem; border-bottom: 1px solid var(--border); }
+    .post-meta { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .post-meta .label { margin: 0; }
+    .post-meta-text { font-size: 0.8rem; color: var(--text-dim); }
+    .post-title { margin-bottom: 1.2rem; }
+    .post-desc { font-size: 1.05rem; max-width: 640px; }
+    .post-body { padding: 5rem 0; }
+    .post-body-inner { max-width: 720px; }
+    .post-body p { margin-bottom: 1.6rem; font-size: 1rem; }
+    .post-body h2 { font-size: 1.5rem; margin: 3rem 0 1rem; color: var(--text); }
+    .post-body strong { color: var(--text); font-weight: 500; }
+    .x-credit { background: var(--bg-card); border: 1px solid var(--border-accent); border-left: 3px solid var(--accent); padding: 1.2rem 1.5rem; margin: 2.5rem 0; font-size: 0.88rem; color: var(--text-muted); font-style: italic; border-radius: 0 var(--radius) var(--radius) 0; }
+    .post-footer { padding: 4rem 0; border-top: 1px solid var(--border); }
+    .cta-box { background: var(--bg-card); border: 1px solid var(--border); padding: 3rem; text-align: center; max-width: 600px; margin: 0 auto; }
+    .cta-box h3 { font-family: var(--font-serif); font-size: 1.6rem; margin-bottom: 1rem; color: var(--text); }
+    .cta-box p { margin-bottom: 2rem; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: var(--text-muted); text-decoration: none; margin-bottom: 3rem; transition: color 0.2s; }
+    .back-link:hover { color: var(--accent); }
   </style>
 </head>
 <body>
@@ -119,171 +126,75 @@
   <a href="/book/" onclick="closeMobile()" style="color:var(--accent);">Book Strategy Call</a>
 </div>
 
-<div class="blog-header">
+<div class="post-header">
   <div class="container">
-    <span class="label">Insights</span>
-    <h1 style="margin-top:1rem;margin-bottom:1rem;">Perspectives on Autonomous AI</h1>
-    <p style="max-width:560px;font-size:1.05rem;">Analysis, frameworks, and perspectives on AI systems integration for revenue-driven businesses. No hype. No fluff. Just substance.</p>
+    <a href="/blog/" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M13 7H1M6 2L1 7l5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to Insights
+    </a>
+    <div class="post-meta">
+      <span class="label">Business Innovation</span>
+      <span class="post-meta-text">March 3, 2026</span>
+      <span class="post-meta-text">4 min read</span>
+    </div>
+    <h1 class="post-title">CMS Integration Test: A New Era of Content Management</h1>
+    <p class="post-desc">Testing the new headless CMS integration for Augentic AI's blog. This post verifies that content creators can publish without developer intervention.</p>
   </div>
 </div>
 
-<div style="padding:0 0 8rem;">
+<div class="post-body">
   <div class="container">
-    <div class="blog-grid">
-      <article class="blog-card">
-        <a href="/blog/autonomous-ai-agents-sales-workflows-2026/" class="blog-card-link">
-          <div class="blog-card-meta">
-            <span class="label" style="font-size:0.65rem;">Sales Automation</span>
-            <span class="blog-date">March 3, 2026</span>
-          </div>
-          <h3 class="blog-card-title">How Autonomous AI Agents Are Replacing Manual Sales Workflows in 2026</h3>
-          <p class="blog-card-desc">The shift from AI-assisted selling to AI-automated selling is happening now. Here is what it looks like in practice.</p>
-          <div class="blog-card-footer">
-            <span class="blog-read">6 min read</span>
-            <span class="blog-arrow">Read &rarr;</span>
-          </div>
-        </a>
-      </article>
-      <article class="blog-card">
-        <a href="/blog/ai-voice-agents-front-office-2026/" class="blog-card-link">
-          <div class="blog-card-meta">
-            <span class="label" style="font-size:0.65rem;">Voice AI</span>
-            <span class="blog-date">March 3, 2026</span>
-          </div>
-          <h3 class="blog-card-title">AI Voice Agents for Business: The Front Office Revolution Is Here</h3>
-          <p class="blog-card-desc">AI voice agents are answering calls, qualifying leads, and booking appointments for businesses that operate 24 hours a day. Here is what that looks like.</p>
-          <div class="blog-card-footer">
-            <span class="blog-read">4 min read</span>
-            <span class="blog-arrow">Read &rarr;</span>
-          </div>
-        </a>
-      </article>
-      <article class="blog-card">
-        <a href="/blog/open-source-ai-enterprise-deepseek-qwen/" class="blog-card-link">
-          <div class="blog-card-meta">
-            <span class="label" style="font-size:0.65rem;">AI Technology</span>
-            <span class="blog-date">March 3, 2026</span>
-          </div>
-          <h3 class="blog-card-title">DeepSeek, Qwen, and Open Source AI: What the Enterprise Needs to Know</h3>
-          <p class="blog-card-desc">The open source AI revolution is not just about cost. It is about control, privacy, and the structure of competitive advantage.</p>
-          <div class="blog-card-footer">
-            <span class="blog-read">5 min read</span>
-            <span class="blog-arrow">Read &rarr;</span>
-          </div>
-        </a>
-      </article>
-      <article class="blog-card" style="border-color:var(--border-accent);">
-        <a href="/blog/qwen35-local-ai-business-leaders/" class="blog-card-link">
-          <div class="blog-card-meta">
-            <span class="label" style="font-size:0.65rem;">AI Strategy</span>
-            <span class="blog-date">March 3, 2026</span>
-          </div>
-          <h3 class="blog-card-title">Qwen3.5 and the Era of Free Local AI: What Business Leaders Need to Know</h3>
-          <p class="blog-card-desc">Alibaba just released Qwen3.5, and AI commentators are calling it a watershed moment. Here is what it actually means for your business.</p>
-          <div class="blog-card-footer">
-            <span class="blog-read">5 min read</span>
-            <span class="blog-arrow">Read &rarr;</span>
-          </div>
-        </a>
-      </article>
-      <article class="blog-card">
-        <a href="/blog/evaluating-ai-roi-framework/" class="blog-card-link">
-          <div class="blog-card-meta">
-            <span class="label" style="font-size:0.65rem;">AI Strategy</span>
-            <span class="blog-date">March 3, 2026</span>
-          </div>
-          <h3 class="blog-card-title">How to Evaluate AI ROI Before You Invest: A Framework for Mid-Market Leaders</h3>
-          <p class="blog-card-desc">Most AI ROI calculations are either too optimistic or too narrow. Here is a framework that captures the full picture.</p>
-          <div class="blog-card-footer">
-            <span class="blog-read">5 min read</span>
-            <span class="blog-arrow">Read &rarr;</span>
-          </div>
-        </a>
-      </article>
-      <article class="blog-card">
-        <a href="/blog/crm-revenue-leak-ai-fix/" class="blog-card-link">
-          <div class="blog-card-meta">
-            <span class="label" style="font-size:0.65rem;">Revenue Operations</span>
-            <span class="blog-date">March 3, 2026</span>
-          </div>
-          <h3 class="blog-card-title">Your CRM Is Bleeding Revenue. AI Fixes It.</h3>
-          <p class="blog-card-desc">Most CRM data is stale, incomplete, and manually maintained. Here is how AI agents eliminate the leak.</p>
-          <div class="blog-card-footer">
-            <span class="blog-read">4 min read</span>
-            <span class="blog-arrow">Read &rarr;</span>
-          </div>
-        </a>
-      </article>
-      <article class="blog-card">
-        <a href="/blog/ai-tools-vs-ai-systems/" class="blog-card-link">
-          <div class="blog-card-meta">
-            <span class="label" style="font-size:0.65rem;">AI Strategy</span>
-            <span class="blog-date">March 3, 2026</span>
-          </div>
-          <h3 class="blog-card-title">AI Tools vs. AI Systems: The Distinction That Defines Winners</h3>
-          <p class="blog-card-desc">Most companies have AI tools. Few have AI systems. Here is why that distinction is worth millions.</p>
-          <div class="blog-card-footer">
-            <span class="blog-read">5 min read</span>
-            <span class="blog-arrow">Read &rarr;</span>
-          </div>
-        </a>
-      </article>
-      <article class="blog-card" style="border-color:var(--border-accent);">
-        <a href="/blog/cms-integration-test-post/" class="blog-card-link">
-          <div class="blog-card-meta">
-            <span class="label" style="font-size:0.65rem;">Business Innovation</span>
-            <span class="blog-date">March 3, 2026</span>
-          </div>
-          <h3 class="blog-card-title">CMS Integration Test: A New Era of Content Management</h3>
-          <p class="blog-card-desc">Testing the new headless CMS integration for Augentic AI's blog. This post verifies that content creators can publish without developer intervention.</p>
-          <div class="blog-card-footer">
-            <span class="blog-read">4 min read</span>
-            <span class="blog-arrow">Read &rarr;</span>
-          </div>
-        </a>
-      </article>
-      <article class="blog-card">
-        <a href="/blog/building-ai-workforce-playbook-revenue-teams/" class="blog-card-link">
-          <div class="blog-card-meta">
-            <span class="label" style="font-size:0.65rem;">Playbooks</span>
-            <span class="blog-date">March 3, 2026</span>
-          </div>
-          <h3 class="blog-card-title">Building an AI Workforce: The Playbook for Revenue Teams</h3>
-          <p class="blog-card-desc">A step-by-step framework for deploying autonomous AI across your revenue operations - from workflow mapping to production deployment.</p>
-          <div class="blog-card-footer">
-            <span class="blog-read">7 min read</span>
-            <span class="blog-arrow">Read &rarr;</span>
-          </div>
-        </a>
-      </article>
-      <article class="blog-card">
-        <a href="/blog/true-cost-manual-workflows/" class="blog-card-link">
-          <div class="blog-card-meta">
-            <span class="label" style="font-size:0.65rem;">Revenue Operations</span>
-            <span class="blog-date">March 3, 2026</span>
-          </div>
-          <h3 class="blog-card-title">The Real Cost of Manual Workflows: What You Are Actually Losing</h3>
-          <p class="blog-card-desc">Most executives underestimate the cost of manual operations by a factor of three. Here is how to calculate what you are actually losing.</p>
-          <div class="blog-card-footer">
-            <span class="blog-read">5 min read</span>
-            <span class="blog-arrow">Read &rarr;</span>
-          </div>
-        </a>
-      </article>
-      <article class="blog-card">
-        <a href="/blog/what-is-ai-systems-integrator/" class="blog-card-link">
-          <div class="blog-card-meta">
-            <span class="label" style="font-size:0.65rem;">AI Strategy</span>
-            <span class="blog-date">March 3, 2026</span>
-          </div>
-          <h3 class="blog-card-title">What Is an AI Systems Integrator? (And Why You Need One)</h3>
-          <p class="blog-card-desc">The term is new but the concept is familiar. Here is what AI systems integration actually means and why it is the category that matters.</p>
-          <div class="blog-card-footer">
-            <span class="blog-read">4 min read</span>
-            <span class="blog-arrow">Read &rarr;</span>
-          </div>
-        </a>
-      </article>
+    <div class="post-body-inner">
+      <div class="x-credit">Created via Decap CMS workflow test</div>
+      <p>This is a test blog post created to verify the end-to-end CMS integration workflow. It demonstrates that the headless CMS system is working correctly and can handle all required content fields.</p>
+<h2>Purpose of This Test</h2>
+<p>This test post verifies several critical aspects of the CMS integration:</p>
+<ul>
+<li><strong>Markdown content rendering</strong>: The build script correctly parses markdown and converts it to HTML</li>
+<li><strong>Frontmatter metadata</strong>: All required fields (slug, title, date, category, description, reading_time, featured, x_credit) are properly extracted</li>
+<li><strong>Build automation</strong>: The static site generator creates the appropriate HTML files</li>
+<li><strong>Blog index integration</strong>: The new post appears in the blog listing page</li>
+<li><strong>URL structure</strong>: The post is accessible at <code>/blog/cms-integration-test-post/</code></li>
+</ul>
+<h2>How the Workflow Works</h2>
+<p>When a content creator uses the Decap CMS interface at <code>/admin/</code>, they:</p>
+<ol>
+<li><strong>Create a draft</strong> with all required fields filled in through a visual editor</li>
+<li><strong>Save the draft</strong> which creates a Pull Request in GitHub (editorial workflow mode)</li>
+<li><strong>Publish the post</strong> which merges the PR and commits the markdown file to <code>content/blog/</code></li>
+<li><strong>Trigger automated build</strong> via GitHub Actions webhook</li>
+<li><strong>Deploy to production</strong> automatically via Cloudflare Pages</li>
+</ol>
+<h2>Benefits for Non-Technical Users</h2>
+<p>The CMS removes technical barriers:</p>
+<ul>
+<li>No need to write HTML or markdown syntax manually</li>
+<li>Visual editor with preview functionality</li>
+<li>Structured fields ensure consistency</li>
+<li>Draft/publish workflow for content review</li>
+<li>No command line or build scripts required</li>
+</ul>
+<h2>Technical Implementation</h2>
+<p>Behind the scenes, the system:</p>
+<ul>
+<li>Stores content as Git-committed markdown files</li>
+<li>Uses Python <code>frontmatter</code> library to parse metadata</li>
+<li>Converts markdown to HTML with the <code>markdown</code> library</li>
+<li>Generates static HTML pages during build</li>
+<li>Maintains existing URL structure for SEO preservation</li>
+</ul>
+<h2>Conclusion</h2>
+<p>This test post confirms that the headless CMS integration is working as designed. Content creators can now publish blog posts and case studies without developer assistance, enabling faster content velocity and better team collaboration.</p>
+    </div>
+  </div>
+</div>
+
+<div class="post-footer">
+  <div class="container">
+    <div class="cta-box">
+      <h3>Ready to Build Your AI Workforce?</h3>
+      <p>Schedule a 30-minute strategy call. We will tell you exactly what we would build for your business - and what it would cost.</p>
+      <a href="/book/" class="btn-primary">Book a Strategy Call</a>
     </div>
   </div>
 </div>
