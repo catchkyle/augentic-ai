@@ -19,10 +19,10 @@
       --text: #F5F5F0;
       --text-muted: #888880;
       --text-dim: #555550;
-      --accent: #C8A96E;
-      --accent-dim: rgba(200, 169, 110, 0.15);
+      --accent: #D4AF37;
+      --accent-dim: rgba(212, 175, 55, 0.15);
       --border: rgba(255,255,255,0.07);
-      --border-accent: rgba(200, 169, 110, 0.3);
+      --border-accent: rgba(212, 175, 55, 0.3);
       --font-serif: 'Playfair Display', Georgia, serif;
       --font-sans: 'Inter', system-ui, sans-serif;
       --max: 1200px;
@@ -149,15 +149,15 @@
     .hero-grid {
       position: absolute; inset: 0; z-index: 0;
       background-image:
-        linear-gradient(rgba(200,169,110,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(200,169,110,0.04) 1px, transparent 1px);
+        linear-gradient(rgba(212,175,55,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212,175,55,0.04) 1px, transparent 1px);
       background-size: 60px 60px;
       mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 40%, transparent 100%);
     }
     .hero-glow {
       position: absolute; top: 20%; left: 50%; transform: translateX(-50%);
       width: 600px; height: 400px;
-      background: radial-gradient(ellipse, rgba(200,169,110,0.06) 0%, transparent 70%);
+      background: radial-gradient(ellipse, rgba(212,175,55,0.06) 0%, transparent 70%);
       pointer-events: none;
     }
     .hero-content {
@@ -264,7 +264,7 @@
       font-family: var(--font-serif);
       font-size: 3.5rem;
       color: var(--accent-dim);
-      color: rgba(200,169,110,0.12);
+      color: rgba(212,175,55,0.12);
       line-height: 1;
       margin-bottom: 1.5rem;
       display: block;
@@ -446,7 +446,7 @@
       content: '';
       position: absolute; top: -200px; left: 50%; transform: translateX(-50%);
       width: 800px; height: 600px;
-      background: radial-gradient(ellipse, rgba(200,169,110,0.05) 0%, transparent 65%);
+      background: radial-gradient(ellipse, rgba(212,175,55,0.05) 0%, transparent 65%);
       pointer-events: none;
     }
     .cta-content { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
@@ -511,6 +511,84 @@
       .offering-card { padding: 2rem 1.5rem; }
       .problem-card { padding: 2rem 1.5rem; }
     }
+
+    /* ── LIGHT MODE ── */
+    body.light {
+      --bg: #FAFAF7;
+      --bg-card: #F2F2EE;
+      --bg-raised: #E8E8E4;
+      --text: #0B0B0B;
+      --text-muted: #444440;
+      --text-dim: #999990;
+      --border: rgba(0,0,0,0.08);
+      --border-accent: rgba(212,175,55,0.4);
+      --accent-dim: rgba(212,175,55,0.12);
+    }
+    body.light nav.scrolled { background: rgba(250,250,247,0.95); }
+    body.light .hero-grid {
+      background-image:
+        linear-gradient(rgba(212,175,55,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212,175,55,0.06) 1px, transparent 1px);
+    }
+
+    /* ── THEME TOGGLE BUTTON ── */
+    .theme-toggle {
+      background: none; border: 1px solid var(--border);
+      color: var(--text-muted); cursor: pointer;
+      width: 34px; height: 34px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: var(--radius);
+      transition: color 0.2s, border-color 0.2s;
+      flex-shrink: 0;
+    }
+    .theme-toggle:hover { color: var(--accent); border-color: var(--border-accent); }
+
+    /* ── CONTACT FORM ── */
+    .contact-form {
+      max-width: 640px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    }
+    .contact-form .full { grid-column: 1 / -1; }
+    .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+    .form-group label {
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      padding: 0.85rem 1rem;
+      border-radius: var(--radius);
+      transition: border-color 0.2s;
+      width: 100%;
+      outline: none;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--accent); }
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888880' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      padding-right: 2.5rem;
+      cursor: pointer;
+    }
+    .form-group select option { background: var(--bg-card); color: var(--text); }
+    .form-group textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
+    .form-submit { grid-column: 1 / -1; margin-top: 0.5rem; }
+    .form-note { font-size: 0.78rem; color: var(--text-dim); text-align: center; margin-top: 1rem; }
+    @media (max-width: 600px) {
+      .contact-form { grid-template-columns: 1fr; }
+    }
+
   </style>
 </head>
 <body>
@@ -518,15 +596,16 @@
 <!-- ── NAVIGATION ── -->
 <nav id="nav">
   <div class="container">
-    <a href="#hero" class="nav-logo" style="display:flex;align-items:center;gap:12px;text-decoration:none;">
-      <svg width="32" height="32" viewBox="0 0 58 58" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M9 50 L29 10 L49 50" stroke="#C8A96E" stroke-width="2.5" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
-        <line x1="17" y1="36" x2="41" y2="36" stroke="#C8A96E" stroke-width="2.5"/>
-        <circle cx="29" cy="10" r="3.5" fill="#C8A96E"/>
-        <circle cx="17" cy="36" r="2" fill="#C8A96E" opacity="0.5"/>
-        <circle cx="41" cy="36" r="2" fill="#C8A96E" opacity="0.5"/>
+    <a href="#hero" class="nav-logo" style="display:flex;align-items:center;gap:0;text-decoration:none;">
+      <svg width="160" height="37" viewBox="0 0 1400 320" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(70,20)">
+          <path fill="#D4AF37" fill-rule="evenodd" d="M130 0 L20 280 H80 L130 155 L180 280 H240 L130 0 Z M130 78 L96 170 H164 L130 78 Z"/>
+        </g>
+        <g transform="translate(360,0)">
+          <text x="0" y="200" fill="#D4AF37" font-family="Inter,system-ui,sans-serif" font-size="92" font-weight="700" letter-spacing="6">AUGENTIC</text>
+          <text x="835" y="200" fill="#D4AF37" font-family="Inter,system-ui,sans-serif" font-size="92" font-weight="500" letter-spacing="6"> AI</text>
+        </g>
       </svg>
-      <span style="font-size:0.82rem;font-weight:600;letter-spacing:0.18em;color:#F5F5F0;">AUGENTIC <span style="color:#C8A96E;">AI</span></span>
     </a>
     <ul class="nav-links">
       <li><a href="#solution">Solutions</a></li>
@@ -535,6 +614,10 @@
       <li><a href="#who">Who We Serve</a></li>
     </ul>
     <a href="#contact" class="nav-cta">Book Strategy Call</a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle light/dark mode">
+      <svg id="iconSun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg id="iconMoon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
     <button class="hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -836,14 +919,62 @@
 <!-- ── CTA ── -->
 <section id="contact">
   <div class="container">
-    <div class="cta-content">
+    <div class="cta-content" style="max-width:780px;">
       <span class="label fade-in" style="display:block;margin-bottom:1.5rem;">Get Started</span>
       <h2 class="fade-in fade-in-delay-1">Ready to Build<br>Your AI Workforce?</h2>
-      <p class="fade-in fade-in-delay-2">Schedule a 30-minute strategy call. We will assess your workflows, identify your highest-leverage automation opportunities, and tell you exactly what we would build - and what it would cost. No sales pitch. No obligation.</p>
-      <div class="fade-in fade-in-delay-3">
-        <a href="mailto:hello@augentic.ai" class="btn-primary" style="font-size:0.85rem;padding:1rem 2.2rem;">Book a Strategy Call</a>
-        <p class="cta-note">Not ready to talk? <a href="#">Download our AI Readiness Assessment</a>.</p>
-      </div>
+      <p class="fade-in fade-in-delay-2" style="margin-bottom:3rem;">Tell us about your business. We will assess your workflows, identify your highest-leverage automation opportunities, and tell you exactly what we would build.</p>
+
+      <form class="contact-form fade-in fade-in-delay-3" id="contactForm" onsubmit="handleSubmit(event)">
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName" name="firstName" placeholder="John" required />
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" name="lastName" placeholder="Smith" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Work Email</label>
+          <input type="email" id="email" name="email" placeholder="john@company.com" required />
+        </div>
+        <div class="form-group">
+          <label for="company">Company</label>
+          <input type="text" id="company" name="company" placeholder="Acme Corp" required />
+        </div>
+        <div class="form-group full">
+          <label for="revenue">Annual Revenue</label>
+          <select id="revenue" name="revenue" required>
+            <option value="" disabled selected>Select your revenue range</option>
+            <option value="5-10m">$5M - $10M</option>
+            <option value="10-25m">$10M - $25M</option>
+            <option value="25-50m">$25M - $50M</option>
+            <option value="50-100m">$50M - $100M</option>
+            <option value="100m+">$100M+</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label for="interest">AI Opportunity You Are Most Interested In</label>
+          <select id="interest" name="interest" required>
+            <option value="" disabled selected>Select your primary interest</option>
+            <option value="autonomous-agents">Autonomous AI Agents for Sales and Revenue Operations</option>
+            <option value="crm-integration">AI Integration into CRM and Sales Workflows</option>
+            <option value="email-outreach">AI-Driven Email Outreach and Follow-Up Automation</option>
+            <option value="voice-ai">AI Voice Agents for Front Office and Inbound Calls</option>
+            <option value="workforce-automation">Full AI Workforce Automation (End-to-End)</option>
+            <option value="reporting">Automated Reporting and Business Intelligence</option>
+            <option value="calendar-scheduling">AI Scheduling and Calendar Automation</option>
+            <option value="not-sure">Not Sure - I Need a Strategy Assessment</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label for="message">What Are You Looking to Solve? (Optional)</label>
+          <textarea id="message" name="message" placeholder="Describe your current workflow challenges or what you want to automate..."></textarea>
+        </div>
+        <div class="form-submit">
+          <button type="submit" class="btn-primary" style="width:100%;font-size:0.85rem;padding:1rem 2.2rem;border:none;cursor:pointer;">Book a Strategy Call</button>
+        </div>
+      </form>
+      <p class="form-note">No sales pitch. No obligation. We respond within one business day.</p>
     </div>
   </div>
 </section>
@@ -853,15 +984,16 @@
   <div class="container">
     <div class="footer-inner">
       <div>
-        <div class="footer-logo" style="display:flex;align-items:center;gap:10px;">
-        <svg width="24" height="24" viewBox="0 0 58 58" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M9 50 L29 10 L49 50" stroke="#C8A96E" stroke-width="2.5" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
-          <line x1="17" y1="36" x2="41" y2="36" stroke="#C8A96E" stroke-width="2.5"/>
-          <circle cx="29" cy="10" r="3.5" fill="#C8A96E"/>
-          <circle cx="17" cy="36" r="2" fill="#C8A96E" opacity="0.5"/>
-          <circle cx="41" cy="36" r="2" fill="#C8A96E" opacity="0.5"/>
+        <div class="footer-logo" style="display:flex;align-items:center;">
+        <svg width="120" height="28" viewBox="0 0 1400 320" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(70,20)">
+            <path fill="#D4AF37" fill-rule="evenodd" d="M130 0 L20 280 H80 L130 155 L180 280 H240 L130 0 Z M130 78 L96 170 H164 L130 78 Z"/>
+          </g>
+          <g transform="translate(360,0)">
+            <text x="0" y="200" fill="#D4AF37" font-family="Inter,system-ui,sans-serif" font-size="92" font-weight="700" letter-spacing="6">AUGENTIC</text>
+            <text x="835" y="200" fill="#D4AF37" font-family="Inter,system-ui,sans-serif" font-size="92" font-weight="500" letter-spacing="6"> AI</text>
+          </g>
         </svg>
-        <span>AUGENTIC <span style="color:#C8A96E;">AI</span></span>
       </div>
         <div class="footer-tagline">Autonomous AI. Measurable Revenue.</div>
       </div>
@@ -878,6 +1010,50 @@
 </footer>
 
 <script>
+
+  // ── THEME TOGGLE ──
+  const themeToggle = document.getElementById('themeToggle');
+  const iconSun = document.getElementById('iconSun');
+  const iconMoon = document.getElementById('iconMoon');
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  if (savedTheme === 'light') {
+    document.body.classList.add('light');
+    iconSun.style.display = 'block';
+    iconMoon.style.display = 'none';
+  }
+  themeToggle.addEventListener('click', () => {
+    const isLight = document.body.classList.toggle('light');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    iconSun.style.display = isLight ? 'block' : 'none';
+    iconMoon.style.display = isLight ? 'none' : 'block';
+  });
+
+  // ── CONTACT FORM ──
+  function handleSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('button[type="submit"]');
+    const data = Object.fromEntries(new FormData(form));
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    // Send to mailto as fallback (replace with actual endpoint later)
+    const subject = encodeURIComponent('Strategy Call Request - ' + data.company);
+    const body = encodeURIComponent(
+      'Name: ' + data.firstName + ' ' + data.lastName + '\n' +
+      'Email: ' + data.email + '\n' +
+      'Company: ' + data.company + '\n' +
+      'Revenue: ' + data.revenue + '\n' +
+      'Interest: ' + data.interest + '\n' +
+      'Message: ' + (data.message || 'N/A')
+    );
+    setTimeout(() => {
+      btn.textContent = 'Request Sent';
+      btn.style.background = '#2a5a2a';
+      btn.style.color = '#90d090';
+      window.location.href = 'mailto:hello@augenticai.com?subject=' + subject + '&body=' + body;
+    }, 600);
+  }
+
   // ── NAV SCROLL ──
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
