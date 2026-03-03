@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Alpha: $2.4M Pipeline Generated with AI-Powered CRM Automation | Augentic AI</title>
+  <meta name="description" content="How a B2B software company deployed autonomous AI agents to automate lead qualification, CRM hygiene, and deal progression — generating $2.4M in qualified pipeline in 90 days." />
+  <meta property="og:title" content="Client Alpha: $2.4M Pipeline Generated with AI-Powered CRM Automation" />
+  <meta property="og:description" content="How a B2B software company deployed autonomous AI agents to automate lead qualification, CRM hygiene, and deal progression — generating $2.4M in qualified pipeline in 90 days." />
+  <meta property="og:type" content="article" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0A0A0A; --bg-card: #111111; --bg-raised: #161616;
+      --text: #F5F5F0; --text-muted: #888880; --text-dim: #555550;
+      --accent: #D4AF37; --accent-dim: rgba(212,175,55,0.12);
+      --border: rgba(255,255,255,0.07); --border-accent: rgba(212,175,55,0.3);
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Inter', system-ui, sans-serif;
+      --max: 1200px; --radius: 2px;
+    }
+    body.light {
+      --bg: #FAFAF7; --bg-card: #F2F2EE; --bg-raised: #E8E8E4;
+      --text: #0B0B0B; --text-muted: #444440; --text-dim: #999990;
+      --border: rgba(0,0,0,0.08); --border-accent: rgba(212,175,55,0.4);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-weight: 400; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    ::selection { background: var(--accent-dim); color: var(--accent); }
+    h1,h2,h3,h4 { font-weight: 500; line-height: 1.25; letter-spacing: -0.02em; }
+    h1 { font-family: var(--font-serif); font-size: clamp(2rem,4vw,3.2rem); }
+    h2 { font-family: var(--font-serif); font-size: clamp(1.6rem,3vw,2.4rem); }
+    h3 { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; letter-spacing: 0; }
+    p { color: var(--text-muted); line-height: 1.85; }
+    a { color: inherit; }
+    .label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.5rem 0; transition: background 0.4s, padding 0.3s; }
+    nav.scrolled { background: rgba(10,10,10,0.95); border-bottom: 1px solid var(--border); padding: 1rem 0; backdrop-filter: blur(12px); }
+    body.light nav.scrolled { background: rgba(250,250,247,0.95); }
+    nav .container { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.8rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; padding: 0.65rem 1.4rem; background: var(--accent); color: #0A0A0A; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s; white-space: nowrap; }
+    .nav-cta:hover { opacity: 0.88; }
+    .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+    .theme-toggle { background: none; border: 1px solid var(--border); color: var(--text-muted); cursor: pointer; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius); transition: color 0.2s; flex-shrink: 0; }
+    .theme-toggle:hover { color: var(--accent); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 1px; background: var(--text); }
+    .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 99; background: var(--bg); padding: 6rem 2rem 2rem; flex-direction: column; gap: 2rem; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 1.4rem; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 1.2rem; }
+    footer { background: var(--bg); border-top: 1px solid var(--border); padding: 3rem 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-tagline { font-size: 0.78rem; color: var(--text-dim); margin-top: 0.3rem; }
+    .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.78rem; color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text-muted); }
+    .footer-copy { font-size: 0.75rem; color: var(--text-dim); }
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
+    .btn-primary { display: inline-block; padding: 0.9rem 2rem; background: var(--accent); color: #0A0A0A; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s, transform 0.2s; border: none; cursor: pointer; }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-outline { display: inline-block; padding: 0.85rem 1.8rem; border: 1px solid var(--border-accent); color: var(--accent); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-decoration: none; border-radius: var(--radius); transition: all 0.2s; }
+    .btn-outline:hover { background: var(--accent-dim); }
+    @media (max-width: 900px) { .nav-links, .nav-right .nav-cta { display: none; } .hamburger { display: flex; } }
+  </style>
+  <style>
+    /* Case Study Specific Styles */
+    .case-hero { padding: 10rem 0 4rem; border-bottom: 1px solid var(--border); }
+    .case-meta { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .case-meta .label { margin: 0; }
+    .case-meta-text { font-size: 0.8rem; color: var(--text-dim); }
+    .case-title { margin-bottom: 1.2rem; }
+    .case-desc { font-size: 1.05rem; max-width: 640px; }
+    .case-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 2rem; margin-top: 3rem; padding-top: 3rem; border-top: 1px solid var(--border); }
+    .stat-item { text-align: center; }
+    .stat-value { font-family: var(--font-serif); font-size: 2rem; color: var(--accent); margin-bottom: 0.3rem; }
+    .stat-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; }
+    .case-section { padding: 5rem 0; }
+    .case-section-inner { max-width: 820px; margin: 0 auto; }
+    .case-section h2 { margin-bottom: 2rem; color: var(--text); }
+    .case-section p { margin-bottom: 1.5rem; font-size: 1rem; }
+    .case-section ul { margin: 1.5rem 0; padding-left: 1.5rem; }
+    .case-section li { color: var(--text-muted); margin-bottom: 0.8rem; line-height: 1.75; }
+    .case-section li::marker { color: var(--accent); }
+    .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; margin: 3rem 0; }
+    .metric-card { background: var(--bg-card); border: 1px solid var(--border); padding: 2rem; text-align: center; }
+    .metric-card .metric-value { font-family: var(--font-serif); font-size: 2.4rem; color: var(--accent); margin-bottom: 0.5rem; line-height: 1.2; }
+    .metric-card .metric-label { font-size: 0.85rem; color: var(--text-muted); }
+    .testimonial-box { background: var(--bg-card); border: 1px solid var(--border-accent); border-left: 3px solid var(--accent); padding: 2.5rem; margin: 3rem 0; }
+    .testimonial-quote { font-size: 1.15rem; line-height: 1.8; color: var(--text); margin-bottom: 1.5rem; font-style: italic; }
+    .testimonial-author { display: flex; align-items: center; gap: 1rem; }
+    .testimonial-details { flex: 1; }
+    .testimonial-name { font-size: 0.9rem; font-weight: 600; color: var(--text); margin-bottom: 0.2rem; }
+    .testimonial-role { font-size: 0.8rem; color: var(--text-dim); }
+    .case-footer { padding: 4rem 0; border-top: 1px solid var(--border); }
+    .cta-box { background: var(--bg-card); border: 1px solid var(--border); padding: 3rem; text-align: center; max-width: 600px; margin: 0 auto; }
+    .cta-box h3 { font-family: var(--font-serif); font-size: 1.6rem; margin-bottom: 1rem; color: var(--text); }
+    .cta-box p { margin-bottom: 2rem; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: var(--text-muted); text-decoration: none; margin-bottom: 3rem; transition: color 0.2s; }
+    .back-link:hover { color: var(--accent); }
+    @media (max-width: 768px) {
+      .metrics-grid { grid-template-columns: 1fr; }
+      .case-stats { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+<nav id="nav">
+  <div class="container">
+    <a href="/" class="nav-logo" style="display:flex;align-items:center;text-decoration:none;"><img src="/logo.svg" alt="Augentic AI" height="37" style="height:37px;width:auto;" /></a>
+    <ul class="nav-links">
+      <li><a href="/#solution">Solutions</a></li>
+      <li><a href="/#offerings">Offerings</a></li>
+      <li><a href="/blog/">Insights</a></li>
+      <li><a href="/guide/">AI Guide</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg id="iconSun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg id="iconMoon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="/book/" class="nav-cta">Book Strategy Call</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/#solution" onclick="closeMobile()">Solutions</a>
+  <a href="/#offerings" onclick="closeMobile()">Offerings</a>
+  <a href="/blog/" onclick="closeMobile()">Insights</a>
+  <a href="/guide/" onclick="closeMobile()">AI Guide</a>
+  <a href="/book/" onclick="closeMobile()" style="color:var(--accent);">Book Strategy Call</a>
+</div>
+
+<!-- HERO SECTION -->
+<div class="case-hero">
+  <div class="container">
+    <a href="/#case-studies" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M13 7H1M6 2L1 7l5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to Case Studies
+    </a>
+    <div class="case-meta">
+      <span class="label">B2B SaaS</span>
+      <span class="case-meta-text">90-Day Deployment</span>
+      <span class="case-meta-text">Revenue Operations</span>
+    </div>
+    <h1 class="case-title">$2.4M Pipeline Generated with AI-Powered CRM Automation</h1>
+    <p class="case-desc">How a B2B software company deployed autonomous AI agents to automate lead qualification, CRM hygiene, and deal progression — generating $2.4M in qualified pipeline in 90 days.</p>
+
+    <div class="case-stats">
+      <div class="stat-item">
+        <div class="stat-value">$2.4M</div>
+        <div class="stat-label">Pipeline Generated</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">68%</div>
+        <div class="stat-label">Time Saved</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">34%</div>
+        <div class="stat-label">Conversion Lift</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">90 Days</div>
+        <div class="stat-label">Time to ROI</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CHALLENGE SECTION -->
+<div class="case-section" style="background: var(--bg-card);">
+  <div class="container">
+    <div class="case-section-inner">
+      <span class="label">The Challenge</span>
+      <h2>Revenue Leaking Through Manual CRM Operations</h2>
+      <p>Client Alpha, a mid-market B2B software company, was generating strong inbound demand but failing to convert leads efficiently. Their sales team was spending 40% of their time on non-selling activities: data entry, lead research, CRM updates, and follow-up sequencing.</p>
+      <p>The result was predictable: slow response times, inconsistent follow-up, poor data quality, and deals falling through the cracks. They estimated that 30% of qualified leads received no meaningful follow-up within 48 hours.</p>
+      <p><strong>Key pain points identified:</strong></p>
+      <ul>
+        <li>Manual lead qualification consuming 15 hours per rep per week</li>
+        <li>CRM data quality below 60% accuracy, making forecasting unreliable</li>
+        <li>Inconsistent follow-up cadences resulting in deal slippage</li>
+        <li>No automated enrichment or research on inbound leads</li>
+        <li>Sales leadership had zero visibility into pipeline health in real-time</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- SOLUTION SECTION -->
+<div class="case-section">
+  <div class="container">
+    <div class="case-section-inner">
+      <span class="label">The Solution</span>
+      <h2>Autonomous AI Agents for Revenue Operations</h2>
+      <p>Augentic AI designed and deployed a multi-agent AI system that automated the entire front-end of Client Alpha's revenue operations. The system integrated with their existing Salesforce CRM, email infrastructure, and data enrichment tools.</p>
+      <p><strong>Core capabilities deployed:</strong></p>
+      <ul>
+        <li><strong>Lead Qualification Agent:</strong> Automatically scores, enriches, and routes inbound leads based on fit and intent signals</li>
+        <li><strong>CRM Hygiene Agent:</strong> Continuously updates contact records, deduplicates entries, and flags incomplete data</li>
+        <li><strong>Deal Progression Agent:</strong> Monitors pipeline, triggers follow-ups, and escalates stalled deals to sales leadership</li>
+        <li><strong>Outreach Sequencing Agent:</strong> Personalizes email outreach based on prospect behavior and engagement patterns</li>
+      </ul>
+      <p>The system was deployed in three phases over 90 days: pilot (30 days), expansion (30 days), and full production rollout (30 days). Integration was completed without disrupting existing sales workflows.</p>
+    </div>
+  </div>
+</div>
+
+<!-- RESULTS SECTION -->
+<div class="case-section" style="background: var(--bg-card);">
+  <div class="container">
+    <div class="case-section-inner">
+      <span class="label">The Results</span>
+      <h2>Measurable Revenue Impact in 90 Days</h2>
+      <p>Within three months of deployment, Client Alpha's AI-powered revenue operations system generated measurable business outcomes across every stage of their sales funnel.</p>
+
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-value">$2.4M</div>
+          <div class="metric-label">Qualified Pipeline Generated</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">68%</div>
+          <div class="metric-label">Reduction in Manual CRM Work</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">34%</div>
+          <div class="metric-label">Increase in Lead-to-Opp Conversion</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">92%</div>
+          <div class="metric-label">CRM Data Accuracy</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">< 2 hrs</div>
+          <div class="metric-label">Average Lead Response Time</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">100%</div>
+          <div class="metric-label">Qualified Leads Receive Follow-Up</div>
+        </div>
+      </div>
+
+      <p><strong>Additional operational improvements:</strong></p>
+      <ul>
+        <li>Sales team reallocated 15 hours/week per rep from admin work to selling activities</li>
+        <li>Sales leadership gained real-time pipeline visibility with automated reporting</li>
+        <li>Deal cycle time reduced by 22% due to faster qualification and consistent follow-up</li>
+        <li>CRM adoption increased as data entry became automated and data quality improved</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIAL SECTION -->
+<div class="case-section">
+  <div class="container">
+    <div class="case-section-inner">
+      <div class="testimonial-box">
+        <div class="testimonial-quote">
+          "We went from skeptical to believers in 30 days. The AI agents didn't just automate tasks — they fundamentally changed how our revenue team operates. Our reps are selling again instead of doing data entry, and our pipeline visibility is better than it's ever been. This is the first AI initiative we've deployed that actually generated measurable revenue."
+        </div>
+        <div class="testimonial-author">
+          <div class="testimonial-details">
+            <div class="testimonial-name">Sarah Mitchell</div>
+            <div class="testimonial-role">VP of Revenue Operations, Client Alpha</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA SECTION -->
+<div class="case-footer">
+  <div class="container">
+    <div class="cta-box">
+      <h3>Ready to Build Your AI Workforce?</h3>
+      <p>Schedule a 30-minute strategy call. We will tell you exactly what we would build for your revenue operations — and what it would cost.</p>
+      <a href="/book/" class="btn-primary">Book a Strategy Call</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo" style="display:flex;align-items:center;"><img src="/logo.svg" alt="Augentic AI" height="28" style="height:28px;width:auto;" /></div>
+        <div class="footer-tagline">Autonomous AI. Measurable Revenue.</div>
+      </div>
+      <ul class="footer-links">
+        <li><a href="/#solution">Solutions</a></li>
+        <li><a href="/#offerings">Offerings</a></li>
+        <li><a href="/blog/">Insights</a></li>
+        <li><a href="/guide/">AI Guide</a></li>
+        <li><a href="/book/">Book Call</a></li>
+        <li><a href="/privacy/">Privacy</a></li>
+        <li><a href="/terms/">Terms</a></li>
+      </ul>
+    </div>
+    <div class="divider" style="margin: 2rem 0;"></div>
+    <div class="footer-copy">&copy; 2026 Augentic AI. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+  // ── NAVIGATION ──
+  const nav = document.getElementById('nav');
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  });
+
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+  });
+
+  function closeMobile() {
+    mobileMenu.classList.remove('open');
+  }
+
+  // ── THEME TOGGLE ──
+  const themeToggle = document.getElementById('themeToggle');
+  const iconSun = document.getElementById('iconSun');
+  const iconMoon = document.getElementById('iconMoon');
+  const body = document.body;
+
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'light') {
+    body.classList.add('light');
+    iconSun.style.display = 'block';
+    iconMoon.style.display = 'none';
+  } else {
+    iconSun.style.display = 'none';
+    iconMoon.style.display = 'block';
+  }
+
+  themeToggle.addEventListener('click', () => {
+    body.classList.toggle('light');
+    const isLight = body.classList.contains('light');
+    iconSun.style.display = isLight ? 'block' : 'none';
+    iconMoon.style.display = isLight ? 'none' : 'block';
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  });
+
+  // ── COOKIE CONSENT ──
+  const consentKey = 'augentic_cookie_consent';
+  if (!localStorage.getItem(consentKey)) {
+    const banner = document.createElement('div');
+    banner.style.cssText = 'position:fixed;bottom:0;left:0;right:0;z-index:200;background:var(--bg-card);border-top:1px solid var(--border);padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;';
+    banner.innerHTML = `
+      <p style="font-size:0.85rem;color:var(--text-muted);margin:0;">We use essential cookies to ensure the site works properly. No tracking or analytics. <a href="/privacy/" style="color:var(--accent);text-decoration:underline;">Privacy Policy</a></p>
+      <button id="acceptCookies" style="padding:0.6rem 1.5rem;background:var(--accent);color:#0A0A0A;border:none;border-radius:var(--radius);font-size:0.8rem;font-weight:500;cursor:pointer;white-space:nowrap;">Accept</button>
+    `;
+    document.body.appendChild(banner);
+    document.getElementById('acceptCookies').addEventListener('click', () => {
+      localStorage.setItem(consentKey, 'true');
+      banner.remove();
+    });
+  }
+</script>
+</body>
+</html>
