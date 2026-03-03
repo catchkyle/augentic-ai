@@ -64,6 +64,17 @@
     .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
     .btn-outline { display: inline-block; padding: 0.85rem 1.8rem; border: 1px solid var(--border-accent); color: var(--accent); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-decoration: none; border-radius: var(--radius); transition: all 0.2s; }
     .btn-outline:hover { background: var(--accent-dim); }
+    /* Focus indicators for keyboard navigation - WCAG 2.1 AA compliance */
+    a:focus, button:focus, input:focus, select:focus, textarea:focus, .nav-cta:focus, .btn-primary:focus, .btn-outline:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    .theme-toggle:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .hamburger:focus { outline: 2px solid var(--accent); outline-offset: 4px; }
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
     @media (max-width: 900px) { .nav-links, .nav-cta { display: none; } .hamburger { display: flex; } }
   </style>
   <style>
@@ -107,7 +118,7 @@
 <nav id="nav">
   <div class="container">
     <a href="/" class="nav-logo" style="display:flex;align-items:center;gap:0;text-decoration:none;">
-      <img src="/logo.svg" alt="Augentic AI" height="36" style="height:36px;width:auto;" /><svg style="display:none" width="0" height="0" viewBox="0 0 1400 320" xmlns="http://www.w3.org/2000/svg" style="overflow:visible;">
+      <svg width="160" height="37" viewBox="0 0 1400 320" xmlns="http://www.w3.org/2000/svg" style="overflow:visible;">
         <g transform="translate(70,20)">
           <path fill="#D4AF37" fill-rule="evenodd" d="M130 0 L20 280 H80 L130 155 L180 280 H240 L130 0 Z M130 78 L96 170 H164 L130 78 Z"/>
         </g>
@@ -143,6 +154,7 @@
   <div class="container">
     <div class="guide-hero-inner">
       <div class="guide-badge">&#9733; Free Executive Resource</div>
+      <span class="label">Lead Magnet</span>
       <h1>The AI Workforce Readiness Guide</h1>
       <p>A practical framework for assessing your organization's readiness to deploy autonomous AI - and a step-by-step path for getting there.</p>
       <a href="#assessment" class="btn-primary">Start the Assessment</a>
@@ -308,34 +320,5 @@
     document.getElementById('scoreText').textContent = messages[checked];
   }
 </script>
-
-<!-- COOKIE CONSENT BANNER -->
-<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#111111;border-top:1px solid rgba(212,175,55,0.3);padding:1.25rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;">
-  <p style="margin:0;color:#888880;font-size:0.875rem;font-family:Inter,system-ui,sans-serif;line-height:1.6;max-width:700px;">
-    We use cookies to improve your experience and analyze site usage. By continuing, you agree to our
-    <a href="/privacy/" style="color:#D4AF37;text-decoration:underline;">Privacy Policy</a> and
-    <a href="/terms/" style="color:#D4AF37;text-decoration:underline;">Terms</a>.
-  </p>
-  <div style="display:flex;gap:0.75rem;flex-shrink:0;">
-    <button id="cookie-decline" style="padding:0.5rem 1.25rem;background:transparent;border:1px solid rgba(255,255,255,0.15);color:#888880;font-family:Inter,system-ui,sans-serif;font-size:0.8rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;cursor:pointer;border-radius:2px;">Decline</button>
-    <button id="cookie-accept" style="padding:0.5rem 1.25rem;background:#D4AF37;border:none;color:#0A0A0A;font-family:Inter,system-ui,sans-serif;font-size:0.8rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;cursor:pointer;border-radius:2px;">Accept</button>
-  </div>
-</div>
-<script>
-  (function() {
-    var consent = localStorage.getItem('augentic_cookie_consent');
-    var banner = document.getElementById('cookie-banner');
-    if (!consent && banner) { banner.style.display = 'flex'; }
-    document.getElementById('cookie-accept').addEventListener('click', function() {
-      localStorage.setItem('augentic_cookie_consent', 'accepted');
-      banner.style.display = 'none';
-    });
-    document.getElementById('cookie-decline').addEventListener('click', function() {
-      localStorage.setItem('augentic_cookie_consent', 'declined');
-      banner.style.display = 'none';
-    });
-  })();
-</script>
-
 </body>
 </html>

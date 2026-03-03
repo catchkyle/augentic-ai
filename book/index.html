@@ -64,6 +64,17 @@
     .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
     .btn-outline { display: inline-block; padding: 0.85rem 1.8rem; border: 1px solid var(--border-accent); color: var(--accent); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-decoration: none; border-radius: var(--radius); transition: all 0.2s; }
     .btn-outline:hover { background: var(--accent-dim); }
+    /* Focus indicators for keyboard navigation - WCAG 2.1 AA compliance */
+    a:focus, button:focus, input:focus, select:focus, textarea:focus, .nav-cta:focus, .btn-primary:focus, .btn-outline:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    .theme-toggle:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .hamburger:focus { outline: 2px solid var(--accent); outline-offset: 4px; }
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
     @media (max-width: 900px) { .nav-links, .nav-cta { display: none; } .hamburger { display: flex; } }
   </style>
   <style>
@@ -81,7 +92,7 @@
     .form-group input, .form-group select, .form-group textarea {
       background: var(--bg-card); border: 1px solid var(--border); color: var(--text);
       font-family: var(--font-sans); font-size: 0.9rem; padding: 0.85rem 1rem;
-      border-radius: var(--radius); transition: border-color 0.2s; width: 100%; outline: none; appearance: none;
+      border-radius: var(--radius); transition: border-color 0.2s; width: 100%; appearance: none;
     }
     .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--accent); }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
@@ -145,26 +156,26 @@
     <form onsubmit="handleBook(event)">
       <div class="form-row">
         <div class="form-group">
-          <label>First Name</label>
-          <input type="text" name="firstName" placeholder="John" required />
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName" name="firstName" placeholder="John" required />
         </div>
         <div class="form-group">
-          <label>Last Name</label>
-          <input type="text" name="lastName" placeholder="Smith" required />
+          <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" name="lastName" placeholder="Smith" required />
         </div>
       </div>
       <div class="form-group">
-        <label>Work Email</label>
-        <input type="email" name="email" placeholder="john@company.com" required />
+        <label for="email">Work Email</label>
+        <input type="email" id="email" name="email" placeholder="john@company.com" required />
       </div>
       <div class="form-row">
         <div class="form-group">
-          <label>Company</label>
-          <input type="text" name="company" placeholder="Acme Corp" required />
+          <label for="company">Company</label>
+          <input type="text" id="company" name="company" placeholder="Acme Corp" required />
         </div>
         <div class="form-group">
-          <label>Your Role</label>
-          <select name="role" required>
+          <label for="role">Your Role</label>
+          <select id="role" name="role" required>
             <option value="" disabled selected>Select role</option>
             <option>Founder / CEO</option>
             <option>CIO / CTO</option>
@@ -175,8 +186,8 @@
         </div>
       </div>
       <div class="form-group">
-        <label>Annual Revenue</label>
-        <select name="revenue" required>
+        <label for="revenue">Annual Revenue</label>
+        <select id="revenue" name="revenue" required>
           <option value="" disabled selected>Select revenue range</option>
           <option>$5M - $10M</option>
           <option>$10M - $25M</option>
@@ -186,8 +197,8 @@
         </select>
       </div>
       <div class="form-group">
-        <label>Primary AI Interest</label>
-        <select name="interest" required>
+        <label for="interest">Primary AI Interest</label>
+        <select id="interest" name="interest" required>
           <option value="" disabled selected>What are you most interested in?</option>
           <option>Autonomous AI Agents for Sales and Revenue</option>
           <option>AI Integration into CRM and Sales Workflows</option>
@@ -266,34 +277,5 @@ function handleBook(e) {
   }, 600);
 }
 </script>
-
-<!-- COOKIE CONSENT BANNER -->
-<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#111111;border-top:1px solid rgba(212,175,55,0.3);padding:1.25rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;">
-  <p style="margin:0;color:#888880;font-size:0.875rem;font-family:Inter,system-ui,sans-serif;line-height:1.6;max-width:700px;">
-    We use cookies to improve your experience and analyze site usage. By continuing, you agree to our
-    <a href="/privacy/" style="color:#D4AF37;text-decoration:underline;">Privacy Policy</a> and
-    <a href="/terms/" style="color:#D4AF37;text-decoration:underline;">Terms</a>.
-  </p>
-  <div style="display:flex;gap:0.75rem;flex-shrink:0;">
-    <button id="cookie-decline" style="padding:0.5rem 1.25rem;background:transparent;border:1px solid rgba(255,255,255,0.15);color:#888880;font-family:Inter,system-ui,sans-serif;font-size:0.8rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;cursor:pointer;border-radius:2px;">Decline</button>
-    <button id="cookie-accept" style="padding:0.5rem 1.25rem;background:#D4AF37;border:none;color:#0A0A0A;font-family:Inter,system-ui,sans-serif;font-size:0.8rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;cursor:pointer;border-radius:2px;">Accept</button>
-  </div>
-</div>
-<script>
-  (function() {
-    var consent = localStorage.getItem('augentic_cookie_consent');
-    var banner = document.getElementById('cookie-banner');
-    if (!consent && banner) { banner.style.display = 'flex'; }
-    document.getElementById('cookie-accept').addEventListener('click', function() {
-      localStorage.setItem('augentic_cookie_consent', 'accepted');
-      banner.style.display = 'none';
-    });
-    document.getElementById('cookie-decline').addEventListener('click', function() {
-      localStorage.setItem('augentic_cookie_consent', 'declined');
-      banner.style.display = 'none';
-    });
-  })();
-</script>
-
 </body>
 </html>

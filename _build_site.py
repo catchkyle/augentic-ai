@@ -741,26 +741,26 @@ def make_booking_page():
     <form onsubmit="handleBook(event)">
       <div class="form-row">
         <div class="form-group">
-          <label>First Name</label>
-          <input type="text" name="firstName" placeholder="John" required />
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName" name="firstName" placeholder="John" required />
         </div>
         <div class="form-group">
-          <label>Last Name</label>
-          <input type="text" name="lastName" placeholder="Smith" required />
+          <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" name="lastName" placeholder="Smith" required />
         </div>
       </div>
       <div class="form-group">
-        <label>Work Email</label>
-        <input type="email" name="email" placeholder="john@company.com" required />
+        <label for="email">Work Email</label>
+        <input type="email" id="email" name="email" placeholder="john@company.com" required />
       </div>
       <div class="form-row">
         <div class="form-group">
-          <label>Company</label>
-          <input type="text" name="company" placeholder="Acme Corp" required />
+          <label for="company">Company</label>
+          <input type="text" id="company" name="company" placeholder="Acme Corp" required />
         </div>
         <div class="form-group">
-          <label>Your Role</label>
-          <select name="role" required>
+          <label for="role">Your Role</label>
+          <select id="role" name="role" required>
             <option value="" disabled selected>Select role</option>
             <option>Founder / CEO</option>
             <option>CIO / CTO</option>
@@ -771,8 +771,8 @@ def make_booking_page():
         </div>
       </div>
       <div class="form-group">
-        <label>Annual Revenue</label>
-        <select name="revenue" required>
+        <label for="revenue">Annual Revenue</label>
+        <select id="revenue" name="revenue" required>
           <option value="" disabled selected>Select revenue range</option>
           <option>$5M - $10M</option>
           <option>$10M - $25M</option>
@@ -782,8 +782,8 @@ def make_booking_page():
         </select>
       </div>
       <div class="form-group">
-        <label>Primary AI Interest</label>
-        <select name="interest" required>
+        <label for="interest">Primary AI Interest</label>
+        <select id="interest" name="interest" required>
           <option value="" disabled selected>What are you most interested in?</option>
           <option>Autonomous AI Agents for Sales and Revenue</option>
           <option>AI Integration into CRM and Sales Workflows</option>
@@ -1006,29 +1006,27 @@ import os
 
 # Blog posts
 for post in POSTS:
-    path = f"/Users/cora/Projects/augentic-ai/blog/{post['slug']}"
+    path = f"./blog/{post['slug']}"
     os.makedirs(path, exist_ok=True)
     with open(f"{path}/index.html", "w") as f:
         f.write(make_blog_post(post))
 
 # Blog index
-os.makedirs("/Users/cora/Projects/augentic-ai/blog", exist_ok=True)
-with open("/Users/cora/Projects/augentic-ai/blog/index.html", "w") as f:
+os.makedirs("./blog", exist_ok=True)
+with open("./blog/index.html", "w") as f:
     f.write(make_blog_index())
 
 # Booking page
-os.makedirs("/Users/cora/Projects/augentic-ai/book", exist_ok=True)
-with open("/Users/cora/Projects/augentic-ai/book/index.html", "w") as f:
+os.makedirs("./book", exist_ok=True)
+with open("./book/index.html", "w") as f:
     f.write(make_booking_page())
 
 # Lead magnet / guide
-os.makedirs("/Users/cora/Projects/augentic-ai/guide", exist_ok=True)
-with open("/Users/cora/Projects/augentic-ai/guide/index.html", "w") as f:
+os.makedirs("./guide", exist_ok=True)
+with open("./guide/index.html", "w") as f:
     f.write(make_guide_page())
 
 print("All files written.")
 print(f"Blog posts: {len(POSTS)}")
 total_files = len(POSTS) + 1 + 1 + 1  # posts + index + booking + guide
 print(f"Total pages: {total_files}")
-PYEOF
-python3 /Users/cora/Projects/augentic-ai/_build_site.py
