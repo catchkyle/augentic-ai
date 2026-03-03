@@ -4,6 +4,10 @@ backend:
   branch: main
   # For local development, you can use: name: test-repo
 
+# Enable editorial workflow for draft/review/ready publishing states
+# This creates pull requests for drafts instead of direct commits to main
+publish_mode: editorial_workflow
+
 media_folder: "static/images/uploads"
 public_folder: "/images/uploads"
 
