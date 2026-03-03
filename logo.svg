@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 60" fill="none">
+  <!-- Mark: geometric A with circuit node -->
+  <g>
+    <!-- Left leg of A -->
+    <path d="M8 48 L22 12 L29 12 L29 48" stroke="#C8A96E" stroke-width="1.5" fill="none" stroke-linecap="square"/>
+    <!-- Right leg of A -->
+    <path d="M29 12 L36 12 L50 48" stroke="#C8A96E" stroke-width="1.5" fill="none" stroke-linecap="square"/>
+    <!-- Crossbar -->
+    <line x1="15" y1="34" x2="43" y2="34" stroke="#C8A96E" stroke-width="1.5"/>
+    <!-- Circuit node at apex -->
+    <circle cx="29" cy="12" r="2.5" fill="#C8A96E"/>
+    <!-- Small connector dots on crossbar ends -->
+    <circle cx="15" cy="34" r="1.5" fill="#C8A96E" opacity="0.6"/>
+    <circle cx="43" cy="34" r="1.5" fill="#C8A96E" opacity="0.6"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text
+    x="66"
+    y="38"
+    font-family="Inter, system-ui, sans-serif"
+    font-size="20"
+    font-weight="500"
+    letter-spacing="3"
+    fill="#F5F5F0"
+  >AUGENTIC</text>
+
+  <!-- AI in gold -->
+  <text
+    x="244"
+    y="38"
+    font-family="Inter, system-ui, sans-serif"
+    font-size="20"
+    font-weight="300"
+    letter-spacing="3"
+    fill="#C8A96E"
+  > AI</text>
+
+  <!-- Thin rule below wordmark -->
+  <line x1="66" y1="44" x2="308" y2="44" stroke="#C8A96E" stroke-width="0.5" opacity="0.4"/>
+</svg>
