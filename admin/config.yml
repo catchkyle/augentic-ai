@@ -8,6 +8,10 @@ backend:
 # This creates pull requests for drafts instead of direct commits to main
 publish_mode: editorial_workflow
 
+# Configure preview URL - allows CMS to show content previews before publishing
+# Cloudflare Pages will automatically create preview deployments for each PR
+site_url: https://augentic.ai
+
 media_folder: "static/images/uploads"
 public_folder: "/images/uploads"
 
