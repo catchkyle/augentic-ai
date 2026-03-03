@@ -1,6 +1,12 @@
 #!/usr/bin/env python3
 """Build script for Augentic AI site - blogs, booking, lead magnet."""
 
+import os
+
+# Ensure we're running from the script's directory
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+os.chdir(SCRIPT_DIR)
+
 NAV = """<nav id="nav">
   <div class="container">
     <a href="/" class="nav-logo" style="display:flex;align-items:center;gap:0;text-decoration:none;">
@@ -1015,7 +1021,6 @@ def make_guide_page():
 
 
 # ── WRITE ALL FILES ──
-import os
 
 # Blog posts
 for post in POSTS:
