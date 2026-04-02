@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RevOps AI Maturity Model: Where Does Your Team Stand? | Augentic AI Insights</title>
+  <meta name="description" content="A five-stage framework for assessing your revenue operations AI readiness—from manual chaos to fully autonomous pipelines. Find out where your team stands and what to build next." />
+  <meta property="og:title" content="RevOps AI Maturity Model: Where Does Your Team Stand?" />
+  <meta property="og:description" content="A five-stage framework for assessing your revenue operations AI readiness—from manual chaos to fully autonomous pipelines. Find out where your team stands and what to build next." />
+  <meta property="og:type" content="article" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0A0A0A; --bg-card: #111111; --bg-raised: #161616;
+      --text: #F5F5F0; --text-muted: #888880; --text-dim: #555550;
+      --accent: #D4AF37; --accent-dim: rgba(212,175,55,0.12);
+      --border: rgba(255,255,255,0.07); --border-accent: rgba(212,175,55,0.3);
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Inter', system-ui, sans-serif;
+      --max: 1200px; --radius: 2px;
+    }
+    body.light {
+      --bg: #FAFAF7; --bg-card: #F2F2EE; --bg-raised: #E8E8E4;
+      --text: #0B0B0B; --text-muted: #444440; --text-dim: #999990;
+      --border: rgba(0,0,0,0.08); --border-accent: rgba(212,175,55,0.4);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-weight: 400; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    ::selection { background: var(--accent-dim); color: var(--accent); }
+    h1,h2,h3,h4 { font-weight: 500; line-height: 1.25; letter-spacing: -0.02em; }
+    h1 { font-family: var(--font-serif); font-size: clamp(2rem,4vw,3.2rem); }
+    h2 { font-family: var(--font-serif); font-size: clamp(1.6rem,3vw,2.4rem); }
+    h3 { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; letter-spacing: 0; }
+    p { color: var(--text-muted); line-height: 1.85; }
+    a { color: inherit; }
+    .label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.5rem 0; transition: background 0.4s, padding 0.3s; }
+    nav.scrolled { background: rgba(10,10,10,0.95); border-bottom: 1px solid var(--border); padding: 1rem 0; backdrop-filter: blur(12px); }
+    body.light nav.scrolled { background: rgba(250,250,247,0.95); }
+    nav .container { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.8rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; padding: 0.65rem 1.4rem; background: var(--accent); color: #0A0A0A; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s; white-space: nowrap; }
+    .nav-cta:hover { opacity: 0.88; }
+    .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+    .theme-toggle { background: none; border: 1px solid var(--border); color: var(--text-muted); cursor: pointer; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius); transition: color 0.2s; flex-shrink: 0; }
+    .theme-toggle:hover { color: var(--accent); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 1px; background: var(--text); }
+    .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 99; background: var(--bg); padding: 6rem 2rem 2rem; flex-direction: column; gap: 2rem; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 1.4rem; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 1.2rem; }
+    footer { background: var(--bg); border-top: 1px solid var(--border); padding: 3rem 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-tagline { font-size: 0.78rem; color: var(--text-dim); margin-top: 0.3rem; }
+    .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.78rem; color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text-muted); }
+    .footer-copy { font-size: 0.75rem; color: var(--text-dim); }
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
+    .btn-primary { display: inline-block; padding: 0.9rem 2rem; background: var(--accent); color: #0A0A0A; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s, transform 0.2s; border: none; cursor: pointer; }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-outline { display: inline-block; padding: 0.85rem 1.8rem; border: 1px solid var(--border-accent); color: var(--accent); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-decoration: none; border-radius: var(--radius); transition: all 0.2s; }
+    .btn-outline:hover { background: var(--accent-dim); }
+    @media (max-width: 900px) { .nav-links, .nav-right .nav-cta { display: none; } .hamburger { display: flex; } }
+  </style>
+  <style>
+    .post-header { padding: 10rem 0 4rem; border-bottom: 1px solid var(--border); }
+    .post-meta { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .post-meta .label { margin: 0; }
+    .post-meta-text { font-size: 0.8rem; color: var(--text-dim); }
+    .post-title { margin-bottom: 1.2rem; }
+    .post-desc { font-size: 1.05rem; max-width: 640px; }
+    .post-body { padding: 5rem 0; }
+    .post-body-inner { max-width: 720px; }
+    .post-body p { margin-bottom: 1.6rem; font-size: 1rem; }
+    .post-body h2 { font-size: 1.5rem; margin: 3rem 0 1rem; color: var(--text); }
+    .post-body strong { color: var(--text); font-weight: 500; }
+    .x-credit { background: var(--bg-card); border: 1px solid var(--border-accent); border-left: 3px solid var(--accent); padding: 1.2rem 1.5rem; margin: 2.5rem 0; font-size: 0.88rem; color: var(--text-muted); font-style: italic; border-radius: 0 var(--radius) var(--radius) 0; }
+    .post-footer { padding: 4rem 0; border-top: 1px solid var(--border); }
+    .cta-box { background: var(--bg-card); border: 1px solid var(--border); padding: 3rem; text-align: center; max-width: 600px; margin: 0 auto; }
+    .cta-box h3 { font-family: var(--font-serif); font-size: 1.6rem; margin-bottom: 1rem; color: var(--text); }
+    .cta-box p { margin-bottom: 2rem; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: var(--text-muted); text-decoration: none; margin-bottom: 3rem; transition: color 0.2s; }
+    .back-link:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+<nav id="nav">
+  <div class="container">
+    <a href="/" class="nav-logo" style="display:flex;align-items:center;text-decoration:none;"><img src="/logo.svg" alt="Augentic AI" height="37" style="height:37px;width:auto;" /></a>
+    <ul class="nav-links">
+      <li><a href="/#solution">Solutions</a></li>
+      <li><a href="/#offerings">Offerings</a></li>
+      <li><a href="/blog/">Insights</a></li>
+      <li><a href="/guide/">AI Guide</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg id="iconSun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg id="iconMoon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="/book/" class="nav-cta">Book Strategy Call</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/#solution" onclick="closeMobile()">Solutions</a>
+  <a href="/#offerings" onclick="closeMobile()">Offerings</a>
+  <a href="/blog/" onclick="closeMobile()">Insights</a>
+  <a href="/guide/" onclick="closeMobile()">AI Guide</a>
+  <a href="/book/" onclick="closeMobile()" style="color:var(--accent);">Book Strategy Call</a>
+</div>
+
+<div class="post-header">
+  <div class="container">
+    <a href="/blog/" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M13 7H1M6 2L1 7l5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to Insights
+    </a>
+    <div class="post-meta">
+      <span class="label">RevOps</span>
+      <span class="post-meta-text">April 2, 2026</span>
+      <span class="post-meta-text">13 min read</span>
+    </div>
+    <h1 class="post-title">RevOps AI Maturity Model: Where Does Your Team Stand?</h1>
+    <p class="post-desc">A five-stage framework for assessing your revenue operations AI readiness—from manual chaos to fully autonomous pipelines. Find out where your team stands and what to build next.</p>
+  </div>
+</div>
+
+<div class="post-body">
+  <div class="container">
+    <div class="post-body-inner">
+      
+      
+<p>Most revenue operations teams know they should be doing more with AI. Fewer can say with any precision where they actually are. They have some automation. A few AI features turned on in the CRM. Maybe a vendor pilot running quietly in the background. But when a CRO asks whether the team is "AI-ready," the honest answer is usually a shrug.</p>
+
+<p>The problem is not that these teams lack ambition. It is that they lack a framework for measuring where they are, understanding what the next stage looks like, and making a credible case for what investment is required to get there.</p>
+
+<p>This maturity model is designed to fix that. It describes five stages of AI adoption in revenue operations, the capabilities that define each stage, the failure patterns that stall teams at each level, and the moves that accelerate progression. Use it to assess your own position, build a realistic roadmap, and align leadership around what "further along" actually means.</p>
+
+<h2>Why Maturity Models Matter for RevOps AI</h2>
+
+<p>AI adoption is not a binary event. You do not flip a switch and become an AI-driven revenue organization. It happens in layers, and each layer requires different capabilities, different organizational commitments, and different technology investments.</p>
+
+<p>Teams that skip layers tend to overspend on tools they cannot absorb, underperform on outcomes they promised leadership, and cycle through vendor evaluations without making durable progress. A maturity model creates a shared vocabulary for the journey. It prevents the mistake of treating AI as a single purchase decision rather than an organizational capability that compounds over time.</p>
+
+<p>It also helps RevOps leaders protect themselves from vendor pressure. When a vendor says their platform will "transform your pipeline," a maturity framework lets you evaluate whether your organization is structurally capable of benefiting from what they are selling.</p>
+
+<h2>Stage 1: Manual Operations</h2>
+
+<p>At Stage 1, revenue operations runs primarily on human effort and static processes. Data lives in spreadsheets and CRM records that depend on rep input. Reporting is periodic and retrospective. There is no automated lead scoring, no intent signal processing, no systematic outreach sequencing.</p>
+
+<p><strong>What this looks like in practice:</strong> Reps log their own activity inconsistently. Forecast calls involve subjective deal-by-deal review. Marketing and sales alignment happens through weekly meetings rather than shared data models. RevOps spends most of its time in reactive data cleanup rather than proactive analysis.</p>
+
+<p><strong>The failure pattern:</strong> Teams at Stage 1 often attempt to leap directly to AI tooling without fixing underlying data and process problems. They buy a predictive scoring tool on top of a CRM with incomplete records, or launch an AI sequence platform into a sales process that has no defined ICP or playbook. The AI amplifies the mess rather than solving it.</p>
+
+<p><strong>What accelerates progression:</strong> The priority at Stage 1 is hygiene before intelligence. That means cleaning and standardizing CRM data, defining what a qualified lead actually looks like, documenting core sales workflows, and establishing consistent activity logging. This work is unglamorous and takes longer than expected. But without it, every AI layer you add will underperform.</p>
+
+<h2>Stage 2: Assisted Operations</h2>
+
+<p>At Stage 2, teams have introduced automation and AI assistance, but it is mostly reactive and additive. Think email sequences that auto-enroll on trigger, basic lead scoring based on demographic fit, dashboard reporting that surfaces data without interpreting it, and AI writing assistants that draft copy for reps to review.</p>
+
+<p><strong>What this looks like in practice:</strong> Reps use a sequence tool for outbound but still make judgment calls on who to enroll and when. The CRM has some automated field updates. There is a lead score, but reps do not trust it yet. Marketers use AI to generate variations on campaign copy. RevOps is starting to build more automated reporting.</p>
+
+<p><strong>The failure pattern:</strong> Stage 2 teams often suffer from tool sprawl. They adopt point solutions for specific tasks—one tool for sequences, another for intent data, another for scheduling—without an integrated data model connecting them. Each system produces its own signals, but no one is aggregating them into a coherent view of the pipeline.</p>
+
+<p>There is also often a trust gap. Reps know the AI recommendations exist but ignore them because the accuracy has not been validated or because no one invested in helping them understand how to use the outputs. Adoption is optional, so results are inconsistent.</p>
+
+<p><strong>What accelerates progression:</strong> Integration becomes the strategic priority at Stage 2. That means connecting your core systems into a unified pipeline data model, establishing feedback loops between AI outputs and actual outcomes, and starting to measure the accuracy of your scoring and recommendations. Adoption must become structural rather than optional—the AI suggestions need to sit inside the workflow, not alongside it.</p>
+
+<h2>Stage 3: Augmented Operations</h2>
+
+<p>Stage 3 is where AI starts to genuinely change how revenue operations functions rather than just adding efficiency on top of existing workflows. At this stage, AI is influencing decisions in real time. Scoring models are validated and trusted. Signals from multiple sources are being synthesized into actionable intelligence. Human judgment is still primary, but it is informed by machine analysis at every step.</p>
+
+<p><strong>What this looks like in practice:</strong> Lead prioritization is driven by a score that combines firmographic fit, behavioral signals, and intent data—and reps have seen enough examples of it working that they follow it. Forecast accuracy has improved because deal health scores are now based on engagement patterns rather than rep intuition. AI drafts initial outreach for reps to review and personalize. Meeting prep briefs are generated automatically. Post-call summaries update the CRM without manual logging.</p>
+
+<p><strong>The failure pattern:</strong> Teams at Stage 3 often plateau because the AI is improving rep performance at the individual level but not yet changing how the pipeline is managed at the organizational level. The data is better. The reps are more productive. But the overall go-to-market motion has not been redesigned around AI capability. Leadership still runs pipeline reviews using the same structure they used in Stage 1.</p>
+
+<p>There is also often a gap between what the AI can see and what RevOps is acting on. Signals exist that would identify at-risk deals, stalled pipeline, or underserved segments—but no one has built the alert logic that routes those insights to the right person at the right time.</p>
+
+<p><strong>What accelerates progression:</strong> Process redesign. At Stage 3, RevOps needs to take what it has learned from AI augmentation and use it to rebuild the pipeline management process from first principles. What decisions need to be made when? What signals should trigger action? Who needs to know what, and at what latency? The answers at Stage 3 should look different from what they were at Stage 1.</p>
+
+<h2>Stage 4: Automated Operations</h2>
+
+<p>Stage 4 is the first level where autonomous AI agents start doing meaningful work without per-task human instruction. Tasks that previously required a rep or analyst to decide, draft, and execute are now being handled end-to-end by AI agents—under human supervision but not requiring human initiation.</p>
+
+<p><strong>What this looks like in practice:</strong> AI SDR agents are prospecting into target accounts, drafting outreach, detecting responses, and routing interested leads to human reps. Customer success agents are monitoring product usage signals, detecting churn risk, and triggering outreach sequences before a human notices the problem. Scheduling automation handles all meeting logistics. Proposal generation is automated from discovery inputs. Pipeline hygiene tasks—duplicate detection, field updates, stage advancement—happen without manual intervention.</p>
+
+<p><strong>The failure pattern:</strong> Oversight becomes the critical challenge at Stage 4. When agents are running autonomously, it is easy for errors to propagate at scale. A misconfigured targeting rule can send thousands of messages to the wrong contacts. A broken enrichment source can cause agents to operate on stale data. Compliance gaps that were acceptable at lower volumes become material risks at agent scale.</p>
+
+<p>Teams at Stage 4 also often discover that their human processes were not designed for agent handoffs. When an AI agent qualifies a lead and hands it to a human rep, how does the rep know what the agent learned? When an agent flags churn risk, does the customer success manager have a clear protocol for responding? The handoff points are where Stage 4 organizations most often break down.</p>
+
+<p><strong>What accelerates progression:</strong> Governance infrastructure. That means monitoring dashboards for agent behavior, defined thresholds for human escalation, systematic testing of agent outputs, and clear documentation of what each agent is authorized to do. Handoff design also becomes critical—the interfaces between agent and human action need to be as well-designed as any other workflow.</p>
+
+<h2>Stage 5: Autonomous Revenue Operations</h2>
+
+<p>At Stage 5, AI agents are not just performing tasks—they are coordinating with each other to run end-to-end revenue workflows. The pipeline is continuously managed by a system of agents that prospect, qualify, nurture, schedule, follow up, analyze, and adapt without requiring human intervention at each step. Humans set strategy, review outcomes, handle exceptions, and make high-stakes decisions. The operational layer runs autonomously.</p>
+
+<p><strong>What this looks like in practice:</strong> A prospecting agent identifies accounts entering your ICP based on real-time signals, triggers an outreach agent to begin personalized contact, hands qualified leads to a scheduling agent, surfaces meeting prep to the rep, updates the CRM post-call, hands to a proposal generation agent, monitors proposal engagement, routes objections to a rep, coordinates with a renewal agent at contract time, and flags expansion signals to customer success. All of this happens continuously, across every account in the pipeline, at a speed and coverage that no human team could match.</p>
+
+<p>Forecasting at Stage 5 is not a call review—it is a continuously updated model that reflects pipeline health, deal velocity, engagement patterns, market signals, and historical performance. The forecast is a living output, not a meeting output.</p>
+
+<p><strong>The failure pattern:</strong> Stage 5 organizations are rare, and those that fail at this stage usually do so because of organizational structure rather than technology. The go-to-market team was not redesigned for the AI-first model. Comp plans still incentivize manual behavior that now conflicts with agent operation. Leadership has not committed to the governance structures required to run autonomous systems responsibly. Or the agents were deployed without sufficient training data, and the system's performance degrades over time without adequate feedback loops.</p>
+
+<p><strong>What sustains Stage 5:</strong> Continuous evaluation and improvement. Stage 5 is not a destination—it is an operating discipline. The best Stage 5 organizations treat their agent infrastructure the way software companies treat their product: with product managers, structured experiments, performance benchmarks, and a roadmap. The system is never done. It is always being improved.</p>
+
+<h2>How to Use This Model</h2>
+
+<p>Start by honestly assessing your current stage. Use these questions as a quick diagnostic:</p>
+
+<ul>
+  <li>Is your CRM data reliable enough to trust automated decisions based on it?</li>
+  <li>Are AI-generated recommendations actually being used by reps, or are they ignored?</li>
+  <li>Do your AI tools share a common data model, or do they operate in separate silos?</li>
+  <li>Are any tasks being completed end-to-end by AI without human initiation?</li>
+  <li>Do you have governance infrastructure for autonomous agent behavior?</li>
+  <li>Are your agents coordinating with each other, or operating independently?</li>
+</ul>
+
+<p>Your answers will locate you in the model. From there, the roadmap question becomes: what is the constraint preventing progression to the next stage? It is almost always one of three things—data quality, process design, or organizational readiness. Technology is rarely the limiting factor once you are past Stage 1.</p>
+
+<p>Build your case for investment around stage progression, not feature adoption. Executives respond better to "here is what Stage 4 looks like and why it requires these capabilities" than to "here is a list of tools we want to buy."</p>
+
+<h2>Where Most Mid-Market Teams Actually Land</h2>
+
+<p>Based on patterns across revenue teams we work with, most mid-market B2B companies land somewhere between Stage 2 and Stage 3. They have adopted automation tools. Their CRM is functional but not clean. They have some AI features turned on. But they have not redesigned their go-to-market motion around AI capability, and they do not have the governance infrastructure to safely deploy autonomous agents.</p>
+
+<p>The gap between Stage 3 and Stage 4 is where most teams are sitting right now—close enough to see autonomous operations clearly, but not yet equipped to deploy them responsibly at scale. The organizations that cross that gap fastest are the ones that treat it as an operational design problem, not a procurement decision.</p>
+
+<p><strong>Book a strategy call</strong> to assess your current RevOps AI maturity stage and build a concrete roadmap to the next level. We will help you identify the highest-leverage moves and the exact capabilities required to reach autonomous pipeline management.</p>
+
+    </div>
+  </div>
+</div>
+
+<div class="post-footer">
+  <div class="container">
+    <div class="cta-box">
+      <h3>Ready to Build Your AI Workforce?</h3>
+      <p>Schedule a 30-minute strategy call. We will tell you exactly what we would build for your business - and what it would cost.</p>
+      <a href="/book/" class="btn-primary">Book a Strategy Call</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo" style="display:flex;align-items:center;"><img src="/logo.svg" alt="Augentic AI" height="28" style="height:28px;width:auto;" /></div>
+        <div class="footer-tagline">Autonomous AI. Measurable Revenue.</div>
+      </div>
+      <ul class="footer-links">
+        <li><a href="/#solution">Solutions</a></li>
+        <li><a href="/#offerings">Offerings</a></li>
+        <li><a href="/blog/">Insights</a></li>
+        <li><a href="/guide/">AI Guide</a></li>
+        <li><a href="/book/">Book a Call</a></li>
+        <li><a href="mailto:hello@augenticai.com">Contact</a></li>
+      </ul>
+      <div class="footer-copy">&copy; 2026 Augentic AI. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => { mobileMenu.classList.toggle('open'); });
+  function closeMobile() { mobileMenu.classList.remove('open'); }
+  const themeToggle = document.getElementById('themeToggle');
+  const iconSun = document.getElementById('iconSun');
+  const iconMoon = document.getElementById('iconMoon');
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  if (savedTheme === 'light') { document.body.classList.add('light'); iconSun.style.display = 'block'; iconMoon.style.display = 'none'; }
+  themeToggle.addEventListener('click', () => {
+    const isLight = document.body.classList.toggle('light');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    iconSun.style.display = isLight ? 'block' : 'none';
+    iconMoon.style.display = isLight ? 'none' : 'block';
+  });
+</script>
+</body>
+</html>

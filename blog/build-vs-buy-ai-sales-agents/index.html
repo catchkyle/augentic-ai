@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Build vs Buy AI Sales Agents: Decision Framework for CROs | Augentic AI Insights</title>
+  <meta name="description" content="A critical strategic question for CROs: should you build AI sales agents in-house or buy a pre-built solution? This article provides a comprehensive decision framework." />
+  <meta property="og:title" content="Build vs Buy AI Sales Agents: Decision Framework for CROs" />
+  <meta property="og:description" content="A critical strategic question for CROs: should you build AI sales agents in-house or buy a pre-built solution? This article provides a comprehensive decision framework." />
+  <meta property="og:type" content="article" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0A0A0A; --bg-card: #111111; --bg-raised: #161616;
+      --text: #F5F5F0; --text-muted: #888880; --text-dim: #555550;
+      --accent: #D4AF37; --accent-dim: rgba(212,175,55,0.12);
+      --border: rgba(255,255,255,0.07); --border-accent: rgba(212,175,55,0.3);
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Inter', system-ui, sans-serif;
+      --max: 1200px; --radius: 2px;
+    }
+    body.light {
+      --bg: #FAFAF7; --bg-card: #F2F2EE; --bg-raised: #E8E8E4;
+      --text: #0B0B0B; --text-muted: #444440; --text-dim: #999990;
+      --border: rgba(0,0,0,0.08); --border-accent: rgba(212,175,55,0.4);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-weight: 400; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    ::selection { background: var(--accent-dim); color: var(--accent); }
+    h1,h2,h3,h4 { font-weight: 500; line-height: 1.25; letter-spacing: -0.02em; }
+    h1 { font-family: var(--font-serif); font-size: clamp(2rem,4vw,3.2rem); }
+    h2 { font-family: var(--font-serif); font-size: clamp(1.6rem,3vw,2.4rem); }
+    h3 { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; letter-spacing: 0; }
+    p { color: var(--text-muted); line-height: 1.85; }
+    a { color: inherit; }
+    .label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.5rem 0; transition: background 0.4s, padding 0.3s; }
+    nav.scrolled { background: rgba(10,10,10,0.95); border-bottom: 1px solid var(--border); padding: 1rem 0; backdrop-filter: blur(12px); }
+    body.light nav.scrolled { background: rgba(250,250,247,0.95); }
+    nav .container { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.8rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; padding: 0.65rem 1.4rem; background: var(--accent); color: #0A0A0A; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s; white-space: nowrap; }
+    .nav-cta:hover { opacity: 0.88; }
+    .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+    .theme-toggle { background: none; border: 1px solid var(--border); color: var(--text-muted); cursor: pointer; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius); transition: color 0.2s; flex-shrink: 0; }
+    .theme-toggle:hover { color: var(--accent); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 1px; background: var(--text); }
+    .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 99; background: var(--bg); padding: 6rem 2rem 2rem; flex-direction: column; gap: 2rem; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 1.4rem; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 1.2rem; }
+    footer { background: var(--bg); border-top: 1px solid var(--border); padding: 3rem 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-tagline { font-size: 0.78rem; color: var(--text-dim); margin-top: 0.3rem; }
+    .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.78rem; color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text-muted); }
+    .footer-copy { font-size: 0.75rem; color: var(--text-dim); }
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
+    .btn-primary { display: inline-block; padding: 0.9rem 2rem; background: var(--accent); color: #0A0A0A; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s, transform 0.2s; border: none; cursor: pointer; }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-outline { display: inline-block; padding: 0.85rem 1.8rem; border: 1px solid var(--border-accent); color: var(--accent); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-decoration: none; border-radius: var(--radius); transition: all 0.2s; }
+    .btn-outline:hover { background: var(--accent-dim); }
+    @media (max-width: 900px) { .nav-links, .nav-right .nav-cta { display: none; } .hamburger { display: flex; } }
+  </style>
+  <style>
+    .post-header { padding: 10rem 0 4rem; border-bottom: 1px solid var(--border); }
+    .post-meta { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .post-meta .label { margin: 0; }
+    .post-meta-text { font-size: 0.8rem; color: var(--text-dim); }
+    .post-title { margin-bottom: 1.2rem; }
+    .post-desc { font-size: 1.05rem; max-width: 640px; }
+    .post-body { padding: 5rem 0; }
+    .post-body-inner { max-width: 720px; }
+    .post-body p { margin-bottom: 1.6rem; font-size: 1rem; }
+    .post-body h2 { font-size: 1.5rem; margin: 3rem 0 1rem; color: var(--text); }
+    .post-body strong { color: var(--text); font-weight: 500; }
+    .x-credit { background: var(--bg-card); border: 1px solid var(--border-accent); border-left: 3px solid var(--accent); padding: 1.2rem 1.5rem; margin: 2.5rem 0; font-size: 0.88rem; color: var(--text-muted); font-style: italic; border-radius: 0 var(--radius) var(--radius) 0; }
+    .post-footer { padding: 4rem 0; border-top: 1px solid var(--border); }
+    .cta-box { background: var(--bg-card); border: 1px solid var(--border); padding: 3rem; text-align: center; max-width: 600px; margin: 0 auto; }
+    .cta-box h3 { font-family: var(--font-serif); font-size: 1.6rem; margin-bottom: 1rem; color: var(--text); }
+    .cta-box p { margin-bottom: 2rem; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: var(--text-muted); text-decoration: none; margin-bottom: 3rem; transition: color 0.2s; }
+    .back-link:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+<nav id="nav">
+  <div class="container">
+    <a href="/" class="nav-logo" style="display:flex;align-items:center;text-decoration:none;"><img src="/logo.svg" alt="Augentic AI" height="37" style="height:37px;width:auto;" /></a>
+    <ul class="nav-links">
+      <li><a href="/#solution">Solutions</a></li>
+      <li><a href="/#offerings">Offerings</a></li>
+      <li><a href="/blog/">Insights</a></li>
+      <li><a href="/guide/">AI Guide</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg id="iconSun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg id="iconMoon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="/book/" class="nav-cta">Book Strategy Call</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/#solution" onclick="closeMobile()">Solutions</a>
+  <a href="/#offerings" onclick="closeMobile()">Offerings</a>
+  <a href="/blog/" onclick="closeMobile()">Insights</a>
+  <a href="/guide/" onclick="closeMobile()">AI Guide</a>
+  <a href="/book/" onclick="closeMobile()" style="color:var(--accent);">Book Strategy Call</a>
+</div>
+
+<div class="post-header">
+  <div class="container">
+    <a href="/blog/" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M13 7H1M6 2L1 7l5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to Insights
+    </a>
+    <div class="post-meta">
+      <span class="label">AI Strategy</span>
+      <span class="post-meta-text">March 27, 2026</span>
+      <span class="post-meta-text">10 min read</span>
+    </div>
+    <h1 class="post-title">Build vs Buy AI Sales Agents: Decision Framework for CROs</h1>
+    <p class="post-desc">A critical strategic question for CROs: should you build AI sales agents in-house or buy a pre-built solution? This article provides a comprehensive decision framework.</p>
+  </div>
+</div>
+
+<div class="post-body">
+  <div class="container">
+    <div class="post-body-inner">
+      
+      "
+<p>The rise of autonomous AI agents promises to revolutionize B2B sales, but for Chief Revenue Officers (CROs), a critical strategic question looms: should we build these agents in-house or buy a pre-built solution? This isn't merely a technical decision; it's a fundamental choice that impacts budget, talent acquisition, time-to-value, and long-term competitive advantage.</p>
+
+<p>In 2026, the capabilities of AI sales agents are moving beyond mere automation. They are performing complex tasks like personalized prospecting, intelligent lead qualification, autonomous follow-up, and even initial discovery calls. The "build vs. buy" decision for these sophisticated systems requires a robust framework that considers more than just the upfront cost.</p>
+
+<h2>Understanding the "Build" Philosophy</h2>
+
+<p>Building AI sales agents in-house means your organization takes full ownership of the development lifecycle, from foundational model selection and fine-tuning to integration, deployment, and ongoing optimization. This approach often appeals to companies with strong internal engineering capabilities, unique sales processes, or stringent data privacy requirements.</p>
+
+<h3>Advantages of Building:</h3>
+<ul>
+    <li><strong>Full Customization:</strong> Tailor agents precisely to your unique sales methodologies, ICPs, and buyer personas. Every nuance of your sales playbook can be encoded.</li>
+    <li><strong>Proprietary Advantage:</strong> Develop unique AI capabilities that become a defensible competitive moat, rather than using off-the-shelf solutions available to competitors.</li>
+    <li><strong>Data Control & Security:</strong> Maintain complete control over your sensitive sales data, ensuring it remains within your infrastructure and adheres to specific compliance standards (e.g., HIPAA, GDPR, CCPA). This is crucial for organizations dealing with highly confidential customer information.</li>
+    <li><strong>Deep Integration:</strong> Achieve seamless, bespoke integration with your existing CRM, marketing automation, ERP, and communication tools without relying on vendor-specific connectors.</li>
+    <li><strong>Flexibility & Agility:</strong> Rapidly adapt and iterate on your AI agents as market conditions, product offerings, or sales strategies evolve. You control the roadmap.</li>
+    <li><strong>Talent Development:</strong> Cultivate internal expertise in AI development and prompt engineering, fostering a culture of innovation and upskilling your workforce.</li>
+</ul>
+
+<h3>Disadvantages of Building:</h3>
+<ul>
+    <li><strong>High Upfront Investment:</strong> Significant costs in hiring or retraining AI engineers, data scientists, and prompt engineers. Infrastructure (compute, storage) can also be substantial.</li>
+    <li><strong>Longer Time-to-Value:</strong> Development cycles for sophisticated AI systems can be lengthy, delaying the realization of ROI.</li>
+    <li><strong>Resource Intensive:</strong> Requires ongoing commitment of internal resources for maintenance, updates, and debugging.</li>
+    <li><strong>Risk & Complexity:</strong> Higher risk of project failure due to the complexity of AI development, integration challenges, and the rapid pace of AI innovation. Staying current with best practices is a full-time job.</li>
+    <li><strong>Technical Debt:</strong> The potential for accumulating technical debt if not managed rigorously, leading to long-term maintenance burdens.</li>
+</ul>
+
+<h2>Understanding the "Buy" Philosophy</h2>
+
+<p>Buying an AI sales agent solution means leveraging a third-party vendor’s specialized platform, which typically offers pre-trained models, configurable workflows, and existing integrations. This approach is often favored by companies looking for faster deployment, lower upfront costs, and access to immediate, proven capabilities.</p>
+
+<h3>Advantages of Buying:</h3>
+<ul>
+    <li><strong>Faster Time-to-Value:</strong> Pre-built solutions can be deployed much more quickly, allowing you to see results and ROI in weeks or a few months, not quarters or years.</li>
+    <li><strong>Lower Upfront Costs:</strong> Typically involves subscription fees rather than large capital expenditures, making it more accessible for organizations with tighter budgets.</li>
+    <li><strong>Access to Expertise:</strong> Benefit from the vendor's specialized AI expertise, ongoing R&D, and continuous improvements to their models and features.</li>
+    <li><strong>Reduced Risk:</strong> Shift the burden of AI development, maintenance, and keeping up with technological advancements to the vendor.</li>
+    <li><strong>Proven Performance:</strong> Many vendors can demonstrate case studies and proven performance metrics from other clients, providing confidence in the solution's effectiveness.</li>
+    <li><strong>Scalability:</strong> Easily scale up or down your AI agent usage based on business needs, as the vendor manages the underlying infrastructure.</li>
+</ul>
+
+<h3>Disadvantages of Buying:</h3>
+<ul>
+    <li><strong>Limited Customization:</strong> While configurable, pre-built solutions may not perfectly match every unique aspect of your sales process, potentially requiring adjustments to your internal workflows.</li>
+    <li><strong>Vendor Lock-in:</strong> Dependence on a single vendor for critical sales infrastructure, making it difficult and costly to switch providers later.</li>
+    <li><strong>Data Security & Privacy Concerns:</strong> Your data will reside on the vendor’s servers, requiring thorough due diligence on their security protocols, compliance certifications, and data handling policies.</li>
+    <li><strong>Less Differentiated:</strong> Competitors using the same vendor might have similar AI capabilities, making it harder to achieve a unique competitive edge through AI alone.</li>
+    <li><strong>Feature Bloat / Gaps:</strong> You might pay for features you don't need or find critical features missing that require workarounds or additional tools.</li>
+    <li><strong>Integration Challenges:</strong> Even with existing integrations, bespoke needs or complex legacy systems can still pose challenges.</li>
+</ul>
+
+<h2>The Decision Framework for CROs: Key Considerations</h2>
+
+<p>For a CRO, the "build vs. buy" decision is a strategic inflection point. Here are the key questions to guide your evaluation:</p>
+
+<h3>1. Your Organization's Strategic Priorities:</h3>
+<ul>
+    <li><strong>Speed-to-Market:</strong> Is rapid deployment and immediate impact on revenue your top priority? If so, buying is likely faster.</li>
+    <li><strong>Competitive Differentiation:</strong> Is developing a unique, proprietary sales advantage through AI critical for your long-term strategy? If yes, building may offer more strategic leverage.</li>
+    <li><strong>Core Competency:</strong> Is AI development a core competency you want to cultivate and invest in, or is it a tool to enhance your existing sales strengths?</li>
+</ul>
+
+<h3>2. Resources and Capabilities:</h3>
+<ul>
+    <li><strong>Budget:</strong> What is your available budget for upfront investment versus ongoing operational expenses?</li>
+    <li><strong>Technical Talent:</strong> Do you have (or can you quickly acquire) a team of experienced AI engineers, data scientists, and prompt engineers? Can they maintain and evolve the system?</li>
+    <li><strong>Data Availability & Quality:</strong> Do you have the necessary volume and quality of historical sales data to train and fine-tune your own AI models effectively?</li>
+</ul>
+
+<h3>3. Sales Process Uniqueness:</h3>
+<ul>
+    <li><strong>Standard vs. Niche:</strong> How unique or standardized are your sales processes? Highly niche or complex sales motions might necessitate a custom-built solution.</li>
+    <li><strong>Adaptability:</strong> How frequently do your sales playbooks and market approaches change? A need for constant adaptation favors the flexibility of building.</li>
+</ul>
+
+<h3>4. Data & Compliance Requirements:</h3>
+<ul>
+    <li><strong>Regulatory Constraints:</strong> Are there strict industry-specific regulations (e.g., HIPAA, FINRA, SOC 2) that dictate how your sales data must be handled and stored? Building often provides more control.</li>
+    <li><strong>Proprietary Information:</strong> How sensitive is the data your AI agents will process? The risk tolerance for sharing data with third-party vendors is a major factor.</li>
+</ul>
+
+<h3>5. Long-Term Vision:</h3>
+<ul>
+    <li><strong>Scalability Needs:</strong> How quickly do you anticipate scaling your AI sales operations? Consider both volume and complexity.</li>
+    <li><strong>Future AI Integration:</strong> How will this decision impact your ability to integrate other advanced AI capabilities (e.g., multi-agent orchestration, predictive analytics) down the line?</li>
+</ul>
+
+<h2>Hybrid Approaches: The Best of Both Worlds?</h2>
+
+<p>It's not always an either/or scenario. Many organizations adopt a hybrid approach:</p>
+<ul>
+    <li><strong>Buy for Core, Build for Edge:</strong> Purchase a robust, off-the-shelf AI sales agent platform for standard tasks (e.g., initial lead qualification) and then build custom extensions or fine-tune specific modules using the vendor's APIs to address unique requirements.</li>
+    <li><strong>Phased Rollout:</strong> Start with a "buy" solution to achieve quick wins and demonstrate ROI, while simultaneously investing in building internal AI capabilities for future, more complex custom agents.</li>
+    <li><strong>Vendor as Partner:</strong> Treat your AI vendor less as a black box provider and more as a strategic partner, working closely with their teams for customization and joint development on specific, sensitive features.</li>
+</ul>
+
+<h2>Making the Right Choice: A CRO's Action Plan</h2>
+
+<p>1.  <strong>Audit Your Current Sales Workflows:</strong> Pinpoint the specific, high-frequency, high-impact tasks that AI agents could automate. Quantify the current cost, error rate, and latency of these manual processes.
+2.  <strong>Assess Internal Capabilities:</strong> Be brutally honest about your existing technical talent, budget, and appetite for risk. Can you genuinely commit to the long-term investment required to build and maintain?
+3.  <strong>Research the Market Extensively:</strong> Understand the landscape of AI sales agent vendors. Look for solutions that offer robust APIs, strong security, and a track record of successful deployments in your industry.
+4.  <strong>Pilot Both (If Possible):</strong> If resources allow, run small, contained pilots of both a "build" internal project and a "buy" vendor solution. Compare performance, integration ease, and team feedback.
+5.  <strong>Project Future Needs:</strong> Consider where your sales organization will be in 3-5 years. Will the chosen approach support that vision, or will it create limitations?
+6.  <strong>Involve Stakeholders:</strong> Ensure alignment across sales leadership, RevOps, IT, legal, and finance on the chosen strategy. Data privacy and integration concerns often involve multiple departments.
+</p>
+
+<h2>Conclusion: The Strategic Imperative</h2>
+
+<p>The decision to build or buy AI sales agents is more than a procurement exercise; it's a strategic imperative that will define the efficiency, scalability, and competitive posture of your revenue team. For many, a "buy" approach offers faster, lower-risk entry into autonomous sales, providing immediate impact while freeing up internal teams to focus on core selling. For others with unique needs and deep technical benches, building can forge a powerful, defensible differentiator.</p>
+
+<p>Ultimately, the right answer is the one that best positions your organization to achieve measurable revenue growth through intelligent, autonomous automation, turning every sales interaction into a strategic advantage. <strong>If you're ready to explore how autonomous AI agents can revolutionize your revenue team, but aren't sure whether to build or buy, Augentic AI is your strategic partner. We specialize in rapidly deploying and integrating AI sales agents tailored to your unique needs, ensuring fast time-to-value and maximized ROI. <a href="https://augenticai.com/consultation">Book a free consultation with Augentic AI today</a> to define your custom AI agent strategy.</strong></p>
+
+    </div>
+  </div>
+</div>
+
+<div class="post-footer">
+  <div class="container">
+    <div class="cta-box">
+      <h3>Ready to Build Your AI Workforce?</h3>
+      <p>Schedule a 30-minute strategy call. We will tell you exactly what we would build for your business - and what it would cost.</p>
+      <a href="/book/" class="btn-primary">Book a Strategy Call</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo" style="display:flex;align-items:center;"><img src="/logo.svg" alt="Augentic AI" height="28" style="height:28px;width:auto;" /></div>
+        <div class="footer-tagline">Autonomous AI. Measurable Revenue.</div>
+      </div>
+      <ul class="footer-links">
+        <li><a href="/#solution">Solutions</a></li>
+        <li><a href="/#offerings">Offerings</a></li>
+        <li><a href="/blog/">Insights</a></li>
+        <li><a href="/guide/">AI Guide</a></li>
+        <li><a href="/book/">Book a Call</a></li>
+        <li><a href="mailto:hello@augenticai.com">Contact</a></li>
+      </ul>
+      <div class="footer-copy">&copy; 2026 Augentic AI. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => { mobileMenu.classList.toggle('open'); });
+  function closeMobile() { mobileMenu.classList.remove('open'); }
+  const themeToggle = document.getElementById('themeToggle');
+  const iconSun = document.getElementById('iconSun');
+  const iconMoon = document.getElementById('iconMoon');
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  if (savedTheme === 'light') { document.body.classList.add('light'); iconSun.style.display = 'block'; iconMoon.style.display = 'none'; }
+  themeToggle.addEventListener('click', () => {
+    const isLight = document.body.classList.toggle('light');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    iconSun.style.display = isLight ? 'block' : 'none';
+    iconMoon.style.display = isLight ? 'none' : 'block';
+  });
+</script>
+</body>
+</html>

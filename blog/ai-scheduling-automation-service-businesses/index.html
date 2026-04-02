@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Scheduling Automation: How Service Businesses Are Eliminating No-Shows and Booking 3x More Appointments | Augentic AI Insights</title>
+  <meta name="description" content="AI scheduling automation is helping service businesses eliminate no-shows, book more appointments, and recover lost revenue. Learn how autonomous scheduling systems replace manual booking workflows." />
+  <meta property="og:title" content="AI Scheduling Automation: How Service Businesses Are Eliminating No-Shows and Booking 3x More Appointments" />
+  <meta property="og:description" content="AI scheduling automation is helping service businesses eliminate no-shows, book more appointments, and recover lost revenue. Learn how autonomous scheduling systems replace manual booking workflows." />
+  <meta property="og:type" content="article" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0A0A0A; --bg-card: #111111; --bg-raised: #161616;
+      --text: #F5F5F0; --text-muted: #888880; --text-dim: #555550;
+      --accent: #D4AF37; --accent-dim: rgba(212,175,55,0.12);
+      --border: rgba(255,255,255,0.07); --border-accent: rgba(212,175,55,0.3);
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Inter', system-ui, sans-serif;
+      --max: 1200px; --radius: 2px;
+    }
+    body.light {
+      --bg: #FAFAF7; --bg-card: #F2F2EE; --bg-raised: #E8E8E4;
+      --text: #0B0B0B; --text-muted: #444440; --text-dim: #999990;
+      --border: rgba(0,0,0,0.08); --border-accent: rgba(212,175,55,0.4);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-weight: 400; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    ::selection { background: var(--accent-dim); color: var(--accent); }
+    h1,h2,h3,h4 { font-weight: 500; line-height: 1.25; letter-spacing: -0.02em; }
+    h1 { font-family: var(--font-serif); font-size: clamp(2rem,4vw,3.2rem); }
+    h2 { font-family: var(--font-serif); font-size: clamp(1.6rem,3vw,2.4rem); }
+    h3 { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; letter-spacing: 0; }
+    p { color: var(--text-muted); line-height: 1.85; }
+    a { color: inherit; }
+    .label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.5rem 0; transition: background 0.4s, padding 0.3s; }
+    nav.scrolled { background: rgba(10,10,10,0.95); border-bottom: 1px solid var(--border); padding: 1rem 0; backdrop-filter: blur(12px); }
+    body.light nav.scrolled { background: rgba(250,250,247,0.95); }
+    nav .container { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.8rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; padding: 0.65rem 1.4rem; background: var(--accent); color: #0A0A0A; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s; white-space: nowrap; }
+    .nav-cta:hover { opacity: 0.88; }
+    .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+    .theme-toggle { background: none; border: 1px solid var(--border); color: var(--text-muted); cursor: pointer; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius); transition: color 0.2s; flex-shrink: 0; }
+    .theme-toggle:hover { color: var(--accent); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 1px; background: var(--text); }
+    .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 99; background: var(--bg); padding: 6rem 2rem 2rem; flex-direction: column; gap: 2rem; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 1.4rem; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 1.2rem; }
+    footer { background: var(--bg); border-top: 1px solid var(--border); padding: 3rem 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-tagline { font-size: 0.78rem; color: var(--text-dim); margin-top: 0.3rem; }
+    .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.78rem; color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text-muted); }
+    .footer-copy { font-size: 0.75rem; color: var(--text-dim); }
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
+    .btn-primary { display: inline-block; padding: 0.9rem 2rem; background: var(--accent); color: #0A0A0A; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s, transform 0.2s; border: none; cursor: pointer; }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-outline { display: inline-block; padding: 0.85rem 1.8rem; border: 1px solid var(--border-accent); color: var(--accent); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-decoration: none; border-radius: var(--radius); transition: all 0.2s; }
+    .btn-outline:hover { background: var(--accent-dim); }
+    @media (max-width: 900px) { .nav-links, .nav-right .nav-cta { display: none; } .hamburger { display: flex; } }
+  </style>
+  <style>
+    .post-header { padding: 10rem 0 4rem; border-bottom: 1px solid var(--border); }
+    .post-meta { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .post-meta .label { margin: 0; }
+    .post-meta-text { font-size: 0.8rem; color: var(--text-dim); }
+    .post-title { margin-bottom: 1.2rem; }
+    .post-desc { font-size: 1.05rem; max-width: 640px; }
+    .post-body { padding: 5rem 0; }
+    .post-body-inner { max-width: 720px; }
+    .post-body p { margin-bottom: 1.6rem; font-size: 1rem; }
+    .post-body h2 { font-size: 1.5rem; margin: 3rem 0 1rem; color: var(--text); }
+    .post-body strong { color: var(--text); font-weight: 500; }
+    .x-credit { background: var(--bg-card); border: 1px solid var(--border-accent); border-left: 3px solid var(--accent); padding: 1.2rem 1.5rem; margin: 2.5rem 0; font-size: 0.88rem; color: var(--text-muted); font-style: italic; border-radius: 0 var(--radius) var(--radius) 0; }
+    .post-footer { padding: 4rem 0; border-top: 1px solid var(--border); }
+    .cta-box { background: var(--bg-card); border: 1px solid var(--border); padding: 3rem; text-align: center; max-width: 600px; margin: 0 auto; }
+    .cta-box h3 { font-family: var(--font-serif); font-size: 1.6rem; margin-bottom: 1rem; color: var(--text); }
+    .cta-box p { margin-bottom: 2rem; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: var(--text-muted); text-decoration: none; margin-bottom: 3rem; transition: color 0.2s; }
+    .back-link:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+<nav id="nav">
+  <div class="container">
+    <a href="/" class="nav-logo" style="display:flex;align-items:center;text-decoration:none;"><img src="/logo.svg" alt="Augentic AI" height="37" style="height:37px;width:auto;" /></a>
+    <ul class="nav-links">
+      <li><a href="/#solution">Solutions</a></li>
+      <li><a href="/#offerings">Offerings</a></li>
+      <li><a href="/blog/">Insights</a></li>
+      <li><a href="/guide/">AI Guide</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg id="iconSun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg id="iconMoon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="/book/" class="nav-cta">Book Strategy Call</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/#solution" onclick="closeMobile()">Solutions</a>
+  <a href="/#offerings" onclick="closeMobile()">Offerings</a>
+  <a href="/blog/" onclick="closeMobile()">Insights</a>
+  <a href="/guide/" onclick="closeMobile()">AI Guide</a>
+  <a href="/book/" onclick="closeMobile()" style="color:var(--accent);">Book Strategy Call</a>
+</div>
+
+<div class="post-header">
+  <div class="container">
+    <a href="/blog/" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M13 7H1M6 2L1 7l5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to Insights
+    </a>
+    <div class="post-meta">
+      <span class="label">AI Operations</span>
+      <span class="post-meta-text">March 10, 2026</span>
+      <span class="post-meta-text">7 min read</span>
+    </div>
+    <h1 class="post-title">AI Scheduling Automation: How Service Businesses Are Eliminating No-Shows and Booking 3x More Appointments</h1>
+    <p class="post-desc">AI scheduling automation is helping service businesses eliminate no-shows, book more appointments, and recover lost revenue. Learn how autonomous scheduling systems replace manual booking workflows.</p>
+  </div>
+</div>
+
+<div class="post-body">
+  <div class="container">
+    <div class="post-body-inner">
+      
+      
+<p>Every service business runs on appointments. Law firms, medical practices, financial advisors, home services, consulting firms - if clients do not show up, revenue does not happen. And yet most service businesses still manage scheduling through a patchwork of phone calls, email threads, and manual calendar management that leaks revenue at every step.</p>
+
+<p>The numbers are brutal. The average no-show rate across service industries is 20-30%. For healthcare practices, it is closer to 27%. For home services, missed appointments cost the average company $150,000 to $300,000 per year in lost revenue. And that does not account for the staff time spent playing phone tag, sending reminder texts, and manually rescheduling.</p>
+
+<p>AI scheduling automation is not a marginal improvement on this problem. It is a structural fix. And the businesses deploying it are seeing results that redefine what operational efficiency looks like.</p>
+
+<h2>The Real Cost of Manual Scheduling</h2>
+
+<p>Before examining the solution, it is worth quantifying the problem most businesses underestimate. Manual scheduling creates four distinct revenue leaks:</p>
+
+<p><strong>Leak 1: Response time.</strong> When a prospect calls or submits a form, the clock starts. Research from Lead Connect shows that responding within five minutes makes you 100x more likely to convert than responding within 30 minutes. Most service businesses take hours or days to respond to scheduling requests. Every minute of delay is a conversion that walks out the door.</p>
+
+<p><strong>Leak 2: Back-and-forth friction.</strong> The average appointment booking requires 3-5 exchanges between the business and the client. Each exchange introduces a dropout point. If someone emails asking for availability and you respond four hours later with three time slots, there is a meaningful chance they have already booked with a competitor.</p>
+
+<p><strong>Leak 3: No-shows and late cancellations.</strong> Even after an appointment is booked, 20-30% of clients fail to show up. Manual reminder systems - a text the day before, maybe a morning-of email - reduce no-shows by about 15-20%. That still leaves a massive gap.</p>
+
+<p><strong>Leak 4: Rescheduling abandonment.</strong> When a client needs to reschedule, the friction of calling during business hours or waiting for an email response means many simply do not rebook. The appointment is lost, and the revenue disappears silently from your pipeline.</p>
+
+<h2>What AI Scheduling Actually Does Differently</h2>
+
+<p>AI scheduling is not a smarter calendar widget. It is an autonomous system that manages the entire appointment lifecycle - from initial booking through confirmation, reminders, rescheduling, and follow-up - without human intervention for routine interactions.</p>
+
+<p>Here is what that looks like in practice:</p>
+
+<h3>Instant Response, Any Channel</h3>
+
+<p>An AI scheduling system responds to booking requests within seconds, whether the request comes via phone call, website form, text message, email, or social media DM. It does not wait for business hours. It does not wait for a receptionist to be available. A prospect fills out a contact form at 11:30 PM on a Saturday, and within 15 seconds they receive a personalized response with available time slots.</p>
+
+<p>This is not a chatbot offering generic responses. The system understands your actual calendar availability, accounts for appointment types and durations, respects buffer times between meetings, and matches the prospect with the right team member based on their needs.</p>
+
+<h3>Intelligent Confirmation Sequences</h3>
+
+<p>Once an appointment is booked, the AI manages a multi-touch confirmation sequence calibrated to reduce no-shows. This typically includes an immediate booking confirmation with calendar invite, a reminder 48 hours before with easy reschedule options, a day-of confirmation that requires active acknowledgment, and a same-day reminder 2 hours before the appointment.</p>
+
+<p>The key difference from traditional reminder systems is intelligence. The AI adjusts its approach based on client behavior patterns. A client who has never missed an appointment gets a lighter touch. A client with a history of no-shows gets more frequent check-ins and might receive a phone call confirmation instead of just a text.</p>
+
+<h3>Frictionless Rescheduling</h3>
+
+<p>When a client needs to reschedule, the AI handles it instantly. No phone tag. No waiting for business hours. The client texts "I need to move my Thursday appointment" and the system responds with alternative times within seconds. If the client confirms a new time, the calendar updates, the old slot opens up for other bookings, and the confirmation sequence restarts.</p>
+
+<p>This single capability - frictionless rescheduling - recovers an enormous amount of revenue that manual systems lose. Instead of a canceled appointment becoming a permanent gap in the schedule, it becomes a rescheduled appointment that still generates revenue.</p>
+
+<h3>Waitlist and Backfill Automation</h3>
+
+<p>When a cancellation does happen, the AI immediately checks the waitlist and reaches out to clients who wanted earlier appointments. This happens within minutes of the cancellation, not hours or days. The result is that open slots get filled before the revenue is lost.</p>
+
+<p>A dental practice we studied went from a 22% no-show rate with 4% same-day backfill to a 9% no-show rate with 67% same-day backfill after deploying an AI scheduling system. That delta represents hundreds of thousands of dollars in recovered annual revenue.</p>
+
+<h2>Industry-Specific Applications</h2>
+
+<h3>Healthcare Practices</h3>
+
+<p>Medical and dental practices face unique scheduling challenges: complex appointment types with different durations, insurance verification requirements, intake form completion, and regulatory constraints around patient communication. AI scheduling systems built for healthcare handle all of these variables.</p>
+
+<p>The system can verify insurance eligibility before confirming an appointment, send intake forms at the optimal time for completion (typically 24-48 hours before the visit), coordinate with multiple providers when a patient needs sequential appointments, and manage recall scheduling for preventive care visits.</p>
+
+<p>For a multi-provider practice, this eliminates the need for dedicated scheduling staff while actually improving the patient experience. Patients get faster responses, easier rescheduling, and fewer missed appointments.</p>
+
+<h3>Legal Firms</h3>
+
+<p>Law firms lose consultations to slow response times more than almost any other service business. A potential client searching for a personal injury attorney or family lawyer is typically contacting 3-5 firms simultaneously. The firm that responds first and books the consultation wins the case.</p>
+
+<p>AI scheduling for legal firms handles initial intake qualification (filtering out cases outside the firm's practice areas), conflict checking against existing clients, matching prospects with the right attorney based on case type, and booking the consultation with all relevant context passed to the attorney before the meeting.</p>
+
+<p>The result is that attorneys walk into consultations fully briefed, prospects feel heard from the first interaction, and the firm captures cases that would have gone to faster-responding competitors.</p>
+
+<h3>Financial Advisory</h3>
+
+<p>Financial advisors and wealth management firms deal with high-value, relationship-driven appointments where no-shows are particularly costly. A missed annual review meeting with a high-net-worth client is not just lost time - it is a relationship risk.</p>
+
+<p>AI scheduling for financial services coordinates across multiple advisor calendars, manages recurring review schedules, handles the logistics of preparing account summaries before meetings, and ensures compliance-required disclosures are sent at the right time in the scheduling process.</p>
+
+<h2>The ROI Math</h2>
+
+<p>The return on AI scheduling automation is straightforward to calculate because the variables are concrete and measurable:</p>
+
+<p><strong>No-show reduction:</strong> Moving from a 25% no-show rate to 10% on a practice that books 40 appointments per week at an average value of $200 per appointment recovers $156,000 in annual revenue.</p>
+
+<p><strong>Backfill recovery:</strong> Filling 60% of cancellation slots instead of 5% on those same numbers recovers an additional $46,000 per year.</p>
+
+<p><strong>Response time improvement:</strong> Converting 15% more inbound leads by responding in seconds instead of hours - for a business generating 100 leads per month with a $500 average client value - adds $90,000 in annual revenue.</p>
+
+<p><strong>Staff time savings:</strong> Eliminating 20-30 hours per week of manual scheduling work at $25 per hour saves $26,000 to $39,000 per year.</p>
+
+<p>Total impact for a mid-size service business: $300,000 to $330,000 in annual revenue recovered or saved. Against a system cost of $2,000 to $5,000 per month, the ROI is 5x to 14x.</p>
+
+<p>This is not theoretical. These are the numbers we see consistently across deployments.</p>
+
+<h2>Why Calendar Widgets and Basic Automation Fall Short</h2>
+
+<p>Many businesses believe they have solved scheduling because they use Calendly, Acuity, or a similar booking tool. These tools are useful, but they solve only one piece of the problem: they let people who already want to book find an available slot.</p>
+
+<p>They do not proactively respond to inbound inquiries. They do not manage confirmation sequences. They do not intelligently handle rescheduling. They do not backfill cancellations. They do not adapt their approach based on client behavior. And they do not integrate deeply enough with your CRM and communication systems to provide a seamless experience.</p>
+
+<p>The difference between a calendar widget and an AI scheduling system is the difference between a tool and a system. The widget requires humans to drive the process. The system operates autonomously, handling the entire lifecycle while humans focus on the appointments themselves.</p>
+
+<h2>Implementation: What It Actually Takes</h2>
+
+<p>Deploying AI scheduling automation is not a plug-and-play project, but it is also not a six-month IT initiative. A typical implementation follows this path:</p>
+
+<p><strong>Week 1-2: Workflow mapping.</strong> Document every step in your current scheduling process, including edge cases. Identify the specific integration points with your calendar, CRM, phone system, and communication channels.</p>
+
+<p><strong>Week 3-4: System configuration and integration.</strong> Connect the AI scheduling system to your existing tools, configure appointment types and business rules, and set up the confirmation sequence logic.</p>
+
+<p><strong>Week 5-6: Parallel operation.</strong> Run the AI system alongside your existing process. Staff monitors AI interactions, flags errors, and the system learns from corrections.</p>
+
+<p><strong>Week 7+: Autonomous operation.</strong> The AI handles routine scheduling independently. Staff handles only true exceptions - complex multi-party scheduling, VIP client preferences, and situations requiring human judgment.</p>
+
+<p>The businesses that succeed with this implementation share one trait: they commit to the process and assign clear ownership. Someone on the team is accountable for monitoring the system, reviewing metrics weekly, and optimizing the configuration based on results.</p>
+
+<h2>The Bigger Picture: Scheduling as the Entry Point</h2>
+
+<p>AI scheduling automation is often the first autonomous system a service business deploys. And there is a reason for that - it has the clearest ROI, the most measurable outcomes, and the lowest risk. If the AI books an appointment incorrectly, the downside is a phone call to fix it. The upside is hundreds of thousands in recovered revenue.</p>
+
+<p>But scheduling is also a gateway to broader operational automation. Once you have an AI system managing your appointment lifecycle, extending it to handle post-appointment follow-up, review solicitation, reactivation campaigns for dormant clients, and ongoing relationship management is a natural next step.</p>
+
+<p>The service businesses that will dominate their markets over the next three to five years are the ones building these systems now. Not because AI is trendy, but because the operational advantages compound over time. Every month of autonomous scheduling is a month of better data, better client experiences, and better revenue capture.</p>
+
+<h2>Next Steps</h2>
+
+<p>If your service business is still managing scheduling manually - or relying on basic calendar widgets that solve only a fraction of the problem - the revenue you are leaving on the table is quantifiable and significant.</p>
+
+<p>Augentic AI builds autonomous scheduling systems tailored to service businesses. We handle the integration, the configuration, and the optimization. Your team focuses on what they do best: delivering excellent service to clients who actually show up.</p>
+
+<p><a href="/book/">Book a strategy call</a> to see what AI scheduling automation would look like for your specific operation and what the revenue impact would be in your first 90 days.</p>
+
+    </div>
+  </div>
+</div>
+
+<div class="post-footer">
+  <div class="container">
+    <div class="cta-box">
+      <h3>Ready to Build Your AI Workforce?</h3>
+      <p>Schedule a 30-minute strategy call. We will tell you exactly what we would build for your business - and what it would cost.</p>
+      <a href="/book/" class="btn-primary">Book a Strategy Call</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo" style="display:flex;align-items:center;"><img src="/logo.svg" alt="Augentic AI" height="28" style="height:28px;width:auto;" /></div>
+        <div class="footer-tagline">Autonomous AI. Measurable Revenue.</div>
+      </div>
+      <ul class="footer-links">
+        <li><a href="/#solution">Solutions</a></li>
+        <li><a href="/#offerings">Offerings</a></li>
+        <li><a href="/blog/">Insights</a></li>
+        <li><a href="/guide/">AI Guide</a></li>
+        <li><a href="/book/">Book a Call</a></li>
+        <li><a href="mailto:hello@augenticai.com">Contact</a></li>
+      </ul>
+      <div class="footer-copy">&copy; 2026 Augentic AI. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => { mobileMenu.classList.toggle('open'); });
+  function closeMobile() { mobileMenu.classList.remove('open'); }
+  const themeToggle = document.getElementById('themeToggle');
+  const iconSun = document.getElementById('iconSun');
+  const iconMoon = document.getElementById('iconMoon');
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  if (savedTheme === 'light') { document.body.classList.add('light'); iconSun.style.display = 'block'; iconMoon.style.display = 'none'; }
+  themeToggle.addEventListener('click', () => {
+    const isLight = document.body.classList.toggle('light');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    iconSun.style.display = isLight ? 'block' : 'none';
+    iconMoon.style.display = isLight ? 'none' : 'block';
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Multi-Agent Orchestration: Running an AI Sales Team That Coordinates | Augentic AI Insights</title>
+  <meta name="description" content="Single AI agents automate tasks. Multi-agent orchestration automates workflows. Here's how to architect a coordinated AI sales team that prospects, qualifies, nurtures, and closes without breaking down at the handoffs." />
+  <meta property="og:title" content="Multi-Agent Orchestration: Running an AI Sales Team That Coordinates" />
+  <meta property="og:description" content="Single AI agents automate tasks. Multi-agent orchestration automates workflows. Here's how to architect a coordinated AI sales team that prospects, qualifies, nurtures, and closes without breaking down at the handoffs." />
+  <meta property="og:type" content="article" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0A0A0A; --bg-card: #111111; --bg-raised: #161616;
+      --text: #F5F5F0; --text-muted: #888880; --text-dim: #555550;
+      --accent: #D4AF37; --accent-dim: rgba(212,175,55,0.12);
+      --border: rgba(255,255,255,0.07); --border-accent: rgba(212,175,55,0.3);
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Inter', system-ui, sans-serif;
+      --max: 1200px; --radius: 2px;
+    }
+    body.light {
+      --bg: #FAFAF7; --bg-card: #F2F2EE; --bg-raised: #E8E8E4;
+      --text: #0B0B0B; --text-muted: #444440; --text-dim: #999990;
+      --border: rgba(0,0,0,0.08); --border-accent: rgba(212,175,55,0.4);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-weight: 400; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    ::selection { background: var(--accent-dim); color: var(--accent); }
+    h1,h2,h3,h4 { font-weight: 500; line-height: 1.25; letter-spacing: -0.02em; }
+    h1 { font-family: var(--font-serif); font-size: clamp(2rem,4vw,3.2rem); }
+    h2 { font-family: var(--font-serif); font-size: clamp(1.6rem,3vw,2.4rem); }
+    h3 { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; letter-spacing: 0; }
+    p { color: var(--text-muted); line-height: 1.85; }
+    a { color: inherit; }
+    .label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.5rem 0; transition: background 0.4s, padding 0.3s; }
+    nav.scrolled { background: rgba(10,10,10,0.95); border-bottom: 1px solid var(--border); padding: 1rem 0; backdrop-filter: blur(12px); }
+    body.light nav.scrolled { background: rgba(250,250,247,0.95); }
+    nav .container { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.8rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; padding: 0.65rem 1.4rem; background: var(--accent); color: #0A0A0A; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s; white-space: nowrap; }
+    .nav-cta:hover { opacity: 0.88; }
+    .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+    .theme-toggle { background: none; border: 1px solid var(--border); color: var(--text-muted); cursor: pointer; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius); transition: color 0.2s; flex-shrink: 0; }
+    .theme-toggle:hover { color: var(--accent); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 1px; background: var(--text); }
+    .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 99; background: var(--bg); padding: 6rem 2rem 2rem; flex-direction: column; gap: 2rem; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 1.4rem; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 1.2rem; }
+    footer { background: var(--bg); border-top: 1px solid var(--border); padding: 3rem 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-tagline { font-size: 0.78rem; color: var(--text-dim); margin-top: 0.3rem; }
+    .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.78rem; color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text-muted); }
+    .footer-copy { font-size: 0.75rem; color: var(--text-dim); }
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
+    .btn-primary { display: inline-block; padding: 0.9rem 2rem; background: var(--accent); color: #0A0A0A; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s, transform 0.2s; border: none; cursor: pointer; }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-outline { display: inline-block; padding: 0.85rem 1.8rem; border: 1px solid var(--border-accent); color: var(--accent); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-decoration: none; border-radius: var(--radius); transition: all 0.2s; }
+    .btn-outline:hover { background: var(--accent-dim); }
+    @media (max-width: 900px) { .nav-links, .nav-right .nav-cta { display: none; } .hamburger { display: flex; } }
+  </style>
+  <style>
+    .post-header { padding: 10rem 0 4rem; border-bottom: 1px solid var(--border); }
+    .post-meta { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .post-meta .label { margin: 0; }
+    .post-meta-text { font-size: 0.8rem; color: var(--text-dim); }
+    .post-title { margin-bottom: 1.2rem; }
+    .post-desc { font-size: 1.05rem; max-width: 640px; }
+    .post-body { padding: 5rem 0; }
+    .post-body-inner { max-width: 720px; }
+    .post-body p { margin-bottom: 1.6rem; font-size: 1rem; }
+    .post-body h2 { font-size: 1.5rem; margin: 3rem 0 1rem; color: var(--text); }
+    .post-body strong { color: var(--text); font-weight: 500; }
+    .x-credit { background: var(--bg-card); border: 1px solid var(--border-accent); border-left: 3px solid var(--accent); padding: 1.2rem 1.5rem; margin: 2.5rem 0; font-size: 0.88rem; color: var(--text-muted); font-style: italic; border-radius: 0 var(--radius) var(--radius) 0; }
+    .post-footer { padding: 4rem 0; border-top: 1px solid var(--border); }
+    .cta-box { background: var(--bg-card); border: 1px solid var(--border); padding: 3rem; text-align: center; max-width: 600px; margin: 0 auto; }
+    .cta-box h3 { font-family: var(--font-serif); font-size: 1.6rem; margin-bottom: 1rem; color: var(--text); }
+    .cta-box p { margin-bottom: 2rem; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: var(--text-muted); text-decoration: none; margin-bottom: 3rem; transition: color 0.2s; }
+    .back-link:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+<nav id="nav">
+  <div class="container">
+    <a href="/" class="nav-logo" style="display:flex;align-items:center;text-decoration:none;"><img src="/logo.svg" alt="Augentic AI" height="37" style="height:37px;width:auto;" /></a>
+    <ul class="nav-links">
+      <li><a href="/#solution">Solutions</a></li>
+      <li><a href="/#offerings">Offerings</a></li>
+      <li><a href="/blog/">Insights</a></li>
+      <li><a href="/guide/">AI Guide</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg id="iconSun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg id="iconMoon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="/book/" class="nav-cta">Book Strategy Call</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/#solution" onclick="closeMobile()">Solutions</a>
+  <a href="/#offerings" onclick="closeMobile()">Offerings</a>
+  <a href="/blog/" onclick="closeMobile()">Insights</a>
+  <a href="/guide/" onclick="closeMobile()">AI Guide</a>
+  <a href="/book/" onclick="closeMobile()" style="color:var(--accent);">Book Strategy Call</a>
+</div>
+
+<div class="post-header">
+  <div class="container">
+    <a href="/blog/" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M13 7H1M6 2L1 7l5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to Insights
+    </a>
+    <div class="post-meta">
+      <span class="label">AI Agents</span>
+      <span class="post-meta-text">April 2, 2026</span>
+      <span class="post-meta-text">14 min read</span>
+    </div>
+    <h1 class="post-title">Multi-Agent Orchestration: Running an AI Sales Team That Coordinates</h1>
+    <p class="post-desc">Single AI agents automate tasks. Multi-agent orchestration automates workflows. Here's how to architect a coordinated AI sales team that prospects, qualifies, nurtures, and closes without breaking down at the handoffs.</p>
+  </div>
+</div>
+
+<div class="post-body">
+  <div class="container">
+    <div class="post-body-inner">
+      
+      
+<p>Most conversations about AI in sales start and stop at the single-agent level. An AI SDR sends outreach. An AI scheduler books meetings. An AI assistant drafts proposals. Each agent is valuable on its own. But isolated agents that do not coordinate with each other produce a fractured experience—for the buyer, for the rep, and for the business trying to measure what is actually happening in the pipeline.</p>
+
+<p>Multi-agent orchestration is the practice of connecting these specialized agents into a system that coordinates their actions around a shared goal. In a revenue context, that goal is moving qualified opportunities from cold account to closed revenue in the most efficient, effective, and buyer-appropriate way possible.</p>
+
+<p>The difference between a collection of AI tools and a coordinated AI sales team is not the quality of individual agents. It is the architecture that governs how they hand off context, share signals, manage state, and make coordinated decisions about what happens next. Get that architecture right and you have a system that scales. Get it wrong and you have expensive automation that creates as many problems as it solves.</p>
+
+<h2>Why Single-Agent Systems Break Down</h2>
+
+<p>Single agents working in isolation fail in predictable ways when the workflow they are part of requires coordination.</p>
+
+<p>The most common failure is context loss at handoffs. An AI SDR qualifies a lead and marks it as interested. The meeting scheduling agent books a call. The human rep shows up with no context about what the SDR agent learned, what messaging resonated, what objections were raised, or why this lead was flagged as qualified. The first thirty minutes of the sales call reconstructs information the AI already had. This is worse than no AI at all—it wastes the rep's time and the buyer's patience.</p>
+
+<p>The second failure is conflicting signals. Without coordination, separate agents can send contradictory messages. The outreach agent sends a follow-up email while the scheduling agent is in the middle of a conversation with the same prospect about booking a call. The nurture agent fires a case study the morning of the rep's discovery call. These are coordination failures, not individual agent failures.</p>
+
+<p>The third failure is duplicate work. When agents do not share state, they repeat effort. The prospecting agent researches an account. The proposal agent researches the same account from scratch because it does not have access to what the prospecting agent found. The handoff between agents lacks the shared memory layer that would allow each subsequent agent to build on previous work rather than starting over.</p>
+
+<p>Multi-agent orchestration solves all three problems by establishing shared state, coordinated action, and sequenced handoffs governed by explicit rules.</p>
+
+<h2>The Architecture of a Coordinated AI Sales Team</h2>
+
+<p>A multi-agent sales system consists of four elements: specialized agents, a shared data layer, an orchestration layer, and human integration points. Understanding each element is necessary before designing the system.</p>
+
+<p><strong>Specialized agents.</strong> Each agent is responsible for a defined function within the revenue workflow. Common agents in a sales context include: a prospecting agent (identifies target accounts and contacts), a research agent (builds account and contact intelligence), an outreach agent (crafts and sends personalized first contact), a qualification agent (evaluates signals and determines lead readiness), a scheduling agent (manages meeting logistics), a prep agent (generates meeting prep briefs for human reps), a proposal agent (drafts proposals from discovery inputs), a follow-up agent (manages post-meeting next steps), a nurture agent (manages long-cycle prospects not yet ready), and a renewal agent (monitors contract timelines and manages pre-renewal sequencing).</p>
+
+<p>Not every company needs all of these agents. The right set depends on where your revenue workflow has the highest friction, the lowest consistency, and the most scale constraints.</p>
+
+<p><strong>Shared data layer.</strong> This is the memory and intelligence fabric that connects all agents. It includes account and contact records (typically CRM), product usage data, communication history, agent action logs, signal feeds (intent data, news, firmographic changes), and outcome data. Every agent reads from and writes to this shared layer. When the outreach agent learns something about a prospect's objection pattern, it stores that context where the qualification agent and the prep agent can use it later.</p>
+
+<p><strong>Orchestration layer.</strong> This governs which agent acts when, under what conditions, and with what authority. The orchestration layer is a set of rules, triggers, and state machines that determine the flow of work through the system. When a prospect replies positively to outreach, the orchestration layer routes the signal to the qualification agent, which evaluates readiness, which triggers the scheduling agent if the threshold is met. The orchestration layer prevents agents from acting simultaneously on the same account and ensures that each action is appropriate given the full context of what has happened in the account.</p>
+
+<p><strong>Human integration points.</strong> The system is not fully autonomous—there are defined points where human judgment is required. These might include: final review of proposals before sending, handling objections that require relationship nuance, executive engagement on strategic accounts, and approval of outreach to sensitive contacts. The orchestration layer routes to human integration points when defined conditions are met and returns control to the agent system after human action is taken.</p>
+
+<h2>Designing Handoffs That Actually Work</h2>
+
+<p>Handoffs are the highest-risk moments in a multi-agent system. Context must transfer completely. Authority must transfer clearly. The receiving agent (or human) must know exactly what state the account is in and what the next appropriate action is.</p>
+
+<p>A well-designed handoff has three components:</p>
+
+<p><strong>Context package.</strong> When an agent completes its phase and hands off to the next, it writes a structured summary of what it learned and what it did. For an outreach agent handing off to a qualification agent, this includes: which messages were sent, what the prospect's response was, what engagement signals were observed, what questions or objections were raised, and what the outreach agent's assessment of intent level is.</p>
+
+<p><strong>State update.</strong> The shared data layer reflects the new state of the account so that any agent querying that account gets current information. This is the mechanism that prevents duplicate work and conflicting actions.</p>
+
+<p><strong>Clear next-action mandate.</strong> The handoff communicates not just what happened, but what the receiving agent should do and under what conditions it should escalate to human review. This prevents agents from having to re-derive what to do from first principles at each step.</p>
+
+<p>When a human rep is the next actor in the sequence—receiving a meeting prep brief, for example—the handoff format needs to work for a human audience. That means the prep brief is in natural language, structured around what the rep needs to know before the call, not a data dump of everything the agent system observed. The interface between the agent system and the human must be designed as carefully as the interface between agents.</p>
+
+<h2>Orchestration Patterns That Work for Revenue Teams</h2>
+
+<p>There are several orchestration patterns that have proven effective in B2B revenue contexts. Each fits different pipeline architectures and different go-to-market motions.</p>
+
+<p><strong>Sequential pipeline orchestration.</strong> Agents are arranged in a linear sequence corresponding to pipeline stages. An account moves from the prospecting agent through outreach, qualification, scheduling, prep, proposal, and follow-up in order. Each stage is gated by a handoff condition. This pattern works well for transactional or mid-market sales where the journey is relatively predictable.</p>
+
+<p><strong>Event-driven orchestration.</strong> Agents trigger based on signals rather than predetermined sequence. When a prospect visits the pricing page three times, the orchestration layer triggers a personalized outreach sequence. When a contract approaches renewal, the renewal agent activates. When a champion leaves the account, a re-engagement agent initiates contact with the successor. This pattern works well in complex accounts where the buyer's journey is non-linear.</p>
+
+<p><strong>Parallel orchestration.</strong> Multiple agents work simultaneously on different aspects of the same account. While the outreach agent is running a prospecting sequence on the main contact, a research agent is building intelligence on the broader buying committee, and a competitive intelligence agent is monitoring for relevant news. The outputs converge at a synthesis layer before human rep action. This pattern is appropriate for enterprise accounts with long sales cycles and complex stakeholder maps.</p>
+
+<p><strong>Escalation-first orchestration.</strong> This pattern prioritizes human oversight by default. Agents execute tasks but all outputs are reviewed by a human before transmission. The agent drafts; the human approves. Over time, as agent accuracy is validated, specific classes of outputs can be moved to auto-approve, expanding autonomy incrementally. This is the appropriate starting pattern for teams new to multi-agent deployment.</p>
+
+<h2>The Role of the Orchestration Prompt</h2>
+
+<p>In many multi-agent implementations, the orchestration layer itself includes an AI component—an orchestrator model that reads account state and determines which agent should act next and what its mandate should be. This is sometimes called a "manager agent" or "router agent."</p>
+
+<p>The quality of this orchestrator's instructions matters enormously. A weak orchestration prompt produces erratic routing decisions, excessive escalations, and agents that act on conflicting interpretations of the same account state. A strong orchestration prompt produces consistent, auditable routing logic that can be tested, monitored, and improved over time.</p>
+
+<p>The orchestration prompt should specify: what conditions trigger each agent, what context must be provided at each handoff, what escalation thresholds route to human review, and how conflicts between agents are resolved. It should also include explicit instructions for graceful degradation—what the system should do when it encounters an unexpected state rather than attempting to handle it autonomously.</p>
+
+<h2>Measuring System Performance, Not Individual Agent Performance</h2>
+
+<p>A common mistake in multi-agent deployments is measuring each agent in isolation. Outreach agent open rates. Scheduling agent booking rates. Proposal agent acceptance rates. These metrics are informative, but they do not tell you whether the system is working as a whole.</p>
+
+<p>System-level metrics matter more:</p>
+
+<p><strong>End-to-end conversion rate.</strong> What percentage of accounts entering the system progress to closed revenue? This is the ultimate test of whether the agents are working together effectively.</p>
+
+<p><strong>Handoff integrity rate.</strong> How often is context transferred completely and accurately between agents? Handoff failures are the most common source of system-level underperformance.</p>
+
+<p><strong>Human escalation appropriateness.</strong> Are escalations to human reps happening at the right threshold? Too many escalations indicate agents operating below their authorized scope. Too few suggest agents operating beyond appropriate boundaries.</p>
+
+<p><strong>Time-in-stage distribution.</strong> How long do accounts spend in each phase? Accounts stalling at specific handoffs indicate orchestration logic failures or agent capability gaps that need addressing.</p>
+
+<p><strong>Revenue attribution by agent action.</strong> What percentage of closed revenue was influenced by specific agent interventions? This helps identify which agents are generating disproportionate value and where further investment is warranted.</p>
+
+<h2>Building the System Incrementally</h2>
+
+<p>Multi-agent orchestration is not a big-bang deployment. Teams that try to build the full system at once usually fail. The complexity of coordinating many agents simultaneously, debugging cross-agent failures, and training a new operating model onto an existing sales team is too much change to absorb at once.</p>
+
+<p>The right approach is sequential expansion. Start with two agents—typically prospecting and outreach—and get the handoff between them working well. Add the qualification agent next. Then scheduling. Then prep. Each expansion requires designing and testing the new handoff, validating the new agent's performance, and integrating the outputs into the existing human workflow.</p>
+
+<p>This incremental approach also builds organizational confidence. When reps see the first two-agent system producing better leads with less manual effort, they are more willing to trust and use the outputs of the expanded system. Buy-in compounds as results compound.</p>
+
+<h2>The Competitive Consequence</h2>
+
+<p>Multi-agent sales orchestration is not a marginal efficiency play. It is a structural capability that, once built, produces compounding advantages. The system learns from every interaction. The health model improves with every outcome. The orchestration logic gets smarter with every deployment cycle. The cost of running the system scales sublinearly with pipeline volume.</p>
+
+<p>Companies that build this capability now will run go-to-market operations at a structural cost and speed advantage that will be difficult for competitors to close later. The first-mover advantage in agent infrastructure is real, and it compounds.</p>
+
+<p>The question is not whether multi-agent orchestration will become standard in B2B sales. It is whether your organization builds the capability before or after your competitors do.</p>
+
+<p><strong>Book a strategy call</strong> to design a multi-agent orchestration architecture that fits your revenue motion, your tech stack, and your team structure. We will map the right agents for your workflow, design the orchestration logic, and build the system incrementally so every phase produces measurable results before the next phase begins.</p>
+
+    </div>
+  </div>
+</div>
+
+<div class="post-footer">
+  <div class="container">
+    <div class="cta-box">
+      <h3>Ready to Build Your AI Workforce?</h3>
+      <p>Schedule a 30-minute strategy call. We will tell you exactly what we would build for your business - and what it would cost.</p>
+      <a href="/book/" class="btn-primary">Book a Strategy Call</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo" style="display:flex;align-items:center;"><img src="/logo.svg" alt="Augentic AI" height="28" style="height:28px;width:auto;" /></div>
+        <div class="footer-tagline">Autonomous AI. Measurable Revenue.</div>
+      </div>
+      <ul class="footer-links">
+        <li><a href="/#solution">Solutions</a></li>
+        <li><a href="/#offerings">Offerings</a></li>
+        <li><a href="/blog/">Insights</a></li>
+        <li><a href="/guide/">AI Guide</a></li>
+        <li><a href="/book/">Book a Call</a></li>
+        <li><a href="mailto:hello@augenticai.com">Contact</a></li>
+      </ul>
+      <div class="footer-copy">&copy; 2026 Augentic AI. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => { mobileMenu.classList.toggle('open'); });
+  function closeMobile() { mobileMenu.classList.remove('open'); }
+  const themeToggle = document.getElementById('themeToggle');
+  const iconSun = document.getElementById('iconSun');
+  const iconMoon = document.getElementById('iconMoon');
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  if (savedTheme === 'light') { document.body.classList.add('light'); iconSun.style.display = 'block'; iconMoon.style.display = 'none'; }
+  themeToggle.addEventListener('click', () => {
+    const isLight = document.body.classList.toggle('light');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    iconSun.style.display = isLight ? 'block' : 'none';
+    iconMoon.style.display = isLight ? 'none' : 'block';
+  });
+</script>
+</body>
+</html>

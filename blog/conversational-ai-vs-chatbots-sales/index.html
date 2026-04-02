@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conversational AI vs Chatbots: Why Sales Teams Need to Know the Difference | Augentic AI Insights</title>
+  <meta name="description" content="Conversational AI and chatbots are not the same thing. Learn the critical differences, why it matters for sales teams, and how to deploy conversational AI that actually books meetings." />
+  <meta property="og:title" content="Conversational AI vs Chatbots: Why Sales Teams Need to Know the Difference" />
+  <meta property="og:description" content="Conversational AI and chatbots are not the same thing. Learn the critical differences, why it matters for sales teams, and how to deploy conversational AI that actually books meetings." />
+  <meta property="og:type" content="article" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0A0A0A; --bg-card: #111111; --bg-raised: #161616;
+      --text: #F5F5F0; --text-muted: #888880; --text-dim: #555550;
+      --accent: #D4AF37; --accent-dim: rgba(212,175,55,0.12);
+      --border: rgba(255,255,255,0.07); --border-accent: rgba(212,175,55,0.3);
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Inter', system-ui, sans-serif;
+      --max: 1200px; --radius: 2px;
+    }
+    body.light {
+      --bg: #FAFAF7; --bg-card: #F2F2EE; --bg-raised: #E8E8E4;
+      --text: #0B0B0B; --text-muted: #444440; --text-dim: #999990;
+      --border: rgba(0,0,0,0.08); --border-accent: rgba(212,175,55,0.4);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-weight: 400; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    ::selection { background: var(--accent-dim); color: var(--accent); }
+    h1,h2,h3,h4 { font-weight: 500; line-height: 1.25; letter-spacing: -0.02em; }
+    h1 { font-family: var(--font-serif); font-size: clamp(2rem,4vw,3.2rem); }
+    h2 { font-family: var(--font-serif); font-size: clamp(1.6rem,3vw,2.4rem); }
+    h3 { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; letter-spacing: 0; }
+    p { color: var(--text-muted); line-height: 1.85; }
+    a { color: inherit; }
+    .label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.5rem 0; transition: background 0.4s, padding 0.3s; }
+    nav.scrolled { background: rgba(10,10,10,0.95); border-bottom: 1px solid var(--border); padding: 1rem 0; backdrop-filter: blur(12px); }
+    body.light nav.scrolled { background: rgba(250,250,247,0.95); }
+    nav .container { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.8rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; padding: 0.65rem 1.4rem; background: var(--accent); color: #0A0A0A; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s; white-space: nowrap; }
+    .nav-cta:hover { opacity: 0.88; }
+    .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+    .theme-toggle { background: none; border: 1px solid var(--border); color: var(--text-muted); cursor: pointer; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius); transition: color 0.2s; flex-shrink: 0; }
+    .theme-toggle:hover { color: var(--accent); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 1px; background: var(--text); }
+    .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 99; background: var(--bg); padding: 6rem 2rem 2rem; flex-direction: column; gap: 2rem; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 1.4rem; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 1.2rem; }
+    footer { background: var(--bg); border-top: 1px solid var(--border); padding: 3rem 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-tagline { font-size: 0.78rem; color: var(--text-dim); margin-top: 0.3rem; }
+    .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.78rem; color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text-muted); }
+    .footer-copy { font-size: 0.75rem; color: var(--text-dim); }
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
+    .btn-primary { display: inline-block; padding: 0.9rem 2rem; background: var(--accent); color: #0A0A0A; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s, transform 0.2s; border: none; cursor: pointer; }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-outline { display: inline-block; padding: 0.85rem 1.8rem; border: 1px solid var(--border-accent); color: var(--accent); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-decoration: none; border-radius: var(--radius); transition: all 0.2s; }
+    .btn-outline:hover { background: var(--accent-dim); }
+    @media (max-width: 900px) { .nav-links, .nav-right .nav-cta { display: none; } .hamburger { display: flex; } }
+  </style>
+  <style>
+    .post-header { padding: 10rem 0 4rem; border-bottom: 1px solid var(--border); }
+    .post-meta { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .post-meta .label { margin: 0; }
+    .post-meta-text { font-size: 0.8rem; color: var(--text-dim); }
+    .post-title { margin-bottom: 1.2rem; }
+    .post-desc { font-size: 1.05rem; max-width: 640px; }
+    .post-body { padding: 5rem 0; }
+    .post-body-inner { max-width: 720px; }
+    .post-body p { margin-bottom: 1.6rem; font-size: 1rem; }
+    .post-body h2 { font-size: 1.5rem; margin: 3rem 0 1rem; color: var(--text); }
+    .post-body strong { color: var(--text); font-weight: 500; }
+    .x-credit { background: var(--bg-card); border: 1px solid var(--border-accent); border-left: 3px solid var(--accent); padding: 1.2rem 1.5rem; margin: 2.5rem 0; font-size: 0.88rem; color: var(--text-muted); font-style: italic; border-radius: 0 var(--radius) var(--radius) 0; }
+    .post-footer { padding: 4rem 0; border-top: 1px solid var(--border); }
+    .cta-box { background: var(--bg-card); border: 1px solid var(--border); padding: 3rem; text-align: center; max-width: 600px; margin: 0 auto; }
+    .cta-box h3 { font-family: var(--font-serif); font-size: 1.6rem; margin-bottom: 1rem; color: var(--text); }
+    .cta-box p { margin-bottom: 2rem; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: var(--text-muted); text-decoration: none; margin-bottom: 3rem; transition: color 0.2s; }
+    .back-link:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+<nav id="nav">
+  <div class="container">
+    <a href="/" class="nav-logo" style="display:flex;align-items:center;text-decoration:none;"><img src="/logo.svg" alt="Augentic AI" height="37" style="height:37px;width:auto;" /></a>
+    <ul class="nav-links">
+      <li><a href="/#solution">Solutions</a></li>
+      <li><a href="/#offerings">Offerings</a></li>
+      <li><a href="/blog/">Insights</a></li>
+      <li><a href="/guide/">AI Guide</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg id="iconSun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg id="iconMoon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="/book/" class="nav-cta">Book Strategy Call</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/#solution" onclick="closeMobile()">Solutions</a>
+  <a href="/#offerings" onclick="closeMobile()">Offerings</a>
+  <a href="/blog/" onclick="closeMobile()">Insights</a>
+  <a href="/guide/" onclick="closeMobile()">AI Guide</a>
+  <a href="/book/" onclick="closeMobile()" style="color:var(--accent);">Book Strategy Call</a>
+</div>
+
+<div class="post-header">
+  <div class="container">
+    <a href="/blog/" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M13 7H1M6 2L1 7l5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to Insights
+    </a>
+    <div class="post-meta">
+      <span class="label">AI Agents</span>
+      <span class="post-meta-text">March 17, 2026</span>
+      <span class="post-meta-text">9 min read</span>
+    </div>
+    <h1 class="post-title">Conversational AI vs Chatbots: Why Sales Teams Need to Know the Difference</h1>
+    <p class="post-desc">Conversational AI and chatbots are not the same thing. Learn the critical differences, why it matters for sales teams, and how to deploy conversational AI that actually books meetings.</p>
+  </div>
+</div>
+
+<div class="post-body">
+  <div class="container">
+    <div class="post-body-inner">
+      
+      
+<p>Every week, a sales leader tells us some version of the same story: "We tried AI for our sales process. We put a chatbot on our website. It was terrible. Prospects hated it. Our team hated it. We turned it off after two months." Then they conclude that AI is not ready for sales.</p>
+
+<p>The problem is not that AI failed. The problem is that they deployed a chatbot when they needed conversational AI. These are fundamentally different technologies with fundamentally different capabilities, and confusing them is one of the most expensive mistakes sales organizations make in 2026.</p>
+
+<p>This distinction is not academic. It is the difference between an AI that annoys your prospects and loses deals, and an AI that engages prospects naturally, qualifies them intelligently, and books meetings that convert. Understanding the difference — and deploying the right technology — is rapidly becoming a competitive requirement for B2B sales teams.</p>
+
+<h2>What a Chatbot Actually Is</h2>
+
+<p>A chatbot is a rules-based system that follows predefined decision trees. When a user says X, the chatbot responds with Y. When a user clicks option A, the chatbot shows screen B. The interactions are scripted. The paths are predetermined. The "intelligence" is really just conditional logic — if/then statements wrapped in a conversational interface.</p>
+
+<p>Traditional chatbots were the dominant paradigm from roughly 2016 to 2023. Companies like Drift, Intercom, and Qualified built successful businesses around this model. And for simple use cases — answering FAQ questions, routing support tickets, capturing basic lead information — chatbots work adequately.</p>
+
+<p>The problem emerges when you ask a chatbot to do anything that requires understanding context, handling ambiguity, or adapting to unexpected inputs. Ask a chatbot something outside its decision tree, and it either gives an irrelevant canned response or says "I don't understand, let me connect you with a human." Prospects encounter this within 30 seconds. The illusion of intelligence evaporates. Trust is damaged. The prospect either leaves or demands a human, which defeats the purpose of automation.</p>
+
+<p>Chatbots have specific limitations that make them particularly poor for sales conversations:</p>
+
+<p><strong>No contextual understanding.</strong> A chatbot does not understand what a prospect means, only what they literally say. "We are looking at options for securing our remote workforce" and "Our distributed team needs better security" mean the same thing to a human but might trigger completely different (or no) chatbot responses.</p>
+
+<p><strong>No memory across interactions.</strong> If a prospect had a conversation yesterday, the chatbot starts from zero today. There is no continuity, no relationship building, no progressive understanding of the prospect's needs and context.</p>
+
+<p><strong>No ability to handle objections.</strong> Sales conversations involve objections, hesitations, and concerns. "The timing isn't great" requires a fundamentally different response than "We don't have budget." A chatbot cannot distinguish between these or respond appropriately because it does not understand the underlying meaning.</p>
+
+<p><strong>No personalization beyond tokens.</strong> A chatbot can insert a first name and company name. It cannot reference a prospect's recent LinkedIn post about digital transformation challenges, connect it to a relevant case study, and articulate a specific value proposition tailored to their stated priorities. That level of personalization requires understanding, not just pattern matching.</p>
+
+<h2>What Conversational AI Actually Is</h2>
+
+<p>Conversational AI is built on large language models — systems like GPT, Claude, and Gemini that understand and generate human language with genuine comprehension. These models do not follow decision trees. They understand meaning, context, nuance, and intent. They generate responses that are contextually appropriate, topically relevant, and indistinguishable from human-written text.</p>
+
+<p>A modern conversational AI system deployed for sales has capabilities that are categorically different from a chatbot:</p>
+
+<p><strong>True language understanding.</strong> Conversational AI understands what a prospect means, not just what they say. It recognizes that "We are drowning in manual processes" and "Our team spends too much time on repetitive tasks" express the same pain point. It identifies buying signals that a chatbot would miss entirely — subtle language that indicates urgency, frustration with a current vendor, or openness to a new approach.</p>
+
+<p><strong>Contextual memory and continuity.</strong> Conversational AI maintains context across an entire conversation and, when properly implemented, across multiple interactions. It remembers that a prospect mentioned budget approval timing in a previous conversation and naturally follows up on that. It builds a progressively richer understanding of the prospect's situation, needs, and concerns — exactly like a skilled human SDR would.</p>
+
+<p><strong>Dynamic objection handling.</strong> When a prospect raises an objection, conversational AI understands the nature of the objection and responds appropriately. Price concerns get different treatment than timing concerns. Technical objections get different treatment than organizational ones. The AI can draw on relevant case studies, ROI data, and competitive differentiators to address the specific concern — and it knows when an objection is actually a buying signal in disguise.</p>
+
+<p><strong>Genuine personalization.</strong> Conversational AI can ingest account research, recent news, social media activity, and engagement history to craft responses that are genuinely personalized. When a prospect from a healthcare company mentions HIPAA compliance concerns, the AI does not just match the keyword "HIPAA" to a canned response. It understands the compliance landscape, acknowledges the specific challenges healthcare organizations face, references relevant certifications and case studies, and addresses the concern within the broader context of the prospect's stated goals.</p>
+
+<p><strong>Adaptive conversation flow.</strong> There is no decision tree. The conversation flows naturally, guided by the AI's understanding of the prospect's needs and the optimal path toward a booked meeting. If a prospect wants to discuss pricing before features, the AI adapts. If a prospect goes on a tangent about a related challenge, the AI engages productively and naturally guides back to the qualification process. The experience feels like talking to a knowledgeable, helpful person — not navigating a phone menu.</p>
+
+<h2>Why This Distinction Matters for Revenue</h2>
+
+<p>The performance gap between chatbots and conversational AI in sales applications is not marginal. It is dramatic.</p>
+
+<p><strong>Engagement rates.</strong> Chatbots on B2B websites typically see 2 to 5 percent engagement rates, with most visitors ignoring or dismissing them. Conversational AI systems see 15 to 30 percent engagement rates because the interaction quality is high enough that prospects actually want to continue the conversation.</p>
+
+<p><strong>Qualification accuracy.</strong> Chatbots qualify leads through rigid forms disguised as conversations — "What is your budget? What is your timeline? How many employees do you have?" This interrogation format has a 20 to 30 percent completion rate because prospects feel like they are filling out a form, not having a conversation. Conversational AI extracts the same qualification data through natural dialogue, achieving 60 to 80 percent completion rates because the process feels helpful rather than extractive.</p>
+
+<p><strong>Meeting booking rates.</strong> Chatbots that attempt to book meetings typically convert 1 to 3 percent of website visitors who engage with them. Conversational AI systems convert 8 to 15 percent of engaged visitors into booked meetings because they can handle objections, build value, address concerns, and create genuine interest in a conversation with a human — all within the chat interaction.</p>
+
+<p><strong>Meeting quality.</strong> This is arguably the most important metric. Meetings booked through chatbot qualification tend to be lower quality because the qualification was surface-level. Meetings booked through conversational AI qualification tend to be higher quality because the AI has had a genuine discovery conversation, identified real pain points, confirmed fit, and set appropriate expectations. AEs report that conversational AI-sourced meetings are on par with — or better than — human SDR-sourced meetings in terms of qualification quality.</p>
+
+<p><strong>Prospect experience.</strong> In a 2025 study by Gartner, 71 percent of B2B buyers said they would prefer to interact with a helpful AI than wait for a human SDR callback. But 68 percent of buyers said a poor AI interaction (typically a chatbot) made them less likely to engage with the vendor. The technology itself is not the problem — the quality of the AI experience is what determines whether it helps or hurts your pipeline.</p>
+
+<h2>Where Conversational AI Fits in the Sales Process</h2>
+
+<p>Conversational AI is not a replacement for your entire sales team. It is a force multiplier that excels in specific roles within the revenue process:</p>
+
+<p><strong>Website engagement and qualification.</strong> This is the highest-impact, lowest-risk deployment. Conversational AI engages website visitors, qualifies them through natural dialogue, and books meetings for qualified prospects. It handles 100 percent of website interactions 24/7 with consistent quality.</p>
+
+<p><strong>Inbound lead response.</strong> When a prospect fills out a form, downloads content, or requests information, conversational AI initiates immediate follow-up. It asks intelligent follow-up questions based on what the prospect downloaded, qualifies interest and fit, and either books a meeting or enters the prospect into an appropriate nurture sequence.</p>
+
+<p><strong>Outbound prospect engagement.</strong> When a prospect responds to an outbound email or LinkedIn message, conversational AI manages the conversation through qualification and meeting booking. This is particularly valuable for handling responses that arrive outside business hours or during peak periods when human SDRs are at capacity.</p>
+
+<p><strong>Post-demo follow-up and nurture.</strong> After a demo or discovery call, conversational AI can manage ongoing engagement — answering follow-up questions, sharing relevant resources, checking on internal buying process progress, and identifying signals that the deal is advancing or stalling. This frees AEs to focus on active selling rather than follow-up administration.</p>
+
+<p><strong>Customer expansion and renewal.</strong> Conversational AI can engage existing customers around expansion opportunities, proactively address potential churn signals, and qualify upsell and cross-sell opportunities before routing them to account management or customer success teams.</p>
+
+<h2>How to Deploy Conversational AI That Actually Works</h2>
+
+<p>The technology is ready. The question is whether your implementation will be good enough to realize its potential. Here are the critical success factors:</p>
+
+<p><strong>Train it on your real conversations.</strong> Feed the AI examples of your best sales conversations — real emails, real chat transcripts, real call recordings. The AI needs to learn your voice, your value propositions, your differentiators, and the way your best reps handle common objections. Generic AI produces generic conversations. AI trained on your actual sales interactions produces conversations that sound like your best rep.</p>
+
+<p><strong>Give it access to real-time data.</strong> The AI should have access to your CRM, your website analytics, your content library, and your pricing information. When a prospect asks "Do you integrate with Salesforce?" or "What does this cost for a 500-person company?", the AI should provide accurate, specific answers — not redirect to a sales rep for basic information.</p>
+
+<p><strong>Define clear escalation criteria.</strong> The AI should know exactly when to escalate to a human. Complex technical questions, enterprise-grade requirements, existing customer issues, and prospects expressing frustration should all trigger immediate human handoff with full context transfer. The handoff should be seamless — the human should see the entire conversation history and pick up exactly where the AI left off.</p>
+
+<p><strong>Monitor and improve continuously.</strong> Review AI conversations weekly, especially in the first 90 days. Identify where the AI handles things brilliantly and where it falls short. Provide corrective examples for edge cases. Update the AI's knowledge base as your product, pricing, and competitive landscape evolve. The AI should get noticeably better every month.</p>
+
+<p><strong>Be transparent about what it is.</strong> The ethical approach — and increasingly the legally required approach — is to disclose that the prospect is interacting with an AI. Transparency does not hurt conversion rates. In fact, prospects generally appreciate knowing they are talking to an AI, especially when the AI is good. What hurts conversion rates is deception or a bad experience, not disclosure.</p>
+
+<h2>The Bottom Line</h2>
+
+<p>If you tried chatbots and concluded that AI does not work for sales, you owe it to your revenue targets to look again. Conversational AI is a categorically different technology with categorically different results. The gap between a chatbot and conversational AI is like the gap between a calculator and a spreadsheet — they are both "computing," but they are not the same thing, and deploying one when you need the other leads to frustration and wasted investment.</p>
+
+<p>Sales teams that deploy conversational AI effectively in 2026 are seeing 3 to 5 times more qualified meetings from their website, 50 to 70 percent faster speed to lead, and meaningful improvement in pipeline quality. The technology works. The question is whether you will deploy it before your competitors do.</p>
+
+<p><strong>Book a strategy call</strong> to see conversational AI in action on your own website. We will build a proof-of-concept using your actual value propositions, objection handling, and qualification criteria — so you can see exactly how it performs with your prospects, not a generic demo.</p>
+
+<p><a href="/book/">Schedule your strategy call now</a> — we will show you the difference between what you had before and what is possible now.</p>
+
+    </div>
+  </div>
+</div>
+
+<div class="post-footer">
+  <div class="container">
+    <div class="cta-box">
+      <h3>Ready to Build Your AI Workforce?</h3>
+      <p>Schedule a 30-minute strategy call. We will tell you exactly what we would build for your business - and what it would cost.</p>
+      <a href="/book/" class="btn-primary">Book a Strategy Call</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo" style="display:flex;align-items:center;"><img src="/logo.svg" alt="Augentic AI" height="28" style="height:28px;width:auto;" /></div>
+        <div class="footer-tagline">Autonomous AI. Measurable Revenue.</div>
+      </div>
+      <ul class="footer-links">
+        <li><a href="/#solution">Solutions</a></li>
+        <li><a href="/#offerings">Offerings</a></li>
+        <li><a href="/blog/">Insights</a></li>
+        <li><a href="/guide/">AI Guide</a></li>
+        <li><a href="/book/">Book a Call</a></li>
+        <li><a href="mailto:hello@augenticai.com">Contact</a></li>
+      </ul>
+      <div class="footer-copy">&copy; 2026 Augentic AI. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => { mobileMenu.classList.toggle('open'); });
+  function closeMobile() { mobileMenu.classList.remove('open'); }
+  const themeToggle = document.getElementById('themeToggle');
+  const iconSun = document.getElementById('iconSun');
+  const iconMoon = document.getElementById('iconMoon');
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  if (savedTheme === 'light') { document.body.classList.add('light'); iconSun.style.display = 'block'; iconMoon.style.display = 'none'; }
+  themeToggle.addEventListener('click', () => {
+    const isLight = document.body.classList.toggle('light');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    iconSun.style.display = isLight ? 'block' : 'none';
+    iconMoon.style.display = isLight ? 'none' : 'block';
+  });
+</script>
+</body>
+</html>

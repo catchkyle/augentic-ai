@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Front Office for Financial Advisors: Automate Client Onboarding, Never Miss a Prospect Call, and Scale Your Practice Without Adding Headcount | Augentic AI Insights</title>
+  <meta name="description" content="Discover how AI front office systems help financial advisors and wealth management firms automate client onboarding, capture every prospect call, and scale AUM without hiring more staff." />
+  <meta property="og:title" content="AI Front Office for Financial Advisors: Automate Client Onboarding, Never Miss a Prospect Call, and Scale Your Practice Without Adding Headcount" />
+  <meta property="og:description" content="Discover how AI front office systems help financial advisors and wealth management firms automate client onboarding, capture every prospect call, and scale AUM without hiring more staff." />
+  <meta property="og:type" content="article" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0A0A0A; --bg-card: #111111; --bg-raised: #161616;
+      --text: #F5F5F0; --text-muted: #888880; --text-dim: #555550;
+      --accent: #D4AF37; --accent-dim: rgba(212,175,55,0.12);
+      --border: rgba(255,255,255,0.07); --border-accent: rgba(212,175,55,0.3);
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Inter', system-ui, sans-serif;
+      --max: 1200px; --radius: 2px;
+    }
+    body.light {
+      --bg: #FAFAF7; --bg-card: #F2F2EE; --bg-raised: #E8E8E4;
+      --text: #0B0B0B; --text-muted: #444440; --text-dim: #999990;
+      --border: rgba(0,0,0,0.08); --border-accent: rgba(212,175,55,0.4);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-weight: 400; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    ::selection { background: var(--accent-dim); color: var(--accent); }
+    h1,h2,h3,h4 { font-weight: 500; line-height: 1.25; letter-spacing: -0.02em; }
+    h1 { font-family: var(--font-serif); font-size: clamp(2rem,4vw,3.2rem); }
+    h2 { font-family: var(--font-serif); font-size: clamp(1.6rem,3vw,2.4rem); }
+    h3 { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; letter-spacing: 0; }
+    p { color: var(--text-muted); line-height: 1.85; }
+    a { color: inherit; }
+    .label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.5rem 0; transition: background 0.4s, padding 0.3s; }
+    nav.scrolled { background: rgba(10,10,10,0.95); border-bottom: 1px solid var(--border); padding: 1rem 0; backdrop-filter: blur(12px); }
+    body.light nav.scrolled { background: rgba(250,250,247,0.95); }
+    nav .container { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.8rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; padding: 0.65rem 1.4rem; background: var(--accent); color: #0A0A0A; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s; white-space: nowrap; }
+    .nav-cta:hover { opacity: 0.88; }
+    .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+    .theme-toggle { background: none; border: 1px solid var(--border); color: var(--text-muted); cursor: pointer; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius); transition: color 0.2s; flex-shrink: 0; }
+    .theme-toggle:hover { color: var(--accent); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 1px; background: var(--text); }
+    .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 99; background: var(--bg); padding: 6rem 2rem 2rem; flex-direction: column; gap: 2rem; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 1.4rem; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 1.2rem; }
+    footer { background: var(--bg); border-top: 1px solid var(--border); padding: 3rem 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-tagline { font-size: 0.78rem; color: var(--text-dim); margin-top: 0.3rem; }
+    .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.78rem; color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text-muted); }
+    .footer-copy { font-size: 0.75rem; color: var(--text-dim); }
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
+    .btn-primary { display: inline-block; padding: 0.9rem 2rem; background: var(--accent); color: #0A0A0A; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s, transform 0.2s; border: none; cursor: pointer; }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-outline { display: inline-block; padding: 0.85rem 1.8rem; border: 1px solid var(--border-accent); color: var(--accent); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-decoration: none; border-radius: var(--radius); transition: all 0.2s; }
+    .btn-outline:hover { background: var(--accent-dim); }
+    @media (max-width: 900px) { .nav-links, .nav-right .nav-cta { display: none; } .hamburger { display: flex; } }
+  </style>
+  <style>
+    .post-header { padding: 10rem 0 4rem; border-bottom: 1px solid var(--border); }
+    .post-meta { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .post-meta .label { margin: 0; }
+    .post-meta-text { font-size: 0.8rem; color: var(--text-dim); }
+    .post-title { margin-bottom: 1.2rem; }
+    .post-desc { font-size: 1.05rem; max-width: 640px; }
+    .post-body { padding: 5rem 0; }
+    .post-body-inner { max-width: 720px; }
+    .post-body p { margin-bottom: 1.6rem; font-size: 1rem; }
+    .post-body h2 { font-size: 1.5rem; margin: 3rem 0 1rem; color: var(--text); }
+    .post-body strong { color: var(--text); font-weight: 500; }
+    .x-credit { background: var(--bg-card); border: 1px solid var(--border-accent); border-left: 3px solid var(--accent); padding: 1.2rem 1.5rem; margin: 2.5rem 0; font-size: 0.88rem; color: var(--text-muted); font-style: italic; border-radius: 0 var(--radius) var(--radius) 0; }
+    .post-footer { padding: 4rem 0; border-top: 1px solid var(--border); }
+    .cta-box { background: var(--bg-card); border: 1px solid var(--border); padding: 3rem; text-align: center; max-width: 600px; margin: 0 auto; }
+    .cta-box h3 { font-family: var(--font-serif); font-size: 1.6rem; margin-bottom: 1rem; color: var(--text); }
+    .cta-box p { margin-bottom: 2rem; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: var(--text-muted); text-decoration: none; margin-bottom: 3rem; transition: color 0.2s; }
+    .back-link:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+<nav id="nav">
+  <div class="container">
+    <a href="/" class="nav-logo" style="display:flex;align-items:center;text-decoration:none;"><img src="/logo.svg" alt="Augentic AI" height="37" style="height:37px;width:auto;" /></a>
+    <ul class="nav-links">
+      <li><a href="/#solution">Solutions</a></li>
+      <li><a href="/#offerings">Offerings</a></li>
+      <li><a href="/blog/">Insights</a></li>
+      <li><a href="/guide/">AI Guide</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg id="iconSun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg id="iconMoon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="/book/" class="nav-cta">Book Strategy Call</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/#solution" onclick="closeMobile()">Solutions</a>
+  <a href="/#offerings" onclick="closeMobile()">Offerings</a>
+  <a href="/blog/" onclick="closeMobile()">Insights</a>
+  <a href="/guide/" onclick="closeMobile()">AI Guide</a>
+  <a href="/book/" onclick="closeMobile()" style="color:var(--accent);">Book Strategy Call</a>
+</div>
+
+<div class="post-header">
+  <div class="container">
+    <a href="/blog/" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M13 7H1M6 2L1 7l5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to Insights
+    </a>
+    <div class="post-meta">
+      <span class="label">Industry Solutions</span>
+      <span class="post-meta-text">March 14, 2026</span>
+      <span class="post-meta-text">11 min read</span>
+    </div>
+    <h1 class="post-title">AI Front Office for Financial Advisors: Automate Client Onboarding, Never Miss a Prospect Call, and Scale Your Practice Without Adding Headcount</h1>
+    <p class="post-desc">Discover how AI front office systems help financial advisors and wealth management firms automate client onboarding, capture every prospect call, and scale AUM without hiring more staff.</p>
+  </div>
+</div>
+
+<div class="post-body">
+  <div class="container">
+    <div class="post-body-inner">
+      
+      
+<h2>The Financial Advisory Front Office Is Broken</h2>
+
+<p>If you run a financial advisory practice — whether you are an independent RIA, a wealth management team, or a multi-advisor firm — you already know the problem. Your front office is simultaneously the most important part of your business and the most neglected.</p>
+
+<p>Here is what the typical financial advisory front office looks like in 2026: a receptionist who splits time between answering phones and administrative work, a CRM that is only half-updated, prospect calls that go to voicemail during lunch breaks and after hours, and a client onboarding process that involves emailing PDF forms back and forth for weeks.</p>
+
+<p>The result? Missed prospect calls that never call back. Onboarding processes that take 3-4 weeks when they should take 3-4 days. Existing clients who cannot get a simple question answered without leaving a voicemail and waiting. And advisors who spend 30-40% of their time on administrative tasks instead of the high-value advisory work that actually grows AUM.</p>
+
+<p>This is not a staffing problem. Hiring another receptionist or client service associate does not fix the structural issue. The problem is that human-dependent front office workflows cannot scale, cannot operate 24/7, and cannot deliver the consistent, instant responsiveness that modern clients expect.</p>
+
+<h2>What an AI Front Office Actually Does for Financial Advisors</h2>
+
+<p>An AI front office system is not a chatbot on your website. It is not a phone tree. It is an autonomous system that handles the full spectrum of front office operations — from answering calls and scheduling meetings to processing onboarding documents and routing client requests — without human intervention for routine tasks.</p>
+
+<p>Here is how it works in practice for a financial advisory firm:</p>
+
+<h3>Inbound Call Handling and Prospect Capture</h3>
+
+<p>When a prospect calls your office — whether it is 10 AM on a Tuesday or 8 PM on a Saturday — the AI receptionist answers. Not with a robotic menu, but with a natural conversation. It identifies whether the caller is an existing client or a new prospect, understands what they need, and takes the appropriate action.</p>
+
+<p>For prospects, it qualifies them in real time. It asks about their investable assets, their current advisory situation, what prompted them to call, and their timeline. It books them directly into your calendar based on your availability rules — the right advisor, the right meeting type, the right duration. It sends a confirmation email and a pre-meeting questionnaire automatically.</p>
+
+<p>For existing clients, it handles routine requests immediately: confirming upcoming appointments, providing office hours and directions, answering FAQs about document submission, and routing complex questions to the appropriate advisor or CSA with full context.</p>
+
+<h3>Client Onboarding Automation</h3>
+
+<p>Client onboarding in financial services is notoriously slow. Between custodial paperwork, compliance documentation, risk tolerance questionnaires, account transfer forms (ACATs), and beneficiary designations, a single new client can generate 15-20 documents that need to be completed, reviewed, and processed.</p>
+
+<p>An AI front office system transforms this from a weeks-long email chain into a streamlined, guided workflow. New clients receive a personalized onboarding portal. The AI system tracks which documents are complete, sends intelligent reminders for missing items, validates information for common errors before submission, and flags compliance issues for advisor review.</p>
+
+<p>The difference is dramatic. Firms using AI-driven onboarding consistently report reducing their average onboarding time from 21 days to 5 days. That is not just an operational improvement — it is a client experience improvement that sets the tone for the entire relationship.</p>
+
+<h3>Meeting Preparation and Follow-Up</h3>
+
+<p>Before every client meeting, the AI system automatically compiles a briefing: recent account activity, upcoming life events (birthdays, anniversaries, retirement dates), any open action items from previous meetings, and relevant market context for the client's portfolio allocation. The advisor walks into every meeting prepared, without spending 20 minutes pulling up information.</p>
+
+<p>After meetings, the AI processes advisor notes (voice or text), generates the meeting summary, creates follow-up tasks, and sends the client a recap email with action items and next steps. What used to take an advisor or CSA 15-20 minutes per meeting now happens automatically.</p>
+
+<h2>The Revenue Math: What Missed Calls Actually Cost a Financial Advisory Firm</h2>
+
+<p>Let us get specific about the financial impact, because this is where the business case becomes undeniable.</p>
+
+<p>The average financial advisory firm receives 8-15 inbound prospect calls per month. Industry data shows that 35-50% of these calls go unanswered — voicemail, hold times, or busy signals during peak hours. Of the calls that go to voicemail, only 20% of prospects leave a message, and only 60% of those are successfully re-contacted.</p>
+
+<p>Run the math on a mid-size RIA:</p>
+
+<p>12 prospect calls per month × 40% missed = 4.8 missed prospect calls per month. Of those 4.8 missed calls, only about 0.6 are ever recovered (20% leave a message × 60% reconnect rate). That means 4.2 prospects per month — 50 per year — simply disappear.</p>
+
+<p>If your average new client brings $500,000 in AUM and your closing rate on qualified prospects is 30%, those 50 lost prospects represent 15 new clients and $7.5 million in AUM you never captured. At a 1% advisory fee, that is $75,000 in annual recurring revenue — lost every single year, compounding.</p>
+
+<p>Over five years, a single year's missed calls cost you $375,000 in cumulative revenue. And that is a conservative estimate for a mid-size firm.</p>
+
+<p>An AI front office system that answers every call, qualifies every prospect, and books every meeting eliminates this leak entirely. The ROI is not theoretical — it is directly measurable in AUM growth and revenue capture.</p>
+
+<h2>Compliance and Security: The Non-Negotiable Requirements</h2>
+
+<p>Financial advisors operate under strict regulatory requirements — SEC, FINRA, state regulators, and fiduciary obligations. Any AI system that touches client interactions must meet specific compliance standards.</p>
+
+<p>This is actually where AI front office systems offer an advantage over human-dependent workflows. Every interaction is automatically logged and archived. Call recordings are transcribed and stored with proper retention policies. Client communications are documented in a compliance-ready format. There is no risk of an undocumented verbal commitment or a missed disclosure.</p>
+
+<p>The AI system enforces consistent compliance language in every interaction — every disclaimer is delivered, every required disclosure is made, every time. Human staff, no matter how well-trained, inevitably have inconsistencies. The AI does not.</p>
+
+<p>For firms subject to the SEC's books and records requirements (Rule 17a-4 and Rule 204-2), automated archival of all client communications through the AI system actually simplifies compliance rather than complicating it. Every interaction has a timestamp, a transcript, and a clear audit trail.</p>
+
+<h2>Real-World Implementation: What This Looks Like for Different Practice Sizes</h2>
+
+<h3>Solo Advisor ($50M-$150M AUM)</h3>
+
+<p>For the solo practitioner, the AI front office essentially replaces the need for a full-time receptionist — a $45,000-$65,000 annual expense including benefits. The AI handles all inbound calls, schedules all meetings, manages onboarding workflows, and sends routine client communications.</p>
+
+<p>The solo advisor gets their time back. Instead of being interrupted by phone calls during client meetings, or spending evenings returning voicemails, they focus exclusively on advisory work and business development. The typical solo advisor reclaims 12-15 hours per week — time that directly converts into more client meetings, deeper planning work, and proactive outreach.</p>
+
+<h3>Small Team (2-5 Advisors, $150M-$500M AUM)</h3>
+
+<p>Small teams often have one or two client service associates trying to support multiple advisors. The AI front office handles the high-volume, low-complexity work — call answering, scheduling, onboarding coordination, routine inquiries — so the CSAs can focus on complex client service, financial plan preparation, and advisor support.</p>
+
+<p>The result is not headcount reduction but capacity multiplication. The same team handles 40-60% more clients without degradation in service quality. For a growing practice, this means you can onboard new clients at twice the rate without the operational bottleneck that typically forces firms to hire before they are ready.</p>
+
+<h3>Multi-Advisor Firm (5+ Advisors, $500M+ AUM)</h3>
+
+<p>Larger firms benefit from the consistency and routing intelligence of an AI front office. Every caller gets the same professional experience regardless of when they call or which office they reach. Prospects are routed to the right advisor based on their profile — asset level, geographic location, planning needs. Client requests are triaged and prioritized automatically.</p>
+
+<p>The operational data is equally valuable. The AI system provides detailed analytics on call volume patterns, prospect conversion rates by source, average onboarding timelines, and client service request types. This data drives better staffing decisions, marketing allocation, and process optimization.</p>
+
+<h2>Why Financial Advisors Cannot Afford to Wait</h2>
+
+<p>The financial advisory industry is undergoing a generational shift. The next generation of high-net-worth clients — millennials inheriting wealth and Gen X entering peak earning years — have fundamentally different service expectations. They expect instant responses, digital-first interactions, and seamless experiences. They do not leave voicemails. They do not wait three weeks for paperwork to process. They find another advisor.</p>
+
+<p>Firms that implement AI front office systems now gain a compounding advantage. Every prospect call captured, every client experience improved, every hour of advisor time reclaimed compounds over time. The firms that wait will find themselves competing for clients against practices that operate at twice the capacity with half the overhead.</p>
+
+<p>This is not about replacing the human element of financial advice — the relationship, the trust, the nuanced planning conversations. It is about removing the operational friction that prevents advisors from spending more time on exactly those human elements. The AI handles the routine so the advisor can focus on what actually matters: the advice.</p>
+
+<h2>The System vs. Tool Distinction Matters Here</h2>
+
+<p>If you are evaluating AI solutions for your practice, understand the difference between AI tools and AI systems. A chatbot on your website is a tool. An AI-powered phone menu is a tool. An automated email sequence is a tool.</p>
+
+<p>An AI front office system integrates all of these functions — and more — into a unified, autonomous operation that works together. The phone system knows about the onboarding workflow. The scheduling system knows about the compliance requirements. The client communication system knows about the meeting history. Everything is connected, everything is intelligent, and everything operates without constant human oversight.</p>
+
+<p>Tools create more work (someone has to manage each tool). Systems eliminate work. For financial advisors already stretched thin, that distinction is the difference between AI that helps and AI that just adds another thing to manage.</p>
+
+<h2>Take the Next Step</h2>
+
+<p>If you are a financial advisor or practice manager evaluating how AI can transform your front office operations, the first step is understanding your current capacity gaps and the specific revenue impact of your existing workflow inefficiencies.</p>
+
+<p><strong>Book a strategy call</strong> to get a custom analysis of your practice's front office operations — including estimated lost prospect revenue, onboarding timeline benchmarks, and a clear ROI projection for an AI front office system tailored to your practice size and client base.</p>
+
+<p><a href="/book/">Schedule your strategy call now</a> — no obligation, no generic pitch. Just a focused conversation about what AI can specifically do for your practice.</p>
+
+    </div>
+  </div>
+</div>
+
+<div class="post-footer">
+  <div class="container">
+    <div class="cta-box">
+      <h3>Ready to Build Your AI Workforce?</h3>
+      <p>Schedule a 30-minute strategy call. We will tell you exactly what we would build for your business - and what it would cost.</p>
+      <a href="/book/" class="btn-primary">Book a Strategy Call</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo" style="display:flex;align-items:center;"><img src="/logo.svg" alt="Augentic AI" height="28" style="height:28px;width:auto;" /></div>
+        <div class="footer-tagline">Autonomous AI. Measurable Revenue.</div>
+      </div>
+      <ul class="footer-links">
+        <li><a href="/#solution">Solutions</a></li>
+        <li><a href="/#offerings">Offerings</a></li>
+        <li><a href="/blog/">Insights</a></li>
+        <li><a href="/guide/">AI Guide</a></li>
+        <li><a href="/book/">Book a Call</a></li>
+        <li><a href="mailto:hello@augenticai.com">Contact</a></li>
+      </ul>
+      <div class="footer-copy">&copy; 2026 Augentic AI. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => { mobileMenu.classList.toggle('open'); });
+  function closeMobile() { mobileMenu.classList.remove('open'); }
+  const themeToggle = document.getElementById('themeToggle');
+  const iconSun = document.getElementById('iconSun');
+  const iconMoon = document.getElementById('iconMoon');
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  if (savedTheme === 'light') { document.body.classList.add('light'); iconSun.style.display = 'block'; iconMoon.style.display = 'none'; }
+  themeToggle.addEventListener('click', () => {
+    const isLight = document.body.classList.toggle('light');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    iconSun.style.display = isLight ? 'block' : 'none';
+    iconMoon.style.display = isLight ? 'none' : 'block';
+  });
+</script>
+</body>
+</html>

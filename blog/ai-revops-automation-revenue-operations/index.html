@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI RevOps Automation: How Autonomous Systems Replace Manual Revenue Operations and Accelerate Pipeline Velocity | Augentic AI Insights</title>
+  <meta name="description" content="Learn how AI RevOps automation eliminates manual handoffs, fixes pipeline leaks, and accelerates revenue operations across marketing, sales, and customer success teams." />
+  <meta property="og:title" content="AI RevOps Automation: How Autonomous Systems Replace Manual Revenue Operations and Accelerate Pipeline Velocity" />
+  <meta property="og:description" content="Learn how AI RevOps automation eliminates manual handoffs, fixes pipeline leaks, and accelerates revenue operations across marketing, sales, and customer success teams." />
+  <meta property="og:type" content="article" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0A0A0A; --bg-card: #111111; --bg-raised: #161616;
+      --text: #F5F5F0; --text-muted: #888880; --text-dim: #555550;
+      --accent: #D4AF37; --accent-dim: rgba(212,175,55,0.12);
+      --border: rgba(255,255,255,0.07); --border-accent: rgba(212,175,55,0.3);
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Inter', system-ui, sans-serif;
+      --max: 1200px; --radius: 2px;
+    }
+    body.light {
+      --bg: #FAFAF7; --bg-card: #F2F2EE; --bg-raised: #E8E8E4;
+      --text: #0B0B0B; --text-muted: #444440; --text-dim: #999990;
+      --border: rgba(0,0,0,0.08); --border-accent: rgba(212,175,55,0.4);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-weight: 400; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    ::selection { background: var(--accent-dim); color: var(--accent); }
+    h1,h2,h3,h4 { font-weight: 500; line-height: 1.25; letter-spacing: -0.02em; }
+    h1 { font-family: var(--font-serif); font-size: clamp(2rem,4vw,3.2rem); }
+    h2 { font-family: var(--font-serif); font-size: clamp(1.6rem,3vw,2.4rem); }
+    h3 { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; letter-spacing: 0; }
+    p { color: var(--text-muted); line-height: 1.85; }
+    a { color: inherit; }
+    .label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.5rem 0; transition: background 0.4s, padding 0.3s; }
+    nav.scrolled { background: rgba(10,10,10,0.95); border-bottom: 1px solid var(--border); padding: 1rem 0; backdrop-filter: blur(12px); }
+    body.light nav.scrolled { background: rgba(250,250,247,0.95); }
+    nav .container { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.8rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; padding: 0.65rem 1.4rem; background: var(--accent); color: #0A0A0A; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s; white-space: nowrap; }
+    .nav-cta:hover { opacity: 0.88; }
+    .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+    .theme-toggle { background: none; border: 1px solid var(--border); color: var(--text-muted); cursor: pointer; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius); transition: color 0.2s; flex-shrink: 0; }
+    .theme-toggle:hover { color: var(--accent); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 1px; background: var(--text); }
+    .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 99; background: var(--bg); padding: 6rem 2rem 2rem; flex-direction: column; gap: 2rem; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 1.4rem; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 1.2rem; }
+    footer { background: var(--bg); border-top: 1px solid var(--border); padding: 3rem 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-tagline { font-size: 0.78rem; color: var(--text-dim); margin-top: 0.3rem; }
+    .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.78rem; color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text-muted); }
+    .footer-copy { font-size: 0.75rem; color: var(--text-dim); }
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
+    .btn-primary { display: inline-block; padding: 0.9rem 2rem; background: var(--accent); color: #0A0A0A; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s, transform 0.2s; border: none; cursor: pointer; }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-outline { display: inline-block; padding: 0.85rem 1.8rem; border: 1px solid var(--border-accent); color: var(--accent); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-decoration: none; border-radius: var(--radius); transition: all 0.2s; }
+    .btn-outline:hover { background: var(--accent-dim); }
+    @media (max-width: 900px) { .nav-links, .nav-right .nav-cta { display: none; } .hamburger { display: flex; } }
+  </style>
+  <style>
+    .post-header { padding: 10rem 0 4rem; border-bottom: 1px solid var(--border); }
+    .post-meta { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .post-meta .label { margin: 0; }
+    .post-meta-text { font-size: 0.8rem; color: var(--text-dim); }
+    .post-title { margin-bottom: 1.2rem; }
+    .post-desc { font-size: 1.05rem; max-width: 640px; }
+    .post-body { padding: 5rem 0; }
+    .post-body-inner { max-width: 720px; }
+    .post-body p { margin-bottom: 1.6rem; font-size: 1rem; }
+    .post-body h2 { font-size: 1.5rem; margin: 3rem 0 1rem; color: var(--text); }
+    .post-body strong { color: var(--text); font-weight: 500; }
+    .x-credit { background: var(--bg-card); border: 1px solid var(--border-accent); border-left: 3px solid var(--accent); padding: 1.2rem 1.5rem; margin: 2.5rem 0; font-size: 0.88rem; color: var(--text-muted); font-style: italic; border-radius: 0 var(--radius) var(--radius) 0; }
+    .post-footer { padding: 4rem 0; border-top: 1px solid var(--border); }
+    .cta-box { background: var(--bg-card); border: 1px solid var(--border); padding: 3rem; text-align: center; max-width: 600px; margin: 0 auto; }
+    .cta-box h3 { font-family: var(--font-serif); font-size: 1.6rem; margin-bottom: 1rem; color: var(--text); }
+    .cta-box p { margin-bottom: 2rem; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: var(--text-muted); text-decoration: none; margin-bottom: 3rem; transition: color 0.2s; }
+    .back-link:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+<nav id="nav">
+  <div class="container">
+    <a href="/" class="nav-logo" style="display:flex;align-items:center;text-decoration:none;"><img src="/logo.svg" alt="Augentic AI" height="37" style="height:37px;width:auto;" /></a>
+    <ul class="nav-links">
+      <li><a href="/#solution">Solutions</a></li>
+      <li><a href="/#offerings">Offerings</a></li>
+      <li><a href="/blog/">Insights</a></li>
+      <li><a href="/guide/">AI Guide</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg id="iconSun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg id="iconMoon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="/book/" class="nav-cta">Book Strategy Call</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/#solution" onclick="closeMobile()">Solutions</a>
+  <a href="/#offerings" onclick="closeMobile()">Offerings</a>
+  <a href="/blog/" onclick="closeMobile()">Insights</a>
+  <a href="/guide/" onclick="closeMobile()">AI Guide</a>
+  <a href="/book/" onclick="closeMobile()" style="color:var(--accent);">Book Strategy Call</a>
+</div>
+
+<div class="post-header">
+  <div class="container">
+    <a href="/blog/" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M13 7H1M6 2L1 7l5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to Insights
+    </a>
+    <div class="post-meta">
+      <span class="label">RevOps</span>
+      <span class="post-meta-text">March 16, 2026</span>
+      <span class="post-meta-text">10 min read</span>
+    </div>
+    <h1 class="post-title">AI RevOps Automation: How Autonomous Systems Replace Manual Revenue Operations and Accelerate Pipeline Velocity</h1>
+    <p class="post-desc">Learn how AI RevOps automation eliminates manual handoffs, fixes pipeline leaks, and accelerates revenue operations across marketing, sales, and customer success teams.</p>
+  </div>
+</div>
+
+<div class="post-body">
+  <div class="container">
+    <div class="post-body-inner">
+      
+      
+<h2>Revenue Operations Has a Execution Problem, Not a Strategy Problem</h2>
+
+<p>Most revenue leaders already know what good RevOps looks like. Aligned marketing, sales, and customer success teams. Clean handoffs between stages. Accurate forecasting. Real-time pipeline visibility. The frameworks exist. The playbooks are written. The problem is that executing RevOps at scale with human-dependent processes creates so much friction that the strategy never fully materializes.</p>
+
+<p>Here is what RevOps actually looks like inside most B2B companies in 2026: marketing generates leads that sit in a queue for hours before sales touches them. Sales reps manually update CRM records — when they remember to. Handoffs between SDRs and AEs involve Slack messages and hoping someone follows up. Customer success learns about expansion opportunities weeks after the signals appeared. And the RevOps team spends 60% of its time cleaning data and building reports instead of optimizing the revenue engine.</p>
+
+<p>The result is predictable. Pipeline velocity stalls. Conversion rates plateau. Forecast accuracy hovers around 60%. And revenue leaders keep hiring more people to manage processes that should not require people in the first place.</p>
+
+<p>AI RevOps automation changes this equation entirely. Not by adding another dashboard or analytics layer, but by replacing the manual execution layer with autonomous systems that handle handoffs, data hygiene, follow-ups, and routing without human intervention.</p>
+
+<h2>Where Revenue Operations Breaks Down: The Five Pipeline Leaks</h2>
+
+<p>Before understanding how AI fixes RevOps, you need to understand where it breaks. In our work with B2B companies ranging from $5M to $100M in revenue, we see the same five pipeline leaks repeatedly:</p>
+
+<h3>Leak 1: Speed-to-Lead Decay</h3>
+
+<p>Research consistently shows that responding to inbound leads within five minutes produces 8x higher conversion rates than responding within 30 minutes. Yet the average B2B company takes over four hours to respond to a new lead. Why? Because lead routing depends on round-robin assignment rules, SDR availability, and manual notification systems. When a lead comes in at 4:55 PM on a Friday, it might not get touched until Monday morning. That lead has already talked to two competitors by then.</p>
+
+<h3>Leak 2: CRM Data Decay</h3>
+
+<p>Your CRM is only as useful as the data inside it. When reps are responsible for updating deal stages, logging activities, and maintaining contact records, data quality degrades rapidly. Studies show that CRM data decays at roughly 30% per year — meaning nearly a third of your records become inaccurate annually. Bad data means bad routing, bad forecasting, and bad decisions. RevOps teams spend enormous effort on data cleanup that never actually catches up.</p>
+
+<h3>Leak 3: Handoff Failures</h3>
+
+<p>Every stage transition in your revenue process — from MQL to SQL, from SDR to AE, from AE to CS — is a potential leak point. The information that matters (why the prospect is interested, what they said on the discovery call, what was promised during the sales process) lives in scattered notes, email threads, and call recordings. When handoffs depend on humans summarizing and transferring context, critical details get lost. The customer notices, and it erodes trust before the relationship even starts.</p>
+
+<h3>Leak 4: Follow-Up Abandonment</h3>
+
+<p>Most sales processes require 6-8 touches to convert a prospect. Most reps give up after 2-3. Not because they are lazy, but because they are juggling 40-60 active opportunities and the cognitive load of remembering who needs what follow-up, when, and with what context is unsustainable. The prospects who needed one more touchpoint quietly disappear from the pipeline, and nobody notices because the CRM still shows them as "open."</p>
+
+<h3>Leak 5: Expansion Signal Blindness</h3>
+
+<p>Existing customers generate expansion signals constantly — increased usage, new team members onboarding, support tickets about features in higher tiers, contract renewal dates approaching. These signals exist in your data, but connecting them to action requires someone to monitor multiple systems, correlate patterns, and alert the right account manager at the right time. In practice, most expansion opportunities are discovered accidentally or too late.</p>
+
+<h2>How AI RevOps Automation Plugs Each Leak</h2>
+
+<p>AI RevOps automation is not a single tool. It is an interconnected system of autonomous agents that operate across your entire revenue process, handling the execution work that humans currently do manually — but faster, more consistently, and around the clock.</p>
+
+<h3>Autonomous Lead Response and Qualification</h3>
+
+<p>When a new lead enters your system — from a form fill, a chatbot conversation, an inbound call, or a partner referral — an AI agent immediately engages. Not with a generic autoresponder, but with a contextual response based on the lead's source, behavior, company profile, and the specific action they took.</p>
+
+<p>The AI agent qualifies the lead against your ICP criteria in real time, asking clarifying questions when needed, and routes qualified opportunities to the right rep within seconds. Leads that come in at midnight get the same immediate, intelligent response as leads that arrive at 10 AM. Speed-to-lead drops from hours to seconds.</p>
+
+<p>One professional services firm we work with implemented autonomous lead response and saw their lead-to-meeting conversion rate increase by 340% within 60 days — not because the AI was "better" at selling, but because it simply responded to every lead within 30 seconds instead of the previous average of 6 hours.</p>
+
+<h3>Continuous CRM Hygiene and Enrichment</h3>
+
+<p>Instead of relying on reps to update records and RevOps teams to run cleanup scripts, AI agents continuously monitor and maintain your CRM data. After every call, the AI automatically logs the conversation, updates the deal stage based on what was discussed, tags key topics and objections, and flags any data inconsistencies.</p>
+
+<p>But it goes further than logging. AI agents actively enrich records by cross-referencing public data sources, monitoring job changes and company news, and updating firmographic data. When a contact changes roles, the AI updates the record and alerts the account owner. When a company raises funding or announces an expansion, the AI flags it as a potential trigger event.</p>
+
+<p>The result: CRM accuracy above 95%, with zero manual data entry burden on your sales team. Reps get time back. RevOps gets clean data. Forecasting gets reliable.</p>
+
+<h3>Intelligent Handoff Orchestration</h3>
+
+<p>AI-powered handoffs do not depend on humans remembering to send a summary email. When a deal moves from SDR to AE, the AI automatically generates a comprehensive handoff brief — including conversation history, qualification notes, stated pain points, timeline, budget signals, and recommended next steps. The AE walks into the first meeting fully briefed, and the prospect never has to repeat themselves.</p>
+
+<p>The same applies at every stage transition. When a deal closes, the AI creates a customer success onboarding package that includes everything promised during the sales process, the customer's stated goals, key stakeholders and their roles, and a recommended onboarding timeline based on similar customers. No more "what did sales promise them?" conversations.</p>
+
+<h3>Persistent Follow-Up Sequences</h3>
+
+<p>AI agents do not forget to follow up. They do not get overwhelmed by volume. They do not deprioritize a prospect because a bigger deal came in. Every open opportunity gets the right follow-up at the right time with the right context.</p>
+
+<p>This is not basic email sequencing. AI-driven follow-up adapts based on prospect behavior — what they opened, what they clicked, what they said in previous conversations, what is happening at their company. A prospect who downloaded a case study about cybersecurity gets a follow-up referencing that specific interest, not a generic check-in email.</p>
+
+<p>The AI also knows when to escalate. If a prospect has gone dark after showing strong buying signals, the system alerts the rep and suggests a re-engagement approach based on what has worked with similar prospects. No more deals silently dying in the pipeline.</p>
+
+<h3>Proactive Expansion Intelligence</h3>
+
+<p>AI agents continuously monitor your customer base for expansion signals. Increased product usage, new department adoption, support tickets indicating feature needs, upcoming renewal dates, company growth announcements — all of these signals are captured, correlated, and turned into actionable alerts for your CS and account management teams.</p>
+
+<p>Instead of waiting for a quarterly business review to discover that a customer has tripled their usage, the AI flags expansion opportunities in real time and recommends specific actions. Your account managers spend their time having strategic conversations with customers who are ready to expand, not hunting for signals across five different platforms.</p>
+
+<h2>The Compound Effect: Why AI RevOps Is Not Incremental Improvement</h2>
+
+<p>Each of these capabilities individually delivers measurable ROI. But the real power of AI RevOps automation is the compound effect when all five operate simultaneously across your revenue process.</p>
+
+<p>Consider the math. If autonomous lead response improves your lead-to-meeting rate by 40%, clean CRM data improves your forecast accuracy by 25%, intelligent handoffs reduce early-stage churn by 30%, persistent follow-up recovers 15% of stalled deals, and proactive expansion intelligence increases net revenue retention by 10% — the combined impact on revenue is not additive. It is multiplicative.</p>
+
+<p>A $20M ARR company with these improvements does not grow 10% faster. It grows 40-60% faster, because the improvements compound across the entire funnel. Better lead response fills the top of the funnel. Clean data ensures nothing leaks in the middle. Intelligent handoffs protect conversion rates. Persistent follow-up accelerates close rates. And expansion intelligence grows the base.</p>
+
+<p>This is why AI RevOps automation is not an incremental improvement to add to your existing stack. It is a fundamental restructuring of how revenue operations execute.</p>
+
+<h2>What This Looks Like in Practice: A Day in the Life</h2>
+
+<p>Here is what a Monday morning looks like for a VP of Revenue Operations after implementing AI RevOps automation:</p>
+
+<p>7:00 AM — Before you open your laptop, the AI has already responded to 14 inbound leads that came in over the weekend. Three were qualified and have meetings booked with AEs for this week. The others received personalized nurture sequences based on their specific interests and company profiles.</p>
+
+<p>8:00 AM — Your pipeline dashboard shows accurate, real-time data because the AI updated every deal record based on Friday afternoon's calls. Two deals moved to negotiation stage. One was flagged as at-risk because the champion mentioned budget concerns on their last call.</p>
+
+<p>9:00 AM — The AI surfaces three expansion opportunities: one customer's usage increased 200% last month, another has a renewal coming up in 45 days with strong NPS scores, and a third just hired a new VP of IT who historically champions your type of solution. Your CS team already has the context they need.</p>
+
+<p>10:00 AM — You are reviewing strategic priorities and optimizing processes instead of cleaning data, chasing reps for CRM updates, or building reports. The AI handles the execution. You handle the strategy.</p>
+
+<p>That is not a fantasy scenario. That is what AI RevOps automation actually delivers when implemented as a system rather than a collection of disconnected tools.</p>
+
+<h2>Why Point Solutions Fail at RevOps Automation</h2>
+
+<p>You might be thinking: "We already have tools for some of this. We have lead routing software. We have email sequencing. We have a data enrichment vendor." And you are right. Most revenue teams have 8-15 different tools in their stack, each solving a narrow slice of the problem.</p>
+
+<p>The issue is that point solutions create their own operational overhead. Someone has to configure them, maintain them, monitor them, and — most importantly — connect them to each other. The integration work alone often requires a full-time RevOps engineer. And when something breaks in the middle of the chain, deals fall through the cracks until someone notices.</p>
+
+<p>AI RevOps automation works differently. Instead of bolting tools together, you deploy an integrated system of AI agents that share context, coordinate actions, and operate across your entire revenue process. The lead response agent knows what the CRM hygiene agent found. The handoff agent knows what the follow-up agent has sent. The expansion agent knows everything that happened during the sales process.</p>
+
+<p>Shared context across the entire revenue lifecycle is what separates a system from a stack of tools. And it is what makes the compound effect possible.</p>
+
+<h2>Getting Started: The RevOps Automation Assessment</h2>
+
+<p>Implementing AI RevOps automation does not require ripping out your existing stack overnight. The most effective approach starts with identifying your highest-impact pipeline leak and deploying targeted automation there first.</p>
+
+<p>For most companies, the highest-impact starting point is speed-to-lead — because it is the easiest to measure, delivers the fastest ROI, and builds organizational confidence in AI-powered operations. From there, you expand systematically: CRM automation, handoff orchestration, follow-up persistence, and expansion intelligence.</p>
+
+<p>The key is starting with a system mindset, even when deploying incrementally. Each automation you add should integrate with the others, building toward a fully autonomous revenue operations engine rather than adding another disconnected tool to the stack.</p>
+
+<p><strong>Book a RevOps automation strategy call</strong> to get a custom pipeline leak analysis for your business. We will map your current revenue process, identify the highest-impact automation opportunities, and build a phased implementation roadmap with clear ROI projections at each stage.</p>
+
+<p><a href="/book/">Schedule your strategy call now</a> — whether you are a $5M startup trying to scale efficiently or a $50M company trying to break through a revenue plateau, the conversation starts with understanding where your pipeline is leaking and how autonomous systems can plug those leaks permanently.</p>
+
+    </div>
+  </div>
+</div>
+
+<div class="post-footer">
+  <div class="container">
+    <div class="cta-box">
+      <h3>Ready to Build Your AI Workforce?</h3>
+      <p>Schedule a 30-minute strategy call. We will tell you exactly what we would build for your business - and what it would cost.</p>
+      <a href="/book/" class="btn-primary">Book a Strategy Call</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo" style="display:flex;align-items:center;"><img src="/logo.svg" alt="Augentic AI" height="28" style="height:28px;width:auto;" /></div>
+        <div class="footer-tagline">Autonomous AI. Measurable Revenue.</div>
+      </div>
+      <ul class="footer-links">
+        <li><a href="/#solution">Solutions</a></li>
+        <li><a href="/#offerings">Offerings</a></li>
+        <li><a href="/blog/">Insights</a></li>
+        <li><a href="/guide/">AI Guide</a></li>
+        <li><a href="/book/">Book a Call</a></li>
+        <li><a href="mailto:hello@augenticai.com">Contact</a></li>
+      </ul>
+      <div class="footer-copy">&copy; 2026 Augentic AI. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => { mobileMenu.classList.toggle('open'); });
+  function closeMobile() { mobileMenu.classList.remove('open'); }
+  const themeToggle = document.getElementById('themeToggle');
+  const iconSun = document.getElementById('iconSun');
+  const iconMoon = document.getElementById('iconMoon');
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  if (savedTheme === 'light') { document.body.classList.add('light'); iconSun.style.display = 'block'; iconMoon.style.display = 'none'; }
+  themeToggle.addEventListener('click', () => {
+    const isLight = document.body.classList.toggle('light');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    iconSun.style.display = isLight ? 'block' : 'none';
+    iconMoon.style.display = isLight ? 'none' : 'block';
+  });
+</script>
+</body>
+</html>

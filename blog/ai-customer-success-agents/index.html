@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Customer Success Agents: Reducing Churn with Autonomous Outreach | Augentic AI Insights</title>
+  <meta name="description" content="How autonomous AI agents are transforming customer success—detecting churn risk earlier, triggering personalized outreach at scale, and freeing CSMs to focus where human relationships matter most." />
+  <meta property="og:title" content="AI Customer Success Agents: Reducing Churn with Autonomous Outreach" />
+  <meta property="og:description" content="How autonomous AI agents are transforming customer success—detecting churn risk earlier, triggering personalized outreach at scale, and freeing CSMs to focus where human relationships matter most." />
+  <meta property="og:type" content="article" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0A0A0A; --bg-card: #111111; --bg-raised: #161616;
+      --text: #F5F5F0; --text-muted: #888880; --text-dim: #555550;
+      --accent: #D4AF37; --accent-dim: rgba(212,175,55,0.12);
+      --border: rgba(255,255,255,0.07); --border-accent: rgba(212,175,55,0.3);
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Inter', system-ui, sans-serif;
+      --max: 1200px; --radius: 2px;
+    }
+    body.light {
+      --bg: #FAFAF7; --bg-card: #F2F2EE; --bg-raised: #E8E8E4;
+      --text: #0B0B0B; --text-muted: #444440; --text-dim: #999990;
+      --border: rgba(0,0,0,0.08); --border-accent: rgba(212,175,55,0.4);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-weight: 400; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    ::selection { background: var(--accent-dim); color: var(--accent); }
+    h1,h2,h3,h4 { font-weight: 500; line-height: 1.25; letter-spacing: -0.02em; }
+    h1 { font-family: var(--font-serif); font-size: clamp(2rem,4vw,3.2rem); }
+    h2 { font-family: var(--font-serif); font-size: clamp(1.6rem,3vw,2.4rem); }
+    h3 { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; letter-spacing: 0; }
+    p { color: var(--text-muted); line-height: 1.85; }
+    a { color: inherit; }
+    .label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.5rem 0; transition: background 0.4s, padding 0.3s; }
+    nav.scrolled { background: rgba(10,10,10,0.95); border-bottom: 1px solid var(--border); padding: 1rem 0; backdrop-filter: blur(12px); }
+    body.light nav.scrolled { background: rgba(250,250,247,0.95); }
+    nav .container { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.8rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; padding: 0.65rem 1.4rem; background: var(--accent); color: #0A0A0A; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s; white-space: nowrap; }
+    .nav-cta:hover { opacity: 0.88; }
+    .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+    .theme-toggle { background: none; border: 1px solid var(--border); color: var(--text-muted); cursor: pointer; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius); transition: color 0.2s; flex-shrink: 0; }
+    .theme-toggle:hover { color: var(--accent); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 1px; background: var(--text); }
+    .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 99; background: var(--bg); padding: 6rem 2rem 2rem; flex-direction: column; gap: 2rem; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 1.4rem; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 1.2rem; }
+    footer { background: var(--bg); border-top: 1px solid var(--border); padding: 3rem 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-tagline { font-size: 0.78rem; color: var(--text-dim); margin-top: 0.3rem; }
+    .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.78rem; color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text-muted); }
+    .footer-copy { font-size: 0.75rem; color: var(--text-dim); }
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
+    .btn-primary { display: inline-block; padding: 0.9rem 2rem; background: var(--accent); color: #0A0A0A; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s, transform 0.2s; border: none; cursor: pointer; }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-outline { display: inline-block; padding: 0.85rem 1.8rem; border: 1px solid var(--border-accent); color: var(--accent); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-decoration: none; border-radius: var(--radius); transition: all 0.2s; }
+    .btn-outline:hover { background: var(--accent-dim); }
+    @media (max-width: 900px) { .nav-links, .nav-right .nav-cta { display: none; } .hamburger { display: flex; } }
+  </style>
+  <style>
+    .post-header { padding: 10rem 0 4rem; border-bottom: 1px solid var(--border); }
+    .post-meta { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .post-meta .label { margin: 0; }
+    .post-meta-text { font-size: 0.8rem; color: var(--text-dim); }
+    .post-title { margin-bottom: 1.2rem; }
+    .post-desc { font-size: 1.05rem; max-width: 640px; }
+    .post-body { padding: 5rem 0; }
+    .post-body-inner { max-width: 720px; }
+    .post-body p { margin-bottom: 1.6rem; font-size: 1rem; }
+    .post-body h2 { font-size: 1.5rem; margin: 3rem 0 1rem; color: var(--text); }
+    .post-body strong { color: var(--text); font-weight: 500; }
+    .x-credit { background: var(--bg-card); border: 1px solid var(--border-accent); border-left: 3px solid var(--accent); padding: 1.2rem 1.5rem; margin: 2.5rem 0; font-size: 0.88rem; color: var(--text-muted); font-style: italic; border-radius: 0 var(--radius) var(--radius) 0; }
+    .post-footer { padding: 4rem 0; border-top: 1px solid var(--border); }
+    .cta-box { background: var(--bg-card); border: 1px solid var(--border); padding: 3rem; text-align: center; max-width: 600px; margin: 0 auto; }
+    .cta-box h3 { font-family: var(--font-serif); font-size: 1.6rem; margin-bottom: 1rem; color: var(--text); }
+    .cta-box p { margin-bottom: 2rem; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: var(--text-muted); text-decoration: none; margin-bottom: 3rem; transition: color 0.2s; }
+    .back-link:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+<nav id="nav">
+  <div class="container">
+    <a href="/" class="nav-logo" style="display:flex;align-items:center;text-decoration:none;"><img src="/logo.svg" alt="Augentic AI" height="37" style="height:37px;width:auto;" /></a>
+    <ul class="nav-links">
+      <li><a href="/#solution">Solutions</a></li>
+      <li><a href="/#offerings">Offerings</a></li>
+      <li><a href="/blog/">Insights</a></li>
+      <li><a href="/guide/">AI Guide</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg id="iconSun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg id="iconMoon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="/book/" class="nav-cta">Book Strategy Call</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/#solution" onclick="closeMobile()">Solutions</a>
+  <a href="/#offerings" onclick="closeMobile()">Offerings</a>
+  <a href="/blog/" onclick="closeMobile()">Insights</a>
+  <a href="/guide/" onclick="closeMobile()">AI Guide</a>
+  <a href="/book/" onclick="closeMobile()" style="color:var(--accent);">Book Strategy Call</a>
+</div>
+
+<div class="post-header">
+  <div class="container">
+    <a href="/blog/" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M13 7H1M6 2L1 7l5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to Insights
+    </a>
+    <div class="post-meta">
+      <span class="label">AI Agents</span>
+      <span class="post-meta-text">April 2, 2026</span>
+      <span class="post-meta-text">12 min read</span>
+    </div>
+    <h1 class="post-title">AI Customer Success Agents: Reducing Churn with Autonomous Outreach</h1>
+    <p class="post-desc">How autonomous AI agents are transforming customer success—detecting churn risk earlier, triggering personalized outreach at scale, and freeing CSMs to focus where human relationships matter most.</p>
+  </div>
+</div>
+
+<div class="post-body">
+  <div class="container">
+    <div class="post-body-inner">
+      
+      
+<p>Customer success has always been a data problem disguised as a relationship problem. Customers churn for reasons that, in retrospect, were visible weeks or months before the renewal conversation. They stopped using features. Adoption metrics dropped. A key champion left the account. Support tickets escalated. Engagement scores declined. The signals were there. The problem was that a human CSM portfolio stretched across forty or eighty accounts could not see them all, act on them all, and still have bandwidth for the accounts actively expanding.</p>
+
+<p>AI customer success agents change the underlying math. They do not replace the relationship—they remove the scale constraint that was forcing CSMs to choose between coverage and depth. When an agent can monitor every account continuously, detect early warning signals automatically, and trigger personalized outreach based on account-specific context, the CSM stops being a reactive firefighter and starts operating as a strategic advisor supported by always-on intelligence.</p>
+
+<p>This is not a future state. Teams deploying AI CS agents today are seeing measurable churn reduction, earlier intervention on at-risk accounts, and higher CSM productivity. The question is not whether this technology works—it is whether your customer success operation is structured to use it effectively.</p>
+
+<h2>The Traditional CS Model and Its Structural Limits</h2>
+
+<p>The conventional customer success model assigns a CSM to a portfolio of accounts and relies on that CSM to maintain awareness of account health, conduct regular check-ins, catch renewal signals early, and identify expansion opportunities. This model works well when portfolio sizes are small. It breaks down as the business scales.</p>
+
+<p>The first failure mode is coverage gaps. When a CSM has sixty accounts, they are going to miss things. Some accounts will go dark between scheduled calls. Usage drops will go unnoticed for weeks. A quiet at-risk account may not get intervention until the customer mentions cancellation.</p>
+
+<p>The second failure mode is reactive posture. When most of a CSM's time is consumed by inbound support escalations, scheduled QBRs, and active renewals in progress, there is little capacity for proactive outreach to stable-looking accounts that are silently drifting toward churn.</p>
+
+<p>The third failure mode is inconsistency. Health score frameworks exist in theory. In practice, some CSMs follow them carefully, others use their gut. The variance in outcomes across the portfolio is often more a function of individual CSM style than account fundamentals.</p>
+
+<p>AI agents address all three failure modes simultaneously—by providing continuous monitoring, systematic proactive outreach, and consistent process execution across every account in the portfolio.</p>
+
+<h2>What AI Customer Success Agents Actually Do</h2>
+
+<p>A well-designed AI CS agent is not a chatbot that answers customer questions. It is an autonomous workflow engine that monitors account signals, makes decisions about what action is warranted, executes that action, reports the outcome, and routes exceptions to human CSMs when the situation exceeds its authority.</p>
+
+<p>The core capabilities of an effective AI CS agent include:</p>
+
+<p><strong>Continuous health monitoring.</strong> The agent ingests product usage data, login frequency, feature adoption, support ticket volume, NPS trends, stakeholder engagement, and CRM activity to construct a real-time health picture of each account. This happens continuously, not on a monthly reporting cycle.</p>
+
+<p><strong>Churn risk detection.</strong> Based on the health model, the agent identifies accounts that are exhibiting early warning patterns—declining usage, single-user dependency, contract anniversary approaching without renewal signals, or comparison activity suggesting the customer is evaluating alternatives.</p>
+
+<p><strong>Proactive outreach trigger.</strong> When risk crosses a threshold, the agent does not wait for the next scheduled call. It initiates outreach through the appropriate channel—typically email, but sometimes Slack, in-app messaging, or a CSM task alert—with context-appropriate messaging designed to re-engage the account before the situation becomes critical.</p>
+
+<p><strong>Expansion signal identification.</strong> The agent also monitors for positive signals: power users who are not yet on expanded plans, departments with high adoption that have adjacent teams not yet onboarded, usage patterns suggesting the customer has outgrown their current tier. These signals are surfaced to the CSM as expansion opportunities rather than waiting for the annual upsell conversation.</p>
+
+<p><strong>Renewal coordination.</strong> As contract dates approach, the agent manages pre-renewal sequencing—confirming contacts, generating renewal briefs for the CSM, coordinating scheduling, and ensuring no renewal falls through the cracks because it was buried in a crowded portfolio.</p>
+
+<p><strong>Human escalation routing.</strong> When an account response indicates significant dissatisfaction, executive involvement, or a situation that requires relationship nuance, the agent routes to the CSM immediately with full context rather than continuing to operate autonomously.</p>
+
+<h2>What Makes the Outreach Actually Work</h2>
+
+<p>The design of AI-initiated outreach in customer success is different from sales outreach, and conflating the two is a common mistake.</p>
+
+<p>In CS, the customer already knows you. They have an established relationship with your product and your team. Outreach that feels like a cold sales pitch—formal, product-led, featuring case studies from other companies—will feel tone-deaf. The customer will notice that no one actually checked on them until a machine did, and that the machine's message could have gone to anyone.</p>
+
+<p>Effective AI CS outreach is account-specific, usage-referenced, and genuinely helpful. Instead of "We noticed you haven't logged in recently, can we help?" try something grounded in what you actually know: referencing the specific feature they adopted last quarter, acknowledging the upcoming renewal window, or surfacing a relevant new capability tied to a workflow they are already using.</p>
+
+<p>The agent needs enough account context to write the difference. That means the health monitoring layer must be connected to the outreach layer, and the outreach logic must be designed to pull from account-specific data rather than generic templates.</p>
+
+<p>Tone also matters. Customer success outreach should feel like it is coming from someone who cares about the customer's success, not from a system running a process. That requires prompt engineering that produces conversational, warm, and helpful output—not the clinical language that often emerges from systems built primarily for efficiency.</p>
+
+<h2>The Human-Agent Division of Labor</h2>
+
+<p>The goal is not to eliminate the CSM role—it is to restructure how CSMs spend their time. Right now, too much CSM time goes to administrative tasks, routine check-ins that produce no new information, and reactive response to problems that could have been caught earlier. AI agents can handle those tasks, freeing CSMs for the work that requires genuine human judgment.</p>
+
+<p>A healthy human-agent division of labor in customer success looks like this:</p>
+
+<p><strong>Agent handles:</strong> Routine health monitoring, risk score calculation, proactive low-touch outreach, renewal prep administration, scheduling coordination, CRM updates, post-call summaries, expansion signal alerts, and escalation routing.</p>
+
+<p><strong>CSM handles:</strong> Complex renewal negotiations, executive relationship management, accounts in active recovery, strategic account planning, voice-of-customer collection, cross-sell conversations requiring product knowledge, and any situation where trust or relationship nuance is at stake.</p>
+
+<p>When this division works well, a CSM with sixty accounts can provide the coverage quality that previously required thirty. The agent handles the breadth. The human provides the depth.</p>
+
+<h2>Building the Right Health Model</h2>
+
+<p>The quality of an AI CS agent is only as good as the health model it operates from. If the model does not include the right signals, or weights them incorrectly, the agent will generate false positives that waste CSM time and miss real churn risk that is happening below the waterline.</p>
+
+<p>Building a good health model requires collaboration between RevOps, CS leadership, and data engineering. It starts with understanding what actually predicts churn in your customer base—not what intuitively seems important, but what the data shows. That analysis usually reveals counterintuitive patterns: the signal that predicts churn most reliably is often not the most obvious one.</p>
+
+<p>Common high-signal churn predictors include: declining active user count relative to licensed seats, reduction in API call volume or feature usage depth, a spike in support tickets followed by silence (indicating the customer gave up rather than resolved), stakeholder turnover at the champion level, and failure to complete onboarding milestones within a defined window.</p>
+
+<p>The model should also incorporate time-sensitivity. A 20% drop in usage two months before renewal is a different risk profile than the same drop seven months before renewal. The agent's response should reflect that difference.</p>
+
+<h2>Measuring Outcomes Correctly</h2>
+
+<p>Teams deploying AI CS agents sometimes measure the wrong things and conclude the system is not working. The right metrics are outcome-focused:</p>
+
+<p><strong>Net revenue retention.</strong> The ultimate measure of CS effectiveness. If AI agents are working, NRR should improve over a 12-month period as churn decreases and expansion increases.</p>
+
+<p><strong>Churn rate by intervention type.</strong> Compare accounts where the agent successfully triggered early intervention against accounts where no risk was detected or intervention was too late. The gap quantifies agent value.</p>
+
+<p><strong>Time to first intervention on at-risk accounts.</strong> How much earlier is your team identifying and acting on churn risk versus the pre-agent baseline? Earlier intervention correlates strongly with better outcomes.</p>
+
+<p><strong>CSM capacity and portfolio quality.</strong> Are CSMs spending more time on high-value activities and less on administrative work? Are they able to carry larger portfolios without declining NPS or retention?</p>
+
+<p><strong>Expansion pipeline generated by agent signals.</strong> Revenue generated from expansion opportunities surfaced by the agent, as a separate measurement from rep-initiated upsell activity.</p>
+
+<h2>Common Deployment Mistakes</h2>
+
+<p>Teams that deploy AI CS agents without adequate planning typically encounter one of several failure patterns.</p>
+
+<p><strong>Deploying on bad data.</strong> If your product usage data is unreliable, incomplete, or poorly mapped to account records, the agent's health model will be wrong. Fix the data before deploying the agent, not after.</p>
+
+<p><strong>Treating all accounts the same.</strong> Enterprise accounts with complex stakeholder maps require different intervention logic than SMB accounts. The same outreach template and threshold triggers will not work across both segments. Segment your approach.</p>
+
+<p><strong>No clear escalation protocol.</strong> When the agent surfaces a high-risk account, someone needs to know exactly what to do with it. Without a defined escalation protocol, alerts pile up unactioned and the agent's value evaporates.</p>
+
+<p><strong>Skipping the feedback loop.</strong> If no one is tracking whether agent-triggered interventions are working, the health model never improves. Outcome data needs to flow back into the model continuously.</p>
+
+<p><strong>Launching without CSM buy-in.</strong> CSMs who feel threatened by AI agents will work around them or ignore their outputs. Frame the agent as a force multiplier that makes their job better, demonstrate it with pilot outcomes, and involve CSMs in the design of escalation protocols and outreach language.</p>
+
+<h2>The Bigger Picture</h2>
+
+<p>Customer success AI agents are not a retention tactic. They are a structural upgrade to how post-sale revenue is managed. When implemented well, they shift the CS function from a reactive retention team to a proactive growth function with continuous visibility into every account in the portfolio.</p>
+
+<p>The teams that will lead in retention over the next three years are the ones building this infrastructure now—not because everyone else will be doing it, but because the competitive gap between AI-assisted CS and traditional CS will become impossible to close once it opens. A team that catches churn six weeks earlier than their competitor will win the renewal. A team that surfaces expansion opportunities proactively will capture revenue their competitor never knew existed.</p>
+
+<p><strong>Book a strategy call</strong> to design an AI customer success agent architecture that fits your product, your CS team structure, and your customer segments. We will help you build the health model, the outreach logic, and the escalation protocols that turn AI CS from a concept into measurable NRR improvement.</p>
+
+    </div>
+  </div>
+</div>
+
+<div class="post-footer">
+  <div class="container">
+    <div class="cta-box">
+      <h3>Ready to Build Your AI Workforce?</h3>
+      <p>Schedule a 30-minute strategy call. We will tell you exactly what we would build for your business - and what it would cost.</p>
+      <a href="/book/" class="btn-primary">Book a Strategy Call</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo" style="display:flex;align-items:center;"><img src="/logo.svg" alt="Augentic AI" height="28" style="height:28px;width:auto;" /></div>
+        <div class="footer-tagline">Autonomous AI. Measurable Revenue.</div>
+      </div>
+      <ul class="footer-links">
+        <li><a href="/#solution">Solutions</a></li>
+        <li><a href="/#offerings">Offerings</a></li>
+        <li><a href="/blog/">Insights</a></li>
+        <li><a href="/guide/">AI Guide</a></li>
+        <li><a href="/book/">Book a Call</a></li>
+        <li><a href="mailto:hello@augenticai.com">Contact</a></li>
+      </ul>
+      <div class="footer-copy">&copy; 2026 Augentic AI. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => { mobileMenu.classList.toggle('open'); });
+  function closeMobile() { mobileMenu.classList.remove('open'); }
+  const themeToggle = document.getElementById('themeToggle');
+  const iconSun = document.getElementById('iconSun');
+  const iconMoon = document.getElementById('iconMoon');
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  if (savedTheme === 'light') { document.body.classList.add('light'); iconSun.style.display = 'block'; iconMoon.style.display = 'none'; }
+  themeToggle.addEventListener('click', () => {
+    const isLight = document.body.classList.toggle('light');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    iconSun.style.display = isLight ? 'block' : 'none';
+    iconMoon.style.display = isLight ? 'none' : 'block';
+  });
+</script>
+</body>
+</html>
