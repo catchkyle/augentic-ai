@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GPT vs Claude vs Gemini for Sales: Which Model Wins Each Use Case? | Augentic AI Insights</title>
+  <meta name="description" content="A practical breakdown of how OpenAI GPT, Anthropic Claude, and Google Gemini each perform across six core B2B sales use cases, plus how to orchestrate them for maximum revenue impact." />
+  <meta property="og:title" content="GPT vs Claude vs Gemini for Sales: Which Model Wins Each Use Case?" />
+  <meta property="og:description" content="A practical breakdown of how OpenAI GPT, Anthropic Claude, and Google Gemini each perform across six core B2B sales use cases, plus how to orchestrate them for maximum revenue impact." />
+  <meta property="og:type" content="article" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0A0A0A; --bg-card: #111111; --bg-raised: #161616;
+      --text: #F5F5F0; --text-muted: #888880; --text-dim: #555550;
+      --accent: #D4AF37; --accent-dim: rgba(212,175,55,0.12);
+      --border: rgba(255,255,255,0.07); --border-accent: rgba(212,175,55,0.3);
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Inter', system-ui, sans-serif;
+      --max: 1200px; --radius: 2px;
+    }
+    body.light {
+      --bg: #FAFAF7; --bg-card: #F2F2EE; --bg-raised: #E8E8E4;
+      --text: #0B0B0B; --text-muted: #444440; --text-dim: #999990;
+      --border: rgba(0,0,0,0.08); --border-accent: rgba(212,175,55,0.4);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-weight: 400; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    ::selection { background: var(--accent-dim); color: var(--accent); }
+    h1,h2,h3,h4 { font-weight: 500; line-height: 1.25; letter-spacing: -0.02em; }
+    h1 { font-family: var(--font-serif); font-size: clamp(2rem,4vw,3.2rem); }
+    h2 { font-family: var(--font-serif); font-size: clamp(1.6rem,3vw,2.4rem); }
+    h3 { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; letter-spacing: 0; }
+    p { color: var(--text-muted); line-height: 1.85; }
+    a { color: inherit; }
+    .label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.5rem 0; transition: background 0.4s, padding 0.3s; }
+    nav.scrolled { background: rgba(10,10,10,0.95); border-bottom: 1px solid var(--border); padding: 1rem 0; backdrop-filter: blur(12px); }
+    body.light nav.scrolled { background: rgba(250,250,247,0.95); }
+    nav .container { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.8rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; padding: 0.65rem 1.4rem; background: var(--accent); color: #0A0A0A; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s; white-space: nowrap; }
+    .nav-cta:hover { opacity: 0.88; }
+    .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+    .theme-toggle { background: none; border: 1px solid var(--border); color: var(--text-muted); cursor: pointer; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius); transition: color 0.2s; flex-shrink: 0; }
+    .theme-toggle:hover { color: var(--accent); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 1px; background: var(--text); }
+    .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 99; background: var(--bg); padding: 6rem 2rem 2rem; flex-direction: column; gap: 2rem; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 1.4rem; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 1.2rem; }
+    footer { background: var(--bg); border-top: 1px solid var(--border); padding: 3rem 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-tagline { font-size: 0.78rem; color: var(--text-dim); margin-top: 0.3rem; }
+    .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.78rem; color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text-muted); }
+    .footer-copy { font-size: 0.75rem; color: var(--text-dim); }
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
+    .btn-primary { display: inline-block; padding: 0.9rem 2rem; background: var(--accent); color: #0A0A0A; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s, transform 0.2s; border: none; cursor: pointer; }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-outline { display: inline-block; padding: 0.85rem 1.8rem; border: 1px solid var(--border-accent); color: var(--accent); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-decoration: none; border-radius: var(--radius); transition: all 0.2s; }
+    .btn-outline:hover { background: var(--accent-dim); }
+    @media (max-width: 900px) { .nav-links, .nav-right .nav-cta { display: none; } .hamburger { display: flex; } }
+  </style>
+  <style>
+    .post-header { padding: 10rem 0 4rem; border-bottom: 1px solid var(--border); }
+    .post-meta { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .post-meta .label { margin: 0; }
+    .post-meta-text { font-size: 0.8rem; color: var(--text-dim); }
+    .post-title { margin-bottom: 1.2rem; }
+    .post-desc { font-size: 1.05rem; max-width: 640px; }
+    .post-body { padding: 5rem 0; }
+    .post-body-inner { max-width: 720px; }
+    .post-body p { margin-bottom: 1.6rem; font-size: 1rem; }
+    .post-body h2 { font-size: 1.5rem; margin: 3rem 0 1rem; color: var(--text); }
+    .post-body strong { color: var(--text); font-weight: 500; }
+    .x-credit { background: var(--bg-card); border: 1px solid var(--border-accent); border-left: 3px solid var(--accent); padding: 1.2rem 1.5rem; margin: 2.5rem 0; font-size: 0.88rem; color: var(--text-muted); font-style: italic; border-radius: 0 var(--radius) var(--radius) 0; }
+    .post-footer { padding: 4rem 0; border-top: 1px solid var(--border); }
+    .cta-box { background: var(--bg-card); border: 1px solid var(--border); padding: 3rem; text-align: center; max-width: 600px; margin: 0 auto; }
+    .cta-box h3 { font-family: var(--font-serif); font-size: 1.6rem; margin-bottom: 1rem; color: var(--text); }
+    .cta-box p { margin-bottom: 2rem; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: var(--text-muted); text-decoration: none; margin-bottom: 3rem; transition: color 0.2s; }
+    .back-link:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+<nav id="nav">
+  <div class="container">
+    <a href="/" class="nav-logo" style="display:flex;align-items:center;text-decoration:none;"><img src="/logo.svg" alt="Augentic AI" height="37" style="height:37px;width:auto;" /></a>
+    <ul class="nav-links">
+      <li><a href="/#solution">Solutions</a></li>
+      <li><a href="/#offerings">Offerings</a></li>
+      <li><a href="/blog/">Insights</a></li>
+      <li><a href="/guide/">AI Guide</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg id="iconSun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg id="iconMoon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="/book/" class="nav-cta">Book Strategy Call</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/#solution" onclick="closeMobile()">Solutions</a>
+  <a href="/#offerings" onclick="closeMobile()">Offerings</a>
+  <a href="/blog/" onclick="closeMobile()">Insights</a>
+  <a href="/guide/" onclick="closeMobile()">AI Guide</a>
+  <a href="/book/" onclick="closeMobile()" style="color:var(--accent);">Book Strategy Call</a>
+</div>
+
+<div class="post-header">
+  <div class="container">
+    <a href="/blog/" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M13 7H1M6 2L1 7l5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to Insights
+    </a>
+    <div class="post-meta">
+      <span class="label">Technical</span>
+      <span class="post-meta-text">April 3, 2026</span>
+      <span class="post-meta-text">14 min read</span>
+    </div>
+    <h1 class="post-title">GPT vs Claude vs Gemini for Sales: Which Model Wins Each Use Case?</h1>
+    <p class="post-desc">A practical breakdown of how OpenAI GPT, Anthropic Claude, and Google Gemini each perform across six core B2B sales use cases, plus how to orchestrate them for maximum revenue impact.</p>
+  </div>
+</div>
+
+<div class="post-body">
+  <div class="container">
+    <div class="post-body-inner">
+      
+      
+<p>In the rapidly evolving landscape of artificial intelligence, large language models are transforming how B2B sales and revenue teams operate. With GPT, Claude, and Gemini each making significant capability claims, a practical question sits on every sales leader's desk: which model actually performs best for the specific tasks that drive revenue?</p>
+
+<p>This guide cuts through the marketing noise with a use-case-by-use-case breakdown, helping you make informed decisions about which model to deploy - or how to orchestrate multiple models - in your autonomous revenue systems.</p>
+
+<h2>The Contenders: A Brief Orientation</h2>
+
+<h3>OpenAI GPT (GPT-4o and successors)</h3>
+<p>GPT models are the most widely deployed LLMs in enterprise sales applications. Their primary strengths are versatility, a massive ecosystem of integrations and tooling, and strong general-purpose instruction following. GPT-4o's multimodal capabilities (text, image, audio, code) make it applicable across a wide range of sales tasks. The tradeoff: at high volumes, cost adds up quickly, and the model can be prone to plausible-sounding but factually incorrect outputs if not carefully prompted.</p>
+
+<h3>Anthropic Claude (Claude 3.5 Sonnet and Opus)</h3>
+<p>Claude was built with safety, helpfulness, and honesty as core design constraints. In practice, this translates to models that handle long, complex documents exceptionally well, follow nuanced multi-step instructions more reliably, and generate content that is less likely to contain problematic or off-brand material. Claude's 200K token context window makes it uniquely capable for tasks involving large amounts of input data - full call transcripts, lengthy RFP documents, complete deal histories. The tradeoff: slightly less creative variance than GPT for open-ended generation tasks.</p>
+
+<h3>Google Gemini (Gemini 1.5 Pro and Ultra)</h3>
+<p>Gemini was designed from the ground up as a multimodal reasoning system. Its native ability to process and reason across text, images, audio, video, and structured data simultaneously makes it uniquely powerful for tasks that require synthesizing information from diverse sources. Gemini 1.5 Pro's 1 million token context window is currently the largest available, enabling analysis of entire deal histories, product catalogs, or competitive intelligence repositories in a single pass. The tradeoff: the enterprise integration ecosystem is still maturing relative to GPT.</p>
+
+<h2>Use Case 1: Personalized Outbound Email Generation</h2>
+
+<p><strong>The task:</strong> Generate personalized, contextually relevant cold and warm outreach emails that avoid the generic template feel and actually get replies.</p>
+
+<p><strong>GPT:</strong> The current standard for high-volume email generation. GPT produces creative, varied drafts quickly and adapts tone and style reliably based on persona inputs. Its ability to generate multiple distinct variations of the same message makes it well-suited for A/B testing at scale. Best for campaigns requiring high throughput and message variety.</p>
+
+<p><strong>Claude:</strong> Excels when the outreach requires careful, nuanced language - longer sequences where each email must build logically on the previous one, emails that reference complex technical concepts, or situations where the compliance risk of off-brand or inappropriate language is high. Claude's outputs tend to be more measured and coherent in long-form sequences.</p>
+
+<p><strong>Gemini:</strong> Strong baseline performance, with the added capability of incorporating multimodal signals into personalization - for example, synthesizing information from a prospect's public LinkedIn presence, recent company announcements, and their industry's current news cycle to generate highly contextual opening lines.</p>
+
+<p><strong>Winner: GPT for volume and variety; Claude for compliance-sensitive or complex sequence work.</strong></p>
+
+<h2>Use Case 2: Lead Qualification and Scoring</h2>
+
+<p><strong>The task:</strong> Analyze prospect data - firmographics, technographics, engagement history, intent signals - to predict conversion likelihood and prioritize outreach.</p>
+
+<p><strong>GPT:</strong> Competent at processing structured qualification data and following scoring rubric instructions. Requires careful prompt engineering to produce consistent, auditable scoring logic.</p>
+
+<p><strong>Claude:</strong> Superior handling of large, complex lead profiles. When qualification requires synthesizing a dense account history - multiple contacts, years of activity, complex org charts - Claude processes and reasons across that information more reliably. Ideal for enterprise account qualification where the data set per account is substantial.</p>
+
+<p><strong>Gemini:</strong> The strongest performer when qualification inputs span multiple data types. Gemini can reason across technographic signals, intent data, firmographic profiles, and even visual assets (like a company's product screenshots or conference booth presence) to build more holistic qualification assessments. Its advanced reasoning makes its scoring explanations more interpretable.</p>
+
+<p><strong>Winner: Gemini for comprehensive multi-signal scoring; Claude for large single-account qualification packages.</strong></p>
+
+<h2>Use Case 3: Sales Call Summarization and Analysis</h2>
+
+<p><strong>The task:</strong> Process call transcripts to extract summaries, next steps, objections raised, stakeholder sentiments, and CRM update instructions.</p>
+
+<p><strong>GPT:</strong> Fast and accurate for calls up to approximately 30-45 minutes in transcript length. Handles standard structured extraction (action items, objections, decision criteria) reliably with well-designed prompts.</p>
+
+<p><strong>Claude:</strong> The clear leader for long call summaries. With a 200K token context window, Claude can process multi-hour calls, panel discussions, or back-to-back call series in a single pass without truncation. Its ability to follow structured extraction instructions precisely - "identify every mention of budget, competitor, and timeline with the exact quote and timestamp" - makes it the most reliable model for compliance-level call documentation.</p>
+
+<p><strong>Gemini:</strong> The most powerful option when working directly from audio. Unlike GPT and Claude, which typically process transcripts, Gemini's native audio understanding can analyze tone, pacing, hesitation, and emphasis directly from the recording - surfacing insights that text transcripts can't capture, such as when a prospect's tone shifted from engaged to skeptical.</p>
+
+<p><strong>Winner: Claude for text transcript analysis at scale; Gemini for audio-native call intelligence.</strong></p>
+
+<h2>Use Case 4: Sales Content and Enablement Creation</h2>
+
+<p><strong>The task:</strong> Generate battlecards, competitive intelligence summaries, case studies, proposal sections, and internal training materials.</p>
+
+<p><strong>GPT:</strong> Fast and versatile. Excellent for generating first drafts of most sales enablement content types. Strong performance on shorter, more formulaic content like battlecard templates, FAQ documents, and product one-pagers.</p>
+
+<p><strong>Claude:</strong> The preferred choice for long-form, high-stakes content. Detailed case studies, comprehensive competitive analyses, multi-section proposal responses to RFPs, and training curriculum modules all benefit from Claude's ability to maintain coherence and logical structure across tens of thousands of words. Its safety constraints also reduce the risk of generating claims or comparisons that could create legal exposure.</p>
+
+<p><strong>Gemini:</strong> Strong for content that synthesizes information from diverse source types - for example, building a competitive battlecard that integrates a competitor's product documentation, recent press releases, review site data, and technical blog posts into a single analysis.</p>
+
+<p><strong>Winner: Claude for long-form and compliance-sensitive content; GPT for high-volume shorter-form assets.</strong></p>
+
+<h2>Use Case 5: Sales Forecasting and Pipeline Analysis</h2>
+
+<p><strong>The task:</strong> Analyze CRM data, historical win/loss patterns, market trends, and deal health signals to produce accurate, defensible sales forecasts.</p>
+
+<p><strong>GPT:</strong> Functional for straightforward pipeline roll-up summaries and trend narratives. Struggles with complex multi-variable analysis where interpretability and auditability matter.</p>
+
+<p><strong>Claude:</strong> Strong at reasoning through complex deal dynamics and articulating the logic behind a forecast in language that sales leaders and boards can follow. Particularly effective at analyzing deal notes and activity history to identify at-risk opportunities that numeric scoring systems miss.</p>
+
+<p><strong>Gemini:</strong> The strongest technical performer for quantitative forecasting tasks. Its advanced reasoning capabilities and ability to integrate structured data (CRM exports, historical win rates, market data) with unstructured signals (deal notes, email sentiment, news about accounts) make it the most powerful model for building accurate, multi-dimensional forecasts. When the board needs to trust the number, this is the model most likely to produce a defensible one.</p>
+
+<p><strong>Winner: Gemini for quantitative forecast modeling; Claude for narrative pipeline analysis and deal risk assessment.</strong></p>
+
+<h2>Use Case 6: Customer Success and Churn Prevention</h2>
+
+<p><strong>The task:</strong> Monitor customer health signals, identify at-risk accounts, and generate proactive outreach that retains and expands revenue.</p>
+
+<p><strong>GPT:</strong> Solid for generating empathetic, personalized outreach emails for at-risk customers and summarizing support ticket sentiment.</p>
+
+<p><strong>Claude:</strong> Strong for processing long customer interaction histories - years of support tickets, QBR notes, usage logs - to identify subtle deterioration patterns that precede churn. Claude's ability to hold and reason across very large context windows makes it the better model for deep single-account health analysis.</p>
+
+<p><strong>Gemini:</strong> Most powerful when customer health data includes diverse signals - product usage metrics, support interactions, email engagement, NPS scores, and external signals like company financial news or executive changes. Gemini synthesizes across these data types to produce a more complete customer health picture than any text-only model can.</p>
+
+<p><strong>Winner: Gemini for holistic multi-signal churn prediction; Claude for deep single-account health analysis.</strong></p>
+
+<h2>The Orchestration Advantage: Beyond Picking One Model</h2>
+
+<p>The winning pattern in 2026 is not picking a single model and using it for everything. It is designing orchestrated multi-model architectures where each model handles the specific task it is best suited for - all operating as part of a coordinated autonomous revenue system.</p>
+
+<p>A practical example: An autonomous outbound pipeline agent might use Gemini to score and prioritize the target account list, Claude to analyze the full account history and generate a nuanced personalization brief, GPT-4o to rapidly generate and test multiple email variants at volume, and then Claude again to quality-check the final selected emails for compliance and brand alignment before sending.</p>
+
+<p>Each model contributes what it does best. The orchestration layer - the logic that decides which model handles which task and how outputs flow between them - is where the real competitive advantage is built. This is precisely why AI systems integrators matter: the models themselves are increasingly commoditized, but the architecture that orchestrates them into a revenue engine is not.</p>
+
+<h2>Making the Decision</h2>
+
+<p>If you are just starting to integrate LLMs into your revenue stack and need to pick a starting point, GPT-4o offers the broadest general utility and the most mature ecosystem of integrations. As your use cases become more specific and demanding, layering in Claude for long-context and compliance-sensitive work and Gemini for multi-signal reasoning and forecasting will compound your results significantly.</p>
+
+<p>If you are building autonomous sales agents that run without continuous human oversight, the quality of your model selection and orchestration logic is not a secondary concern - it is what determines whether the system performs or fails. Get expert architecture input before committing to a stack.</p>
+
+<p>Augentic AI specializes in building autonomous revenue systems that intelligently orchestrate GPT, Claude, Gemini, and other models based on what each task actually requires. <a href="/book/">Book a strategy call</a> to design a model architecture that's built for your specific sales motion.</p>
+
+    </div>
+  </div>
+</div>
+
+<div class="post-footer">
+  <div class="container">
+    <div class="cta-box">
+      <h3>Ready to Build Your AI Workforce?</h3>
+      <p>Schedule a 30-minute strategy call. We will tell you exactly what we would build for your business - and what it would cost.</p>
+      <a href="/book/" class="btn-primary">Book a Strategy Call</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo" style="display:flex;align-items:center;"><img src="/logo.svg" alt="Augentic AI" height="28" style="height:28px;width:auto;" /></div>
+        <div class="footer-tagline">Autonomous AI. Measurable Revenue.</div>
+      </div>
+      <ul class="footer-links">
+        <li><a href="/#solution">Solutions</a></li>
+        <li><a href="/#offerings">Offerings</a></li>
+        <li><a href="/blog/">Insights</a></li>
+        <li><a href="/guide/">AI Guide</a></li>
+        <li><a href="/book/">Book a Call</a></li>
+        <li><a href="mailto:hello@augenticai.com">Contact</a></li>
+      </ul>
+      <div class="footer-copy">&copy; 2026 Augentic AI. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => { mobileMenu.classList.toggle('open'); });
+  function closeMobile() { mobileMenu.classList.remove('open'); }
+  const themeToggle = document.getElementById('themeToggle');
+  const iconSun = document.getElementById('iconSun');
+  const iconMoon = document.getElementById('iconMoon');
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  if (savedTheme === 'light') { document.body.classList.add('light'); iconSun.style.display = 'block'; iconMoon.style.display = 'none'; }
+  themeToggle.addEventListener('click', () => {
+    const isLight = document.body.classList.toggle('light');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    iconSun.style.display = isLight ? 'block' : 'none';
+    iconMoon.style.display = isLight ? 'none' : 'block';
+  });
+</script>
+</body>
+</html>
