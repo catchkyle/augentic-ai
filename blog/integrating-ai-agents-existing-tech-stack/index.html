@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Integrating AI Agents into Your Existing Sales Tech Stack | Augentic AI Insights</title>
+  <meta name="description" content="A practical guide for sales leaders and RevOps teams on how to integrate autonomous AI agents into your CRM, SEP, and marketing automation stack without disrupting existing operations." />
+  <meta property="og:title" content="Integrating AI Agents into Your Existing Sales Tech Stack" />
+  <meta property="og:description" content="A practical guide for sales leaders and RevOps teams on how to integrate autonomous AI agents into your CRM, SEP, and marketing automation stack without disrupting existing operations." />
+  <meta property="og:type" content="article" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0A0A0A; --bg-card: #111111; --bg-raised: #161616;
+      --text: #F5F5F0; --text-muted: #888880; --text-dim: #555550;
+      --accent: #D4AF37; --accent-dim: rgba(212,175,55,0.12);
+      --border: rgba(255,255,255,0.07); --border-accent: rgba(212,175,55,0.3);
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Inter', system-ui, sans-serif;
+      --max: 1200px; --radius: 2px;
+    }
+    body.light {
+      --bg: #FAFAF7; --bg-card: #F2F2EE; --bg-raised: #E8E8E4;
+      --text: #0B0B0B; --text-muted: #444440; --text-dim: #999990;
+      --border: rgba(0,0,0,0.08); --border-accent: rgba(212,175,55,0.4);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-weight: 400; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    ::selection { background: var(--accent-dim); color: var(--accent); }
+    h1,h2,h3,h4 { font-weight: 500; line-height: 1.25; letter-spacing: -0.02em; }
+    h1 { font-family: var(--font-serif); font-size: clamp(2rem,4vw,3.2rem); }
+    h2 { font-family: var(--font-serif); font-size: clamp(1.6rem,3vw,2.4rem); }
+    h3 { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; letter-spacing: 0; }
+    p { color: var(--text-muted); line-height: 1.85; }
+    a { color: inherit; }
+    .label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.5rem 0; transition: background 0.4s, padding 0.3s; }
+    nav.scrolled { background: rgba(10,10,10,0.95); border-bottom: 1px solid var(--border); padding: 1rem 0; backdrop-filter: blur(12px); }
+    body.light nav.scrolled { background: rgba(250,250,247,0.95); }
+    nav .container { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.8rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; padding: 0.65rem 1.4rem; background: var(--accent); color: #0A0A0A; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s; white-space: nowrap; }
+    .nav-cta:hover { opacity: 0.88; }
+    .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+    .theme-toggle { background: none; border: 1px solid var(--border); color: var(--text-muted); cursor: pointer; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius); transition: color 0.2s; flex-shrink: 0; }
+    .theme-toggle:hover { color: var(--accent); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 1px; background: var(--text); }
+    .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 99; background: var(--bg); padding: 6rem 2rem 2rem; flex-direction: column; gap: 2rem; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 1.4rem; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 1.2rem; }
+    footer { background: var(--bg); border-top: 1px solid var(--border); padding: 3rem 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-tagline { font-size: 0.78rem; color: var(--text-dim); margin-top: 0.3rem; }
+    .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.78rem; color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text-muted); }
+    .footer-copy { font-size: 0.75rem; color: var(--text-dim); }
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
+    .btn-primary { display: inline-block; padding: 0.9rem 2rem; background: var(--accent); color: #0A0A0A; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s, transform 0.2s; border: none; cursor: pointer; }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-outline { display: inline-block; padding: 0.85rem 1.8rem; border: 1px solid var(--border-accent); color: var(--accent); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-decoration: none; border-radius: var(--radius); transition: all 0.2s; }
+    .btn-outline:hover { background: var(--accent-dim); }
+    @media (max-width: 900px) { .nav-links, .nav-right .nav-cta { display: none; } .hamburger { display: flex; } }
+  </style>
+  <style>
+    .post-header { padding: 10rem 0 4rem; border-bottom: 1px solid var(--border); }
+    .post-meta { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .post-meta .label { margin: 0; }
+    .post-meta-text { font-size: 0.8rem; color: var(--text-dim); }
+    .post-title { margin-bottom: 1.2rem; }
+    .post-desc { font-size: 1.05rem; max-width: 640px; }
+    .post-body { padding: 5rem 0; }
+    .post-body-inner { max-width: 720px; }
+    .post-body p { margin-bottom: 1.6rem; font-size: 1rem; }
+    .post-body h2 { font-size: 1.5rem; margin: 3rem 0 1rem; color: var(--text); }
+    .post-body strong { color: var(--text); font-weight: 500; }
+    .x-credit { background: var(--bg-card); border: 1px solid var(--border-accent); border-left: 3px solid var(--accent); padding: 1.2rem 1.5rem; margin: 2.5rem 0; font-size: 0.88rem; color: var(--text-muted); font-style: italic; border-radius: 0 var(--radius) var(--radius) 0; }
+    .post-footer { padding: 4rem 0; border-top: 1px solid var(--border); }
+    .cta-box { background: var(--bg-card); border: 1px solid var(--border); padding: 3rem; text-align: center; max-width: 600px; margin: 0 auto; }
+    .cta-box h3 { font-family: var(--font-serif); font-size: 1.6rem; margin-bottom: 1rem; color: var(--text); }
+    .cta-box p { margin-bottom: 2rem; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: var(--text-muted); text-decoration: none; margin-bottom: 3rem; transition: color 0.2s; }
+    .back-link:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+<nav id="nav">
+  <div class="container">
+    <a href="/" class="nav-logo" style="display:flex;align-items:center;text-decoration:none;"><img src="/logo.svg" alt="Augentic AI" height="37" style="height:37px;width:auto;" /></a>
+    <ul class="nav-links">
+      <li><a href="/#solution">Solutions</a></li>
+      <li><a href="/#offerings">Offerings</a></li>
+      <li><a href="/blog/">Insights</a></li>
+      <li><a href="/guide/">AI Guide</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg id="iconSun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg id="iconMoon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="/book/" class="nav-cta">Book Strategy Call</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/#solution" onclick="closeMobile()">Solutions</a>
+  <a href="/#offerings" onclick="closeMobile()">Offerings</a>
+  <a href="/blog/" onclick="closeMobile()">Insights</a>
+  <a href="/guide/" onclick="closeMobile()">AI Guide</a>
+  <a href="/book/" onclick="closeMobile()" style="color:var(--accent);">Book Strategy Call</a>
+</div>
+
+<div class="post-header">
+  <div class="container">
+    <a href="/blog/" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M13 7H1M6 2L1 7l5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to Insights
+    </a>
+    <div class="post-meta">
+      <span class="label">Implementation</span>
+      <span class="post-meta-text">April 4, 2026</span>
+      <span class="post-meta-text">14 min read</span>
+    </div>
+    <h1 class="post-title">Integrating AI Agents into Your Existing Sales Tech Stack</h1>
+    <p class="post-desc">A practical guide for sales leaders and RevOps teams on how to integrate autonomous AI agents into your CRM, SEP, and marketing automation stack without disrupting existing operations.</p>
+  </div>
+</div>
+
+<div class="post-body">
+  <div class="container">
+    <div class="post-body-inner">
+      
+      
+<p>The promise of autonomous AI agents in sales is clear: increased efficiency, hyper-personalization at scale, and a significant boost in pipeline generation. However, for many B2B sales organizations, the journey from recognizing this potential to actually deploying and realizing value from AI agents is often hindered by a crucial challenge: integrating these new intelligent systems into an already complex and established sales tech stack. It's not about replacing your CRM, sales engagement platform, or marketing automation tools — it's about making AI agents work seamlessly alongside them.</p>
+
+<p>This article provides a practical guide for sales leaders, RevOps professionals, and IT teams on how to effectively integrate autonomous AI agents into your existing sales technology ecosystem. We'll explore the strategic considerations, technical approaches, and common pitfalls to avoid — ensuring your AI initiatives deliver measurable ROI without disrupting current operations.</p>
+
+<h2>The Integration Imperative: Why It Matters</h2>
+
+<p>An AI agent, no matter how intelligent, is an island without proper integration. Its ability to perform autonomously — to research prospects, send personalized emails, update CRM records, schedule meetings, and analyze performance — relies entirely on its capacity to communicate with and operate within your existing tools. Poor integration leads to:</p>
+<ul>
+    <li><strong>Data Silos:</strong> AI agents operate on incomplete data, leading to inaccurate insights and suboptimal actions.</li>
+    <li><strong>Manual Workarounds:</strong> Human teams are still required to bridge gaps, defeating the purpose of automation.</li>
+    <li><strong>Disrupted Workflows:</strong> Instead of enhancing existing processes, AI agents complicate them, causing friction and resistance.</li>
+    <li><strong>Limited Scalability:</strong> The inability to seamlessly connect with other systems stifles the agent's ability to scale and impact a wider range of sales activities.</li>
+</ul>
+<p>Effective integration ensures that your AI agents become a force multiplier, enhancing the capabilities of your existing tech stack rather than creating another disparate system to manage.</p>
+
+<h2>Key Components of Your Sales Tech Stack for AI Integration</h2>
+
+<p>When planning AI agent integration, focus on these core categories:</p>
+
+<h3>1. CRM (Customer Relationship Management)</h3>
+<p><strong>Examples:</strong> Salesforce, HubSpot, Microsoft Dynamics 365, Zoho CRM</p>
+<p>The CRM is the single source of truth for customer data, interaction history, and pipeline status. AI agents need read/write access to prospect and customer records, activity logs, opportunity details, and custom fields. Integration happens primarily via REST APIs and webhooks. With proper CRM integration, AI agents can automate lead creation, contact enrichment, activity logging, opportunity stage updates, deal health monitoring, and personalized data retrieval for outreach.</p>
+
+<h3>2. Sales Engagement Platforms (SEPs)</h3>
+<p><strong>Examples:</strong> Salesloft, Outreach, Apollo.io, ZoomInfo SalesOS</p>
+<p>SEPs manage multi-channel sales sequences (email, calls, social), track engagement, and provide analytics. AI agents augment these platforms by dynamically personalizing messages, optimizing send times, and automating follow-up decisions. Key capabilities enabled include dynamic content generation, smart cadence adjustments based on real-time engagement, automated task creation, and sentiment analysis of replies to guide next steps.</p>
+
+<h3>3. Marketing Automation Platforms (MAPs)</h3>
+<p><strong>Examples:</strong> Marketo, Pardot, HubSpot Marketing Hub, Eloqua</p>
+<p>MAPs handle lead nurturing, scoring, and content distribution, often before a lead reaches sales. AI agents can enrich leads passed from marketing, provide deeper insights into marketing qualified leads (MQLs), and ensure seamless handoffs — including feedback loops to marketing on lead quality.</p>
+
+<h3>4. Communication and Collaboration Tools</h3>
+<p><strong>Examples:</strong> Slack, Microsoft Teams, Gmail, Outlook, Zoom, Google Meet</p>
+<p>Sales teams live in these tools. AI agents can monitor communications for sales signals, summarize meetings, and facilitate internal alerts and notifications. Calendar APIs (Google Calendar, Outlook) unlock automated scheduling and follow-up task creation.</p>
+
+<h3>5. Data Warehouses and Business Intelligence Tools</h3>
+<p><strong>Examples:</strong> Snowflake, BigQuery, Tableau, Power BI</p>
+<p>For advanced analytics, forecasting, and deriving deep insights from aggregated sales and marketing data, AI agents can pull from these sources for more informed decisions and push results for reporting — enabling advanced sales forecasting, market trend identification, and performance anomaly detection.</p>
+
+<h2>Strategic Approaches to AI Agent Integration</h2>
+
+<p>Successful integration isn't just about connecting APIs — it's a strategic discipline that aligns with your business goals and technical capabilities.</p>
+
+<h3>1. API-First Integration (Preferred)</h3>
+<p>This is the most robust and scalable approach. AI agents directly interact with your existing tech stack via their public APIs, ensuring data consistency, security, and maintainability. Your AI agent platform makes API calls to your CRM to fetch contact details, then to your SEP to trigger an email sequence, then logs the activity back to the CRM. This approach is highly reliable and scalable but requires development resources to build and maintain API connectors and orchestration logic.</p>
+
+<h3>2. Webhook-Driven Automation</h3>
+<p>Webhooks allow systems to notify your AI agents in real-time about events — a new lead created in CRM, an email opened in SEP. This enables reactive and event-driven AI agent behavior. When a new lead is created in HubSpot, HubSpot sends a webhook notification to your AI agent listener, which then processes the new lead, enriches it, and decides the next best action. Real-time and efficient, but requires your AI system to have a publicly accessible endpoint and robust error handling for failed deliveries.</p>
+
+<h3>3. RPA/UI Automation (As a Last Resort)</h3>
+<p>In cases where an older system lacks APIs or webhooks, Robotic Process Automation tools can automate UI interactions — mimicking human actions in systems that don't expose programmatic access. This is fragile, breaks with UI changes, and is difficult to scale. Avoid if possible; treat it as a temporary bridge to a proper API integration, not a long-term strategy.</p>
+
+<h3>4. Data Synchronization and ETL</h3>
+<p>For scenarios requiring bulk data movement or complex data transformations before AI processing, ETL tools and data synchronization layers are essential. A daily job can extract all new sales activities from the CRM, transform them into a format suitable for AI analysis, and load them into a data lake where AI agents can access them for long-term learning or batch processing.</p>
+
+<h2>Best Practices for Seamless Integration</h2>
+
+<p>To maximize the impact of your AI agents and avoid common pitfalls:</p>
+
+<p><strong>Map your current workflows thoroughly.</strong> Before automating, understand every step of your existing sales process. Identify touchpoints, decision points, and data flows. This helps define where AI agents can add the most value without disruption.</p>
+
+<p><strong>Start small, iterate fast.</strong> Don't try to automate your entire sales funnel with AI agents overnight. Begin with a single, high-impact use case — automating lead enrichment for a specific segment, for example — and prove its value. Learn, iterate, then expand.</p>
+
+<p><strong>Prioritize API-first.</strong> Whenever possible, use native APIs. This ensures stability, security, and scalability. Invest in building robust API connectors upfront; the payoff compounds over time.</p>
+
+<p><strong>Implement robust error handling and monitoring.</strong> AI agents will encounter unexpected data or system responses. Design your integrations with comprehensive error logging, retry mechanisms, and alerts to ensure prompt resolution of issues before they affect pipeline.</p>
+
+<p><strong>Ensure data security and privacy.</strong> AI agents often handle sensitive customer data. Implement strict access controls, encrypt data in transit and at rest, and ensure compliance with relevant regulations (GDPR, CCPA, HIPAA). Audit agent actions regularly.</p>
+
+<p><strong>Build a centralized orchestration layer.</strong> For complex deployments with multiple AI agents interacting with various systems, consider a centralized workflow engine that manages agent interactions, data flows, and decision logic across your entire tech stack. This prevents spaghetti integrations and makes troubleshooting dramatically faster.</p>
+
+<p><strong>Involve IT and security early.</strong> AI agent integration is not solely a sales or RevOps concern. Engage your IT and security teams from the outset to ensure technical feasibility, security compliance, and alignment with enterprise architecture standards.</p>
+
+<p><strong>Establish clear data governance.</strong> Define rules for how AI agents read, write, and modify data in your CRM and other systems. Who owns the data? What are the update frequencies? How are conflicts resolved? Document this before deployment, not after.</p>
+
+<h2>Common Integration Mistakes to Avoid</h2>
+
+<p>Teams that struggle with AI agent integration typically make one of a handful of avoidable mistakes:</p>
+
+<p><strong>Starting with the most complex use case.</strong> Trying to automate a 12-step multi-system workflow as your first AI integration almost always results in failure or a months-long delay. Start with one integration, one workflow, one win — then build from there.</p>
+
+<p><strong>Neglecting data quality.</strong> Garbage in, garbage out applies with brutal force to AI systems. If your CRM has 30% email bounce rates and inconsistent company data, your AI agents will make bad decisions at scale. Address data hygiene before deployment.</p>
+
+<p><strong>Underestimating change management.</strong> Sales reps who don't trust or understand the AI agents will route around them. Invest in training, communicate the "why" clearly, and involve top performers in the pilot phase so they become advocates rather than skeptics.</p>
+
+<p><strong>Treating integration as a one-time project.</strong> Your tech stack evolves, your AI agents should evolve with it. Budget for ongoing integration maintenance and plan quarterly reviews of agent performance and connectivity.</p>
+
+<h2>Measuring Integration Success</h2>
+
+<p>Once deployed, track these metrics to validate integration effectiveness:</p>
+<ul>
+    <li><strong>Data freshness rate:</strong> What percentage of CRM records touched by AI agents are updated within 24 hours of a relevant event?</li>
+    <li><strong>Task automation rate:</strong> What percentage of previously manual tasks (data entry, follow-up scheduling, lead enrichment) are now handled autonomously?</li>
+    <li><strong>Error and exception rate:</strong> How often do integrations fail or require manual intervention? This should decline over time as edge cases are handled.</li>
+    <li><strong>Pipeline attribution:</strong> What percentage of opportunities in your CRM have AI agent touchpoints logged in their activity history?</li>
+    <li><strong>Rep time reallocation:</strong> Survey your sales team quarterly on where they're spending time. A successful integration should shift hours away from administrative tasks toward customer conversations.</li>
+</ul>
+
+<h2>The Future Is Integrated: Building Your Autonomous Sales Force</h2>
+
+<p>The successful integration of AI agents into your existing sales tech stack is the bridge between AI's potential and its tangible impact on revenue. It transforms individual AI capabilities into a cohesive, autonomous sales force that works tirelessly to generate pipeline, personalize interactions, and optimize every stage of the sales journey.</p>
+
+<p>By adopting a strategic, API-first approach and adhering to proven best practices, B2B sales organizations can unlock the full power of AI — making their current investments in sales technology even more valuable, not obsolete. Don't let integration complexity hold back your AI transformation. The future of sales is autonomous, and it's built on seamless connectivity.</p>
+
+<p><strong>If your B2B sales team is ready to integrate autonomous AI agents into your existing tech stack but needs expert guidance on strategy, architecture, and implementation, Augentic AI is your strategic partner. We specialize in building and integrating tailored AI agent solutions that work seamlessly with your CRM, SEP, and other critical sales tools. <a href="/book/">Book a strategy call with Augentic AI today</a> to design your custom AI agent integration roadmap.</strong></p>
+
+    </div>
+  </div>
+</div>
+
+<div class="post-footer">
+  <div class="container">
+    <div class="cta-box">
+      <h3>Ready to Build Your AI Workforce?</h3>
+      <p>Schedule a 30-minute strategy call. We will tell you exactly what we would build for your business - and what it would cost.</p>
+      <a href="/book/" class="btn-primary">Book a Strategy Call</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo" style="display:flex;align-items:center;"><img src="/logo.svg" alt="Augentic AI" height="28" style="height:28px;width:auto;" /></div>
+        <div class="footer-tagline">Autonomous AI. Measurable Revenue.</div>
+      </div>
+      <ul class="footer-links">
+        <li><a href="/#solution">Solutions</a></li>
+        <li><a href="/#offerings">Offerings</a></li>
+        <li><a href="/blog/">Insights</a></li>
+        <li><a href="/guide/">AI Guide</a></li>
+        <li><a href="/book/">Book a Call</a></li>
+        <li><a href="mailto:hello@augenticai.com">Contact</a></li>
+      </ul>
+      <div class="footer-copy">&copy; 2026 Augentic AI. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => { mobileMenu.classList.toggle('open'); });
+  function closeMobile() { mobileMenu.classList.remove('open'); }
+  const themeToggle = document.getElementById('themeToggle');
+  const iconSun = document.getElementById('iconSun');
+  const iconMoon = document.getElementById('iconMoon');
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  if (savedTheme === 'light') { document.body.classList.add('light'); iconSun.style.display = 'block'; iconMoon.style.display = 'none'; }
+  themeToggle.addEventListener('click', () => {
+    const isLight = document.body.classList.toggle('light');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    iconSun.style.display = isLight ? 'block' : 'none';
+    iconMoon.style.display = isLight ? 'none' : 'block';
+  });
+</script>
+</body>
+</html>
