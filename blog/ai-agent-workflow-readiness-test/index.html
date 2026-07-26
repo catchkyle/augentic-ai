@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Insights | Augentic AI - AI Systems Integration</title>
-  <meta name="description" content="Analysis, frameworks, and perspectives on autonomous AI systems for revenue-driven businesses." />
+  <title>Before You Build an AI Agent, Fix the Workflow: A 7-Point Readiness Test | Augentic AI Insights</title>
+  <meta name="description" content="AI agents do not repair broken operations. Use this seven-point readiness test to decide whether a workflow is ready for automation." />
+  <meta property="og:title" content="Before You Build an AI Agent, Fix the Workflow: A 7-Point Readiness Test" />
+  <meta property="og:description" content="AI agents do not repair broken operations. Use this seven-point readiness test to decide whether a workflow is ready for automation." />
+  <meta property="og:type" content="article" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -68,20 +71,24 @@
     @media (max-width: 900px) { .nav-links, .nav-right .nav-cta { display: none; } .hamburger { display: flex; } }
   </style>
   <style>
-    .blog-header { padding: 10rem 0 5rem; border-bottom: 1px solid var(--border); }
-    .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); margin-top: 5rem; }
-    .blog-card { background: var(--bg); transition: background 0.2s; border: 1px solid transparent; }
-    .blog-card:hover { background: var(--bg-card); }
-    .blog-card-link { display: block; padding: 2.5rem; text-decoration: none; color: inherit; height: 100%; }
-    .blog-card-meta { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; flex-wrap: wrap; }
-    .blog-date { font-size: 0.72rem; color: var(--text-dim); }
-    .blog-card-title { font-size: 1.05rem; font-weight: 500; color: var(--text); margin-bottom: 0.8rem; line-height: 1.4; letter-spacing: -0.01em; }
-    .blog-card-desc { font-size: 0.88rem; line-height: 1.75; margin-bottom: 2rem; }
-    .blog-card-footer { display: flex; justify-content: space-between; align-items: center; }
-    .blog-read { font-size: 0.75rem; color: var(--text-dim); }
-    .blog-arrow { font-size: 0.8rem; color: var(--accent); }
-    @media (max-width: 900px) { .blog-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 600px) { .blog-grid { grid-template-columns: 1fr; } }
+    .post-header { padding: 10rem 0 4rem; border-bottom: 1px solid var(--border); }
+    .post-meta { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .post-meta .label { margin: 0; }
+    .post-meta-text { font-size: 0.8rem; color: var(--text-dim); }
+    .post-title { margin-bottom: 1.2rem; }
+    .post-desc { font-size: 1.05rem; max-width: 640px; }
+    .post-body { padding: 5rem 0; }
+    .post-body-inner { max-width: 720px; }
+    .post-body p { margin-bottom: 1.6rem; font-size: 1rem; }
+    .post-body h2 { font-size: 1.5rem; margin: 3rem 0 1rem; color: var(--text); }
+    .post-body strong { color: var(--text); font-weight: 500; }
+    .x-credit { background: var(--bg-card); border: 1px solid var(--border-accent); border-left: 3px solid var(--accent); padding: 1.2rem 1.5rem; margin: 2.5rem 0; font-size: 0.88rem; color: var(--text-muted); font-style: italic; border-radius: 0 var(--radius) var(--radius) 0; }
+    .post-footer { padding: 4rem 0; border-top: 1px solid var(--border); }
+    .cta-box { background: var(--bg-card); border: 1px solid var(--border); padding: 3rem; text-align: center; max-width: 600px; margin: 0 auto; }
+    .cta-box h3 { font-family: var(--font-serif); font-size: 1.6rem; margin-bottom: 1rem; color: var(--text); }
+    .cta-box p { margin-bottom: 2rem; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: var(--text-muted); text-decoration: none; margin-bottom: 3rem; transition: color 0.2s; }
+    .back-link:hover { color: var(--accent); }
   </style>
 </head>
 <body>
@@ -116,165 +123,78 @@
   <a href="/book/" onclick="closeMobile()" style="color:var(--accent);">Book Strategy Call</a>
 </div>
 
-<div class="blog-header">
+<div class="post-header">
   <div class="container">
-    <span class="label">Insights</span>
-    <h1 style="margin-top:1rem;margin-bottom:1rem;">Perspectives on Autonomous AI</h1>
-    <p style="max-width:560px;font-size:1.05rem;">Analysis, frameworks, and perspectives on AI systems integration for revenue-driven businesses. No hype. No fluff. Just substance.</p>
+    <a href="/blog/" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M13 7H1M6 2L1 7l5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to Insights
+    </a>
+    <div class="post-meta">
+      <span class="label">AI Operations</span>
+      <span class="post-meta-text">July 25, 2026</span>
+      <span class="post-meta-text">7 min read</span>
+    </div>
+    <h1 class="post-title">Before You Build an AI Agent, Fix the Workflow: A 7-Point Readiness Test</h1>
+    <p class="post-desc">AI agents do not repair broken operations. Use this seven-point readiness test to decide whether a workflow is ready for automation.</p>
   </div>
 </div>
 
-<div style="padding:0 0 8rem;">
+<div class="post-body">
   <div class="container">
-    <div class="blog-grid">
-      <article class="blog-card" style="border-color:var(--border-accent);">
-        <a href="/blog/ai-agent-workflow-readiness-test/" class="blog-card-link">
-          <div class="blog-card-meta"><span class="label" style="font-size:0.65rem;">AI Operations</span><span class="blog-date">July 25, 2026</span></div>
-          <h3 class="blog-card-title">Before You Build an AI Agent, Fix the Workflow: A 7-Point Readiness Test</h3>
-          <p class="blog-card-desc">AI agents do not repair broken operations. Use this seven-point readiness test to decide whether a workflow is ready for automation.</p>
-          <div class="blog-card-footer"><span class="blog-read">7 min read</span><span class="blog-arrow">Read &rarr;</span></div>
-        </a>
-      </article>
-      <article class="blog-card">
-        <a href="/blog/qwen35-local-ai-business-leaders/" class="blog-card-link">
-          <div class="blog-card-meta">
-            <span class="label" style="font-size:0.65rem;">AI Strategy</span>
-            <span class="blog-date">March 3, 2026</span>
-          </div>
-          <h3 class="blog-card-title">Qwen3.5 and the Era of Free Local AI: What Business Leaders Need to Know</h3>
-          <p class="blog-card-desc">Alibaba just released Qwen3.5, and AI commentators are calling it a watershed moment. Here is what it actually means for your business.</p>
-          <div class="blog-card-footer">
-            <span class="blog-read">5 min read</span>
-            <span class="blog-arrow">Read &rarr;</span>
-          </div>
-        </a>
-      </article>
-      <article class="blog-card">
-        <a href="/blog/crm-revenue-leak-ai-fix/" class="blog-card-link">
-          <div class="blog-card-meta">
-            <span class="label" style="font-size:0.65rem;">Revenue Operations</span>
-            <span class="blog-date">March 3, 2026</span>
-          </div>
-          <h3 class="blog-card-title">Your CRM Is Bleeding Revenue. AI Fixes It.</h3>
-          <p class="blog-card-desc">Most CRM data is stale, incomplete, and manually maintained. Here is how AI agents eliminate the leak.</p>
-          <div class="blog-card-footer">
-            <span class="blog-read">4 min read</span>
-            <span class="blog-arrow">Read &rarr;</span>
-          </div>
-        </a>
-      </article>
-      <article class="blog-card">
-        <a href="/blog/ai-tools-vs-ai-systems/" class="blog-card-link">
-          <div class="blog-card-meta">
-            <span class="label" style="font-size:0.65rem;">AI Strategy</span>
-            <span class="blog-date">March 3, 2026</span>
-          </div>
-          <h3 class="blog-card-title">AI Tools vs. AI Systems: The Distinction That Defines Winners</h3>
-          <p class="blog-card-desc">Most companies have AI tools. Few have AI systems. Here is why that distinction is worth millions.</p>
-          <div class="blog-card-footer">
-            <span class="blog-read">5 min read</span>
-            <span class="blog-arrow">Read &rarr;</span>
-          </div>
-        </a>
-      </article>
-      <article class="blog-card">
-        <a href="/blog/autonomous-ai-agents-sales-workflows-2026/" class="blog-card-link">
-          <div class="blog-card-meta">
-            <span class="label" style="font-size:0.65rem;">Sales Automation</span>
-            <span class="blog-date">March 3, 2026</span>
-          </div>
-          <h3 class="blog-card-title">How Autonomous AI Agents Are Replacing Manual Sales Workflows in 2026</h3>
-          <p class="blog-card-desc">The shift from AI-assisted selling to AI-automated selling is happening now. Here is what it looks like in practice.</p>
-          <div class="blog-card-footer">
-            <span class="blog-read">6 min read</span>
-            <span class="blog-arrow">Read &rarr;</span>
-          </div>
-        </a>
-      </article>
-      <article class="blog-card">
-        <a href="/blog/ai-voice-agents-front-office-2026/" class="blog-card-link">
-          <div class="blog-card-meta">
-            <span class="label" style="font-size:0.65rem;">Voice AI</span>
-            <span class="blog-date">March 3, 2026</span>
-          </div>
-          <h3 class="blog-card-title">AI Voice Agents for Business: The Front Office Revolution Is Here</h3>
-          <p class="blog-card-desc">AI voice agents are answering calls, qualifying leads, and booking appointments for businesses that operate 24 hours a day. Here is what that looks like.</p>
-          <div class="blog-card-footer">
-            <span class="blog-read">4 min read</span>
-            <span class="blog-arrow">Read &rarr;</span>
-          </div>
-        </a>
-      </article>
-      <article class="blog-card">
-        <a href="/blog/what-is-ai-systems-integrator/" class="blog-card-link">
-          <div class="blog-card-meta">
-            <span class="label" style="font-size:0.65rem;">AI Strategy</span>
-            <span class="blog-date">March 3, 2026</span>
-          </div>
-          <h3 class="blog-card-title">What Is an AI Systems Integrator? (And Why You Need One)</h3>
-          <p class="blog-card-desc">The term is new but the concept is familiar. Here is what AI systems integration actually means and why it is the category that matters.</p>
-          <div class="blog-card-footer">
-            <span class="blog-read">4 min read</span>
-            <span class="blog-arrow">Read &rarr;</span>
-          </div>
-        </a>
-      </article>
-      <article class="blog-card">
-        <a href="/blog/true-cost-manual-workflows/" class="blog-card-link">
-          <div class="blog-card-meta">
-            <span class="label" style="font-size:0.65rem;">Revenue Operations</span>
-            <span class="blog-date">March 3, 2026</span>
-          </div>
-          <h3 class="blog-card-title">The Real Cost of Manual Workflows: What You Are Actually Losing</h3>
-          <p class="blog-card-desc">Most executives underestimate the cost of manual operations by a factor of three. Here is how to calculate what you are actually losing.</p>
-          <div class="blog-card-footer">
-            <span class="blog-read">5 min read</span>
-            <span class="blog-arrow">Read &rarr;</span>
-          </div>
-        </a>
-      </article>
-      <article class="blog-card">
-        <a href="/blog/evaluating-ai-roi-framework/" class="blog-card-link">
-          <div class="blog-card-meta">
-            <span class="label" style="font-size:0.65rem;">AI Strategy</span>
-            <span class="blog-date">March 3, 2026</span>
-          </div>
-          <h3 class="blog-card-title">How to Evaluate AI ROI Before You Invest: A Framework for Mid-Market Leaders</h3>
-          <p class="blog-card-desc">Most AI ROI calculations are either too optimistic or too narrow. Here is a framework that captures the full picture.</p>
-          <div class="blog-card-footer">
-            <span class="blog-read">5 min read</span>
-            <span class="blog-arrow">Read &rarr;</span>
-          </div>
-        </a>
-      </article>
-      <article class="blog-card">
-        <a href="/blog/open-source-ai-enterprise-deepseek-qwen/" class="blog-card-link">
-          <div class="blog-card-meta">
-            <span class="label" style="font-size:0.65rem;">AI Technology</span>
-            <span class="blog-date">March 3, 2026</span>
-          </div>
-          <h3 class="blog-card-title">DeepSeek, Qwen, and Open Source AI: What the Enterprise Needs to Know</h3>
-          <p class="blog-card-desc">The open source AI revolution is not just about cost. It is about control, privacy, and the structure of competitive advantage.</p>
-          <div class="blog-card-footer">
-            <span class="blog-read">5 min read</span>
-            <span class="blog-arrow">Read &rarr;</span>
-          </div>
-        </a>
-      </article>
-      <article class="blog-card">
-        <a href="/blog/building-ai-workforce-playbook-revenue-teams/" class="blog-card-link">
-          <div class="blog-card-meta">
-            <span class="label" style="font-size:0.65rem;">Playbooks</span>
-            <span class="blog-date">March 3, 2026</span>
-          </div>
-          <h3 class="blog-card-title">Building an AI Workforce: The Playbook for Revenue Teams</h3>
-          <p class="blog-card-desc">A step-by-step framework for deploying autonomous AI across your revenue operations - from workflow mapping to production deployment.</p>
-          <div class="blog-card-footer">
-            <span class="blog-read">7 min read</span>
-            <span class="blog-arrow">Read &rarr;</span>
-          </div>
-        </a>
-      </article>
+    <div class="post-body-inner">
+      <p>Most companies start an AI agent project by choosing a model.</p>
+<p>That is backwards.</p>
+<p>The model is rarely the first thing that determines whether an agent works. The workflow does. If the process is unclear, the data is scattered, and nobody owns the exceptions, adding an AI agent will not create order. It will automate confusion.</p>
+<p>Before you pay anyone to build an agent, run the workflow through this seven-point readiness test.</p>
+<h2>1. Can You Name the Trigger?</h2>
+<p>Every useful agent needs a clear starting signal. A lead submits a form. A contract enters its renewal window. An invoice becomes overdue. A support ticket reaches a certain severity.</p>
+<p>"Help the sales team" is not a trigger. Neither is "improve customer experience." Those are goals. The agent needs an observable event that tells it when to begin working.</p>
+<p>If your team cannot agree on the trigger, the workflow is not ready.</p>
+<h2>2. Is the Required Data Available?</h2>
+<p>An agent can only make decisions from the data it can access. Map the exact information needed at each step and where that information lives today.</p>
+<p>Does it need CRM fields, contract documents, call transcripts, product inventory, or account status? Is the data structured? Is it current? Can the system access it through a reliable API, or does a person still pull it from an inbox and paste it into a spreadsheet?</p>
+<p>Do not confuse "we have the data somewhere" with "the agent can use the data safely and consistently." Those are very different things.</p>
+<h2>3. Are the Decision Rules Clear?</h2>
+<p>Agents perform well when the boundaries are specific.</p>
+<p>For example: if an inbound lead matches the target industry, has more than 50 employees, and requests a supported service, assign it to sales and draft a response. If key information is missing, request it. If the prospect asks about legal terms, escalate to a person.</p>
+<p>That is a workflow. "Use your judgment and follow up with good leads" is a wish.</p>
+<p>You do not need to document every edge case before starting. You do need a defined path for the normal case and a safe path for anything outside it.</p>
+<h2>4. Is There a Measurable Output?</h2>
+<p>An agent should produce something the business can count or evaluate: a qualified meeting, a completed record, a routed ticket, a renewal alert, a reconciled invoice, or a draft ready for approval.</p>
+<p>If success is described as "better productivity," tighten the definition. How much time does the workflow consume now? How long does it take? How often does it fail? What business result should change?</p>
+<p>Without a baseline and a measurable output, you will end up debating whether the demo felt impressive instead of whether the system created value.</p>
+<h2>5. Does a Human Own the Exceptions?</h2>
+<p>No production workflow stays on the happy path forever. A customer replies with an unusual request. An integration times out. A record contains conflicting dates. A high-value deal falls outside the scoring rules.</p>
+<p>The agent needs to know when to stop and who gets the exception. That person needs enough context to take over without rebuilding the entire history.</p>
+<p>Human approval is not a failure of automation. It is a control. The goal is not maximum autonomy. The goal is reliable business output at an acceptable level of risk.</p>
+<h2>6. Are Permissions Narrow Enough?</h2>
+<p>Start with the least access the agent needs. Read-only access is often enough for the first version. If the agent must write data, limit which records and fields it can change. If it can send messages, define approved channels, recipients, and templates.</p>
+<p>Do not hand an experimental agent broad CRM, email, and financial permissions because it makes the prototype easier. Convenience during the build can become exposure in production.</p>
+<p>The right question is simple: what is the smallest permission set that still lets the agent complete the job?</p>
+<h2>7. Can You Review What It Did?</h2>
+<p>A production agent needs a record of what it saw, what decision it made, what action it took, and whether the action succeeded.</p>
+<p>If you cannot audit the workflow, you cannot improve it. You also cannot investigate failures, prove controls, or decide when the agent has earned more autonomy.</p>
+<p>Logging is not an optional technical detail. It is part of the operating model.</p>
+<h2>How to Score the Workflow</h2>
+<p>Give the workflow one point for every question you can answer with evidence, not optimism.</p>
+<p><strong>0 to 2 points:</strong> Do not build the agent yet. Document and clean up the process first.</p>
+<p><strong>3 to 5 points:</strong> A controlled pilot may make sense, but keep the scope narrow and require human approval.</p>
+<p><strong>6 to 7 points:</strong> The workflow is a strong candidate for a production pilot with clear metrics, permissions, monitoring, and ownership.</p>
+<h2>Build the System, Not the Demo</h2>
+<p>A polished agent demo can hide a weak workflow for five minutes. Production exposes it immediately.</p>
+<p>The companies getting real value from AI are not simply buying smarter models. They are choosing narrow, valuable workflows and doing the operational work required to make automation dependable.</p>
+<p>Start with the workflow. Make the rules visible. Define the controls. Then build the agent.</p>
+
+    </div>
+  </div>
+</div>
+
+<div class="post-footer">
+  <div class="container">
+    <div class="cta-box">
+      <h3>Ready to Build Your AI Workforce?</h3>
+      <p>Schedule a 30-minute strategy call. We will identify the best workflow to automate first, the controls it needs, and what a production build would require.</p>
+      <a href="/book/" class="btn-primary">Book a Strategy Call</a>
     </div>
   </div>
 </div>
@@ -292,8 +212,7 @@
         <li><a href="/blog/">Insights</a></li>
         <li><a href="/guide/">AI Guide</a></li>
         <li><a href="/book/">Book a Call</a></li>
-        <li><a href="/privacy/">Privacy</a></li>
-        <li><a href="/terms/">Terms</a></li>
+        <li><a href="mailto:hello@augenticai.com">Contact</a></li>
       </ul>
       <div class="footer-copy">&copy; 2026 Augentic AI. All rights reserved.</div>
     </div>
