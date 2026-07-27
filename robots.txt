@@ -2,5 +2,10 @@ User-agent: *
 Allow: /
 Disallow: /build-prompt.md
 Disallow: /_build_site.py
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 
-Sitemap: https://www.augenticai.com/sitemap.xml
+# Augentic AI allows legitimate search, retrieval, and AI assistant crawlers.
+# The Content-Signal communicates that discovery and reference use are allowed
+# while model-training use is not granted.
+
+Sitemap: https://augenticai.com/sitemap.xml

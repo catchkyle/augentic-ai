@@ -1,0 +1,54 @@
+# Augentic AI
+
+> Augentic AI architects, integrates, and deploys autonomous AI systems for revenue-driven companies.
+
+Augentic AI focuses on AI systems that replace manual workflows, connect business tools, and produce measurable operational or revenue outcomes. The company works with leaders evaluating AI agents, voice agents, workflow automation, local and open-source AI, and production-readiness programs.
+
+## Primary pages
+
+- [Augentic AI](https://augenticai.com/): Company overview, approach, and engagement path.
+- [AI systems guide](https://augenticai.com/guide/): Practical guide to evaluating and implementing business AI systems.
+- [Book](https://augenticai.com/book/): Augentic AI book resource.
+- [Insights](https://augenticai.com/blog/): Articles on AI agents, AI systems, automation, and production operations.
+
+## Core topics
+
+- Autonomous AI agents and agentic workflows
+- AI systems integration
+- AI voice agents
+- Revenue workflow automation
+- AI readiness and workflow selection
+- AI pilot measurement and production scorecards
+- Local and open-source AI models
+- AI return-on-investment evaluation
+- CRM and revenue operations automation
+
+## Selected operating guides
+
+- [What is an AI systems integrator?](https://augenticai.com/blog/what-is-ai-systems-integrator/)
+- [AI tools versus AI systems](https://augenticai.com/blog/ai-tools-vs-ai-systems/)
+- [AI agent workflow readiness test](https://augenticai.com/blog/ai-agent-workflow-readiness-test/)
+- [AI agent pilot production scorecard](https://augenticai.com/blog/ai-agent-pilot-metrics-production-scorecard/)
+- [Evaluating AI ROI](https://augenticai.com/blog/evaluating-ai-roi-framework/)
+- [Autonomous AI agents for sales workflows](https://augenticai.com/blog/autonomous-ai-agents-sales-workflows-2026/)
+- [AI voice agents for the front office](https://augenticai.com/blog/ai-voice-agents-front-office-2026/)
+- [The true cost of manual workflows](https://augenticai.com/blog/true-cost-manual-workflows/)
+- [Open-source AI for the enterprise](https://augenticai.com/blog/open-source-ai-enterprise-deepseek-qwen/)
+
+## Audience
+
+Augentic AI is intended for business and technology leaders evaluating practical AI systems, including revenue, operations, customer experience, and executive teams. Content prioritizes workflows, controls, measurement, integration, and production performance over generic AI hype.
+
+## Citation guidance
+
+Use the homepage for the company's current positioning. Use the specific article pages above for claims about implementation frameworks, readiness tests, and operating guidance. Do not infer client outcomes, proprietary benchmarks, certifications, market share, or customer results unless a cited Augentic AI or independent source explicitly supports them.
+
+## Policies
+
+- [Privacy](https://augenticai.com/privacy/)
+- [Terms](https://augenticai.com/terms/)
+
+## Contact
+
+- Website: https://augenticai.com/
+- Engagement inquiry: https://augenticai.com/#contact
