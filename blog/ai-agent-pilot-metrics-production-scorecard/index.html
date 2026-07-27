@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your AI Agent Pilot Is Measuring the Wrong Things: A Production Scorecard | Augentic AI Insights</title>
+  <meta name="description" content="Use this AI agent pilot scorecard to measure business outcomes, quality, reliability, risk, and full operating cost before approving production." />
+  <meta property="og:title" content="Your AI Agent Pilot Is Measuring the Wrong Things: A Production Scorecard" />
+  <meta property="og:description" content="Use this AI agent pilot scorecard to measure business outcomes, quality, reliability, risk, and full operating cost before approving production." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://augenticai.com/blog/ai-agent-pilot-metrics-production-scorecard/" />
+  <link rel="canonical" href="https://augenticai.com/blog/ai-agent-pilot-metrics-production-scorecard/" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Your AI Agent Pilot Is Measuring the Wrong Things: A Production Scorecard",
+    "description": "Use this AI agent pilot scorecard to measure business outcomes, quality, reliability, risk, and full operating cost before approving production.",
+    "datePublished": "2026-07-27",
+    "dateModified": "2026-07-27",
+    "author": { "@type": "Organization", "name": "Augentic AI" },
+    "publisher": { "@type": "Organization", "name": "Augentic AI", "url": "https://augenticai.com/" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://augenticai.com/blog/ai-agent-pilot-metrics-production-scorecard/" }
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0A0A0A; --bg-card: #111111; --bg-raised: #161616;
+      --text: #F5F5F0; --text-muted: #888880; --text-dim: #555550;
+      --accent: #D4AF37; --accent-dim: rgba(212,175,55,0.12);
+      --border: rgba(255,255,255,0.07); --border-accent: rgba(212,175,55,0.3);
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Inter', system-ui, sans-serif;
+      --max: 1200px; --radius: 2px;
+    }
+    body.light {
+      --bg: #FAFAF7; --bg-card: #F2F2EE; --bg-raised: #E8E8E4;
+      --text: #0B0B0B; --text-muted: #444440; --text-dim: #999990;
+      --border: rgba(0,0,0,0.08); --border-accent: rgba(212,175,55,0.4);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-weight: 400; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    ::selection { background: var(--accent-dim); color: var(--accent); }
+    h1,h2,h3,h4 { font-weight: 500; line-height: 1.25; letter-spacing: -0.02em; }
+    h1 { font-family: var(--font-serif); font-size: clamp(2rem,4vw,3.2rem); }
+    h2 { font-family: var(--font-serif); font-size: clamp(1.6rem,3vw,2.4rem); }
+    h3 { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; letter-spacing: 0; }
+    p { color: var(--text-muted); line-height: 1.85; }
+    a { color: inherit; }
+    .label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.5rem 0; transition: background 0.4s, padding 0.3s; }
+    nav.scrolled { background: rgba(10,10,10,0.95); border-bottom: 1px solid var(--border); padding: 1rem 0; backdrop-filter: blur(12px); }
+    body.light nav.scrolled { background: rgba(250,250,247,0.95); }
+    nav .container { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.8rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; padding: 0.65rem 1.4rem; background: var(--accent); color: #0A0A0A; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s; white-space: nowrap; }
+    .nav-cta:hover { opacity: 0.88; }
+    .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+    .theme-toggle { background: none; border: 1px solid var(--border); color: var(--text-muted); cursor: pointer; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius); transition: color 0.2s; flex-shrink: 0; }
+    .theme-toggle:hover { color: var(--accent); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 1px; background: var(--text); }
+    .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 99; background: var(--bg); padding: 6rem 2rem 2rem; flex-direction: column; gap: 2rem; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 1.4rem; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 1.2rem; }
+    footer { background: var(--bg); border-top: 1px solid var(--border); padding: 3rem 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-tagline { font-size: 0.78rem; color: var(--text-dim); margin-top: 0.3rem; }
+    .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.78rem; color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text-muted); }
+    .footer-copy { font-size: 0.75rem; color: var(--text-dim); }
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
+    .btn-primary { display: inline-block; padding: 0.9rem 2rem; background: var(--accent); color: #0A0A0A; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s, transform 0.2s; border: none; cursor: pointer; }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-outline { display: inline-block; padding: 0.85rem 1.8rem; border: 1px solid var(--border-accent); color: var(--accent); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-decoration: none; border-radius: var(--radius); transition: all 0.2s; }
+    .btn-outline:hover { background: var(--accent-dim); }
+    @media (max-width: 900px) { .nav-links, .nav-right .nav-cta { display: none; } .hamburger { display: flex; } }
+  </style>
+  <style>
+    .post-header { padding: 10rem 0 4rem; border-bottom: 1px solid var(--border); }
+    .post-meta { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .post-meta .label { margin: 0; }
+    .post-meta-text { font-size: 0.8rem; color: var(--text-dim); }
+    .post-title { margin-bottom: 1.2rem; }
+    .post-desc { font-size: 1.05rem; max-width: 640px; }
+    .post-body { padding: 5rem 0; }
+    .post-body-inner { max-width: 720px; }
+    .post-body p { margin-bottom: 1.6rem; font-size: 1rem; }
+    .post-body h2 { font-size: 1.5rem; margin: 3rem 0 1rem; color: var(--text); }
+    .post-body strong { color: var(--text); font-weight: 500; }
+    .x-credit { background: var(--bg-card); border: 1px solid var(--border-accent); border-left: 3px solid var(--accent); padding: 1.2rem 1.5rem; margin: 2.5rem 0; font-size: 0.88rem; color: var(--text-muted); font-style: italic; border-radius: 0 var(--radius) var(--radius) 0; }
+    .post-footer { padding: 4rem 0; border-top: 1px solid var(--border); }
+    .cta-box { background: var(--bg-card); border: 1px solid var(--border); padding: 3rem; text-align: center; max-width: 600px; margin: 0 auto; }
+    .cta-box h3 { font-family: var(--font-serif); font-size: 1.6rem; margin-bottom: 1rem; color: var(--text); }
+    .cta-box p { margin-bottom: 2rem; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: var(--text-muted); text-decoration: none; margin-bottom: 3rem; transition: color 0.2s; }
+    .back-link:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+<nav id="nav">
+  <div class="container">
+    <a href="/" class="nav-logo" style="display:flex;align-items:center;text-decoration:none;"><img src="/logo-light.svg" alt="Augentic AI" height="37" style="height:37px;width:auto;" class="logo-themed" data-light="/logo-dark.svg" data-dark="/logo-light.svg" /></a>
+    <ul class="nav-links">
+      <li><a href="/#solution">Solutions</a></li>
+      <li><a href="/#offerings">Offerings</a></li>
+      <li><a href="/blog/">Insights</a></li>
+      <li><a href="/guide/">AI Guide</a></li>
+    </ul>
+    <div class="nav-right">
+
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <svg id="iconSun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg id="iconMoon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+
+      <a href="/book/" class="nav-cta">Book Strategy Call</a>
+
+    </div>
+
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/#solution" onclick="closeMobile()">Solutions</a>
+  <a href="/#offerings" onclick="closeMobile()">Offerings</a>
+  <a href="/blog/" onclick="closeMobile()">Insights</a>
+  <a href="/guide/" onclick="closeMobile()">AI Guide</a>
+  <a href="/book/" onclick="closeMobile()" style="color:var(--accent);">Book Strategy Call</a>
+</div>
+
+<div class="post-header">
+  <div class="container">
+    <a href="/blog/" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M13 7H1M6 2L1 7l5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to Insights
+    </a>
+    <div class="post-meta">
+      <span class="label">AI Measurement</span>
+      <span class="post-meta-text">July 27, 2026</span>
+      <span class="post-meta-text">9 min read</span>
+    </div>
+    <h1 class="post-title">Your AI Agent Pilot Is Measuring the Wrong Things: A Production Scorecard</h1>
+    <p class="post-desc">Prompt counts and hours saved will not tell you whether an AI agent belongs in production. Measure the workflow, the failures, and the full cost of keeping it reliable.</p>
+  </div>
+</div>
+
+<div class="post-body">
+  <div class="container">
+    <div class="post-body-inner">
+      <p>A busy AI pilot can still be a bad AI pilot.</p>
+<p>The team may have hundreds of prompts, a growing user count, positive comments, and a slide claiming that employees saved 200 hours. None of that proves the agent improved the business. It proves people used it and liked parts of it.</p>
+<p>That is useful feedback. It is not a production decision.</p>
+<p>An AI agent belongs in production when it improves a defined workflow without creating unacceptable errors, hidden review work, or operational risk. If your pilot scorecard cannot show that, you are measuring activity instead of value.</p>
+<p>Model accuracy, token count, and self-reported time savings can help diagnose a pilot. They rarely show whether work finished faster or decisions improved.</p>
+<p>A useful scorecard connects the agent to the workflow it is supposed to change.</p>
+
+<h2>Start with the decision the scorecard must support</h2>
+<p>Every pilot should end with one of three decisions: move to controlled production, revise and test again, or stop.</p>
+<p>Most pilot reports avoid that choice. They summarize usage, collect a few quotes, and recommend "continued exploration." Okay, cool. What are you approving? What will it cost? What risk are you accepting? Which workflow gets changed?</p>
+<p>Write the decision at the top of the scorecard before the pilot begins. Then choose evidence that helps leadership make it.</p>
+<p>If the agent handles invoice exceptions, the decision may be whether it can prepare a resolution and route it for approval. If it handles inbound calls, the decision may be whether it can book routine appointments while transferring sensitive or unusual calls to a person. If it updates the CRM, the decision may be whether it can write to a limited set of fields without increasing bad data.</p>
+<p>Keep the decision narrow. A pilot that tries to prove "AI works for our company" is almost guaranteed to produce a vague answer.</p>
+
+<h2>Metric 1: Did the business outcome improve?</h2>
+<p>Choose one primary outcome tied to the workflow. It should be something the business already cares about, not a new AI-only metric.</p>
+<p>For a support workflow, that could be time to resolution or the share of tickets resolved correctly on first contact. For accounts receivable, it could be days to resolve an invoice dispute. For lead intake, it could be the time from inquiry to a correctly routed next step.</p>
+<p>Measure the baseline before the agent touches the workflow. Use the same definition during the pilot. If the team changes the metric after seeing the result, the comparison is no longer clean.</p>
+<p>Self-reported hours saved can sit beside the outcome, but it should not replace it. People are bad at estimating how long fragmented work took before automation. Even when the time estimate is accurate, freed capacity does not automatically become revenue or lower cost. Leadership still has to decide what that capacity will do.</p>
+
+<h2>Metric 2: Was the work correct?</h2>
+<p>Speed without quality is a fast way to create rework.</p>
+<p>Track the percentage of outputs accepted without correction, the percentage needing minor edits, and the percentage that should never have reached the user or system. Define those categories in advance. "Looks good" is not a quality standard.</p>
+<p>The definition should match the consequence. A slightly awkward internal summary is different from an incorrect customer commitment. A missing CRM field is different from changing a financial record. Use a severity scale that reflects the actual business exposure.</p>
+<p>Sample the agent's successes, not only the flagged failures. If reviewers inspect only the work the agent escalated, silent mistakes can hide inside the completion rate.</p>
+<p>Also count rework. An agent that drafts something in 30 seconds but takes a manager ten minutes to verify may have moved the labor instead of removing it.</p>
+
+<h2>Metric 3: How often did the agent finish the right work?</h2>
+<p>Teams often celebrate autonomy rate, which is the share of tasks completed without human involvement. That can be useful, but higher is not always better.</p>
+<p>An agent should escalate when information is missing, policy is unclear, a customer asks for an exception, or an action falls outside its authority. Those escalations are evidence that the control is working.</p>
+<p>Separate good escalations from avoidable ones. A good escalation protects the business. An avoidable escalation happens because the instructions, data, or integration failed. The second group is where the team should improve the system.</p>
+<p>Track task completion, correct escalation, false completion, and abandoned work. That gives you a much more honest picture than one big automation percentage.</p>
+
+<h2>Metric 4: Can the system run when the demo team leaves?</h2>
+<p>A pilot usually has people watching it closely. Production does not get that luxury forever.</p>
+<p>Measure integration failures, unavailable dependencies, retries, duplicate actions, and time to recover. Record whether the system preserved enough context for a person to take over. Check whether logs show what the agent saw, what it decided, which tool it used, and whether the action succeeded.</p>
+<p>The <a href="https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf" target="_blank" rel="noopener noreferrer">NIST Generative AI Profile</a> recommends recording human oversight roles, known issues, underlying model versions, and access modes in the system inventory. It also calls for protocols that let an organization deactivate a generative AI system when necessary. That is practical operating guidance. If nobody knows which version is running, who owns the exceptions, or how to stop the agent, the pilot is not ready for production.</p>
+<p>Reliability is not only model quality. The CRM API can time out. Authentication can expire. A vendor can change a field. A queue can process the same event twice. Your scorecard needs to show how the whole system behaves, because the business experiences the whole system.</p>
+
+<h2>Metric 5: Did the controls work?</h2>
+<p>Do not list controls and assume they worked. Test them.</p>
+<p>Try records the agent should not access. Give it a request that requires approval. Remove a required field. Present conflicting instructions. Confirm that it stops, escalates, and records the reason.</p>
+<p>Track permission violations, attempted out-of-scope actions, missed approval gates, audit gaps, and the time required to investigate an incident. One severe control failure may outweigh a month of clean routine transactions. Your go or no-go rule should say that before testing starts.</p>
+<p>This is also why a pilot should begin with narrow permissions. Read access before write access. Draft before send. One system before five. The agent can earn more authority with evidence. It should not receive broad authority because the demo is easier to build that way.</p>
+
+<h2>Metric 6: What did a successful outcome actually cost?</h2>
+<p>License fees and model tokens are only part of the bill.</p>
+<p>Add integration work, workflow design, testing, human review, exception handling, monitoring, support, and ongoing changes. Include the internal people who maintain prompts, rules, data mappings, and approval paths. Then divide the full operating cost by successful business outcomes, not by prompts or agent runs.</p>
+<p>That gives you a useful comparison against the current workflow. It also exposes a common pilot problem: the automation looks cheap because several employees are quietly keeping it alive.</p>
+<p>Use the broader <a href="/blog/evaluating-ai-roi-framework/">AI ROI framework</a> to account for implementation and ongoing operating costs. For this scorecard, keep the unit simple. Cost per correctly completed case is harder to hide behind than a broad productivity estimate.</p>
+
+<h2>Run the pilot in stages</h2>
+<p>Start in shadow mode when the workflow allows it. Let the agent produce a recommendation without taking the action. Compare its output with what the team did and review the disagreements.</p>
+<p>Next, allow a limited action with human approval. Keep the user group, data, and integration scope tight. Expand only after the error, escalation, reliability, and control evidence meets the thresholds you set.</p>
+<p>Do not change five things at once between stages. If you switch the model, rewrite the workflow, add two integrations, and broaden the user group, you will not know what caused the result to change.</p>
+<p>If you have not selected the workflow yet, use the <a href="/blog/ai-agent-workflow-readiness-test/">seven-point workflow readiness test</a> first. Measurement cannot rescue a process that was a poor automation candidate from the start.</p>
+
+<h2>The production scorecard</h2>
+<p>A decision-ready scorecard should fit on one page before the supporting detail. Include:</p>
+<p><strong>Primary outcome:</strong> Baseline, pilot result, target, and measurement period.</p>
+<p><strong>Quality:</strong> Accepted work, corrected work, severe errors, and review time.</p>
+<p><strong>Completion:</strong> Correct completions, good escalations, avoidable escalations, false completions, and abandoned tasks.</p>
+<p><strong>Reliability:</strong> Integration failures, duplicate actions, recovery time, and audit completeness.</p>
+<p><strong>Controls:</strong> Approval-gate performance, permission tests, out-of-scope attempts, and stop procedure.</p>
+<p><strong>Economics:</strong> Full pilot cost, expected production cost, human oversight cost, and cost per successful outcome.</p>
+<p><strong>Decision:</strong> Go, revise, or stop, with a named owner and the next evidence required.</p>
+<p>Set the thresholds before the pilot. A team can reasonably accept different error rates for an internal draft and a customer-facing financial action. The important part is that leadership makes the risk choice deliberately instead of letting enthusiasm make it after the fact.</p>
+
+<h2>Stop rewarding motion</h2>
+<p>A pilot with heavy usage can still fail. A pilot with modest usage can succeed if it proves that one valuable workflow is safer, faster, or less expensive to run.</p>
+<p>Count the prompts if you want. Track adoption. Ask employees what they think. Just do not confuse those signals with the decision evidence.</p>
+<p>Measure the outcome. Measure the mistakes. Measure the human work hiding around the agent. Then decide whether the system has earned a place in production.</p>
+
+    </div>
+  </div>
+</div>
+
+<div class="post-footer">
+  <div class="container">
+    <div class="cta-box">
+      <h3>Need a scorecard for a real workflow?</h3>
+      <p>Book an AI readiness and implementation conversation. We will help you define the workflow, baseline, production gates, and evidence your pilot needs before you approve a larger build.</p>
+      <a href="/book/" class="btn-primary">Book an AI Readiness Call</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo" style="display:flex;align-items:center;"><img src="/logo-light.svg" alt="Augentic AI" height="28" style="height:28px;width:auto;" class="logo-themed" data-light="/logo-dark.svg" data-dark="/logo-light.svg" /></div>
+        <div class="footer-tagline">Autonomous AI. Measurable Revenue.</div>
+      </div>
+      <ul class="footer-links">
+        <li><a href="/#solution">Solutions</a></li>
+        <li><a href="/#offerings">Offerings</a></li>
+        <li><a href="/blog/">Insights</a></li>
+        <li><a href="/guide/">AI Guide</a></li>
+        <li><a href="/book/">Book a Call</a></li>
+        <li><a href="mailto:hello@augenticai.com">Contact</a></li>
+      </ul>
+      <div class="footer-copy">&copy; 2026 Augentic AI. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => { mobileMenu.classList.toggle('open'); });
+  function closeMobile() { mobileMenu.classList.remove('open'); }
+  const themeToggle = document.getElementById('themeToggle');
+  const iconSun = document.getElementById('iconSun');
+  const iconMoon = document.getElementById('iconMoon');
+  function updateLogos(isLight) {
+    document.querySelectorAll('.logo-themed').forEach(function(img) {
+      img.src = isLight ? img.dataset.light : img.dataset.dark;
+    });
+  }
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  if (savedTheme === 'light') { document.body.classList.add('light'); iconSun.style.display = 'block'; iconMoon.style.display = 'none'; updateLogos(true); }
+  themeToggle.addEventListener('click', () => {
+    const isLight = document.body.classList.toggle('light');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    iconSun.style.display = isLight ? 'block' : 'none';
+    iconMoon.style.display = isLight ? 'none' : 'block';
+    updateLogos(isLight);
+  });
+</script>
+
+<!-- COOKIE CONSENT BANNER -->
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#111111;border-top:1px solid rgba(212,175,55,0.3);padding:1.25rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;">
+  <p style="margin:0;color:#888880;font-size:0.875rem;font-family:Inter,system-ui,sans-serif;line-height:1.6;max-width:700px;">
+    We use cookies to improve your experience and analyze site usage. By continuing, you agree to our
+    <a href="/privacy/" style="color:#D4AF37;text-decoration:underline;">Privacy Policy</a> and
+    <a href="/terms/" style="color:#D4AF37;text-decoration:underline;">Terms</a>.
+  </p>
+  <div style="display:flex;gap:0.75rem;flex-shrink:0;">
+    <button id="cookie-decline" style="padding:0.5rem 1.25rem;background:transparent;border:1px solid rgba(255,255,255,0.15);color:#888880;font-family:Inter,system-ui,sans-serif;font-size:0.8rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;cursor:pointer;border-radius:2px;">Decline</button>
+    <button id="cookie-accept" style="padding:0.5rem 1.25rem;background:#D4AF37;border:none;color:#0A0A0A;font-family:Inter,system-ui,sans-serif;font-size:0.8rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;cursor:pointer;border-radius:2px;">Accept</button>
+  </div>
+</div>
+<script>
+  (function() {
+    var consent = localStorage.getItem('augentic_cookie_consent');
+    var banner = document.getElementById('cookie-banner');
+    if (!consent && banner) { banner.style.display = 'flex'; }
+    document.getElementById('cookie-accept').addEventListener('click', function() {
+      localStorage.setItem('augentic_cookie_consent', 'accepted');
+      banner.style.display = 'none';
+    });
+    document.getElementById('cookie-decline').addEventListener('click', function() {
+      localStorage.setItem('augentic_cookie_consent', 'declined');
+      banner.style.display = 'none';
+    });
+  })();
+</script>
+
+</body>
+</html>
