@@ -528,6 +528,7 @@ def make_blog_post(post):
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{post['title']} | Augentic AI Insights</title>
   <meta name="description" content="{post['description']}" />
+  <link rel="canonical" href="https://augenticai.com/blog/{post['slug']}/" />
   <meta property="og:title" content="{post['title']}" />
   <meta property="og:description" content="{post['description']}" />
   <meta property="og:type" content="article" />
@@ -624,6 +625,7 @@ def make_blog_index():
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Insights | Augentic AI - AI Systems Integration</title>
   <meta name="description" content="Analysis, frameworks, and perspectives on autonomous AI systems for revenue-driven businesses." />
+  <link rel="canonical" href="https://augenticai.com/blog/" />
   {BASE_CSS}
   <style>
     .blog-header {{ padding: 10rem 0 5rem; border-bottom: 1px solid var(--border); }}
@@ -674,6 +676,7 @@ def make_booking_page():
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Book a Strategy Call | Augentic AI</title>
   <meta name="description" content="Schedule a 30-minute strategy call with Augentic AI. We will assess your workflows and identify your highest-leverage automation opportunities." />
+  <link rel="canonical" href="https://augenticai.com/book/" />
   {BASE_CSS}
   <style>
     .book-layout {{ min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; }}
@@ -810,6 +813,7 @@ def make_guide_page():
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AI Workforce Readiness Guide | Augentic AI</title>
   <meta name="description" content="The executive guide to evaluating your organization's readiness for autonomous AI workforce deployment. Free assessment framework inside." />
+  <link rel="canonical" href="https://augenticai.com/guide/" />
   {BASE_CSS}
   <style>
     .guide-hero {{ padding: 10rem 0 6rem; text-align: center; position: relative; overflow: hidden; }}
