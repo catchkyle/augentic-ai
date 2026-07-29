@@ -12,7 +12,9 @@ const validLead = {
   department: "Operations",
   workflow: "QA-only test of the workflow assessment funnel",
   monthlyVolume: "500-2,000 items",
-  hoursPerMonth: "100-250 hours",
+  hoursPerMonth: "200",
+  loadedHourlyCost: "60",
+  repeatableShareValue: "75",
   systems: "CRM and ticketing platform",
   desiredOutcome: "Reduce cycle time",
   budgetReadiness: "Exploring budget",
@@ -49,6 +51,41 @@ test("accepts a valid lead only after downstream capture succeeds", async () => 
   assert.equal(forwarded.brand, "Augentic AI");
   assert.equal(forwarded.offer, "AI Workflow ROI Blueprint");
   assert.equal(forwarded.email, validLead.email);
+});
+
+test("accepts the reduced value-first payload and forwards diagnostic evidence", async () => {
+  let forwarded;
+  const minimalLead = {
+    firstName: "QA",
+    lastName: "Diagnostic",
+    email: "qa+diagnostic@example.com",
+    company: "Augentic AI QA",
+    role: "CIO / CTO / IT Leader",
+    workflow: "Route and resolve recurring support requests",
+    monthlyVolume: "1000",
+    hoursPerMonth: "200",
+    loadedHourlyCost: "60",
+    repeatableShareValue: "75",
+    systems: "CRM, ticketing, email",
+    desiredOutcome: "Reduce cycle time",
+    diagnosticScore: "78",
+    diagnosticBand: "strong",
+    annualHours: "2400",
+    recoverableHours: "1260",
+    capacityValue: "75600",
+    website: ""
+  };
+  const response = await onRequestPost(context(minimalLead, async (_url, options) => {
+    forwarded = JSON.parse(options.body);
+    return new Response(null, { status: 200 });
+  }));
+
+  assert.equal(response.status, 202);
+  assert.equal(forwarded.diagnosticScore, 78);
+  assert.equal(forwarded.diagnosticBand, "strong");
+  assert.equal(forwarded.capacityValue, 75600);
+  assert.equal(forwarded.companySize, "");
+  assert.ok(forwarded.submissionId);
 });
 
 test("rejects incomplete or invalid leads before forwarding", async () => {

@@ -10,6 +10,9 @@
   X-Robots-Tag: noindex, nofollow
   Cache-Control: private, no-store
 
+/ai-workflow-roi-blueprint/sample/*
+  X-Robots-Tag: noindex, follow
+
 /llms.txt
   Content-Type: text/plain; charset=utf-8
   Cache-Control: public, max-age=86400

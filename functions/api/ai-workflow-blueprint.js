@@ -1,18 +1,18 @@
+import { calculateDiagnostic } from "../../assets/blueprint-diagnostic.js";
+
 const REQUIRED_FIELDS = [
   "firstName",
   "lastName",
   "email",
   "company",
   "role",
-  "companySize",
-  "department",
   "workflow",
   "monthlyVolume",
   "hoursPerMonth",
+  "loadedHourlyCost",
+  "repeatableShareValue",
   "systems",
-  "desiredOutcome",
-  "budgetReadiness",
-  "timeline"
+  "desiredOutcome"
 ];
 
 const jsonResponse = (body, status) => new Response(JSON.stringify(body), {
@@ -44,10 +44,22 @@ export async function onRequestPost(context) {
     return jsonResponse({ accepted: false, error: "Complete all required fields." }, 400);
   }
 
+  const systemsCount = clean(data.systems, 800).split(/[,\n]/).map((value) => value.trim()).filter(Boolean).length || 1;
+  const diagnostic = calculateDiagnostic({
+    monthlyVolume: data.monthlyVolume,
+    hoursPerMonth: data.hoursPerMonth,
+    loadedHourlyCost: data.loadedHourlyCost,
+    repeatableShare: data.repeatableShareValue,
+    systemsCount,
+    desiredOutcome: data.desiredOutcome
+  });
+  const submissionId = crypto.randomUUID();
+
   const lead = {
     brand: "Augentic AI",
     offer: "AI Workflow ROI Blueprint",
     formType: "ai-workflow-roi-blueprint",
+    submissionId,
     firstName: clean(data.firstName, 80),
     lastName: clean(data.lastName, 80),
     email: clean(data.email, 254),
@@ -58,10 +70,17 @@ export async function onRequestPost(context) {
     workflow: clean(data.workflow, 1200),
     monthlyVolume: clean(data.monthlyVolume, 120),
     hoursPerMonth: clean(data.hoursPerMonth, 120),
+    loadedHourlyCost: clean(data.loadedHourlyCost, 120),
+    repeatableShare: clean(data.repeatableShareValue, 120),
     systems: clean(data.systems, 800),
     desiredOutcome: clean(data.desiredOutcome, 160),
     budgetReadiness: clean(data.budgetReadiness, 120),
     timeline: clean(data.timeline, 120),
+    diagnosticScore: diagnostic.score,
+    diagnosticBand: diagnostic.band,
+    annualHours: diagnostic.annualHours,
+    recoverableHours: diagnostic.recoverableHours,
+    capacityValue: diagnostic.capacityValue,
     primaryRisk: clean(data.primaryRisk, 400),
     sourcePage: clean(data.sourcePage, 500),
     referrer: clean(data.referrer, 500),
@@ -87,7 +106,7 @@ export async function onRequestPost(context) {
     return jsonResponse({ accepted: false, error: "We could not accept your request. Please try again." }, 502);
   }
 
-  return jsonResponse({ accepted: true }, 202);
+  return jsonResponse({ accepted: true, submissionId, diagnosticBand: diagnostic.band }, 202);
 }
 
 export function onRequestGet() {

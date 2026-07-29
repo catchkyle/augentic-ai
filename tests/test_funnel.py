@@ -22,7 +22,7 @@ class FunnelStaticTests(unittest.TestCase):
         self.assertIn('name="budgetReadiness"', page)
         self.assertIn('name="timeline"', page)
         self.assertIn('name="website"', page)
-        self.assertIn("Build My AI Workflow ROI Blueprint", page)
+        self.assertIn("Score My Workflow", page)
 
     def test_funnel_has_search_metadata_and_safe_thank_you_page(self):
         page = (ROOT / "ai-workflow-roi-blueprint" / "index.html").read_text()
@@ -54,6 +54,47 @@ class FunnelStaticTests(unittest.TestCase):
         self.assertIn('name="utmCampaign"', page)
         self.assertIn("funnel_form_start", page)
         self.assertIn("generate_lead", page)
+
+    def test_funnel_delivers_value_before_contact_capture(self):
+        page = (ROOT / "ai-workflow-roi-blueprint" / "index.html").read_text()
+
+        self.assertIn("Score My Workflow", page)
+        self.assertIn('src="/assets/blueprint-diagnostic.js"', page)
+        self.assertIn('id="diagnostic-step"', page)
+        self.assertIn('id="result-step"', page)
+        self.assertIn('id="contact-step"', page)
+        self.assertIn('id="fit-score"', page)
+        self.assertIn('id="capacity-value"', page)
+        self.assertIn("70% of repeatable hours", page)
+        self.assertIn('href="/ai-workflow-roi-blueprint/sample/"', page)
+        self.assertIn("Reviewed by Kyle Burt", page)
+        self.assertIn("/api/funnel-event", page)
+        self.assertIn("sessionStorage.setItem('augentic_blueprint_result'", page)
+        self.assertNotIn("Build My AI Workflow ROI Blueprint", page)
+
+    def test_sample_and_thank_you_keep_hot_leads_in_the_funnel(self):
+        sample = (ROOT / "ai-workflow-roi-blueprint" / "sample" / "index.html").read_text()
+        thank_you = (ROOT / "ai-workflow-roi-blueprint" / "thank-you" / "index.html").read_text()
+
+        self.assertIn('<meta name="robots" content="noindex, follow">', sample)
+        self.assertIn("Illustrative, not a customer result", sample)
+        self.assertIn("Decision recommendation", sample)
+        self.assertIn('href="/ai-workflow-roi-blueprint/#diagnostic"', sample)
+        self.assertIn("augentic_blueprint_result", thank_you)
+        self.assertIn("Request Priority Strategy Review", thank_you)
+        self.assertIn("/api/blueprint-priority-review", thank_you)
+        self.assertIn("/api/funnel-event", thank_you)
+        self.assertIn("within one business day", thank_you)
+
+    def test_funnel_light_sections_keep_accessible_contrast_and_landmarks(self):
+        page = (ROOT / "ai-workflow-roi-blueprint" / "index.html").read_text()
+        self.assertIn(".method-panel>.eyebrow,.trust-head>.eyebrow{color:#745719}", page)
+        self.assertIn(".method-list b{font-family:var(--mono);font-size:.56rem;color:#745719}", page)
+        self.assertIn(".reviewer span{font-size:.61rem;color:#5e625b}", page)
+        self.assertIn(".field small{display:block;font-size:.61rem;color:#666a62", page)
+        self.assertIn(".result-metric span{display:block;font-family:var(--mono);font-size:.48rem;color:#696d65", page)
+        self.assertIn('<div class="method-panel">', page)
+        self.assertNotIn('<aside class="method-panel">', page)
 
     def test_homepage_routes_primary_action_to_blueprint(self):
         homepage = (ROOT / "index.html").read_text()
