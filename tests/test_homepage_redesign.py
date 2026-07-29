@@ -35,6 +35,23 @@ class HomepageRedesignTests(unittest.TestCase):
             self.assertIn(label, page)
         self.assertGreaterEqual(page.count("<svg"), 8)
 
+    def test_homepage_dashboard_motion_is_scroll_triggered_and_accessible(self):
+        page = (ROOT / "index.html").read_text()
+
+        self.assertIn('data-motion="engine"', page)
+        self.assertIn('data-motion="dashboard"', page)
+        self.assertGreaterEqual(page.count('data-reveal'), 12)
+        self.assertIn("new IntersectionObserver", page)
+        self.assertIn("classList.add('motion-ready')", page)
+        self.assertIn("classList.add('is-visible')", page)
+        self.assertIn("classList.add('is-active')", page)
+        self.assertIn("@keyframes dashTrace", page)
+        self.assertIn("@keyframes statusPulse", page)
+        self.assertIn(".motion-ready [data-reveal]", page)
+        self.assertIn(".motion-ready .outcome-shell:not(.is-active) .bar i{width:0!important}", page)
+        self.assertIn("prefers-reduced-motion: reduce", page)
+        self.assertIn(".motion-ready [data-reveal]{opacity:1;transform:none}", page)
+
     def test_homepage_preserves_conversion_and_accessibility_basics(self):
         page = (ROOT / "index.html").read_text()
 
