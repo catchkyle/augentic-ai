@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Agent Failure Recovery: Design the Fallback Before Production | Augentic AI Insights</title>
+  <meta name="description" content="Build an AI agent failure recovery plan covering retries, duplicate prevention, partial writes, manual fallback, reconciliation, and safe restart." />
+  <meta property="og:title" content="AI Agent Failure Recovery: Design the Fallback Before Production" />
+  <meta property="og:description" content="Build an AI agent failure recovery plan covering retries, duplicate prevention, partial writes, manual fallback, reconciliation, and safe restart." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://augenticai.com/blog/ai-agent-failure-recovery-plan/" />
+  <link rel="canonical" href="https://augenticai.com/blog/ai-agent-failure-recovery-plan/" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "AI Agent Failure Recovery: Design the Fallback Before Production",
+    "description": "Build an AI agent failure recovery plan covering retries, duplicate prevention, partial writes, manual fallback, reconciliation, and safe restart.",
+    "datePublished": "2026-08-01",
+    "dateModified": "2026-08-01",
+    "author": { "@type": "Organization", "name": "Augentic AI" },
+    "publisher": { "@type": "Organization", "name": "Augentic AI", "url": "https://augenticai.com/" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://augenticai.com/blog/ai-agent-failure-recovery-plan/" }
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0A0A0A; --bg-card: #111111; --bg-raised: #161616;
+      --text: #F5F5F0; --text-muted: #888880; --text-dim: #555550;
+      --accent: #D4AF37; --accent-dim: rgba(212,175,55,0.12);
+      --border: rgba(255,255,255,0.07); --border-accent: rgba(212,175,55,0.3);
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Inter', system-ui, sans-serif;
+      --max: 1200px; --radius: 2px;
+    }
+    body.light {
+      --bg: #FAFAF7; --bg-card: #F2F2EE; --bg-raised: #E8E8E4;
+      --text: #0B0B0B; --text-muted: #444440; --text-dim: #999990;
+      --border: rgba(0,0,0,0.08); --border-accent: rgba(212,175,55,0.4);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-weight: 400; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    ::selection { background: var(--accent-dim); color: var(--accent); }
+    h1,h2,h3,h4 { font-weight: 500; line-height: 1.25; letter-spacing: -0.02em; }
+    h1 { font-family: var(--font-serif); font-size: clamp(2rem,4vw,3.2rem); }
+    h2 { font-family: var(--font-serif); font-size: clamp(1.6rem,3vw,2.4rem); }
+    p { color: var(--text-muted); line-height: 1.85; }
+    a { color: inherit; }
+    .label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.5rem 0; transition: background 0.4s, padding 0.3s; }
+    nav.scrolled { background: rgba(10,10,10,0.95); border-bottom: 1px solid var(--border); padding: 1rem 0; backdrop-filter: blur(12px); }
+    body.light nav.scrolled { background: rgba(250,250,247,0.95); }
+    nav .container { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.8rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; padding: 0.65rem 1.4rem; background: var(--accent); color: #0A0A0A; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s; white-space: nowrap; }
+    .nav-cta:hover { opacity: 0.88; }
+    .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+    .theme-toggle { background: none; border: 1px solid var(--border); color: var(--text-muted); cursor: pointer; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius); transition: color 0.2s; flex-shrink: 0; }
+    .theme-toggle:hover { color: var(--accent); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 1px; background: var(--text); }
+    .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 99; background: var(--bg); padding: 6rem 2rem 2rem; flex-direction: column; gap: 2rem; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 1.4rem; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 1.2rem; }
+    footer { background: var(--bg); border-top: 1px solid var(--border); padding: 3rem 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-tagline { font-size: 0.78rem; color: var(--text-dim); margin-top: 0.3rem; }
+    .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.78rem; color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text-muted); }
+    .footer-copy { font-size: 0.75rem; color: var(--text-dim); }
+    .btn-primary { display: inline-block; padding: 0.9rem 2rem; background: var(--accent); color: #0A0A0A; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s, transform 0.2s; border: none; cursor: pointer; }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .post-header { padding: 10rem 0 4rem; border-bottom: 1px solid var(--border); }
+    .post-meta { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .post-meta-text { font-size: 0.8rem; color: var(--text-dim); }
+    .post-title { margin-bottom: 1.2rem; }
+    .post-desc { font-size: 1.05rem; max-width: 680px; }
+    .post-body { padding: 5rem 0; }
+    .post-body-inner { max-width: 760px; }
+    .post-body p { margin-bottom: 1.6rem; font-size: 1rem; }
+    .post-body h2 { font-size: 1.5rem; margin: 3rem 0 1rem; color: var(--text); }
+    .post-body strong { color: var(--text); font-weight: 500; }
+    .table-wrap { overflow-x: auto; margin: 2.5rem 0; border: 1px solid var(--border); }
+    .data-table { width: 100%; min-width: 700px; border-collapse: collapse; font-size: 0.86rem; }
+    .data-table th, .data-table td { padding: 0.9rem; text-align: left; vertical-align: top; border-bottom: 1px solid var(--border); color: var(--text-muted); }
+    .data-table th { color: var(--text); background: var(--bg-card); font-weight: 600; }
+    .data-table tr:last-child td { border-bottom: 0; }
+    .post-footer { padding: 4rem 0; border-top: 1px solid var(--border); }
+    .cta-box { background: var(--bg-card); border: 1px solid var(--border); padding: 3rem; text-align: center; max-width: 640px; margin: 0 auto; }
+    .cta-box h3 { font-family: var(--font-serif); font-size: 1.6rem; margin-bottom: 1rem; color: var(--text); }
+    .cta-box p { margin-bottom: 2rem; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: var(--text-muted); text-decoration: none; margin-bottom: 3rem; transition: color 0.2s; }
+    .back-link:hover { color: var(--accent); }
+    @media (max-width: 900px) { .nav-links, .nav-right .nav-cta { display: none; } .hamburger { display: flex; } }
+  </style>
+</head>
+<body>
+<nav id="nav">
+  <div class="container">
+    <a href="/" class="nav-logo" style="display:flex;align-items:center;text-decoration:none;"><img src="/logo-light.svg" alt="Augentic AI" height="37" style="height:37px;width:auto;" class="logo-themed" data-light="/logo-dark.svg" data-dark="/logo-light.svg" /></a>
+    <ul class="nav-links">
+      <li><a href="/#solution">Solutions</a></li>
+      <li><a href="/#offerings">Offerings</a></li>
+      <li><a href="/blog/">Insights</a></li>
+      <li><a href="/guide/">AI Guide</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg id="iconSun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/></svg>
+        <svg id="iconMoon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="/book/" class="nav-cta">Book Strategy Call</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/#solution" onclick="closeMobile()">Solutions</a>
+  <a href="/#offerings" onclick="closeMobile()">Offerings</a>
+  <a href="/blog/" onclick="closeMobile()">Insights</a>
+  <a href="/guide/" onclick="closeMobile()">AI Guide</a>
+  <a href="/book/" onclick="closeMobile()" style="color:var(--accent);">Book Strategy Call</a>
+</div>
+
+<div class="post-header">
+  <div class="container">
+    <a href="/blog/" class="back-link">&larr; Back to Insights</a>
+    <div class="post-meta">
+      <span class="label">AI Reliability</span>
+      <span class="post-meta-text">August 1, 2026</span>
+      <span class="post-meta-text">9 min read</span>
+    </div>
+    <h1 class="post-title">AI Agent Failure Recovery: Design the Fallback Before Production</h1>
+    <p class="post-desc">Retries are not a recovery plan. Decide how the workflow detects failure, prevents duplicate actions, preserves evidence, hands work to people, and restarts safely.</p>
+  </div>
+</div>
+
+<div class="post-body">
+  <div class="container">
+    <div class="post-body-inner">
+      <p>Most AI agent demos show the happy path. A request arrives, the agent finds the right information, updates the right system, and sends the right response.</p>
+      <p>Production is less polite.</p>
+      <p>The CRM times out after the agent sends the email. The model returns an answer, but the workflow loses the transaction ID. A connector retries a step that already completed. The approval queue is unavailable. A vendor changes an API response. Now the team has to answer a harder question: what happened, what completed, and what is safe to do next?</p>
+      <p>If your implementation plan says "retry on failure," it is not finished. A retry can recover a temporary read error. It can also create a duplicate order, message, payment request, or case when the first attempt succeeded but the confirmation never came back.</p>
+      <p>Design failure recovery before production access. The workflow should detect trouble, stop the right actions, preserve evidence, route work to a person, and restart without guessing.</p>
+
+      <h2>Define failure in business terms</h2>
+      <p>A technical error is only one kind of failure. The workflow can return HTTP 200 and still do the wrong job.</p>
+      <p>Start with one transaction. List the outcomes that the business cannot accept: a missed request, duplicate action, wrong record update, unauthorized message, stale decision, partial write, or item stuck without an owner. Then identify which system signals could reveal each outcome.</p>
+      <p>This matters because different failures need different responses. A model timeout before any action may be safe to retry. An uncertain write to a customer system should pause until the team confirms whether the first action completed. A low-confidence recommendation may belong in human review rather than an automated retry loop.</p>
+      <p>If the workflow itself is still vague, use the <a href="/blog/ai-agent-workflow-readiness-test/">AI agent workflow readiness test</a> first. Recovery rules depend on a clear trigger, expected result, systems involved, and consequence of being wrong.</p>
+
+      <h2>Track the transaction, not just the model call</h2>
+      <p>The model call is one step inside a business transaction. Recovery needs a durable record that follows the work from trigger through final outcome.</p>
+      <p>Assign each transaction a unique ID. Record the workflow version, model or policy version, input reference, tool calls, approvals, attempted writes, system responses, timestamps, and final state. Avoid treating a final model response as proof that the work completed.</p>
+      <p>The <a href="/blog/ai-agent-data-map-read-write-retain-send/">AI agent data map</a> helps document each read, write, retained copy, and recipient. Add state to that map. For every step, define what "not started," "in progress," "confirmed," "failed," and "unknown" mean.</p>
+      <p>Unknown deserves its own state. If an API request timed out after submission, the system may not know whether the downstream write happened. Marking that item failed and immediately trying again is how duplicates appear.</p>
+
+      <h2>Make retries safe before turning them on</h2>
+      <p>A retry policy needs more than a count and a delay.</p>
+      <p>Decide which operations are safe to repeat. Reads usually carry less business risk than writes. A write should use an idempotency key, unique transaction reference, duplicate check, or downstream constraint when the system supports one. When it does not, the workflow needs a confirmation query or human review before repeating the action.</p>
+      <p>Set a backoff schedule and a hard retry limit. Endless retries can turn a small outage into a large backlog or a burst of actions when the service returns. Route exhausted retries to a visible exception queue with the transaction context intact.</p>
+      <p>Test ugly timing. Let the downstream action complete, then cut the connection before the acknowledgment returns. Delay the response past the timeout. Return a malformed payload. Send the same event twice. These cases tell you whether the design prevents duplicate business actions, not merely whether the code catches an exception.</p>
+
+      <h2>Plan for partial completion</h2>
+      <p>Multi-step workflows rarely fail cleanly at the beginning.</p>
+      <p>An agent may create a CRM task, fail to send the message, and never update the reporting table. Another may reserve inventory, fail during payment review, and leave the reservation open. Rolling back every completed step is not always possible or desirable.</p>
+      <p>For each write, choose one recovery treatment:</p>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr><th>Treatment</th><th>When it fits</th><th>What must be documented</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Retry</td><td>The action is safe to repeat and the first result can be identified</td><td>Retry limit, delay, duplicate control, success check</td></tr>
+            <tr><td>Compensate</td><td>A completed action can be reversed through a separate business action</td><td>Reversal owner, side effects, evidence, approval</td></tr>
+            <tr><td>Reconcile</td><td>The workflow must compare records across systems before deciding</td><td>Source of truth, matching rule, exception threshold</td></tr>
+            <tr><td>Escalate</td><td>The state is uncertain or the consequence is too high for automation</td><td>Queue, owner, response target, context packet</td></tr>
+            <tr><td>Accept and continue</td><td>The failed step is optional and the business accepts the degraded result</td><td>Allowed condition, user notice, follow-up work</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>A compensation step is not the same as deleting evidence. If the workflow reverses an action, keep the original attempt, the reversal, the reason, and the person or policy that authorized it.</p>
+
+      <h2>Build a manual fallback that people can use</h2>
+      <p>"The team will handle it manually" sounds reasonable until the outage starts and nobody knows which items completed.</p>
+      <p>A usable fallback needs an intake point, owner, current transaction state, source records, last confirmed action, next safe action, and a way to prevent the automated workflow from processing the same item while a person works it. The team also needs access to the systems and data required to finish the job.</p>
+      <p>Do not copy every prompt and log line into the handoff. Give the reviewer the evidence needed to decide: original request, validated data, completed actions, uncertain actions, error, customer impact, and permitted next steps.</p>
+      <p>Set a capacity limit. If the manual team can process 40 exceptions a day and the automated workflow can create 400, the fallback will collapse during a real outage. Throttle intake, prioritize by impact, or stop the workflow before the queue becomes unrecoverable.</p>
+
+      <h2>Separate pause, shutdown, and recovery</h2>
+      <p>Stopping new work does not fix transactions already in motion.</p>
+      <p>Define three controls. Pause prevents new transactions from starting. Shutdown revokes or disables the agent's ability to act. Recovery deals with items that were processing when the stop occurred. These controls may have different owners and technical steps.</p>
+      <p>The <a href="https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf" target="_blank" rel="noopener noreferrer">NIST Generative AI Profile</a> recommends protocols that allow generative AI systems to be deactivated when necessary. It also calls for incident response plans for third-party AI technologies, regular rehearsals, retrospective improvement, and tested rollover or fallback processes that may include manual processing.</p>
+      <p>That is the right standard for a production workflow. The controls should exist, the people should know how to use them, and the team should rehearse them before an incident.</p>
+
+      <h2>Do not restart into the same failure</h2>
+      <p>Teams often focus on stopping an agent and give less thought to turning it back on.</p>
+      <p>Set restart criteria before launch. Confirm the cause is understood or contained. Reconcile in-flight transactions. Clear or quarantine bad inputs. Verify credentials, connectors, queues, and monitoring. Run a small controlled batch. Compare the results with the source systems before restoring full volume.</p>
+      <p>Decide what happens to the backlog. Replaying everything in order may send stale messages or apply decisions that no longer make sense. Each queued item needs an age limit and a revalidation rule.</p>
+      <p>Preserve the failure record after service returns. NIST recommends after-action reviews for generative AI incident response and updates to the response process when gaps appear. A review should produce specific changes to tests, thresholds, runbooks, monitoring, or workflow design.</p>
+
+      <h2>Use a failure-recovery acceptance test</h2>
+      <p>Before production, run a recovery exercise against representative test data. Do not tell the operator exactly where the failure will occur.</p>
+      <p>The test should prove that the team can detect the problem, identify affected transactions, distinguish confirmed from uncertain actions, stop new work, prevent duplicates, route exceptions, continue critical work manually, reconcile systems, and restart with a controlled batch.</p>
+      <p>Measure detection time, time to safe pause, number of uncertain transactions, duplicate actions, lost records, exception backlog, manual throughput, recovery time, and reconciliation errors. Add those results to the <a href="/blog/ai-agent-pilot-metrics-production-scorecard/">AI agent production scorecard</a>. Reliability claims should come from observed recovery behavior, not a vendor's architecture slide.</p>
+      <p>NIST's profile says an AI system should be able to fail safely and that safety metrics should reflect reliability, real-time monitoring, and response times for AI system failures. That does not mean every low-risk workflow needs a heavy incident program. It means the recovery design should match the consequence of failure.</p>
+
+      <h2>Set the production decision</h2>
+      <p>Approve production only when the team can answer five questions with evidence:</p>
+      <p>Which failures are safe to retry? How do we prevent duplicate writes? What happens when completion is uncertain? Who owns the manual queue? What must be true before restart?</p>
+      <p>If those answers live only in the developer's head, the workflow is not ready. If the vendor says the platform "handles retries," ask to see the transaction states, duplicate controls, exception records, shutdown method, and recovery test.</p>
+      <p>A working happy path proves the agent can do the job. A tested fallback proves the business can live with it when the job goes wrong.</p>
+    </div>
+  </div>
+</div>
+
+<div class="post-footer">
+  <div class="container">
+    <div class="cta-box">
+      <h3>Will the workflow fail safely?</h3>
+      <p>Book an AI readiness and implementation conversation. We will map failure states, duplicate controls, exception ownership, manual fallback, recovery tests, and the evidence required before production.</p>
+      <a href="/book/" class="btn-primary">Request a Production Readiness Review</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo" style="display:flex;align-items:center;"><img src="/logo-light.svg" alt="Augentic AI" height="28" style="height:28px;width:auto;" class="logo-themed" data-light="/logo-dark.svg" data-dark="/logo-light.svg" /></div>
+        <div class="footer-tagline">Autonomous AI. Measurable Revenue.</div>
+      </div>
+      <ul class="footer-links">
+        <li><a href="/#solution">Solutions</a></li>
+        <li><a href="/#offerings">Offerings</a></li>
+        <li><a href="/blog/">Insights</a></li>
+        <li><a href="/guide/">AI Guide</a></li>
+        <li><a href="/book/">Book a Call</a></li>
+        <li><a href="mailto:hello@augenticai.com">Contact</a></li>
+      </ul>
+      <div class="footer-copy">&copy; 2026 Augentic AI. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => { mobileMenu.classList.toggle('open'); });
+  function closeMobile() { mobileMenu.classList.remove('open'); }
+  const themeToggle = document.getElementById('themeToggle');
+  const iconSun = document.getElementById('iconSun');
+  const iconMoon = document.getElementById('iconMoon');
+  function updateLogos(isLight) { document.querySelectorAll('.logo-themed').forEach(function(img) { img.src = isLight ? img.dataset.light : img.dataset.dark; }); }
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  if (savedTheme === 'light') { document.body.classList.add('light'); iconSun.style.display = 'block'; iconMoon.style.display = 'none'; updateLogos(true); }
+  themeToggle.addEventListener('click', () => {
+    const isLight = document.body.classList.toggle('light');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    iconSun.style.display = isLight ? 'block' : 'none';
+    iconMoon.style.display = isLight ? 'none' : 'block';
+    updateLogos(isLight);
+  });
+</script>
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#111111;border-top:1px solid rgba(212,175,55,0.3);padding:1.25rem 2rem;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;">
+  <p style="margin:0;color:#888880;font-size:0.875rem;font-family:Inter,system-ui,sans-serif;line-height:1.6;max-width:700px;">We use cookies to improve your experience and analyze site usage. By continuing, you agree to our <a href="/privacy/" style="color:#D4AF37;text-decoration:underline;">Privacy Policy</a> and <a href="/terms/" style="color:#D4AF37;text-decoration:underline;">Terms</a>.</p>
+  <div style="display:flex;gap:0.75rem;flex-shrink:0;">
+    <button id="cookie-decline" style="padding:0.5rem 1.25rem;background:transparent;border:1px solid rgba(255,255,255,0.15);color:#888880;cursor:pointer;">Decline</button>
+    <button id="cookie-accept" style="padding:0.5rem 1.25rem;background:#D4AF37;border:none;color:#0A0A0A;cursor:pointer;">Accept</button>
+  </div>
+</div>
+<script>
+  (function() {
+    var consent = localStorage.getItem('augentic_cookie_consent');
+    var banner = document.getElementById('cookie-banner');
+    if (!consent && banner) { banner.style.display = 'flex'; }
+    document.getElementById('cookie-accept').addEventListener('click', function() { localStorage.setItem('augentic_cookie_consent', 'accepted'); banner.style.display = 'none'; });
+    document.getElementById('cookie-decline').addEventListener('click', function() { localStorage.setItem('augentic_cookie_consent', 'declined'); banner.style.display = 'none'; });
+  })();
+</script>
+</body>
+</html>
