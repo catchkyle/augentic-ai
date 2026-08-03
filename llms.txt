@@ -8,7 +8,7 @@ Augentic AI focuses on AI systems that replace manual workflows, connect busines
 
 - [Augentic AI](https://augenticai.com/): Company overview, approach, and engagement path.
 - [AI systems guide](https://augenticai.com/guide/): Practical guide to evaluating and implementing business AI systems.
-- [Book](https://augenticai.com/book/): Augentic AI book resource.
+- [Book a strategy call](https://augenticai.com/book/): Request a conversation about a workflow, pilot, integration, or production AI system.
 - [Insights](https://augenticai.com/blog/): Articles on AI agents, AI systems, automation, and production operations.
 
 ## Core topics
