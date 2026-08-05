@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Agent Load Testing Checklist for Production | Augentic AI</title>
+  <meta name="description" content="Test AI agent concurrency, rate limits, queues, review capacity, recovery, and cost before a successful pilot meets production volume." />
+  <meta property="og:title" content="Your AI Agent Passed the Pilot. Can It Handle Production Volume?" />
+  <meta property="og:description" content="Test AI agent concurrency, rate limits, queues, review capacity, recovery, and cost before a successful pilot meets production volume." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://augenticai.com/blog/ai-agent-load-testing-checklist/" />
+  <link rel="canonical" href="https://augenticai.com/blog/ai-agent-load-testing-checklist/" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Your AI Agent Passed the Pilot. Can It Handle Production Volume?",
+    "description": "Test AI agent concurrency, rate limits, queues, review capacity, recovery, and cost before a successful pilot meets production volume.",
+    "datePublished": "2026-08-05",
+    "dateModified": "2026-08-05",
+    "author": { "@type": "Organization", "name": "Augentic AI" },
+    "publisher": { "@type": "Organization", "name": "Augentic AI", "url": "https://augenticai.com/" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://augenticai.com/blog/ai-agent-load-testing-checklist/" }
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}:root{--bg:#0A0A0A;--card:#111;--text:#F5F5F0;--muted:#888880;--dim:#555550;--accent:#D4AF37;--border:rgba(255,255,255,.07);--border-accent:rgba(212,175,55,.3);--serif:'Playfair Display',Georgia,serif;--sans:'Inter',system-ui,sans-serif}body.light{--bg:#FAFAF7;--card:#F2F2EE;--text:#0B0B0B;--muted:#444440;--dim:#999990;--border:rgba(0,0,0,.08)}html{scroll-behavior:smooth}body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.7;-webkit-font-smoothing:antialiased}h1,h2,h3{font-weight:500;line-height:1.25;letter-spacing:-.02em}h1,h2{font-family:var(--serif)}h1{font-size:clamp(2rem,4vw,3.2rem)}p{color:var(--muted)}a{color:inherit}.container{max-width:1200px;margin:auto;padding:0 2rem}.label{font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}nav{position:fixed;inset:0 0 auto;z-index:100;padding:1.5rem 0;transition:.3s}nav.scrolled{background:rgba(10,10,10,.95);border-bottom:1px solid var(--border);padding:1rem 0}body.light nav.scrolled{background:rgba(250,250,247,.95)}nav .container,.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:1.5rem}.nav-links,.footer-links{display:flex;align-items:center;gap:2rem;list-style:none}.nav-links a,.footer-links a{font-size:.8rem;color:var(--muted);text-decoration:none}.nav-right{display:flex;align-items:center;gap:.75rem}.nav-cta,.btn-primary{padding:.65rem 1.4rem;background:var(--accent);color:#0A0A0A;text-decoration:none;font-size:.78rem;font-weight:600;letter-spacing:.08em}.theme-toggle{background:none;border:1px solid var(--border);color:var(--muted);width:34px;height:34px;cursor:pointer}.hamburger{display:none;background:none;border:0}.hamburger span{display:block;width:22px;height:1px;background:var(--text);margin:5px}.mobile-menu{display:none;position:fixed;inset:0;z-index:99;background:var(--bg);padding:6rem 2rem;flex-direction:column;gap:2rem}.mobile-menu.open{display:flex}.mobile-menu a{font-size:1.4rem;text-decoration:none}.post-header{padding:10rem 0 5rem;border-bottom:1px solid var(--border)}.back-link{font-size:.8rem;color:var(--dim);text-decoration:none}.post-meta{display:flex;gap:1rem;align-items:center;margin:2.5rem 0 1.5rem;flex-wrap:wrap}.post-meta-text{font-size:.75rem;color:var(--dim)}.post-title{max-width:900px}.post-desc{font-size:1.1rem;max-width:760px;margin-top:1.5rem}.post-body{padding:5rem 0}.post-body-inner{max-width:760px;margin:auto}.post-body p{font-size:1rem;line-height:1.9;margin-bottom:1.5rem}.post-body h2{font-size:1.75rem;margin:3.5rem 0 1.25rem}.post-body a{color:var(--accent)}.table-wrap{overflow-x:auto;margin:2rem 0}table{width:100%;border-collapse:collapse;font-size:.9rem}th,td{text-align:left;padding:1rem;border:1px solid var(--border);vertical-align:top;color:var(--muted)}th{color:var(--text);background:var(--card)}.post-footer{padding:0 0 6rem}.cta-box{max-width:800px;margin:auto;padding:3rem;background:var(--card);border:1px solid var(--border-accent);text-align:center}.cta-box h3{font-family:var(--serif);font-size:1.7rem}.cta-box p{margin:1rem auto 1.8rem;max-width:620px}.btn-primary{display:inline-block;padding:.9rem 1.8rem;text-transform:uppercase}footer{border-top:1px solid var(--border);padding:3rem 0}.footer-tagline,.footer-copy{font-size:.75rem;color:var(--dim)}@media(max-width:900px){.nav-links,.nav-right .nav-cta{display:none}.hamburger{display:block}.post-header{padding-top:8rem}.footer-inner{flex-direction:column;align-items:flex-start}}@media(max-width:600px){.container{padding:0 1.25rem}.post-body{padding:3rem 0}.cta-box{padding:2rem 1.25rem}th,td{padding:.75rem}}
+  </style>
+</head>
+<body>
+<nav id="nav"><div class="container">
+  <a href="/" style="display:flex"><img src="/logo-light.svg" alt="Augentic AI" height="37" class="logo-themed" data-light="/logo-dark.svg" data-dark="/logo-light.svg" /></a>
+  <ul class="nav-links"><li><a href="/#solution">Solutions</a></li><li><a href="/#offerings">Offerings</a></li><li><a href="/blog/">Insights</a></li><li><a href="/guide/">AI Guide</a></li></ul>
+  <div class="nav-right"><button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">◐</button><a href="/book/" class="nav-cta">Book Strategy Call</a></div>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</div></nav>
+<div class="mobile-menu" id="mobileMenu"><a href="/#solution">Solutions</a><a href="/#offerings">Offerings</a><a href="/blog/">Insights</a><a href="/guide/">AI Guide</a><a href="/book/" style="color:var(--accent)">Book Strategy Call</a></div>
+
+<header class="post-header"><div class="container">
+  <a href="/blog/" class="back-link">&larr; Back to Insights</a>
+  <div class="post-meta"><span class="label">AI Reliability</span><span class="post-meta-text">August 5, 2026</span><span class="post-meta-text">10 min read</span></div>
+  <h1 class="post-title">Your AI Agent Passed the Pilot. Can It Handle Production Volume?</h1>
+  <p class="post-desc">A pilot proves that an agent can complete a workflow. It does not prove the workflow will survive Monday morning, month end, or a backlog after an outage.</p>
+</div></header>
+
+<main class="post-body"><div class="container"><article class="post-body-inner">
+  <p>A successful AI agent pilot can give a team dangerous confidence.</p>
+  <p>Twenty clean cases go through. The model responds quickly. The connector works. A reviewer is sitting nearby. Everyone sees the expected result, and the project gets labeled ready for production.</p>
+  <p>Then real demand arrives. Requests overlap. An API starts rejecting calls. The model slows down. The approval queue grows. One downstream system accepts five writes per second while the agent creates twenty. Retries multiply the load. The workflow technically remains online while the business waits.</p>
+  <p>The pilot answered whether the agent could do the work. Before expansion, you need to know whether the whole system can do enough of the work, fast enough, without losing control or destroying the economics.</p>
+
+  <h2>Test the workflow, not the demo</h2>
+  <p>An agent is one component inside a chain. The trigger, identity service, model, retrieval layer, tools, APIs, databases, approval steps, notifications, and downstream writes each have their own capacity and failure behavior.</p>
+  <p>The slowest component sets the workflow's real throughput. A faster model does not help if a billing API allows fewer requests, a reviewer can clear only twelve exceptions an hour, or a CRM job locks records during a nightly sync.</p>
+  <p>Draw the path from arrival to final business outcome. For each step, record the expected rate, tested rate, maximum allowed concurrency, timeout, retry rule, queue limit, and owner. If those numbers are unknown, the production design is still based on hope.</p>
+
+  <h2>Build a demand profile from the business</h2>
+  <p>Do not begin with a vendor's maximum transactions per minute. Begin with the workflow's actual demand.</p>
+  <p>Measure normal volume, peak volume, burst size, seasonal events, coverage hours, item complexity, and acceptable completion time. Separate a steady stream from a sudden batch. Processing 10,000 items over a day is a different problem from receiving 2,000 items at 9:00 a.m.</p>
+  <p>Include the ugly days. Month end, a campaign launch, storm calls, enrollment deadlines, security incidents, Monday ticket spikes, and recovery after planned maintenance are the days that expose the design. An average taken across a quiet week will hide them.</p>
+  <p>Then choose a realistic growth case. You do not need to test fantasy volume. You do need evidence for the demand you plan to authorize during the next release period.</p>
+
+  <h2>Run five capacity tests before expansion</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Test</th><th>What to simulate</th><th>What to measure</th></tr></thead>
+    <tbody>
+      <tr><td>Expected load</td><td>Normal production mix for a full operating window</td><td>Completed outcomes, latency, errors, review work, and unit cost</td></tr>
+      <tr><td>Peak burst</td><td>Highest credible arrival rate and batch size</td><td>Queue growth, rejected calls, throttling, and time to clear</td></tr>
+      <tr><td>Sustained load</td><td>Elevated demand long enough to expose leaks and drift</td><td>Latency trend, memory, connection use, cost, and degradation</td></tr>
+      <tr><td>Dependency slowdown</td><td>A model, API, database, or reviewer operating below normal capacity</td><td>Backpressure, timeout behavior, routing, and user impact</td></tr>
+      <tr><td>Recovery load</td><td>A paused queue released after the dependency returns</td><td>Duplicate prevention, ordering, reconciliation, and safe drain rate</td></tr>
+    </tbody>
+  </table></div>
+  <p>Use production-like records with sensitive data removed or protected according to your test policy. Keep the same permission boundaries, workflow logic, tool sequence, and review rules planned for release. A lightweight mock can prove basic orchestration, but it may hide real API behavior and downstream locking.</p>
+  <p>The <a href="https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf" target="_blank" rel="noopener noreferrer">NIST Generative AI Profile</a> recommends evaluating system performance in real-world scenarios because practical environments can reveal issues that controlled, optimized tests miss. It also advises against extrapolating performance from narrow, anecdotal assessments. That is a good description of why twenty handpicked pilot cases are not a capacity test.</p>
+
+  <h2>Rate limits need an operating rule</h2>
+  <p>Every external service can constrain the workflow. Published quotas are only the starting point. Limits may vary by account, model, endpoint, time window, region, or service tier. Some systems reject excess requests. Others slow down, queue work, or return a response that invites a retry.</p>
+  <p>Ask each vendor for the limits that apply to your exact configuration. Then test them. Confirm whether limits are shared across teams or workloads, how usage is reported, how increases are approved, and what happens when the ceiling is reached.</p>
+  <p>Your own design needs priorities. A backlog of low-value enrichment work should not block a customer escalation or an access-revocation task. Reserve capacity where the business consequence justifies it. Define which work waits, which work falls back to a person, and which work stops.</p>
+
+  <h2>Control retries before they become new demand</h2>
+  <p>A timeout does not always mean the action failed. The downstream system may have completed the write while the agent stopped waiting. A blind retry can create a duplicate order, ticket, notification, or account change.</p>
+  <p>Retries also add load during the exact moment a dependency is already struggling. One failed request becomes three. Then ten concurrent jobs do the same thing. The recovery logic turns a slowdown into a larger incident.</p>
+  <p>Use limited retries, increasing wait intervals, idempotency controls, and a circuit breaker that stops calls when a dependency remains unhealthy. Preserve the transaction state so the team can reconcile uncertain outcomes. The <a href="/blog/ai-agent-failure-recovery-plan/">AI agent failure recovery plan</a> should cover overload, not only model errors.</p>
+
+  <h2>Count human capacity in the load test</h2>
+  <p>If people approve exceptions, complete fallbacks, or investigate uncertain writes, they are part of system capacity.</p>
+  <p>Run peak volume through the real <a href="/blog/ai-agent-human-approval-workflow/">approval workflow</a>. Measure how many items route to review, the time needed per decision, queue age, rejection rate, escalation volume, and available coverage. Watch what happens when the reviewer is in a meeting, offline after hours, or handling another incident.</p>
+  <p>A model response measured in seconds can still produce a business outcome measured in days. Do not call the workflow fast while its exception queue is aging.</p>
+
+  <h2>Set a backlog budget</h2>
+  <p>Queues are useful because they absorb short bursts. They are dangerous when nobody has defined how large they may become.</p>
+  <p>Set a maximum queue depth and maximum item age for each work class. Define alerts before those limits are reached. Decide when to reduce intake, switch to a simpler process, route work manually, or stop the agent.</p>
+  <p>Measure time to drain after a spike. A system that handles 100 items per hour against an average arrival of 90 looks healthy until 500 delayed items enter the queue. With only ten units of spare capacity, recovery takes fifty hours unless you add capacity or change priorities.</p>
+  <p>That recovery period affects customers and staff. Put it in the acceptance decision.</p>
+
+  <h2>Measure cost under pressure</h2>
+  <p>Production volume can change the economics even when the workflow stays reliable. Longer context, repeated retrieval, tool calls, retries, logging, storage, reviewer time, and higher service tiers all add cost.</p>
+  <p>Track cost per completed business outcome at expected, peak, and recovery load. Failed attempts do not disappear from the bill. Neither does the labor required to investigate them. Add the findings to the <a href="/blog/ai-agent-integration-cost-model/">full integration cost model</a>, not a separate technical appendix nobody uses in the funding decision.</p>
+  <p>If the unit cost rises sharply under normal peak demand, the pilot business case is incomplete.</p>
+
+  <h2>Define the release decision before the test</h2>
+  <p>A load test is useless if every result becomes acceptable after the fact. Write the thresholds first.</p>
+  <p>Set the minimum completed outcomes per hour, maximum end-to-end latency, maximum error and duplicate rates, queue-age limit, recovery time, human review load, and cost per outcome. Include a stop condition for consequential failures even when the average looks good.</p>
+  <p>Record the tested workflow version, model, prompts, connectors, limits, data mix, and infrastructure. A material change can invalidate the result. Feed those triggers into the <a href="/blog/ai-agent-change-management-release-test/">AI agent release test</a>.</p>
+  <p>Pass does not have to mean unlimited rollout. It can authorize one department, one volume band, or one action class. Increase authority when the evidence supports it, then test the next boundary.</p>
+
+  <h2>Make the vendor show you the bottleneck</h2>
+  <p>Do not ask whether the platform scales. The answer will be yes.</p>
+  <p>Ask the vendor to run your expected and peak workflow mix with your integrations and approval rules. Require transaction-level results for latency, throttling, retries, queue depth, errors, cost, and recovery. Ask which limits belong to the vendor, which belong to connected systems, and which you must monitor.</p>
+  <p>A pilot that completes the right task is worth continuing. It is not permission to skip production evidence.</p>
+  <p>Test the volume you intend to authorize. Test the bottlenecks you already know about. Then slow something down and watch the workflow recover. That is how you find out whether you built useful capacity or another queue the business will eventually have to rescue.</p>
+</article></div></main>
+
+<section class="post-footer"><div class="container"><div class="cta-box">
+  <h3>Pressure-test one workflow before you expand it</h3>
+  <p>Book an AI readiness and implementation conversation. We will map the demand profile, dependencies, queue limits, review capacity, recovery behavior, cost, and release thresholds for one real workflow.</p>
+  <a href="/book/" class="btn-primary">Request a Capacity Test Plan</a>
+</div></div></section>
+
+<footer><div class="container"><div class="footer-inner">
+  <div><img src="/logo-light.svg" alt="Augentic AI" height="28" class="logo-themed" data-light="/logo-dark.svg" data-dark="/logo-light.svg" /><div class="footer-tagline">Autonomous AI. Measurable Revenue.</div></div>
+  <ul class="footer-links"><li><a href="/#solution">Solutions</a></li><li><a href="/blog/">Insights</a></li><li><a href="/guide/">AI Guide</a></li><li><a href="/book/">Book a Call</a></li><li><a href="mailto:hello@augenticai.com">Contact</a></li></ul>
+  <div class="footer-copy">&copy; 2026 Augentic AI.</div>
+</div></div></footer>
+<script>
+const nav=document.getElementById('nav');window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>40));const menu=document.getElementById('mobileMenu');document.getElementById('hamburger').onclick=()=>menu.classList.toggle('open');const toggle=document.getElementById('themeToggle');const saved=localStorage.getItem('theme')||'dark';function logos(light){document.querySelectorAll('.logo-themed').forEach(i=>i.src=light?i.dataset.light:i.dataset.dark)}if(saved==='light'){document.body.classList.add('light');logos(true)}toggle.onclick=()=>{const light=document.body.classList.toggle('light');localStorage.setItem('theme',light?'light':'dark');logos(light)};
+</script>
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#111;border-top:1px solid rgba(212,175,55,.3);padding:1.25rem 2rem;align-items:center;justify-content:space-between;gap:1.5rem"><p style="margin:0;color:#888880;font-size:.875rem">We use cookies to improve your experience and analyze site usage. See our <a href="/privacy/" style="color:#D4AF37">Privacy Policy</a>.</p><div><button id="cookie-decline">Decline</button> <button id="cookie-accept">Accept</button></div></div>
+<script>(function(){const b=document.getElementById('cookie-banner');if(!localStorage.getItem('augentic_cookie_consent'))b.style.display='flex';document.getElementById('cookie-accept').onclick=()=>{localStorage.setItem('augentic_cookie_consent','accepted');b.style.display='none'};document.getElementById('cookie-decline').onclick=()=>{localStorage.setItem('augentic_cookie_consent','declined');b.style.display='none'}})();</script>
+</body>
+</html>
