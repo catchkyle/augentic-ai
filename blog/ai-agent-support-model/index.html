@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Agent Support Model: Who Owns Production? | Augentic AI</title>
+  <meta name="description" content="Build an AI agent support model that assigns production monitoring, incident response, connector repair, business exceptions, and vendor escalation." />
+  <meta property="og:title" content="Who Supports Your AI Agent After the Integrator Leaves?" />
+  <meta property="og:description" content="A production AI agent needs named owners for monitoring, incidents, integrations, business exceptions, changes, and vendor escalation." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://augenticai.com/blog/ai-agent-support-model/" />
+  <link rel="canonical" href="https://augenticai.com/blog/ai-agent-support-model/" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Who Supports Your AI Agent After the Integrator Leaves?",
+    "description": "A production AI agent needs named owners for monitoring, incidents, integrations, business exceptions, changes, and vendor escalation.",
+    "datePublished": "2026-08-10",
+    "dateModified": "2026-08-10",
+    "author": { "@type": "Organization", "name": "Augentic AI" },
+    "publisher": { "@type": "Organization", "name": "Augentic AI", "url": "https://augenticai.com/" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://augenticai.com/blog/ai-agent-support-model/" }
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}:root{--bg:#0A0A0A;--card:#111;--text:#F5F5F0;--muted:#888880;--dim:#555550;--accent:#D4AF37;--border:rgba(255,255,255,.07);--border-accent:rgba(212,175,55,.3);--serif:'Playfair Display',Georgia,serif;--sans:'Inter',system-ui,sans-serif}body.light{--bg:#FAFAF7;--card:#F2F2EE;--text:#0B0B0B;--muted:#444440;--dim:#999990;--border:rgba(0,0,0,.08)}html{scroll-behavior:smooth}body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.7;-webkit-font-smoothing:antialiased}h1,h2,h3{font-weight:500;line-height:1.25;letter-spacing:-.02em}h1,h2{font-family:var(--serif)}h1{font-size:clamp(2rem,4vw,3.2rem)}p{color:var(--muted)}a{color:inherit}.container{max-width:1200px;margin:auto;padding:0 2rem}.label{font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}nav{position:fixed;inset:0 0 auto;z-index:100;padding:1.5rem 0;transition:.3s}nav.scrolled{background:rgba(10,10,10,.95);border-bottom:1px solid var(--border);padding:1rem 0}body.light nav.scrolled{background:rgba(250,250,247,.95)}nav .container,.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:1.5rem}.nav-links,.footer-links{display:flex;align-items:center;gap:2rem;list-style:none}.nav-links a,.footer-links a{font-size:.8rem;color:var(--muted);text-decoration:none}.nav-right{display:flex;align-items:center;gap:.75rem}.nav-cta,.btn-primary{padding:.65rem 1.4rem;background:var(--accent);color:#0A0A0A;text-decoration:none;font-size:.78rem;font-weight:600;letter-spacing:.08em}.theme-toggle{background:none;border:1px solid var(--border);color:var(--muted);width:34px;height:34px;cursor:pointer}.hamburger{display:none;background:none;border:0}.hamburger span{display:block;width:22px;height:1px;background:var(--text);margin:5px}.mobile-menu{display:none;position:fixed;inset:0;z-index:99;background:var(--bg);padding:6rem 2rem;flex-direction:column;gap:2rem}.mobile-menu.open{display:flex}.mobile-menu a{font-size:1.4rem;text-decoration:none}.post-header{padding:10rem 0 5rem;border-bottom:1px solid var(--border)}.back-link{font-size:.8rem;color:var(--dim);text-decoration:none}.post-meta{display:flex;gap:1rem;align-items:center;margin:2.5rem 0 1.5rem;flex-wrap:wrap}.post-meta-text{font-size:.75rem;color:var(--dim)}.post-title{max-width:900px}.post-desc{font-size:1.1rem;max-width:760px;margin-top:1.5rem}.post-body{padding:5rem 0}.post-body-inner{max-width:760px;margin:auto}.post-body p{font-size:1rem;line-height:1.9;margin-bottom:1.5rem}.post-body h2{font-size:1.75rem;margin:3.5rem 0 1.25rem}.post-body a{color:var(--accent)}.table-wrap{overflow-x:auto;margin:2rem 0}table{width:100%;border-collapse:collapse;font-size:.9rem}th,td{text-align:left;padding:1rem;border:1px solid var(--border);vertical-align:top;color:var(--muted)}th{color:var(--text);background:var(--card)}.post-footer{padding:0 0 6rem}.cta-box{max-width:800px;margin:auto;padding:3rem;background:var(--card);border:1px solid var(--border-accent);text-align:center}.cta-box h3{font-family:var(--serif);font-size:1.7rem}.cta-box p{margin:1rem auto 1.8rem;max-width:620px}.btn-primary{display:inline-block;padding:.9rem 1.8rem;text-transform:uppercase}footer{border-top:1px solid var(--border);padding:3rem 0}.footer-tagline,.footer-copy{font-size:.75rem;color:var(--dim)}@media(max-width:900px){.nav-links,.nav-right .nav-cta{display:none}.hamburger{display:block}.post-header{padding-top:8rem}.footer-inner{flex-direction:column;align-items:flex-start}}@media(max-width:600px){.container{padding:0 1.25rem}.post-body{padding:3rem 0}.cta-box{padding:2rem 1.25rem}th,td{padding:.75rem}}
+  </style>
+</head>
+<body>
+<nav id="nav"><div class="container">
+  <a href="/" style="display:flex"><img src="/logo-light.svg" alt="Augentic AI" height="37" class="logo-themed" data-light="/logo-dark.svg" data-dark="/logo-light.svg" /></a>
+  <ul class="nav-links"><li><a href="/#solution">Solutions</a></li><li><a href="/#offerings">Offerings</a></li><li><a href="/blog/">Insights</a></li><li><a href="/guide/">AI Guide</a></li></ul>
+  <div class="nav-right"><button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">◐</button><a href="/book/" class="nav-cta">Book Strategy Call</a></div>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</div></nav>
+<div class="mobile-menu" id="mobileMenu"><a href="/#solution">Solutions</a><a href="/#offerings">Offerings</a><a href="/blog/">Insights</a><a href="/guide/">AI Guide</a><a href="/book/" style="color:var(--accent)">Book Strategy Call</a></div>
+
+<header class="post-header"><div class="container">
+  <a href="/blog/" class="back-link">&larr; Back to Insights</a>
+  <div class="post-meta"><span class="label">AI Operations</span><span class="post-meta-text">August 10, 2026</span><span class="post-meta-text">10 min read</span></div>
+  <h1 class="post-title">Who Supports Your AI Agent After the Integrator Leaves?</h1>
+  <p class="post-desc">A production AI agent needs named owners for monitoring, incidents, integrations, business exceptions, changes, and vendor escalation.</p>
+</div></header>
+
+<main class="post-body"><div class="container"><article class="post-body-inner">
+  <p>The implementation team finishes the pilot. The agent is live. The demo went well, the project plan is closed, and the people who built the workflow move to their next engagement.</p>
+  <p>Then a connector starts timing out. The agent keeps creating work, but the CRM is not receiving it. Operations calls IT. IT calls the integrator. The integrator points to the platform vendor. The vendor says its service is up.</p>
+  <p>Everyone may be telling the truth. The workflow is still broken.</p>
+  <p>This is why support cannot be a line item labeled "ongoing assistance." Before production, decide who detects a failure, who owns the business queue, who can change the workflow, who contacts each vendor, and who has authority to stop the agent.</p>
+
+  <h2>The agent is a chain of responsibilities</h2>
+  <p>A production agent is usually several services tied together: a model, orchestration logic, business rules, data sources, connectors, identities, approval queues, monitoring, and one or more destination systems. One company rarely controls all of them.</p>
+  <p>The model provider can report healthy service while your connector is failing. The integrator can repair custom logic but may not own the source data. IT can restore access but should not decide whether a customer exception is acceptable. Operations can spot a bad outcome but may not have the evidence needed to diagnose it.</p>
+  <p>Do not ask one team to "own AI" as if that settles the issue. Assign ownership by work. If the implementation still lacks a clear component boundary, start with the <a href="/blog/ai-agent-build-vs-buy-workflow/">build, buy, or integrate decision</a>.</p>
+
+  <h2>Assign six production jobs</h2>
+  <p>A workable AI agent support model separates six jobs. A small organization may give several jobs to one person or provider. That is fine. The names, access, response expectations, and backup coverage still need to exist.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Production job</th><th>What the owner does</th><th>Likely owner</th></tr></thead>
+    <tbody>
+      <tr><td>Business outcome</td><td>Defines acceptable results, handles policy exceptions, and decides when the workflow should pause</td><td>Business operations or process owner</td></tr>
+      <tr><td>First response</td><td>Receives alerts and user reports, finds the affected transaction, classifies impact, and starts the runbook</td><td>Service desk, managed service, or internal support</td></tr>
+      <tr><td>Technical workflow</td><td>Diagnoses orchestration, prompts, rules, state, custom code, and failed tool calls</td><td>Internal engineering, integrator, or managed AI team</td></tr>
+      <tr><td>Applications and data</td><td>Owns source records, permissions, APIs, field mappings, and downstream application behavior</td><td>Application and data owners</td></tr>
+      <tr><td>Risk and security</td><td>Handles unauthorized action, data exposure, credential misuse, and control failures</td><td>Security, privacy, risk, or compliance</td></tr>
+      <tr><td>Supplier escalation</td><td>Opens vendor cases, tracks service commitments, coordinates evidence, and manages commercial follow-through</td><td>Vendor manager, IT, procurement, or integrator</td></tr>
+    </tbody>
+  </table></div>
+  <p>The integrator can fill several of these roles under a support agreement. It should not quietly become the business owner or risk authority. Your company still decides what outcomes are acceptable and when the agent may continue operating.</p>
+
+  <h2>Route incidents by symptom, not vendor logo</h2>
+  <p>Users will report what they can see: a missing order, wrong account update, slow response, duplicate ticket, blocked approval, or customer complaint. They will not know whether the model, connector, policy, identity, or destination caused it.</p>
+  <p>Give users one intake route. The first responder should be able to search by transaction ID, confirm the final business state, identify the failed step, and see recent changes. The <a href="/blog/ai-agent-audit-trail-checklist/">AI agent audit trail checklist</a> shows the evidence that makes this possible.</p>
+  <p>After triage, route the case to the component owner. Keep one incident owner responsible for the whole business outcome. Without that role, five suppliers can close five technically correct tickets while the customer's work remains stuck.</p>
+  <p>Set severity using business impact. A delayed internal summary does not need the same response as an agent sending unauthorized customer messages. Define which conditions require immediate containment, credential revocation, manual fallback, security review, or executive notice.</p>
+
+  <h2>Put the handoff in the implementation scope</h2>
+  <p>Do not wait until the final project meeting to ask for documentation. Make the support handoff an acceptance requirement with named artifacts and a practical test.</p>
+  <p>Require an architecture and dependency map, inventory of production identities, current configuration and version record, alert list, runbooks, escalation contacts, known limitations, recovery procedures, change process, and support coverage. Record which items your team can inspect and change without calling the integrator.</p>
+  <p>Then run a handoff drill. Break a test connector, revoke a test credential, send an out-of-policy request, and create an uncertain downstream write. Have the future support team detect, triage, contain, recover, and document each event. If the builder has to drive every step, the handoff has not happened.</p>
+  <p>This drill belongs beside the <a href="/blog/ai-agent-vendor-pilot-acceptance-test/">vendor pilot acceptance test</a>. Output quality matters, but supportability is also production evidence.</p>
+
+  <h2>Buy support by responsibility and response</h2>
+  <p>Vendor support packages often describe channels, hours, initial response, and product boundaries. An integrator's managed service may cover workflow logic and connectors. Your internal teams may still own data correction, business exceptions, user communication, access approval, and incident decisions.</p>
+  <p>Put that split into a responsibility matrix. For each failure class, name the accountable owner, first responder, consulted specialists, evidence required, response target, escalation path, and authority to stop or restart the workflow.</p>
+  <p>Ask direct commercial questions:</p>
+  <ol>
+    <li>Which components and failure types are included in the support fee?</li>
+    <li>Does response time mean acknowledgement, diagnosis, workaround, or restoration?</li>
+    <li>Who manages model, prompt, policy, and connector changes after launch?</li>
+    <li>What coverage exists outside business hours, and which incidents qualify?</li>
+    <li>How are third-party vendor cases coordinated when root cause is uncertain?</li>
+    <li>What logs, configurations, runbooks, and test assets can the buyer retain?</li>
+    <li>What happens when the named specialist leaves either company?</li>
+  </ol>
+  <p>Price the internal work too. A low-cost support plan can be expensive if your team performs every investigation, vendor chase, exception review, and recovery. Add observed support effort to the <a href="/blog/ai-agent-integration-cost-model/">full AI agent cost model</a>.</p>
+
+  <h2>Separate routine support from controlled change</h2>
+  <p>Fixing a failed credential is not the same as changing the prompt, swapping a model, remapping a field, or adding a new action. The first restores approved behavior. The second may change what the agent does.</p>
+  <p>Define which support actions are pre-authorized and which require testing and release approval. Emergency changes need an owner, time limit, evidence record, and follow-up review. Permanent changes should follow the <a href="/blog/ai-agent-change-management-release-test/">AI agent release test</a>.</p>
+  <p>Keep business policy decisions with the business. A support engineer should not rewrite a pricing exception, eligibility rule, or customer promise simply because it appears in a prompt.</p>
+
+  <h2>NIST supports clear ownership after deployment</h2>
+  <p>The <a href="https://airc.nist.gov/airmf-resources/playbook/govern/" target="_blank" rel="noopener noreferrer">NIST AI RMF Playbook</a> says unclear responsibilities and chains of command limit effective risk management. Its GOVERN 1.5 guidance calls for ongoing monitoring and periodic review with clearly defined organizational roles and review frequency. It also describes incident response and human override as common IT management processes.</p>
+  <p>The <a href="https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf" target="_blank" rel="noopener noreferrer">NIST Generative AI Profile</a> gets more specific. It recommends defining responsibilities for incident monitoring, establishing after-action reviews, keeping relevant test and validation history, and recording human oversight roles in the system inventory.</p>
+  <p>NIST does not prescribe your org chart or require a managed service. It does give buyers a sensible standard: production monitoring, response, review, and third-party risk need assigned owners. "Call the vendor" is not an operating model.</p>
+
+  <h2>Use this support-readiness gate</h2>
+  <p>Before the project closes, require a written yes to these questions:</p>
+  <ol>
+    <li>Does every workflow have a business owner and a technical owner?</li>
+    <li>Can users report one failed business outcome without choosing a vendor?</li>
+    <li>Can the first responder find the affected transaction and current system state?</li>
+    <li>Are component owners, backups, vendor contacts, and escalation paths current?</li>
+    <li>Are containment, manual fallback, recovery, and restart authorities documented?</li>
+    <li>Has the future support team completed a handoff drill without the builder driving?</li>
+    <li>Does the support agreement state what is covered, when, by whom, and with what response?</li>
+    <li>Are routine repair and production change handled through different controls?</li>
+  </ol>
+  <p>If those answers are vague, the agent is not ready to become an operational dependency. Keep the scope narrow, extend the handoff, or buy the support coverage the workflow requires.</p>
+  <p>The integrator may leave. The agent still has to work on Monday morning.</p>
+</article></div></main>
+
+<section class="post-footer"><div class="container"><div class="cta-box">
+  <h3>Who owns this agent on Monday morning?</h3>
+  <p>Book an AI readiness and implementation conversation. We will map the production roles, support boundaries, escalation paths, handoff evidence, and operating cost for one workflow.</p>
+  <a href="/book/" class="btn-primary">Review Your Support Model</a>
+</div></div></section>
+
+<footer><div class="container"><div class="footer-inner">
+  <div><img src="/logo-light.svg" alt="Augentic AI" height="28" class="logo-themed" data-light="/logo-dark.svg" data-dark="/logo-light.svg" /><div class="footer-tagline">Autonomous AI. Measurable Revenue.</div></div>
+  <ul class="footer-links"><li><a href="/#solution">Solutions</a></li><li><a href="/blog/">Insights</a></li><li><a href="/guide/">AI Guide</a></li><li><a href="/book/">Book a Call</a></li><li><a href="mailto:hello@augenticai.com">Contact</a></li></ul>
+  <div class="footer-copy">&copy; 2026 Augentic AI.</div>
+</div></div></footer>
+<script>
+const nav=document.getElementById('nav');window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>40));const menu=document.getElementById('mobileMenu');document.getElementById('hamburger').onclick=()=>menu.classList.toggle('open');const toggle=document.getElementById('themeToggle');const saved=localStorage.getItem('theme')||'dark';function logos(light){document.querySelectorAll('.logo-themed').forEach(i=>i.src=light?i.dataset.light:i.dataset.dark)}if(saved==='light'){document.body.classList.add('light');logos(true)}toggle.onclick=()=>{const light=document.body.classList.toggle('light');localStorage.setItem('theme',light?'light':'dark');logos(light)};
+</script>
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#111;border-top:1px solid rgba(212,175,55,.3);padding:1.25rem 2rem;align-items:center;justify-content:space-between;gap:1.5rem"><p style="margin:0;color:#888880;font-size:.875rem">We use cookies to improve your experience and analyze site usage. See our <a href="/privacy/" style="color:#D4AF37">Privacy Policy</a>.</p><div><button id="cookie-decline">Decline</button> <button id="cookie-accept">Accept</button></div></div>
+<script>(function(){const b=document.getElementById('cookie-banner');if(!localStorage.getItem('augentic_cookie_consent'))b.style.display='flex';document.getElementById('cookie-accept').onclick=()=>{localStorage.setItem('augentic_cookie_consent','accepted');b.style.display='none'};document.getElementById('cookie-decline').onclick=()=>{localStorage.setItem('augentic_cookie_consent','declined');b.style.display='none'}})();</script>
+</body>
+</html>
