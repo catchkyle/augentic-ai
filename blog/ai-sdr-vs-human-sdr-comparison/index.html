@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI SDR vs Human SDR: Honest Comparison for Sales Leaders | Augentic AI Insights</title>
+  <meta name="description" content="An honest, data-driven comparison of AI SDRs versus human SDRs. Learn where AI outperforms, where humans still win, and how the best sales teams deploy both." />
+  <meta property="og:title" content="AI SDR vs Human SDR: Honest Comparison for Sales Leaders" />
+  <meta property="og:description" content="An honest, data-driven comparison of AI SDRs versus human SDRs. Learn where AI outperforms, where humans still win, and how the best sales teams deploy both." />
+  <meta property="og:type" content="article" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0A0A0A; --bg-card: #111111; --bg-raised: #161616;
+      --text: #F5F5F0; --text-muted: #888880; --text-dim: #555550;
+      --accent: #D4AF37; --accent-dim: rgba(212,175,55,0.12);
+      --border: rgba(255,255,255,0.07); --border-accent: rgba(212,175,55,0.3);
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Inter', system-ui, sans-serif;
+      --max: 1200px; --radius: 2px;
+    }
+    body.light {
+      --bg: #FAFAF7; --bg-card: #F2F2EE; --bg-raised: #E8E8E4;
+      --text: #0B0B0B; --text-muted: #444440; --text-dim: #999990;
+      --border: rgba(0,0,0,0.08); --border-accent: rgba(212,175,55,0.4);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-weight: 400; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    ::selection { background: var(--accent-dim); color: var(--accent); }
+    h1,h2,h3,h4 { font-weight: 500; line-height: 1.25; letter-spacing: -0.02em; }
+    h1 { font-family: var(--font-serif); font-size: clamp(2rem,4vw,3.2rem); }
+    h2 { font-family: var(--font-serif); font-size: clamp(1.6rem,3vw,2.4rem); }
+    h3 { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; letter-spacing: 0; }
+    p { color: var(--text-muted); line-height: 1.85; }
+    a { color: inherit; }
+    .label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.5rem 0; transition: background 0.4s, padding 0.3s; }
+    nav.scrolled { background: rgba(10,10,10,0.95); border-bottom: 1px solid var(--border); padding: 1rem 0; backdrop-filter: blur(12px); }
+    body.light nav.scrolled { background: rgba(250,250,247,0.95); }
+    nav .container { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.8rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; padding: 0.65rem 1.4rem; background: var(--accent); color: #0A0A0A; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s; white-space: nowrap; }
+    .nav-cta:hover { opacity: 0.88; }
+    .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+    .theme-toggle { background: none; border: 1px solid var(--border); color: var(--text-muted); cursor: pointer; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius); transition: color 0.2s; flex-shrink: 0; }
+    .theme-toggle:hover { color: var(--accent); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 1px; background: var(--text); }
+    .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 99; background: var(--bg); padding: 6rem 2rem 2rem; flex-direction: column; gap: 2rem; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 1.4rem; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 1.2rem; }
+    footer { background: var(--bg); border-top: 1px solid var(--border); padding: 3rem 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-tagline { font-size: 0.78rem; color: var(--text-dim); margin-top: 0.3rem; }
+    .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.78rem; color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text-muted); }
+    .footer-copy { font-size: 0.75rem; color: var(--text-dim); }
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
+    .btn-primary { display: inline-block; padding: 0.9rem 2rem; background: var(--accent); color: #0A0A0A; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s, transform 0.2s; border: none; cursor: pointer; }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-outline { display: inline-block; padding: 0.85rem 1.8rem; border: 1px solid var(--border-accent); color: var(--accent); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-decoration: none; border-radius: var(--radius); transition: all 0.2s; }
+    .btn-outline:hover { background: var(--accent-dim); }
+    @media (max-width: 900px) { .nav-links, .nav-right .nav-cta { display: none; } .hamburger { display: flex; } }
+  </style>
+  <style>
+    .post-header { padding: 10rem 0 4rem; border-bottom: 1px solid var(--border); }
+    .post-meta { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .post-meta .label { margin: 0; }
+    .post-meta-text { font-size: 0.8rem; color: var(--text-dim); }
+    .post-title { margin-bottom: 1.2rem; }
+    .post-desc { font-size: 1.05rem; max-width: 640px; }
+    .post-body { padding: 5rem 0; }
+    .post-body-inner { max-width: 720px; }
+    .post-body p { margin-bottom: 1.6rem; font-size: 1rem; }
+    .post-body h2 { font-size: 1.5rem; margin: 3rem 0 1rem; color: var(--text); }
+    .post-body strong { color: var(--text); font-weight: 500; }
+    .x-credit { background: var(--bg-card); border: 1px solid var(--border-accent); border-left: 3px solid var(--accent); padding: 1.2rem 1.5rem; margin: 2.5rem 0; font-size: 0.88rem; color: var(--text-muted); font-style: italic; border-radius: 0 var(--radius) var(--radius) 0; }
+    .post-footer { padding: 4rem 0; border-top: 1px solid var(--border); }
+    .cta-box { background: var(--bg-card); border: 1px solid var(--border); padding: 3rem; text-align: center; max-width: 600px; margin: 0 auto; }
+    .cta-box h3 { font-family: var(--font-serif); font-size: 1.6rem; margin-bottom: 1rem; color: var(--text); }
+    .cta-box p { margin-bottom: 2rem; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: var(--text-muted); text-decoration: none; margin-bottom: 3rem; transition: color 0.2s; }
+    .back-link:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+<nav id="nav">
+  <div class="container">
+    <a href="/" class="nav-logo" style="display:flex;align-items:center;text-decoration:none;"><img src="/logo.svg" alt="Augentic AI" height="37" style="height:37px;width:auto;" /></a>
+    <ul class="nav-links">
+      <li><a href="/#solution">Solutions</a></li>
+      <li><a href="/#offerings">Offerings</a></li>
+      <li><a href="/blog/">Insights</a></li>
+      <li><a href="/guide/">AI Guide</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg id="iconSun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg id="iconMoon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="/book/" class="nav-cta">Book Strategy Call</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/#solution" onclick="closeMobile()">Solutions</a>
+  <a href="/#offerings" onclick="closeMobile()">Offerings</a>
+  <a href="/blog/" onclick="closeMobile()">Insights</a>
+  <a href="/guide/" onclick="closeMobile()">AI Guide</a>
+  <a href="/book/" onclick="closeMobile()" style="color:var(--accent);">Book Strategy Call</a>
+</div>
+
+<div class="post-header">
+  <div class="container">
+    <a href="/blog/" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M13 7H1M6 2L1 7l5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to Insights
+    </a>
+    <div class="post-meta">
+      <span class="label">AI SDR</span>
+      <span class="post-meta-text">March 17, 2026</span>
+      <span class="post-meta-text">10 min read</span>
+    </div>
+    <h1 class="post-title">AI SDR vs Human SDR: Honest Comparison for Sales Leaders</h1>
+    <p class="post-desc">An honest, data-driven comparison of AI SDRs versus human SDRs. Learn where AI outperforms, where humans still win, and how the best sales teams deploy both.</p>
+  </div>
+</div>
+
+<div class="post-body">
+  <div class="container">
+    <div class="post-body-inner">
+      
+      
+<p>The sales development function is undergoing its most significant transformation since the invention of the auto-dialer. AI-powered Sales Development Representatives — autonomous systems that prospect, qualify, and book meetings without human intervention — are no longer experimental. They are production-ready, deployed at scale, and generating real pipeline for companies ranging from Series A startups to publicly traded enterprises.</p>
+
+<p>But the conversation around AI SDRs has become polarized. On one side, vendors promise that AI will replace your entire SDR team tomorrow. On the other, skeptics insist that nothing beats a human touch. The truth, as usual, is more nuanced and more interesting than either extreme.</p>
+
+<p>This is an honest comparison. No vendor spin. No Luddite hand-wringing. Just a clear-eyed analysis of where AI SDRs outperform humans, where humans still dominate, and how the most sophisticated revenue teams are deploying both to create compounding advantages their competitors cannot replicate.</p>
+
+<h2>What an AI SDR Actually Does in 2026</h2>
+
+<p>Before we compare, let us establish what a modern AI SDR actually is. This is not a glorified email sequencer. A production-grade AI SDR in 2026 is an autonomous system that performs the following functions without human intervention:</p>
+
+<p><strong>Prospect identification and research.</strong> The AI SDR continuously monitors intent signals across multiple data sources — website visits, content engagement, job postings, technographic changes, funding announcements, leadership transitions — and identifies accounts that match your ideal customer profile. It does not wait for a marketing qualified lead to appear in Salesforce. It hunts.</p>
+
+<p><strong>Contact discovery and enrichment.</strong> Once an account is identified, the AI SDR finds the right contacts within that account, enriches their profiles with relevant context, and determines the optimal outreach strategy based on the contact's role, seniority, communication preferences, and historical engagement patterns.</p>
+
+<p><strong>Personalized outreach at scale.</strong> The AI SDR crafts genuinely personalized messages — not mail merge tokens, but contextually relevant communications that reference specific company initiatives, recent news, mutual connections, or industry trends. It selects the right channel (email, LinkedIn, phone) and the right timing based on historical response data.</p>
+
+<p><strong>Multi-threaded conversation management.</strong> When prospects respond, the AI SDR engages in natural, contextually appropriate conversations. It handles objections, answers questions, provides relevant information, and navigates the conversation toward a booked meeting. It manages hundreds of simultaneous conversations without dropping context or quality.</p>
+
+<p><strong>Meeting scheduling and handoff.</strong> The AI SDR books meetings directly on account executives' calendars, sends confirmation emails with relevant context, and provides the AE with a comprehensive briefing document that includes account research, conversation history, stated pain points, and recommended talking points.</p>
+
+<h2>Where AI SDRs Decisively Win</h2>
+
+<h3>Speed and Response Time</h3>
+
+<p>This is not even close. When a prospect fills out a form, downloads a whitepaper, or responds to an email at 2 AM on a Saturday, an AI SDR responds in under 60 seconds. Research from InsideSales and MIT consistently shows that responding within five minutes makes you 100x more likely to connect than responding within 30 minutes. Most human SDR teams average response times measured in hours, not minutes.</p>
+
+<p>An AI SDR never sleeps. It does not take lunch breaks. It does not call in sick on the Monday after the Super Bowl. It does not deprioritize inbound leads because it is focused on hitting its outbound activity quota. Every lead gets immediate, high-quality attention, 24 hours a day, 365 days a year.</p>
+
+<h3>Volume and Consistency</h3>
+
+<p>A high-performing human SDR might send 50 to 80 personalized emails per day while managing follow-up sequences and taking calls. An AI SDR can manage thousands of active conversations simultaneously, each with genuine personalization derived from real-time research. The quality does not degrade at 3 PM on a Friday the way human performance inevitably does.</p>
+
+<p>More importantly, the AI SDR maintains perfect consistency. Every prospect receives the same quality of research, the same level of personalization, the same prompt follow-up. There is no performance variance between your best day and your worst day, between your top performer and your newest hire.</p>
+
+<h3>Data-Driven Optimization</h3>
+
+<p>An AI SDR continuously learns from every interaction. It knows which subject lines generate opens for VP-level prospects in financial services versus director-level prospects in healthcare. It knows which objection responses convert skeptics versus which ones cause disengagement. It A/B tests messaging, timing, channels, and sequences at a scale that no human team could manage.</p>
+
+<p>Human SDRs develop intuition over time, which is valuable. But that intuition is anecdotal, hard to transfer, and walks out the door when the SDR gets promoted or leaves. AI SDR learning compounds permanently across your entire organization.</p>
+
+<h3>Cost Efficiency at Scale</h3>
+
+<p>The fully loaded cost of a human SDR in a major metro area — salary, benefits, tools, management overhead, office space, training, ramp time, turnover costs — runs between $90,000 and $140,000 per year. The average SDR tenure is 14 months, which means you are perpetually investing in hiring and ramp.</p>
+
+<p>An AI SDR system capable of doing the work of three to five human SDRs typically costs between $3,000 and $8,000 per month. The math is not subtle. And unlike a human SDR, you do not lose three months of productivity while the replacement ramps up.</p>
+
+<h2>Where Human SDRs Still Win</h2>
+
+<h3>Complex Relationship Navigation</h3>
+
+<p>Enterprise sales into Fortune 500 accounts involve political dynamics that AI cannot yet navigate. When you need to understand that the VP of IT is in a turf war with the VP of Operations, and that the CIO is a lame duck who will be replaced in Q3, and that the real decision maker is actually the CFO's chief of staff — that requires human intelligence, relationship building, and organizational instinct.</p>
+
+<p>Human SDRs who are great at enterprise prospecting function as mini-strategists. They read between the lines of LinkedIn posts. They notice that a prospect just followed a competitor. They leverage personal connections from college, previous jobs, or industry events. These subtle relationship dynamics remain firmly in human territory.</p>
+
+<h3>Genuine Empathy and Emotional Intelligence</h3>
+
+<p>When a prospect mentions in an email that they are dealing with a data breach and their week has been a nightmare, a great human SDR knows to express genuine concern, offer helpful resources with no strings attached, and follow up in two weeks when the crisis has passed. They build trust through authentic human connection that creates loyalty beyond the transaction.</p>
+
+<p>AI can simulate empathy. It can recognize emotional cues and respond appropriately. But it cannot attend a prospect's conference talk and send a thoughtful note about a specific point they made. It cannot run into someone at an industry dinner and build rapport over shared experiences. The warmth gap is real, and in high-touch, high-value sales, it matters.</p>
+
+<h3>Creative Problem-Solving and Storytelling</h3>
+
+<p>The best human SDRs are creative. They find unexpected angles to start conversations. They tell compelling stories about how they helped similar companies. They make unexpected connections between a prospect's stated challenges and solutions the prospect had not considered. They think laterally in ways that AI systems, despite impressive generative capabilities, still struggle to match consistently.</p>
+
+<h3>Brand Representation and Trust Building</h3>
+
+<p>For certain buyer personas — particularly senior executives making seven-figure decisions — the quality of the initial human interaction signals the quality of the company. Having a sharp, articulate, knowledgeable human as the first point of contact communicates investment and seriousness that an AI interaction, no matter how sophisticated, does not yet convey for every buyer.</p>
+
+<h2>The Hybrid Model: How Elite Teams Deploy Both</h2>
+
+<p>The most effective sales development organizations in 2026 are not choosing between AI and human SDRs. They are deploying both in complementary roles that amplify each other's strengths and compensate for each other's weaknesses.</p>
+
+<p><strong>AI SDRs handle the top of the funnel.</strong> Inbound lead response, initial outbound prospecting, lead qualification, meeting scheduling for standard opportunities, and ongoing nurture sequences are all AI-driven. This captures 100 percent of inbound leads immediately and maintains consistent outbound volume regardless of team availability.</p>
+
+<p><strong>Human SDRs focus on strategic accounts.</strong> Your most experienced SDRs work exclusively on named enterprise accounts, leveraging AI-generated research and intent signals but applying human judgment to outreach strategy, relationship building, and multi-threaded engagement. They are not making cold calls all day — they are operating as strategic prospectors on your highest-value opportunities.</p>
+
+<p><strong>AI handles the mundane, humans handle the moments that matter.</strong> The AI SDR manages CRM updates, activity logging, lead enrichment, sequence management, and reporting. Human SDRs spend their time on the activities that actually require human intelligence: creative outreach, relationship building, strategic account planning, and handling complex conversations.</p>
+
+<p>This model typically produces 40 to 60 percent more pipeline than a purely human team at 20 to 30 percent lower cost, while simultaneously improving the human SDRs' experience and career trajectory (because they are doing more interesting, strategic work instead of grinding through activity quotas).</p>
+
+<h2>How to Evaluate Whether Your Team is Ready</h2>
+
+<p>Not every sales organization is ready for AI SDRs. Here are the prerequisites that determine whether you will see real results or waste six months on a failed implementation:</p>
+
+<p><strong>Clean CRM data.</strong> AI SDRs need accurate account and contact data to function. If your Salesforce instance is a disaster of duplicate records, missing fields, and outdated information, you need to fix that first. The AI will amplify whatever data quality you give it — garbage in, garbage out at scale.</p>
+
+<p><strong>Defined ideal customer profile.</strong> The AI needs clear parameters for targeting. If your team cannot articulate who your best customers are, what industries they are in, what size companies you serve well, and what triggers indicate buying intent, the AI will prospect indiscriminately and waste resources.</p>
+
+<p><strong>Proven messaging that converts.</strong> An AI SDR will optimize and iterate on your messaging, but it needs a working starting point. If your human team has not figured out what messaging resonates with your target buyers, the AI will not magically discover it. Start with messaging that you know generates replies, then let the AI improve from there.</p>
+
+<p><strong>Sales process with clear handoff points.</strong> The AI SDR needs to know exactly when and how to hand a prospect to a human. If your sales process is ad hoc, with SDRs using their own judgment about when something is "qualified enough" for an AE, you need to formalize that before adding AI into the mix.</p>
+
+<h2>The Numbers That Matter</h2>
+
+<p>When evaluating AI SDR performance against human SDRs, track these metrics:</p>
+
+<p><strong>Speed to lead.</strong> Average time from inbound signal to first outreach. AI benchmark: under 60 seconds. Human benchmark: under 5 minutes (most teams fail this).</p>
+
+<p><strong>Qualified meetings booked per month.</strong> Not activities. Not emails sent. Meetings that actually happen with prospects who match your ICP. This is the number that matters.</p>
+
+<p><strong>Cost per qualified meeting.</strong> Total SDR cost (AI system cost or fully loaded human cost) divided by qualified meetings booked. This normalizes performance across different deployment models.</p>
+
+<p><strong>Pipeline generated per dollar spent.</strong> The ultimate efficiency metric. How much pipeline value does each dollar of SDR investment generate?</p>
+
+<p><strong>Meeting-to-opportunity conversion rate.</strong> This reveals quality. If AI SDR meetings convert to opportunities at a significantly lower rate than human SDR meetings, the AI is booking unqualified meetings. If rates are comparable, the qualification is working.</p>
+
+<h2>What This Means for Your Team</h2>
+
+<p>The AI SDR transition is not coming. It is here. Companies that deploy AI SDRs effectively in 2026 will have a structural advantage — more pipeline, lower cost per meeting, better data, faster optimization — that compounds over time. Companies that wait will find themselves competing against organizations that prospect at ten times their volume with two times their precision.</p>
+
+<p>But this is not about replacing humans with machines. The best outcomes come from thoughtful integration that puts AI where it excels and humans where they shine. The sales leaders who get this right will build organizations that are simultaneously more productive and more human — because when AI handles the grind, people can focus on the work that actually requires a person.</p>
+
+<p>The question is not whether to deploy AI SDRs. It is how quickly you can deploy them well.</p>
+
+<p><strong>Book a strategy call</strong> to get a custom analysis of your sales development operation — including estimated pipeline lift, cost modeling for AI versus human SDR deployment, and a phased implementation roadmap tailored to your team size, sales process, and target market.</p>
+
+<p><a href="/book/">Schedule your strategy call now</a> — we will show you exactly where AI SDRs fit in your revenue engine and what kind of pipeline impact you can expect in the first 90 days.</p>
+
+    </div>
+  </div>
+</div>
+
+<div class="post-footer">
+  <div class="container">
+    <div class="cta-box">
+      <h3>Ready to Build Your AI Workforce?</h3>
+      <p>Schedule a 30-minute strategy call. We will tell you exactly what we would build for your business - and what it would cost.</p>
+      <a href="/book/" class="btn-primary">Book a Strategy Call</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo" style="display:flex;align-items:center;"><img src="/logo.svg" alt="Augentic AI" height="28" style="height:28px;width:auto;" /></div>
+        <div class="footer-tagline">Autonomous AI. Measurable Revenue.</div>
+      </div>
+      <ul class="footer-links">
+        <li><a href="/#solution">Solutions</a></li>
+        <li><a href="/#offerings">Offerings</a></li>
+        <li><a href="/blog/">Insights</a></li>
+        <li><a href="/guide/">AI Guide</a></li>
+        <li><a href="/book/">Book a Call</a></li>
+        <li><a href="mailto:hello@augenticai.com">Contact</a></li>
+      </ul>
+      <div class="footer-copy">&copy; 2026 Augentic AI. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => { mobileMenu.classList.toggle('open'); });
+  function closeMobile() { mobileMenu.classList.remove('open'); }
+  const themeToggle = document.getElementById('themeToggle');
+  const iconSun = document.getElementById('iconSun');
+  const iconMoon = document.getElementById('iconMoon');
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  if (savedTheme === 'light') { document.body.classList.add('light'); iconSun.style.display = 'block'; iconMoon.style.display = 'none'; }
+  themeToggle.addEventListener('click', () => {
+    const isLight = document.body.classList.toggle('light');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    iconSun.style.display = isLight ? 'block' : 'none';
+    iconMoon.style.display = isLight ? 'none' : 'block';
+  });
+</script>
+</body>
+</html>

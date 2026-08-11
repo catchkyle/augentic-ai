@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Front Office for Healthcare Practices: Eliminate Hold Times, Reduce No-Shows, and Reclaim Revenue | Augentic AI Insights</title>
+  <meta name="description" content="Learn how AI front office systems help healthcare practices eliminate phone hold times, reduce patient no-shows by 40%, and recover hundreds of thousands in lost revenue annually." />
+  <meta property="og:title" content="AI Front Office for Healthcare Practices: Eliminate Hold Times, Reduce No-Shows, and Reclaim Revenue" />
+  <meta property="og:description" content="Learn how AI front office systems help healthcare practices eliminate phone hold times, reduce patient no-shows by 40%, and recover hundreds of thousands in lost revenue annually." />
+  <meta property="og:type" content="article" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0A0A0A; --bg-card: #111111; --bg-raised: #161616;
+      --text: #F5F5F0; --text-muted: #888880; --text-dim: #555550;
+      --accent: #D4AF37; --accent-dim: rgba(212,175,55,0.12);
+      --border: rgba(255,255,255,0.07); --border-accent: rgba(212,175,55,0.3);
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Inter', system-ui, sans-serif;
+      --max: 1200px; --radius: 2px;
+    }
+    body.light {
+      --bg: #FAFAF7; --bg-card: #F2F2EE; --bg-raised: #E8E8E4;
+      --text: #0B0B0B; --text-muted: #444440; --text-dim: #999990;
+      --border: rgba(0,0,0,0.08); --border-accent: rgba(212,175,55,0.4);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-weight: 400; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    ::selection { background: var(--accent-dim); color: var(--accent); }
+    h1,h2,h3,h4 { font-weight: 500; line-height: 1.25; letter-spacing: -0.02em; }
+    h1 { font-family: var(--font-serif); font-size: clamp(2rem,4vw,3.2rem); }
+    h2 { font-family: var(--font-serif); font-size: clamp(1.6rem,3vw,2.4rem); }
+    h3 { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; letter-spacing: 0; }
+    p { color: var(--text-muted); line-height: 1.85; }
+    a { color: inherit; }
+    .label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.5rem 0; transition: background 0.4s, padding 0.3s; }
+    nav.scrolled { background: rgba(10,10,10,0.95); border-bottom: 1px solid var(--border); padding: 1rem 0; backdrop-filter: blur(12px); }
+    body.light nav.scrolled { background: rgba(250,250,247,0.95); }
+    nav .container { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.8rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; padding: 0.65rem 1.4rem; background: var(--accent); color: #0A0A0A; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s; white-space: nowrap; }
+    .nav-cta:hover { opacity: 0.88; }
+    .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+    .theme-toggle { background: none; border: 1px solid var(--border); color: var(--text-muted); cursor: pointer; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius); transition: color 0.2s; flex-shrink: 0; }
+    .theme-toggle:hover { color: var(--accent); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 1px; background: var(--text); }
+    .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 99; background: var(--bg); padding: 6rem 2rem 2rem; flex-direction: column; gap: 2rem; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 1.4rem; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 1.2rem; }
+    footer { background: var(--bg); border-top: 1px solid var(--border); padding: 3rem 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-tagline { font-size: 0.78rem; color: var(--text-dim); margin-top: 0.3rem; }
+    .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.78rem; color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text-muted); }
+    .footer-copy { font-size: 0.75rem; color: var(--text-dim); }
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
+    .btn-primary { display: inline-block; padding: 0.9rem 2rem; background: var(--accent); color: #0A0A0A; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s, transform 0.2s; border: none; cursor: pointer; }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-outline { display: inline-block; padding: 0.85rem 1.8rem; border: 1px solid var(--border-accent); color: var(--accent); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-decoration: none; border-radius: var(--radius); transition: all 0.2s; }
+    .btn-outline:hover { background: var(--accent-dim); }
+    @media (max-width: 900px) { .nav-links, .nav-right .nav-cta { display: none; } .hamburger { display: flex; } }
+  </style>
+  <style>
+    .post-header { padding: 10rem 0 4rem; border-bottom: 1px solid var(--border); }
+    .post-meta { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .post-meta .label { margin: 0; }
+    .post-meta-text { font-size: 0.8rem; color: var(--text-dim); }
+    .post-title { margin-bottom: 1.2rem; }
+    .post-desc { font-size: 1.05rem; max-width: 640px; }
+    .post-body { padding: 5rem 0; }
+    .post-body-inner { max-width: 720px; }
+    .post-body p { margin-bottom: 1.6rem; font-size: 1rem; }
+    .post-body h2 { font-size: 1.5rem; margin: 3rem 0 1rem; color: var(--text); }
+    .post-body strong { color: var(--text); font-weight: 500; }
+    .x-credit { background: var(--bg-card); border: 1px solid var(--border-accent); border-left: 3px solid var(--accent); padding: 1.2rem 1.5rem; margin: 2.5rem 0; font-size: 0.88rem; color: var(--text-muted); font-style: italic; border-radius: 0 var(--radius) var(--radius) 0; }
+    .post-footer { padding: 4rem 0; border-top: 1px solid var(--border); }
+    .cta-box { background: var(--bg-card); border: 1px solid var(--border); padding: 3rem; text-align: center; max-width: 600px; margin: 0 auto; }
+    .cta-box h3 { font-family: var(--font-serif); font-size: 1.6rem; margin-bottom: 1rem; color: var(--text); }
+    .cta-box p { margin-bottom: 2rem; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: var(--text-muted); text-decoration: none; margin-bottom: 3rem; transition: color 0.2s; }
+    .back-link:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+<nav id="nav">
+  <div class="container">
+    <a href="/" class="nav-logo" style="display:flex;align-items:center;text-decoration:none;"><img src="/logo.svg" alt="Augentic AI" height="37" style="height:37px;width:auto;" /></a>
+    <ul class="nav-links">
+      <li><a href="/#solution">Solutions</a></li>
+      <li><a href="/#offerings">Offerings</a></li>
+      <li><a href="/blog/">Insights</a></li>
+      <li><a href="/guide/">AI Guide</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg id="iconSun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg id="iconMoon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="/book/" class="nav-cta">Book Strategy Call</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/#solution" onclick="closeMobile()">Solutions</a>
+  <a href="/#offerings" onclick="closeMobile()">Offerings</a>
+  <a href="/blog/" onclick="closeMobile()">Insights</a>
+  <a href="/guide/" onclick="closeMobile()">AI Guide</a>
+  <a href="/book/" onclick="closeMobile()" style="color:var(--accent);">Book Strategy Call</a>
+</div>
+
+<div class="post-header">
+  <div class="container">
+    <a href="/blog/" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M13 7H1M6 2L1 7l5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to Insights
+    </a>
+    <div class="post-meta">
+      <span class="label">Industry</span>
+      <span class="post-meta-text">March 12, 2026</span>
+      <span class="post-meta-text">11 min read</span>
+    </div>
+    <h1 class="post-title">AI Front Office for Healthcare Practices: Eliminate Hold Times, Reduce No-Shows, and Reclaim Revenue</h1>
+    <p class="post-desc">Learn how AI front office systems help healthcare practices eliminate phone hold times, reduce patient no-shows by 40%, and recover hundreds of thousands in lost revenue annually.</p>
+  </div>
+</div>
+
+<div class="post-body">
+  <div class="container">
+    <div class="post-body-inner">
+      
+      
+<h2>The Healthcare Front Office Is Hemorrhaging Revenue</h2>
+
+<p>Every healthcare practice in America shares the same operational bottleneck, and most have simply accepted it as the cost of doing business: the front office.</p>
+
+<p>Your phones ring constantly. Patients wait on hold for seven, ten, fifteen minutes — if they wait at all. A 2025 study from Accenture found that 34% of patients who cannot reach their provider by phone within five minutes hang up and call a competitor. Not a different department. A different practice entirely.</p>
+
+<p>Meanwhile, your front desk staff is simultaneously checking patients in, verifying insurance, processing co-pays, handling prescription refill requests, managing referrals, and trying to schedule follow-ups — all while three lines are ringing and the waiting room is filling up.</p>
+
+<p>The result is predictable: missed calls turn into lost patients, scheduling gaps turn into lost revenue, and no-shows drain the schedule because nobody had time to send proper confirmations. For a mid-sized practice generating $2-5 million annually, the revenue impact of front office inefficiency typically ranges from $200,000 to $600,000 per year in lost and leaked revenue.</p>
+
+<p>This is not a staffing problem you can hire your way out of. Adding another front desk coordinator costs $45,000-$55,000 annually with benefits, takes weeks to train, and still cannot answer the phone at 8 PM when patients are trying to book appointments after work. It is a systems problem — and in 2026, it has a systems solution.</p>
+
+<h2>What an AI Front Office Actually Does for a Healthcare Practice</h2>
+
+<p>An AI front office is not a chatbot on your website. It is not an IVR phone tree that makes patients press 1 for appointments and 2 for billing. It is an autonomous system that handles the full scope of front office communication — inbound calls, appointment scheduling, confirmations, recalls, intake, and routing — without requiring a human to touch every interaction.</p>
+
+<p>Here is what that looks like in practice for a healthcare organization:</p>
+
+<h3>Inbound Call Handling: Every Call Answered in Under Two Rings</h3>
+
+<p>An AI voice agent answers every inbound call instantly. Not after three rings while someone finishes checking in a patient. Not with a hold message and elevator music. The call is answered, the patient is greeted by name if they are in the system, and their request is handled in real time.</p>
+
+<p>For appointment scheduling — which represents roughly 40-50% of inbound calls at most practices — the AI agent checks provider availability, matches the patient's needs to the right provider and appointment type, confirms insurance compatibility, and books the appointment. The entire interaction takes 90 seconds to three minutes. No hold time. No transfers. No callbacks.</p>
+
+<p>For calls that require clinical staff — prescription questions, symptom triage, or complex medical inquiries — the AI agent captures the relevant information, creates a structured message, and routes it to the appropriate person with full context. The clinical staff member gets a clean, organized request instead of a sticky note that says "Mrs. Johnson called about her medication."</p>
+
+<h3>No-Show Reduction: The 40% Problem With a Systematic Fix</h3>
+
+<p>No-shows are the silent killer of healthcare practice profitability. The average no-show rate across healthcare practices is 18-23%, and for some specialties — behavioral health, dermatology, primary care in underserved areas — it can exceed 35%.</p>
+
+<p>Every no-show is not just a lost appointment. It is a lost revenue slot that could have been filled by another patient, wasted provider time, and a disruption to the schedule that ripples through the rest of the day. For a practice with 30 appointments per provider per day and an average reimbursement of $150 per visit, a 20% no-show rate costs roughly $225,000 per provider per year.</p>
+
+<p>AI front office systems attack no-shows through a multi-touch confirmation sequence that human staff simply cannot execute consistently:</p>
+
+<p><strong>48 hours before the appointment:</strong> An automated call or text confirms the appointment, reminds the patient of any preparation requirements (fasting, paperwork, insurance card), and offers easy rescheduling if the time no longer works.</p>
+
+<p><strong>24 hours before:</strong> A second confirmation with a one-tap response option. If the patient indicates they cannot make it, the system immediately opens that slot for the waitlist and begins filling it.</p>
+
+<p><strong>2 hours before:</strong> A final reminder with directions, parking information, and check-in instructions. This is not about nagging — it is about removing friction that causes last-minute cancellations.</p>
+
+<p>Practices that implement this systematic approach consistently see no-show rates drop by 35-45%. On a four-provider practice, that translates to recovering $300,000-$400,000 in annual revenue that was previously evaporating.</p>
+
+<h3>Patient Recall and Reactivation: Mining Your Existing Patient Base</h3>
+
+<p>Most practices are sitting on a goldmine of inactive patients — people who came in once or twice, had a good experience, and simply fell off the radar because nobody followed up. The average practice has 30-40% of its patient base classified as inactive, meaning they have not had a visit in 12 or more months.</p>
+
+<p>Manual recall campaigns are tedious and inconsistent. Your staff sends a batch of postcards, makes a few phone calls when they have downtime, and moves on. An AI system runs continuous recall campaigns — identifying patients overdue for preventive care, annual exams, follow-ups, or chronic condition management, and reaching out via their preferred communication channel with a specific, personalized message.</p>
+
+<p>"Hi Sarah, it has been 14 months since your last dental cleaning. Dr. Martinez has openings next Tuesday and Thursday afternoon. Would either of those work for you?"</p>
+
+<p>That is not a generic reminder blast. It is a specific, actionable outreach that makes it easy for the patient to say yes. Practices running AI-driven recall campaigns are reactivating 15-25% of their inactive patient base within the first 90 days — each reactivated patient representing $500-$2,000 in annual revenue depending on the specialty.</p>
+
+<h2>The Revenue Math: What This Actually Means for Your Practice</h2>
+
+<p>Let us walk through the financial impact for a realistic mid-market healthcare practice: four providers, 120 appointments per day, $150 average reimbursement, and $4.5 million in annual revenue.</p>
+
+<h3>Recovered Revenue from Reduced No-Shows</h3>
+
+<p>Current no-show rate: 22%. That is 26 missed appointments per day, or roughly $3,900 in daily lost revenue. Reducing that to 12% — a conservative estimate for AI-driven confirmation systems — recovers 12 appointments per day. Annual impact: <strong>$468,000 in recovered revenue</strong>.</p>
+
+<h3>New Revenue from Answered Calls</h3>
+
+<p>If your practice misses or abandons 15-20% of inbound calls (the healthcare industry average), and each new patient is worth $1,200 in first-year revenue, capturing even half of those missed calls could mean 20-30 additional new patients per month. Annual impact: <strong>$288,000-$432,000 in new patient revenue</strong>.</p>
+
+<h3>Reactivation Revenue from Inactive Patients</h3>
+
+<p>With 2,000 inactive patients and a 20% reactivation rate over 12 months, that is 400 patients returning at an average of $800 in annual revenue each. Annual impact: <strong>$320,000 in reactivated revenue</strong>.</p>
+
+<h3>Operational Savings</h3>
+
+<p>Reducing the volume of routine calls your human staff must handle by 60-70% does not necessarily mean fewer staff — it means your existing staff can focus on complex patient needs, insurance coordination, and the in-person experience that drives patient satisfaction and retention. But for practices that are currently understaffed and struggling to hire, it eliminates the need for one to two additional FTEs. Annual savings: <strong>$90,000-$110,000</strong>.</p>
+
+<p>Total annual impact for this example practice: <strong>$1.1-$1.3 million in combined revenue recovery, new revenue, and operational savings</strong> — against a system cost that is a fraction of a single front desk employee's salary.</p>
+
+<h2>Why Generic AI Tools Do Not Work in Healthcare</h2>
+
+<p>Healthcare is not a standard business vertical, and generic AI scheduling or chatbot tools routinely fail in clinical environments for several specific reasons:</p>
+
+<p><strong>HIPAA compliance is non-negotiable.</strong> Every patient interaction — every call recording, every text message, every piece of data the AI system processes — must be handled in full compliance with HIPAA privacy and security rules. Generic AI tools built for general business use are rarely architected with the encryption, access controls, audit trails, and Business Associate Agreement infrastructure that healthcare requires.</p>
+
+<p><strong>Scheduling logic is complex.</strong> Healthcare scheduling is not "pick an open slot." It involves provider-specific availability, appointment type durations that vary by procedure, insurance network matching, equipment requirements, room assignments, and clinical preparation time. An AI system that does not understand these constraints will create scheduling chaos.</p>
+
+<p><strong>Clinical routing requires precision.</strong> When a patient calls about chest pain, that call cannot be handled the same way as a request to reschedule a cleaning. AI systems in healthcare must understand clinical urgency, triage appropriately, and route with zero tolerance for error.</p>
+
+<p><strong>EHR integration is essential.</strong> The AI system must read from and write to your electronic health record — whether that is Epic, Cerner, Athena, eClinicalWorks, or any of the dozens of specialty-specific systems. Without deep EHR integration, you are creating a disconnected silo that adds work instead of reducing it.</p>
+
+<p>This is why off-the-shelf AI tools consistently underdeliver in healthcare settings. The practices seeing real results are working with AI systems integrators who build purpose-configured solutions that account for the regulatory, clinical, and operational realities of healthcare delivery.</p>
+
+<h2>Implementation: What the First 90 Days Look Like</h2>
+
+<p>Deploying an AI front office system in a healthcare practice is not an 18-month enterprise IT project. With the right partner, the timeline looks like this:</p>
+
+<p><strong>Weeks 1-2: Discovery and Configuration.</strong> Map your current call flows, scheduling rules, provider availability patterns, appointment types, and EHR system. Identify the highest-impact areas — usually inbound call handling and no-show reduction. Configure the AI system to match your specific operational reality.</p>
+
+<p><strong>Weeks 3-4: Integration and Testing.</strong> Connect the AI system to your phone infrastructure, EHR, and practice management software. Run parallel testing where the AI handles calls alongside your existing staff, with every interaction reviewed for accuracy and compliance.</p>
+
+<p><strong>Weeks 5-8: Controlled Rollout.</strong> Begin routing a percentage of inbound calls to the AI system — typically starting at 30-40% and increasing based on performance. Monitor key metrics: call resolution rate, scheduling accuracy, patient satisfaction scores, and no-show rate changes.</p>
+
+<p><strong>Weeks 9-12: Full Deployment and Optimization.</strong> Scale to full call volume. Activate recall campaigns and waitlist management. Begin measuring financial impact against baseline metrics established in discovery.</p>
+
+<p>Most practices see measurable results — reduced hold times, lower no-show rates, and increased scheduling volume — within the first 30 days of active deployment. The full revenue impact typically materializes over 90-120 days as recall campaigns, reactivation outreach, and improved conversion from answered calls compound.</p>
+
+<h2>The Competitive Reality for Healthcare Practices in 2026</h2>
+
+<p>Patient expectations have shifted permanently. They expect to book appointments the way they book everything else — instantly, on their schedule, through whatever channel is most convenient. They expect responses in minutes, not hours. They expect confirmations, reminders, and follow-ups to happen automatically.</p>
+
+<p>The practices that meet these expectations will capture and retain patients. The practices that do not will watch their patient base migrate to competitors who make the experience effortless.</p>
+
+<p>This is not a prediction. It is already happening. Practices that implemented AI front office systems in 2024 and 2025 are reporting patient acquisition rates 25-40% higher than practices still relying on fully manual front office operations. The gap is widening every quarter.</p>
+
+<h2>What to Do Next</h2>
+
+<p>If your healthcare practice is losing patients to hold times, losing revenue to no-shows, and losing growth opportunity because your front desk is maxed out, the solution is not more staff. It is a system that scales without adding headcount, operates around the clock, and pays for itself within the first quarter.</p>
+
+<p>Augentic AI builds autonomous front office systems specifically for healthcare practices. We handle the HIPAA compliance, EHR integration, scheduling logic, and clinical routing — so your team can focus on delivering excellent patient care instead of answering phones.</p>
+
+<p><a href="/book/">Book a strategy call</a> to see what an AI front office would look like for your practice — and how much revenue you are currently leaving on the table.</p>
+
+    </div>
+  </div>
+</div>
+
+<div class="post-footer">
+  <div class="container">
+    <div class="cta-box">
+      <h3>Ready to Build Your AI Workforce?</h3>
+      <p>Schedule a 30-minute strategy call. We will tell you exactly what we would build for your business - and what it would cost.</p>
+      <a href="/book/" class="btn-primary">Book a Strategy Call</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo" style="display:flex;align-items:center;"><img src="/logo.svg" alt="Augentic AI" height="28" style="height:28px;width:auto;" /></div>
+        <div class="footer-tagline">Autonomous AI. Measurable Revenue.</div>
+      </div>
+      <ul class="footer-links">
+        <li><a href="/#solution">Solutions</a></li>
+        <li><a href="/#offerings">Offerings</a></li>
+        <li><a href="/blog/">Insights</a></li>
+        <li><a href="/guide/">AI Guide</a></li>
+        <li><a href="/book/">Book a Call</a></li>
+        <li><a href="mailto:hello@augenticai.com">Contact</a></li>
+      </ul>
+      <div class="footer-copy">&copy; 2026 Augentic AI. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => { mobileMenu.classList.toggle('open'); });
+  function closeMobile() { mobileMenu.classList.remove('open'); }
+  const themeToggle = document.getElementById('themeToggle');
+  const iconSun = document.getElementById('iconSun');
+  const iconMoon = document.getElementById('iconMoon');
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  if (savedTheme === 'light') { document.body.classList.add('light'); iconSun.style.display = 'block'; iconMoon.style.display = 'none'; }
+  themeToggle.addEventListener('click', () => {
+    const isLight = document.body.classList.toggle('light');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    iconSun.style.display = isLight ? 'block' : 'none';
+    iconMoon.style.display = isLight ? 'none' : 'block';
+  });
+</script>
+</body>
+</html>

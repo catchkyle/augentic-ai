@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Lead Scoring Models That Actually Work (and 3 That Don't) | Augentic AI Insights</title>
+  <meta name="description" content="Most lead scoring projects fail because they reward the wrong signals. Here is the practical framework revenue teams can use to build AI lead scoring that sales actually trusts." />
+  <meta property="og:title" content="AI Lead Scoring Models That Actually Work (and 3 That Don't)" />
+  <meta property="og:description" content="Most lead scoring projects fail because they reward the wrong signals. Here is the practical framework revenue teams can use to build AI lead scoring that sales actually trusts." />
+  <meta property="og:type" content="article" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0A0A0A; --bg-card: #111111; --bg-raised: #161616;
+      --text: #F5F5F0; --text-muted: #888880; --text-dim: #555550;
+      --accent: #D4AF37; --accent-dim: rgba(212,175,55,0.12);
+      --border: rgba(255,255,255,0.07); --border-accent: rgba(212,175,55,0.3);
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Inter', system-ui, sans-serif;
+      --max: 1200px; --radius: 2px;
+    }
+    body.light {
+      --bg: #FAFAF7; --bg-card: #F2F2EE; --bg-raised: #E8E8E4;
+      --text: #0B0B0B; --text-muted: #444440; --text-dim: #999990;
+      --border: rgba(0,0,0,0.08); --border-accent: rgba(212,175,55,0.4);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-weight: 400; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    ::selection { background: var(--accent-dim); color: var(--accent); }
+    h1,h2,h3,h4 { font-weight: 500; line-height: 1.25; letter-spacing: -0.02em; }
+    h1 { font-family: var(--font-serif); font-size: clamp(2rem,4vw,3.2rem); }
+    h2 { font-family: var(--font-serif); font-size: clamp(1.6rem,3vw,2.4rem); }
+    h3 { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; letter-spacing: 0; }
+    p { color: var(--text-muted); line-height: 1.85; }
+    a { color: inherit; }
+    .label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.5rem 0; transition: background 0.4s, padding 0.3s; }
+    nav.scrolled { background: rgba(10,10,10,0.95); border-bottom: 1px solid var(--border); padding: 1rem 0; backdrop-filter: blur(12px); }
+    body.light nav.scrolled { background: rgba(250,250,247,0.95); }
+    nav .container { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.8rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; padding: 0.65rem 1.4rem; background: var(--accent); color: #0A0A0A; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s; white-space: nowrap; }
+    .nav-cta:hover { opacity: 0.88; }
+    .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+    .theme-toggle { background: none; border: 1px solid var(--border); color: var(--text-muted); cursor: pointer; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius); transition: color 0.2s; flex-shrink: 0; }
+    .theme-toggle:hover { color: var(--accent); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 1px; background: var(--text); }
+    .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 99; background: var(--bg); padding: 6rem 2rem 2rem; flex-direction: column; gap: 2rem; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 1.4rem; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 1.2rem; }
+    footer { background: var(--bg); border-top: 1px solid var(--border); padding: 3rem 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-tagline { font-size: 0.78rem; color: var(--text-dim); margin-top: 0.3rem; }
+    .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.78rem; color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text-muted); }
+    .footer-copy { font-size: 0.75rem; color: var(--text-dim); }
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
+    .btn-primary { display: inline-block; padding: 0.9rem 2rem; background: var(--accent); color: #0A0A0A; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s, transform 0.2s; border: none; cursor: pointer; }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-outline { display: inline-block; padding: 0.85rem 1.8rem; border: 1px solid var(--border-accent); color: var(--accent); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-decoration: none; border-radius: var(--radius); transition: all 0.2s; }
+    .btn-outline:hover { background: var(--accent-dim); }
+    @media (max-width: 900px) { .nav-links, .nav-right .nav-cta { display: none; } .hamburger { display: flex; } }
+  </style>
+  <style>
+    .post-header { padding: 10rem 0 4rem; border-bottom: 1px solid var(--border); }
+    .post-meta { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .post-meta .label { margin: 0; }
+    .post-meta-text { font-size: 0.8rem; color: var(--text-dim); }
+    .post-title { margin-bottom: 1.2rem; }
+    .post-desc { font-size: 1.05rem; max-width: 640px; }
+    .post-body { padding: 5rem 0; }
+    .post-body-inner { max-width: 720px; }
+    .post-body p { margin-bottom: 1.6rem; font-size: 1rem; }
+    .post-body h2 { font-size: 1.5rem; margin: 3rem 0 1rem; color: var(--text); }
+    .post-body strong { color: var(--text); font-weight: 500; }
+    .x-credit { background: var(--bg-card); border: 1px solid var(--border-accent); border-left: 3px solid var(--accent); padding: 1.2rem 1.5rem; margin: 2.5rem 0; font-size: 0.88rem; color: var(--text-muted); font-style: italic; border-radius: 0 var(--radius) var(--radius) 0; }
+    .post-footer { padding: 4rem 0; border-top: 1px solid var(--border); }
+    .cta-box { background: var(--bg-card); border: 1px solid var(--border); padding: 3rem; text-align: center; max-width: 600px; margin: 0 auto; }
+    .cta-box h3 { font-family: var(--font-serif); font-size: 1.6rem; margin-bottom: 1rem; color: var(--text); }
+    .cta-box p { margin-bottom: 2rem; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: var(--text-muted); text-decoration: none; margin-bottom: 3rem; transition: color 0.2s; }
+    .back-link:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+<nav id="nav">
+  <div class="container">
+    <a href="/" class="nav-logo" style="display:flex;align-items:center;text-decoration:none;"><img src="/logo.svg" alt="Augentic AI" height="37" style="height:37px;width:auto;" /></a>
+    <ul class="nav-links">
+      <li><a href="/#solution">Solutions</a></li>
+      <li><a href="/#offerings">Offerings</a></li>
+      <li><a href="/blog/">Insights</a></li>
+      <li><a href="/guide/">AI Guide</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg id="iconSun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg id="iconMoon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="/book/" class="nav-cta">Book Strategy Call</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/#solution" onclick="closeMobile()">Solutions</a>
+  <a href="/#offerings" onclick="closeMobile()">Offerings</a>
+  <a href="/blog/" onclick="closeMobile()">Insights</a>
+  <a href="/guide/" onclick="closeMobile()">AI Guide</a>
+  <a href="/book/" onclick="closeMobile()" style="color:var(--accent);">Book Strategy Call</a>
+</div>
+
+<div class="post-header">
+  <div class="container">
+    <a href="/blog/" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M13 7H1M6 2L1 7l5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to Insights
+    </a>
+    <div class="post-meta">
+      <span class="label">Revenue Operations</span>
+      <span class="post-meta-text">March 18, 2026</span>
+      <span class="post-meta-text">11 min read</span>
+    </div>
+    <h1 class="post-title">AI Lead Scoring Models That Actually Work (and 3 That Don't)</h1>
+    <p class="post-desc">Most lead scoring projects fail because they reward the wrong signals. Here is the practical framework revenue teams can use to build AI lead scoring that sales actually trusts.</p>
+  </div>
+</div>
+
+<div class="post-body">
+  <div class="container">
+    <div class="post-body-inner">
+      
+      
+<p>Lead scoring has had a credibility problem for years. Marketing loves the idea. Sales tolerates the dashboard. Revenue leaders sit in the middle wondering why the "A leads" rarely look like the deals that actually close.</p>
+
+<p>The reason is not mysterious. Most lead scoring models were built for reporting convenience, not buying reality. They overvalue easy-to-measure actions like email opens, page views, and generic content downloads. They undervalue the contextual signals that separate mild interest from real purchase intent. Then teams wonder why the model keeps telling reps to call the wrong people.</p>
+
+<p>AI changes the situation, but only if you use it correctly. A good AI lead scoring model does not just rank contacts by activity. It evaluates fit, timing, buying behavior, channel quality, and account context together. It learns from actual outcomes. And most importantly, it produces scores that map to actions your team can take right now.</p>
+
+<p>That is the standard. If your scoring does not change rep behavior or improve conversion rates, it is not a revenue system. It is decoration.</p>
+
+<h2>Why Traditional Lead Scoring Usually Breaks</h2>
+
+<p>Classic lead scoring typically assigns points to a list of events. Open an email, get five points. Visit the pricing page, get ten. Attend a webinar, get fifteen. Titles like VP or Director get another twenty. When the total crosses a threshold, the lead becomes "sales ready." It sounds reasonable until you look at live pipeline behavior.</p>
+
+<p>A student researching your category can rack up engagement points. A competitor can trigger high-intent patterns. A real buyer from a perfect-fit account may only visit two pages and reply with a short, direct question. Which one deserves immediate sales attention? Traditional scoring often picks the wrong answer because it mistakes digital activity for buying intent.</p>
+
+<p>There are four common failure modes:</p>
+
+<p><strong>First, the model is static.</strong> Markets change, messaging changes, and buyer behavior changes. A scorecard built nine months ago is often disconnected from what is converting today.</p>
+
+<p><strong>Second, the model lacks account context.</strong> Individual behavior matters, but B2B revenue is usually won at the account level. One manager downloading a guide from a bad-fit company should not outrank a CFO from a perfect-fit account who replies to an outbound email.</p>
+
+<p><strong>Third, the model overweights vanity signals.</strong> Email opens, random site traffic, and repeat visits from low-value sources create activity without buying intent.</p>
+
+<p><strong>Fourth, the model has no operational consequence.</strong> If a score changes but no workflow changes with it, the score is meaningless.</p>
+
+<p>AI can fix all four, but only if you design for decisions instead of dashboards.</p>
+
+<h2>The Five Inputs Every Useful AI Scoring Model Needs</h2>
+
+<p>The best scoring systems combine multiple classes of signals rather than pretending one number from one source can tell the whole story.</p>
+
+<p><strong>1. Firmographic fit.</strong> Start with the basics: company size, industry, geography, business model, tech stack, funding stage, and likely budget profile. This is the answer to the question, "Should we want this account at all?" AI helps by normalizing messy company data, enriching gaps, and identifying patterns in won deals that humans might miss.</p>
+
+<p><strong>2. Contact-level fit.</strong> Titles alone are unreliable. AI can infer real buying influence by analyzing role seniority, department relevance, reporting scope, and language used in responses. A manager in RevOps may be more valuable than a VP in a non-owning function.</p>
+
+<p><strong>3. Intent and timing signals.</strong> This includes pricing-page behavior, repeat category research, inbound form context, demo requests, direct replies, meeting acceptance, high-intent keyword searches, and trigger events such as hiring sprees or leadership changes. Timing matters because the right account at the wrong time still converts poorly.</p>
+
+<p><strong>4. Source quality.</strong> Not every lead source deserves equal trust. Referral leads, partner introductions, direct demo requests, and highly targeted outbound replies usually outperform low-intent paid traffic. AI models should learn source-to-revenue conversion patterns from your actual history, not generic benchmarks.</p>
+
+<p><strong>5. Sales interaction signals.</strong> Once a rep touches the account, the scoring model should keep learning. Email reply sentiment, meeting outcomes, call transcript themes, objection patterns, next-step clarity, and deal velocity all improve the model. This is where scoring evolves from marketing handoff logic into a live revenue intelligence layer.</p>
+
+<h2>Three AI Lead Scoring Models That Actually Work</h2>
+
+<h3>Model 1: The ICP + Intent Hybrid</h3>
+
+<p>This is the most practical starting point for mid-market teams. It combines ideal customer profile fit with real-time intent signals. Instead of asking, "Who is active?" it asks, "Who fits us and appears to be in market now?"</p>
+
+<p>The structure is simple. Fit defines the floor. Intent defines the urgency. A bad-fit account cannot become a top-priority lead just because it consumed content. A strong-fit account with genuine buying signals rises quickly.</p>
+
+<p>This model works because it mirrors how experienced sales leaders already think. They want reps spending time on the right companies at the right moment. AI simply makes that judgment consistent and scalable.</p>
+
+<p><strong>Best for:</strong> teams with a defined ICP, multiple lead sources, and enough CRM history to compare high-converting versus low-converting patterns.</p>
+
+<h3>Model 2: The Opportunity Creation Predictor</h3>
+
+<p>Some teams do not need a generic lead score. They need a model that predicts one concrete outcome: which leads are most likely to become qualified pipeline. That is a much better target.</p>
+
+<p>In this approach, the model is trained against historical opportunity creation rather than MQL definitions. It looks at the attributes and behaviors present in leads that turned into legitimate pipeline, then scores new leads based on similarity and probability.</p>
+
+<p>This model works because it aligns with the metric leadership actually cares about. It also reduces the politics around marketing-qualified leads, because the target variable is not a departmental threshold. It is pipeline.</p>
+
+<p><strong>Best for:</strong> organizations with enough closed-loop CRM discipline to trust historical opportunity data.</p>
+
+<h3>Model 3: The Account-Level Buying Committee Model</h3>
+
+<p>For complex B2B sales, contact scoring alone is too shallow. Buying decisions happen across groups. The account-level model aggregates signals across multiple contacts and looks for coordinated buying behavior: repeated site visits from the same company, multiple stakeholders engaging content, direct replies from one department while another attends a meeting, or increased research activity near planning cycles.</p>
+
+<p>This model works because it reflects how real deals emerge. One lead may look lukewarm. Four contacts from the same account acting in parallel is a completely different story.</p>
+
+<p><strong>Best for:</strong> enterprise and upper mid-market motions with multi-stakeholder buying journeys.</p>
+
+<h2>Three AI Lead Scoring Models That Usually Do Not Work</h2>
+
+<h3>Model 4: The Engagement-Only Model</h3>
+
+<p>If your score is mostly based on clicks, opens, downloads, and site visits, you are not measuring buying intent. You are measuring internet activity. AI can dress this up with fancier language, but the underlying weakness remains. Engagement without fit and context produces a lot of false positives.</p>
+
+<h3>Model 5: The Black Box Nobody Can Explain</h3>
+
+<p>Revenue teams do not trust opaque systems that cannot tell them why a lead is high priority. If the model outputs a 94 but cannot expose the top drivers behind that score, adoption will die. Explainability is not optional. Reps do not need a math lecture, but they do need the plain-English reasons behind the ranking.</p>
+
+<h3>Model 6: The Fully Automated Score With No Human Feedback Loop</h3>
+
+<p>AI scoring improves when sales feedback is part of the system. If reps consistently reject leads the model loves, that is a signal. If the model keeps surfacing accounts that turn into meetings, that is another signal. Without feedback, scoring drifts. With feedback, it compounds.</p>
+
+<h2>What Good Implementation Looks Like in Practice</h2>
+
+<p>A working AI lead scoring system is not a spreadsheet replacement. It is an operating layer inside your revenue stack.</p>
+
+<p>New leads are enriched automatically. The model evaluates fit, source, intent, and timing. Scores are written back to the CRM. Routing rules trigger based on thresholds and confidence levels. High-scoring leads get immediate rep assignment or autonomous follow-up. Medium-scoring leads enter nurture sequences tailored to likely objections or maturity level. Low-scoring leads are deprioritized without polluting rep queues.</p>
+
+<p>Then the system keeps learning. Meeting booked? Positive signal. Wrong persona? Negative signal. Opportunity created in under 14 days? Strong positive. Closed won from a low-score segment? Investigate and retrain. The model should behave like a revenue operator, not a one-time analyst.</p>
+
+<p>The implementation details matter more than the model choice. You need clean field mapping, enrichment logic, score explainability, rep-facing alerts, and service-level expectations for follow-up. Otherwise you end up with a technically impressive score that sits unused in a custom CRM field.</p>
+
+<h2>The KPIs That Matter</h2>
+
+<p>Most teams evaluate scoring the wrong way. They ask whether the model feels smarter than the old one. That is not enough. Measure the effect on revenue operations.</p>
+
+<p>Watch these numbers closely:</p>
+
+<p><strong>Lead-to-meeting conversion rate.</strong> If high-scoring leads are not booking more meetings than baseline, something is off.</p>
+
+<p><strong>Meeting-to-opportunity rate.</strong> This shows whether the model is improving lead quality, not just activity.</p>
+
+<p><strong>Speed to first touch.</strong> A better score should drive faster action on the right leads.</p>
+
+<p><strong>Rep acceptance rate.</strong> If reps ignore or override scores constantly, trust is broken.</p>
+
+<p><strong>Pipeline per routed lead.</strong> This is where the financial case becomes real.</p>
+
+<p><strong>Model drift over time.</strong> Compare performance monthly so your system does not quietly decay.</p>
+
+<h2>Where AI Fits - and Where It Does Not</h2>
+
+<p>AI is excellent at pattern detection, enrichment, ranking, and continuous recalibration. It is less useful when the organization has no ICP definition, inconsistent CRM hygiene, or no agreement on what counts as a good lead. AI will not rescue strategic ambiguity. It will amplify it.</p>
+
+<p>That is why the first step is rarely "buy a lead scoring tool." The first step is clarifying the revenue model, the sales motion, and the outcome you want the system to optimize. Only then should you decide whether to build inside your CRM, layer in a RevOps platform, or deploy autonomous agents that score and route in real time.</p>
+
+<h2>The Real Goal Is Not Better Scoring. It Is Better Allocation.</h2>
+
+<p>The point of AI lead scoring is not to generate prettier dashboards. It is to allocate human attention to the opportunities most likely to produce pipeline. That means fewer wasted touches, faster follow-up, cleaner routing, and more confidence in where your team spends time.</p>
+
+<p>When it works, reps stop arguing with the score because the score keeps being right. Marketing stops chasing MQL theater because the system is tied to actual opportunity creation. Leadership stops asking whether AI is producing value because the answer shows up in conversion rates and pipeline efficiency.</p>
+
+<p>That is what "actually works" looks like.</p>
+
+<p><strong>Book a strategy call</strong> if you want to see how an AI scoring layer would fit into your CRM, routing logic, and outbound motion. We will show you what to measure, what to automate, and what to ignore.</p>
+
+    </div>
+  </div>
+</div>
+
+<div class="post-footer">
+  <div class="container">
+    <div class="cta-box">
+      <h3>Ready to Build Your AI Workforce?</h3>
+      <p>Schedule a 30-minute strategy call. We will tell you exactly what we would build for your business - and what it would cost.</p>
+      <a href="/book/" class="btn-primary">Book a Strategy Call</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo" style="display:flex;align-items:center;"><img src="/logo.svg" alt="Augentic AI" height="28" style="height:28px;width:auto;" /></div>
+        <div class="footer-tagline">Autonomous AI. Measurable Revenue.</div>
+      </div>
+      <ul class="footer-links">
+        <li><a href="/#solution">Solutions</a></li>
+        <li><a href="/#offerings">Offerings</a></li>
+        <li><a href="/blog/">Insights</a></li>
+        <li><a href="/guide/">AI Guide</a></li>
+        <li><a href="/book/">Book a Call</a></li>
+        <li><a href="mailto:hello@augenticai.com">Contact</a></li>
+      </ul>
+      <div class="footer-copy">&copy; 2026 Augentic AI. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => { mobileMenu.classList.toggle('open'); });
+  function closeMobile() { mobileMenu.classList.remove('open'); }
+  const themeToggle = document.getElementById('themeToggle');
+  const iconSun = document.getElementById('iconSun');
+  const iconMoon = document.getElementById('iconMoon');
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  if (savedTheme === 'light') { document.body.classList.add('light'); iconSun.style.display = 'block'; iconMoon.style.display = 'none'; }
+  themeToggle.addEventListener('click', () => {
+    const isLight = document.body.classList.toggle('light');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    iconSun.style.display = isLight ? 'block' : 'none';
+    iconMoon.style.display = isLight ? 'none' : 'block';
+  });
+</script>
+</body>
+</html>

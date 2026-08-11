@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-34XDZ0ENK7"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-34XDZ0ENK7');
-  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Your CRM Is Bleeding Revenue. AI Fixes It. | Augentic AI Insights</title>
@@ -16,12 +8,6 @@
   <meta property="og:title" content="Your CRM Is Bleeding Revenue. AI Fixes It." />
   <meta property="og:description" content="Most CRM data is stale, incomplete, and manually maintained. Here is how AI agents eliminate the leak." />
   <meta property="og:type" content="article" />
-  <meta property="og:image" content="https://augenticai.com/favicon.svg" />
-  <meta property="og:url" content="https://augenticai.com/blog/crm-revenue-leak-ai-fix/" />
-  <meta property="og:site_name" content="Augentic AI" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Your CRM Is Bleeding Revenue. AI Fixes It." />
-  <meta name="twitter:description" content="Most CRM data is stale, incomplete, and manually maintained. Here is how AI agents eliminate the leak." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -60,7 +46,7 @@
     .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
     .nav-links a { font-size: 0.8rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
     .nav-links a:hover { color: var(--text); }
-    .nav-cta { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; padding: 0.65rem 1.4rem; background: linear-gradient(105deg, #D4AF37 0%, #D4AF37 30%, #F5D060 50%, #D4AF37 70%, #D4AF37 100%); background-size: 300% 100%; animation: goldShimmer 4s ease infinite; color: #0A0A0A; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s; white-space: nowrap; box-shadow: 0 0 14px rgba(212,175,55,0.2); }
+    .nav-cta { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; padding: 0.65rem 1.4rem; background: var(--accent); color: #0A0A0A; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s; white-space: nowrap; }
     .nav-cta:hover { opacity: 0.88; }
     .nav-right { display: flex; align-items: center; gap: 0.75rem; }
     .theme-toggle { background: none; border: 1px solid var(--border); color: var(--text-muted); cursor: pointer; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius); transition: color 0.2s; flex-shrink: 0; }
@@ -71,50 +57,18 @@
     .mobile-menu.open { display: flex; }
     .mobile-menu a { font-size: 1.4rem; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 1.2rem; }
     footer { background: var(--bg); border-top: 1px solid var(--border); padding: 3rem 0; }
-    .footer-inner { display: flex; flex-direction: column; gap: 3rem; }
-    .footer-top { display: flex; justify-content: space-between; gap: 3rem; flex-wrap: wrap; }
-    .footer-brand { max-width: 260px; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
     .footer-tagline { font-size: 0.78rem; color: var(--text-dim); margin-top: 0.3rem; }
-    .footer-columns { display: flex; gap: 4rem; flex-wrap: wrap; }
-    .footer-col h4 { font-family: var(--font-sans); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
-    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
-    .footer-col a { font-size: 0.78rem; color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
-    .footer-col a:hover { color: var(--text-muted); }
-    .footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; border-top: 1px solid var(--border); padding-top: 1.5rem; }
-    .footer-legal { display: flex; gap: 1.5rem; }
-    .footer-legal a { font-size: 0.75rem; color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
-    .footer-legal a:hover { color: var(--text-muted); }
+    .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.78rem; color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text-muted); }
     .footer-copy { font-size: 0.75rem; color: var(--text-dim); }
-    @media (max-width: 900px) { .footer-columns { gap: 2rem; } .footer-top { flex-direction: column; } }
     .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
-    .btn-primary { display: inline-block; padding: 0.9rem 2rem; background: linear-gradient(105deg, #D4AF37 0%, #D4AF37 30%, #F5D060 50%, #D4AF37 70%, #D4AF37 100%); background-size: 300% 100%; animation: goldShimmer 4s ease infinite; color: #0A0A0A; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s, transform 0.2s; border: none; cursor: pointer; box-shadow: 0 0 18px rgba(212,175,55,0.25); }
+    .btn-primary { display: inline-block; padding: 0.9rem 2rem; background: var(--accent); color: #0A0A0A; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s, transform 0.2s; border: none; cursor: pointer; }
     .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
     .btn-outline { display: inline-block; padding: 0.85rem 1.8rem; border: 1px solid var(--border-accent); color: var(--accent); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-decoration: none; border-radius: var(--radius); transition: all 0.2s; }
     .btn-outline:hover { background: var(--accent-dim); }
     @media (max-width: 900px) { .nav-links, .nav-right .nav-cta { display: none; } .hamburger { display: flex; } }
-        .footer-logo, .nav-logo { position: relative; }
-    .footer-logo::before, .nav-logo::before {
-      content: ''; position: absolute; top: 50%; left: 50%; width: 100%; height: 100%;
-      transform: translate(-50%, -50%);
-      background: radial-gradient(ellipse, rgba(212,175,55,0.25) 0%, rgba(212,175,55,0) 60%);
-      border-radius: 50%;
-      animation: logoGlow 3s ease-in-out infinite;
-      pointer-events: none; z-index: 0;
-    }
-    .footer-logo > *, .nav-logo > * { position: relative; z-index: 1; }
-    @keyframes logoGlow {
-      0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
-      50% { opacity: 0.7; transform: translate(-50%, -50%) scale(1.15); }
-    }
-    .scroll-progress {
-      position: fixed; top: 0; left: 0; height: 3px; z-index: 101;
-      background: linear-gradient(90deg, #B8960C, #D4AF37, #F5D060, #D4AF37);
-      width: 0%; transition: width 0.1s linear;
-    }
-    @keyframes goldShimmer {
-      0% { background-position: 200% center; }
-      100% { background-position: -200% center; }
-    }
   </style>
   <style>
     .post-header { padding: 10rem 0 4rem; border-bottom: 1px solid var(--border); }
@@ -138,7 +92,6 @@
   </style>
 </head>
 <body>
-<div class="scroll-progress" id="scrollProgress"></div>
 <nav id="nav">
   <div class="container">
     <a href="/" class="nav-logo" style="display:flex;align-items:center;text-decoration:none;"><img src="/logo_v2.svg" alt="Augentic AI" height="37" style="height:37px;width:auto;" /></a>
@@ -154,8 +107,8 @@
         <svg id="iconMoon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       </button>
       <a href="/book/" class="nav-cta">Book Strategy Call</a>
-      <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
@@ -163,7 +116,6 @@
   <a href="/#offerings" onclick="closeMobile()">Offerings</a>
   <a href="/blog/" onclick="closeMobile()">Insights</a>
   <a href="/guide/" onclick="closeMobile()">AI Guide</a>
-  <a href="tel:+18135441659" onclick="closeMobile()" style="display:flex;align-items:center;gap:0.5rem;">(813) 544-1659: Talk to Auri</a>
   <a href="/book/" onclick="closeMobile()" style="color:var(--accent);">Book Strategy Call</a>
 </div>
 
@@ -214,12 +166,6 @@
 
 <p>The model is not the solution. The system is.</p>
 
-<div style="background:var(--bg-card);border:1px solid var(--border-accent);padding:2rem;margin:2.5rem 0;text-align:center;">
-  <p style="color:var(--accent);font-weight:600;font-size:0.95rem;margin-bottom:0.5rem;">Ready to move beyond AI tools?</p>
-  <p style="font-size:0.9rem;margin-bottom:1rem;">Book a free strategy call to see what AI systems could do for your business.</p>
-  <a href="/book/" style="display:inline-block;padding:0.7rem 1.8rem;background:linear-gradient(105deg,#D4AF37 0%,#D4AF37 30%,#F5D060 50%,#D4AF37 70%,#D4AF37 100%);background-size:300% 100%;animation:goldShimmer 4s ease infinite;color:#0A0A0A;font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;border-radius:2px;box-shadow:0 0 14px rgba(212,175,55,0.2);">Book Strategy Call</a>
-</div>
-
     </div>
   </div>
 </div>
@@ -260,17 +206,21 @@
           <a href="/terms/">Terms &amp; Conditions</a>
         </div>
       </div>
+      <ul class="footer-links">
+        <li><a href="/#solution">Solutions</a></li>
+        <li><a href="/#offerings">Offerings</a></li>
+        <li><a href="/blog/">Insights</a></li>
+        <li><a href="/guide/">AI Guide</a></li>
+        <li><a href="/book/">Book a Call</a></li>
+        <li><a href="mailto:hello@augenticai.com">Contact</a></li>
+      </ul>
+      <div class="footer-copy">&copy; 2026 Augentic AI. All rights reserved.</div>
     </div>
   </div>
 </footer>
 <script>
   const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 40);
-    var h = document.documentElement.scrollHeight - window.innerHeight;
-    var sp = document.getElementById('scrollProgress');
-    if (sp) sp.style.width = h > 0 ? (window.scrollY / h * 100) + '%' : '0%';
-  }, { passive: true });
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
   hamburger.addEventListener('click', () => { mobileMenu.classList.toggle('open'); });
@@ -287,34 +237,5 @@
     iconMoon.style.display = isLight ? 'none' : 'block';
   });
 </script>
-
-<!-- COOKIE CONSENT BANNER -->
-<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#111111;border-top:1px solid rgba(212,175,55,0.3);padding:1.25rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;">
-  <p style="margin:0;color:#888880;font-size:0.875rem;font-family:Inter,system-ui,sans-serif;line-height:1.6;max-width:700px;">
-    We use cookies to improve your experience and analyze site usage. By continuing, you agree to our
-    <a href="/privacy/" style="color:#D4AF37;text-decoration:underline;">Privacy Policy</a> and
-    <a href="/terms/" style="color:#D4AF37;text-decoration:underline;">Terms</a>.
-  </p>
-  <div style="display:flex;gap:0.75rem;flex-shrink:0;">
-    <button id="cookie-decline" style="padding:0.5rem 1.25rem;background:transparent;border:1px solid rgba(255,255,255,0.15);color:#888880;font-family:Inter,system-ui,sans-serif;font-size:0.8rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;cursor:pointer;border-radius:2px;">Decline</button>
-    <button id="cookie-accept" style="padding:0.5rem 1.25rem;background:#D4AF37;border:none;color:#0A0A0A;font-family:Inter,system-ui,sans-serif;font-size:0.8rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;cursor:pointer;border-radius:2px;">Accept</button>
-  </div>
-</div>
-<script>
-  (function() {
-    var consent = localStorage.getItem('augentic_cookie_consent');
-    var banner = document.getElementById('cookie-banner');
-    if (!consent && banner) { banner.style.display = 'flex'; }
-    document.getElementById('cookie-accept').addEventListener('click', function() {
-      localStorage.setItem('augentic_cookie_consent', 'accepted');
-      banner.style.display = 'none';
-    });
-    document.getElementById('cookie-decline').addEventListener('click', function() {
-      localStorage.setItem('augentic_cookie_consent', 'declined');
-      banner.style.display = 'none';
-    });
-  })();
-</script>
-
 </body>
 </html>

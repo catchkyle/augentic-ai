@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Front Office for Law Firms: Capture Every Client Inquiry, Automate Intake, and Grow Revenue Without Adding Staff | Augentic AI Insights</title>
+  <meta name="description" content="Discover how AI front office systems help law firms capture 100% of client inquiries, automate intake workflows, and increase caseloads without hiring — with real ROI examples." />
+  <meta property="og:title" content="AI Front Office for Law Firms: Capture Every Client Inquiry, Automate Intake, and Grow Revenue Without Adding Staff" />
+  <meta property="og:description" content="Discover how AI front office systems help law firms capture 100% of client inquiries, automate intake workflows, and increase caseloads without hiring — with real ROI examples." />
+  <meta property="og:type" content="article" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0A0A0A; --bg-card: #111111; --bg-raised: #161616;
+      --text: #F5F5F0; --text-muted: #888880; --text-dim: #555550;
+      --accent: #D4AF37; --accent-dim: rgba(212,175,55,0.12);
+      --border: rgba(255,255,255,0.07); --border-accent: rgba(212,175,55,0.3);
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Inter', system-ui, sans-serif;
+      --max: 1200px; --radius: 2px;
+    }
+    body.light {
+      --bg: #FAFAF7; --bg-card: #F2F2EE; --bg-raised: #E8E8E4;
+      --text: #0B0B0B; --text-muted: #444440; --text-dim: #999990;
+      --border: rgba(0,0,0,0.08); --border-accent: rgba(212,175,55,0.4);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-weight: 400; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    ::selection { background: var(--accent-dim); color: var(--accent); }
+    h1,h2,h3,h4 { font-weight: 500; line-height: 1.25; letter-spacing: -0.02em; }
+    h1 { font-family: var(--font-serif); font-size: clamp(2rem,4vw,3.2rem); }
+    h2 { font-family: var(--font-serif); font-size: clamp(1.6rem,3vw,2.4rem); }
+    h3 { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; letter-spacing: 0; }
+    p { color: var(--text-muted); line-height: 1.85; }
+    a { color: inherit; }
+    .label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.5rem 0; transition: background 0.4s, padding 0.3s; }
+    nav.scrolled { background: rgba(10,10,10,0.95); border-bottom: 1px solid var(--border); padding: 1rem 0; backdrop-filter: blur(12px); }
+    body.light nav.scrolled { background: rgba(250,250,247,0.95); }
+    nav .container { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.8rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; padding: 0.65rem 1.4rem; background: var(--accent); color: #0A0A0A; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s; white-space: nowrap; }
+    .nav-cta:hover { opacity: 0.88; }
+    .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+    .theme-toggle { background: none; border: 1px solid var(--border); color: var(--text-muted); cursor: pointer; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius); transition: color 0.2s; flex-shrink: 0; }
+    .theme-toggle:hover { color: var(--accent); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 1px; background: var(--text); }
+    .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 99; background: var(--bg); padding: 6rem 2rem 2rem; flex-direction: column; gap: 2rem; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 1.4rem; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 1.2rem; }
+    footer { background: var(--bg); border-top: 1px solid var(--border); padding: 3rem 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-tagline { font-size: 0.78rem; color: var(--text-dim); margin-top: 0.3rem; }
+    .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.78rem; color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text-muted); }
+    .footer-copy { font-size: 0.75rem; color: var(--text-dim); }
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
+    .btn-primary { display: inline-block; padding: 0.9rem 2rem; background: var(--accent); color: #0A0A0A; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s, transform 0.2s; border: none; cursor: pointer; }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-outline { display: inline-block; padding: 0.85rem 1.8rem; border: 1px solid var(--border-accent); color: var(--accent); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-decoration: none; border-radius: var(--radius); transition: all 0.2s; }
+    .btn-outline:hover { background: var(--accent-dim); }
+    @media (max-width: 900px) { .nav-links, .nav-right .nav-cta { display: none; } .hamburger { display: flex; } }
+  </style>
+  <style>
+    .post-header { padding: 10rem 0 4rem; border-bottom: 1px solid var(--border); }
+    .post-meta { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .post-meta .label { margin: 0; }
+    .post-meta-text { font-size: 0.8rem; color: var(--text-dim); }
+    .post-title { margin-bottom: 1.2rem; }
+    .post-desc { font-size: 1.05rem; max-width: 640px; }
+    .post-body { padding: 5rem 0; }
+    .post-body-inner { max-width: 720px; }
+    .post-body p { margin-bottom: 1.6rem; font-size: 1rem; }
+    .post-body h2 { font-size: 1.5rem; margin: 3rem 0 1rem; color: var(--text); }
+    .post-body strong { color: var(--text); font-weight: 500; }
+    .x-credit { background: var(--bg-card); border: 1px solid var(--border-accent); border-left: 3px solid var(--accent); padding: 1.2rem 1.5rem; margin: 2.5rem 0; font-size: 0.88rem; color: var(--text-muted); font-style: italic; border-radius: 0 var(--radius) var(--radius) 0; }
+    .post-footer { padding: 4rem 0; border-top: 1px solid var(--border); }
+    .cta-box { background: var(--bg-card); border: 1px solid var(--border); padding: 3rem; text-align: center; max-width: 600px; margin: 0 auto; }
+    .cta-box h3 { font-family: var(--font-serif); font-size: 1.6rem; margin-bottom: 1rem; color: var(--text); }
+    .cta-box p { margin-bottom: 2rem; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: var(--text-muted); text-decoration: none; margin-bottom: 3rem; transition: color 0.2s; }
+    .back-link:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+<nav id="nav">
+  <div class="container">
+    <a href="/" class="nav-logo" style="display:flex;align-items:center;text-decoration:none;"><img src="/logo.svg" alt="Augentic AI" height="37" style="height:37px;width:auto;" /></a>
+    <ul class="nav-links">
+      <li><a href="/#solution">Solutions</a></li>
+      <li><a href="/#offerings">Offerings</a></li>
+      <li><a href="/blog/">Insights</a></li>
+      <li><a href="/guide/">AI Guide</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg id="iconSun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg id="iconMoon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="/book/" class="nav-cta">Book Strategy Call</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/#solution" onclick="closeMobile()">Solutions</a>
+  <a href="/#offerings" onclick="closeMobile()">Offerings</a>
+  <a href="/blog/" onclick="closeMobile()">Insights</a>
+  <a href="/guide/" onclick="closeMobile()">AI Guide</a>
+  <a href="/book/" onclick="closeMobile()" style="color:var(--accent);">Book Strategy Call</a>
+</div>
+
+<div class="post-header">
+  <div class="container">
+    <a href="/blog/" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M13 7H1M6 2L1 7l5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to Insights
+    </a>
+    <div class="post-meta">
+      <span class="label">Industry</span>
+      <span class="post-meta-text">March 13, 2026</span>
+      <span class="post-meta-text">11 min read</span>
+    </div>
+    <h1 class="post-title">AI Front Office for Law Firms: Capture Every Client Inquiry, Automate Intake, and Grow Revenue Without Adding Staff</h1>
+    <p class="post-desc">Discover how AI front office systems help law firms capture 100% of client inquiries, automate intake workflows, and increase caseloads without hiring — with real ROI examples.</p>
+  </div>
+</div>
+
+<div class="post-body">
+  <div class="container">
+    <div class="post-body-inner">
+      
+      
+<h2>The $100,000 Problem Hiding in Your Law Firm's Phone System</h2>
+
+<p>Here is a number that should keep every managing partner up at night: the average law firm misses 35-50% of inbound phone calls during business hours. After hours? That number climbs to 100%.</p>
+
+<p>Each missed call represents a potential client — someone actively searching for legal help, ready to retain counsel, willing to pay. When they get voicemail, 72% hang up and call the next firm on Google. They do not leave a message. They do not call back. They are gone.</p>
+
+<p>For a mid-sized firm billing $300-$500 per hour, even a handful of lost clients per month adds up to six figures in annual revenue that simply evaporates. Not because the firm lacks expertise. Not because the attorneys are not excellent. But because nobody answered the phone.</p>
+
+<p>This is the front office problem — and it is the single biggest silent revenue killer in legal services today.</p>
+
+<h2>Why Traditional Solutions Fail Law Firms</h2>
+
+<p>Most firms have tried the obvious fixes. Hire more receptionists. Contract with an answering service. Install a phone tree. Each one creates new problems.</p>
+
+<h3>More Receptionists, More Overhead</h3>
+
+<p>A full-time legal receptionist costs $45,000-$65,000 per year with benefits. They work 8 hours a day, 5 days a week. They take lunch breaks, call in sick, go on vacation, and quit — often right when you have trained them on your intake process. You need at least two to cover a single shift reliably, and that still leaves nights and weekends completely uncovered.</p>
+
+<h3>Answering Services That Lose Clients</h3>
+
+<p>Third-party answering services sound good in theory. In practice, operators know nothing about your practice areas, cannot answer basic questions about whether you handle their type of case, and often take garbled messages that arrive hours later. The potential client wanted help <em>now</em> — not a callback tomorrow morning.</p>
+
+<h3>Phone Trees That Frustrate</h3>
+
+<p>"Press 1 for personal injury. Press 2 for family law. Press 3 for..." By the time someone navigates your IVR system, they are already annoyed. People calling a law firm are often in crisis — an accident, a divorce, a business dispute. They want a human (or human-like) interaction, not a maze of menu options.</p>
+
+<h2>What an AI Front Office Actually Does for a Law Firm</h2>
+
+<p>An AI front office is not a chatbot bolted onto your website. It is an autonomous system that handles the entire client-facing workflow — from first contact to scheduled consultation — without human intervention.</p>
+
+<h3>24/7 Intelligent Call Handling</h3>
+
+<p>AI voice agents answer every call — at 2 PM on a Tuesday and at 11 PM on a Saturday. They sound natural, not robotic. They greet callers warmly, ask relevant questions based on your practice areas, and determine whether the caller has a matter your firm handles. No hold music. No voicemail. No missed opportunities.</p>
+
+<p>A personal injury firm in Atlanta deployed an AI front office and captured 23 new qualified leads in the first month from after-hours calls alone. At an average case value of $15,000, that represented $345,000 in potential new revenue — from calls that previously went to voicemail.</p>
+
+<h3>Automated Client Intake</h3>
+
+<p>Once the AI determines the caller has a viable matter, it walks them through your intake process in real time. Name, contact information, basic case details, conflict check data, how they heard about the firm. All of this flows directly into your case management system — Clio, MyCase, PracticePanther, whatever you use — without anyone re-typing anything.</p>
+
+<p>The average manual intake process takes 15-20 minutes of staff time per potential client. With AI handling intake, that time drops to zero for your team while the caller experience actually improves. No more asking someone to repeat their story three times to three different people.</p>
+
+<h3>Intelligent Qualification and Routing</h3>
+
+<p>Not every call is a case. AI front office systems learn your firm's criteria for case acceptance — jurisdiction, practice area, statute of limitations, minimum case value — and qualify callers in real time. Strong leads get fast-tracked to attorney calendars. Inquiries outside your practice areas get polite referrals. Spam and solicitation calls get filtered out entirely.</p>
+
+<p>This means attorneys spend their time on consultations with pre-qualified prospects, not on 15-minute calls that go nowhere. One family law firm reported that attorney consultation time became 3x more productive because they were no longer taking unqualified calls.</p>
+
+<h3>Instant Appointment Scheduling</h3>
+
+<p>When a caller qualifies, the AI checks attorney availability in real time and books the consultation on the spot. It sends calendar invitations, confirmation emails, and even pre-consultation questionnaires — all before the call ends. No back-and-forth. No "someone will call you back to schedule."</p>
+
+<p>Speed matters enormously in legal client acquisition. Studies show that firms responding to inquiries within 5 minutes are 10x more likely to convert than firms responding within 30 minutes. An AI front office responds in seconds.</p>
+
+<h2>The Revenue Math: What This Looks Like in Practice</h2>
+
+<p>Let us walk through the numbers for a hypothetical mid-sized personal injury firm.</p>
+
+<h3>Current State</h3>
+<p>The firm receives 200 inbound calls per month. Their receptionist answers about 130 of them (65%). Of the 130 answered calls, 40 are qualified potential clients. They convert about 25% of those into retained cases — 10 new cases per month at an average value of $12,000. That is $120,000 per month in new case value.</p>
+
+<h3>With an AI Front Office</h3>
+<p>The AI answers all 200 calls (100% answer rate). It qualifies 60 potential clients (catching the ones previously lost to voicemail and after-hours calls). With the same 25% conversion rate, that is 15 new cases per month — $180,000 in new case value.</p>
+
+<p>The delta: <strong>$60,000 per month in additional case value</strong>, or <strong>$720,000 per year</strong>. The cost of the AI system? A fraction of a single receptionist's salary.</p>
+
+<p>And that is before accounting for improved conversion rates from faster response times, better intake experiences, and more productive attorney consultations.</p>
+
+<h2>Beyond the Phone: The Full AI Front Office Stack</h2>
+
+<p>Phone calls are the most critical channel, but a complete AI front office covers every client touchpoint.</p>
+
+<h3>Website Chat and Lead Capture</h3>
+
+<p>AI chat handles website visitors the same way it handles callers — with intelligent conversation, qualification, and scheduling. Not a form that sits in an inbox until Monday. A real-time interaction that converts visitors into consultations while they are still on your site.</p>
+
+<h3>Email and Web Form Response</h3>
+
+<p>Contact form submissions and email inquiries get immediate, personalized responses. The AI acknowledges the inquiry, asks follow-up questions to qualify the matter, and moves qualified leads directly into the scheduling flow. Response time drops from hours or days to minutes.</p>
+
+<h3>SMS Follow-Up and Reminders</h3>
+
+<p>Consultation no-shows cost law firms thousands per month in lost attorney time. AI systems send automated reminders via text — 24 hours before, 2 hours before, and 15 minutes before the appointment. No-show rates typically drop 30-50% with automated SMS reminders alone.</p>
+
+<h3>Multi-Language Support</h3>
+
+<p>If your firm serves diverse communities, AI front office systems can handle calls and chats in Spanish, Mandarin, Vietnamese, and dozens of other languages — without hiring bilingual staff. This opens entirely new client segments that competitors cannot serve.</p>
+
+<h2>Integration: Where the Real Power Lives</h2>
+
+<p>An AI front office is not a standalone tool. Its value multiplies when it connects to the systems your firm already uses.</p>
+
+<h3>Case Management Systems</h3>
+
+<p>New client data flows directly into Clio, MyCase, Filevine, or your CMS of choice. Contacts are created, matters are opened, and intake documents are pre-populated — all without staff intervention. This eliminates duplicate data entry and the errors that come with it.</p>
+
+<h3>Billing and Accounting</h3>
+
+<p>When a client retains the firm, the AI can trigger engagement letter generation, trust account setup, and billing record creation. The administrative overhead of onboarding a new client drops from 45 minutes to near-zero.</p>
+
+<h3>Marketing and Attribution</h3>
+
+<p>Every inbound interaction is tracked — source, channel, practice area, outcome. You know exactly which marketing channels produce retained cases and which produce tire-kickers. This data lets you allocate marketing spend with precision instead of guessing.</p>
+
+<h2>Common Objections (and Why They Are Wrong)</h2>
+
+<h3>"Clients Want to Talk to a Real Person"</h3>
+
+<p>They want to talk to someone who listens, answers their questions, and helps them take the next step. Modern AI voice agents do all three. In blind tests, callers frequently cannot distinguish AI agents from human receptionists. What clients actually hate is voicemail, hold music, and unanswered calls.</p>
+
+<h3>"AI Cannot Handle Complex Legal Situations"</h3>
+
+<p>Correct — and it does not try to. The AI's job is triage and intake, not legal advice. It captures the facts, qualifies the matter against your criteria, and routes it to the right attorney. The same job your receptionist does, but faster, more consistently, and around the clock.</p>
+
+<h3>"What About Attorney Ethics Rules?"</h3>
+
+<p>AI front office systems designed for legal are built with ethics compliance in mind. They do not provide legal advice, do not create attorney-client relationships, and include appropriate disclaimers. They handle the administrative front end — answering phones, collecting information, scheduling meetings — which has no ethics restrictions.</p>
+
+<h3>"Our Firm Is Too Small for This"</h3>
+
+<p>Small firms benefit the most. A solo practitioner cannot answer phones while in court, in depositions, or meeting with clients. An AI front office means you never miss a call, even when you are the only attorney. The ROI for small firms is often the highest because every lost call represents a larger percentage of revenue.</p>
+
+<h2>Why Systems Beat Tools in Legal Operations</h2>
+
+<p>The market is flooded with point solutions — a chatbot here, a scheduling widget there, an answering service for nights. Stitching these together creates gaps, inconsistencies, and more management overhead.</p>
+
+<p>An AI front office is a <em>system</em>. Every component — voice, chat, email, SMS, intake, scheduling, CRM integration — is designed to work together. Data flows seamlessly. Handoffs are invisible to the client. The experience is unified.</p>
+
+<p>This is the difference between buying AI tools and deploying an AI system. Tools solve individual problems. Systems transform operations. Augentic AI builds systems.</p>
+
+<h2>Getting Started: What Implementation Looks Like</h2>
+
+<p>Deploying an AI front office does not require ripping out your existing technology. Implementation typically follows three phases:</p>
+
+<h3>Phase 1: Discovery and Configuration (Week 1-2)</h3>
+
+<p>We map your intake process, practice areas, qualification criteria, and system integrations. The AI is configured to handle your specific workflows — not a generic template.</p>
+
+<h3>Phase 2: Parallel Operation (Week 3-4)</h3>
+
+<p>The AI runs alongside your existing front office staff. Every interaction is monitored and refined. This is where the system learns your firm's nuances — how you describe your practice areas, what makes a strong lead, your scheduling preferences.</p>
+
+<h3>Phase 3: Full Deployment</h3>
+
+<p>The AI takes over primary front office duties. Staff are freed to focus on higher-value work — client service, case preparation, firm administration. Most firms see measurable ROI within the first 30 days.</p>
+
+<h2>The Bottom Line</h2>
+
+<p>Every law firm has a revenue ceiling imposed by its front office capacity. If you cannot answer every call, respond to every inquiry, and schedule every qualified consultation, you are leaving money on the table. Not someday. Right now.</p>
+
+<p>An AI front office removes that ceiling. It handles unlimited concurrent interactions, operates 24/7/365, and costs less than a single employee. The firms adopting this technology are not doing it because AI is trendy — they are doing it because the math is undeniable.</p>
+
+<p>The question is not whether AI front office systems will become standard in legal. The question is whether your firm adopts now — while it is a competitive advantage — or later, when it is merely table stakes.</p>
+
+<p><strong>Ready to see what an AI front office would look like for your firm?</strong></p>
+
+<p><a href="/book/">Book a strategy call</a> to get a custom analysis of your firm's front office capacity, lost opportunity cost, and the specific ROI an AI system would deliver for your practice.</p>
+
+    </div>
+  </div>
+</div>
+
+<div class="post-footer">
+  <div class="container">
+    <div class="cta-box">
+      <h3>Ready to Build Your AI Workforce?</h3>
+      <p>Schedule a 30-minute strategy call. We will tell you exactly what we would build for your business - and what it would cost.</p>
+      <a href="/book/" class="btn-primary">Book a Strategy Call</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo" style="display:flex;align-items:center;"><img src="/logo.svg" alt="Augentic AI" height="28" style="height:28px;width:auto;" /></div>
+        <div class="footer-tagline">Autonomous AI. Measurable Revenue.</div>
+      </div>
+      <ul class="footer-links">
+        <li><a href="/#solution">Solutions</a></li>
+        <li><a href="/#offerings">Offerings</a></li>
+        <li><a href="/blog/">Insights</a></li>
+        <li><a href="/guide/">AI Guide</a></li>
+        <li><a href="/book/">Book a Call</a></li>
+        <li><a href="mailto:hello@augenticai.com">Contact</a></li>
+      </ul>
+      <div class="footer-copy">&copy; 2026 Augentic AI. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => { mobileMenu.classList.toggle('open'); });
+  function closeMobile() { mobileMenu.classList.remove('open'); }
+  const themeToggle = document.getElementById('themeToggle');
+  const iconSun = document.getElementById('iconSun');
+  const iconMoon = document.getElementById('iconMoon');
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  if (savedTheme === 'light') { document.body.classList.add('light'); iconSun.style.display = 'block'; iconMoon.style.display = 'none'; }
+  themeToggle.addEventListener('click', () => {
+    const isLight = document.body.classList.toggle('light');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    iconSun.style.display = isLight ? 'block' : 'none';
+    iconMoon.style.display = isLight ? 'none' : 'block';
+  });
+</script>
+</body>
+</html>

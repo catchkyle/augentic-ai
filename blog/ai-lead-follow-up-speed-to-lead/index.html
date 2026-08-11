@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Lead Follow-Up: Why Speed-to-Lead Is the Only Metric That Matters in 2026 | Augentic AI Insights</title>
+  <meta name="description" content="Discover how AI lead follow-up systems respond to every inbound lead in under 60 seconds, 24/7. Learn why speed-to-lead determines close rates and how autonomous AI replaces manual follow-up workflows." />
+  <meta property="og:title" content="AI Lead Follow-Up: Why Speed-to-Lead Is the Only Metric That Matters in 2026" />
+  <meta property="og:description" content="Discover how AI lead follow-up systems respond to every inbound lead in under 60 seconds, 24/7. Learn why speed-to-lead determines close rates and how autonomous AI replaces manual follow-up workflows." />
+  <meta property="og:type" content="article" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0A0A0A; --bg-card: #111111; --bg-raised: #161616;
+      --text: #F5F5F0; --text-muted: #888880; --text-dim: #555550;
+      --accent: #D4AF37; --accent-dim: rgba(212,175,55,0.12);
+      --border: rgba(255,255,255,0.07); --border-accent: rgba(212,175,55,0.3);
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Inter', system-ui, sans-serif;
+      --max: 1200px; --radius: 2px;
+    }
+    body.light {
+      --bg: #FAFAF7; --bg-card: #F2F2EE; --bg-raised: #E8E8E4;
+      --text: #0B0B0B; --text-muted: #444440; --text-dim: #999990;
+      --border: rgba(0,0,0,0.08); --border-accent: rgba(212,175,55,0.4);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-weight: 400; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    ::selection { background: var(--accent-dim); color: var(--accent); }
+    h1,h2,h3,h4 { font-weight: 500; line-height: 1.25; letter-spacing: -0.02em; }
+    h1 { font-family: var(--font-serif); font-size: clamp(2rem,4vw,3.2rem); }
+    h2 { font-family: var(--font-serif); font-size: clamp(1.6rem,3vw,2.4rem); }
+    h3 { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; letter-spacing: 0; }
+    p { color: var(--text-muted); line-height: 1.85; }
+    a { color: inherit; }
+    .label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.5rem 0; transition: background 0.4s, padding 0.3s; }
+    nav.scrolled { background: rgba(10,10,10,0.95); border-bottom: 1px solid var(--border); padding: 1rem 0; backdrop-filter: blur(12px); }
+    body.light nav.scrolled { background: rgba(250,250,247,0.95); }
+    nav .container { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.8rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; padding: 0.65rem 1.4rem; background: var(--accent); color: #0A0A0A; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s; white-space: nowrap; }
+    .nav-cta:hover { opacity: 0.88; }
+    .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+    .theme-toggle { background: none; border: 1px solid var(--border); color: var(--text-muted); cursor: pointer; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius); transition: color 0.2s; flex-shrink: 0; }
+    .theme-toggle:hover { color: var(--accent); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 1px; background: var(--text); }
+    .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 99; background: var(--bg); padding: 6rem 2rem 2rem; flex-direction: column; gap: 2rem; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 1.4rem; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 1.2rem; }
+    footer { background: var(--bg); border-top: 1px solid var(--border); padding: 3rem 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-tagline { font-size: 0.78rem; color: var(--text-dim); margin-top: 0.3rem; }
+    .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.78rem; color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text-muted); }
+    .footer-copy { font-size: 0.75rem; color: var(--text-dim); }
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
+    .btn-primary { display: inline-block; padding: 0.9rem 2rem; background: var(--accent); color: #0A0A0A; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s, transform 0.2s; border: none; cursor: pointer; }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-outline { display: inline-block; padding: 0.85rem 1.8rem; border: 1px solid var(--border-accent); color: var(--accent); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-decoration: none; border-radius: var(--radius); transition: all 0.2s; }
+    .btn-outline:hover { background: var(--accent-dim); }
+    @media (max-width: 900px) { .nav-links, .nav-right .nav-cta { display: none; } .hamburger { display: flex; } }
+  </style>
+  <style>
+    .post-header { padding: 10rem 0 4rem; border-bottom: 1px solid var(--border); }
+    .post-meta { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .post-meta .label { margin: 0; }
+    .post-meta-text { font-size: 0.8rem; color: var(--text-dim); }
+    .post-title { margin-bottom: 1.2rem; }
+    .post-desc { font-size: 1.05rem; max-width: 640px; }
+    .post-body { padding: 5rem 0; }
+    .post-body-inner { max-width: 720px; }
+    .post-body p { margin-bottom: 1.6rem; font-size: 1rem; }
+    .post-body h2 { font-size: 1.5rem; margin: 3rem 0 1rem; color: var(--text); }
+    .post-body strong { color: var(--text); font-weight: 500; }
+    .x-credit { background: var(--bg-card); border: 1px solid var(--border-accent); border-left: 3px solid var(--accent); padding: 1.2rem 1.5rem; margin: 2.5rem 0; font-size: 0.88rem; color: var(--text-muted); font-style: italic; border-radius: 0 var(--radius) var(--radius) 0; }
+    .post-footer { padding: 4rem 0; border-top: 1px solid var(--border); }
+    .cta-box { background: var(--bg-card); border: 1px solid var(--border); padding: 3rem; text-align: center; max-width: 600px; margin: 0 auto; }
+    .cta-box h3 { font-family: var(--font-serif); font-size: 1.6rem; margin-bottom: 1rem; color: var(--text); }
+    .cta-box p { margin-bottom: 2rem; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: var(--text-muted); text-decoration: none; margin-bottom: 3rem; transition: color 0.2s; }
+    .back-link:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+<nav id="nav">
+  <div class="container">
+    <a href="/" class="nav-logo" style="display:flex;align-items:center;text-decoration:none;"><img src="/logo.svg" alt="Augentic AI" height="37" style="height:37px;width:auto;" /></a>
+    <ul class="nav-links">
+      <li><a href="/#solution">Solutions</a></li>
+      <li><a href="/#offerings">Offerings</a></li>
+      <li><a href="/blog/">Insights</a></li>
+      <li><a href="/guide/">AI Guide</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg id="iconSun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg id="iconMoon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="/book/" class="nav-cta">Book Strategy Call</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/#solution" onclick="closeMobile()">Solutions</a>
+  <a href="/#offerings" onclick="closeMobile()">Offerings</a>
+  <a href="/blog/" onclick="closeMobile()">Insights</a>
+  <a href="/guide/" onclick="closeMobile()">AI Guide</a>
+  <a href="/book/" onclick="closeMobile()" style="color:var(--accent);">Book Strategy Call</a>
+</div>
+
+<div class="post-header">
+  <div class="container">
+    <a href="/blog/" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M13 7H1M6 2L1 7l5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to Insights
+    </a>
+    <div class="post-meta">
+      <span class="label">RevOps</span>
+      <span class="post-meta-text">March 11, 2026</span>
+      <span class="post-meta-text">10 min read</span>
+    </div>
+    <h1 class="post-title">AI Lead Follow-Up: Why Speed-to-Lead Is the Only Metric That Matters in 2026</h1>
+    <p class="post-desc">Discover how AI lead follow-up systems respond to every inbound lead in under 60 seconds, 24/7. Learn why speed-to-lead determines close rates and how autonomous AI replaces manual follow-up workflows.</p>
+  </div>
+</div>
+
+<div class="post-body">
+  <div class="container">
+    <div class="post-body-inner">
+      
+      
+<h2>The Lead Follow-Up Problem Nobody Wants to Admit</h2>
+
+<p>Here is a statistic that should make every revenue leader uncomfortable: 78% of B2B deals go to the vendor that responds first. Not the cheapest. Not the most qualified. The fastest.</p>
+
+<p>Now here is the uncomfortable follow-up: the average B2B company takes 42 hours to respond to an inbound lead. Some never respond at all. InsideSales.com found that 27% of leads never get contacted — not once, by anyone, ever.</p>
+
+<p>This is not a technology problem. It is a structural one. Sales reps are in meetings. SDRs are working through yesterday's list. The overnight form submission sits in a queue until someone gets to it on Tuesday. By then, the prospect has already booked a demo with a competitor who responded in four minutes.</p>
+
+<p>The businesses that are winning right now are not winning because they have better products or sharper pricing. They are winning because they have AI systems that respond to every single lead, on every channel, in under 60 seconds, around the clock.</p>
+
+<h2>What Speed-to-Lead Actually Means for Revenue</h2>
+
+<p>Speed-to-lead is not a vanity metric. It is the single strongest predictor of whether an inbound lead converts to a qualified opportunity. The data is unambiguous:</p>
+
+<p>A study from Lead Connect found that responding within the first five minutes makes you 100x more likely to reach the prospect compared to waiting 30 minutes. After five minutes, your odds of qualifying that lead drop by 80%.</p>
+
+<p>Think about that from the buyer's perspective. They just filled out your form, requested a quote, or asked a question through your website chat. They are actively engaged. They have the problem front of mind. They are sitting at their desk, ready to talk.</p>
+
+<p>Thirty minutes later? They are in a meeting. Two hours later? They have moved on to other priorities. Tomorrow? They have already spoken with your competitor.</p>
+
+<p>The math is brutal. If your average deal size is $50,000 and you generate 100 inbound leads per month, improving your speed-to-lead from 4 hours to under 1 minute can realistically improve conversion rates by 30-50%. On a $5 million pipeline, that is $1.5 to $2.5 million in additional revenue — not from generating more leads, but from actually responding to the ones you already have.</p>
+
+<h2>Why Human-Only Follow-Up Is Structurally Broken</h2>
+
+<p>The traditional lead follow-up workflow looks something like this: a lead comes in through a web form, gets routed to a CRM, triggers a notification to an SDR or sales rep, who then reviews the lead, looks up the company, crafts a personalized response, and sends an email or makes a call.</p>
+
+<p>On paper, that process takes 10-15 minutes. In practice, it takes hours or days because:</p>
+
+<p><strong>Reps are not waiting for leads.</strong> They are doing other things — running demos, updating Salesforce, sitting in pipeline reviews. The notification arrives, gets buried under 40 other notifications, and gets handled when they get to it.</p>
+
+<p><strong>Coverage gaps are real.</strong> Nobody is responding to leads at 9:47 PM on a Thursday or 6:15 AM on a Saturday. But prospects are submitting forms at those times, because that is when they are doing research outside of their own work hours.</p>
+
+<p><strong>Prioritization is inconsistent.</strong> Without a system, reps cherry-pick the leads that look best and deprioritize the ones that seem small. But a $15,000 deal from a quick form fill and a $150,000 deal from a detailed RFP request look identical in a notification queue.</p>
+
+<p><strong>Follow-up sequences break down.</strong> Even if the first response happens quickly, the follow-up cadence — the second touch, the third touch, the re-engagement after no response — falls apart. Reps forget. They get busy with active deals. The lead goes cold.</p>
+
+<p>This is not a training problem. You cannot train your way out of structural gaps in coverage and capacity. It is a systems problem, and it requires a systems solution.</p>
+
+<h2>How AI Lead Follow-Up Actually Works</h2>
+
+<p>AI lead follow-up is not a chatbot that sends generic auto-replies. That approach has been tried, and prospects see through it immediately. Modern AI follow-up systems are contextual, personalized, and multi-channel — and they operate autonomously.</p>
+
+<h3>Instant Contextual Response</h3>
+
+<p>When a lead comes in, the AI system does not just acknowledge the submission. It analyzes the information provided — company name, role, form responses, page visited before submission — and generates a personalized response within seconds.</p>
+
+<p>If someone fills out a form on your cybersecurity services page and mentions they are evaluating MDR solutions, the AI response references MDR specifically, asks a relevant qualifying question about their current security stack, and offers a concrete next step. It reads like a knowledgeable human wrote it, because the underlying language model understands the context.</p>
+
+<h3>Multi-Channel Engagement</h3>
+
+<p>The AI does not just send one email and wait. Depending on the lead source and available contact information, it can engage across email, SMS, and web chat simultaneously. If a prospect fills out a form and also has a phone number on file, the AI can send a text message within 30 seconds while also sending a detailed email — matching the communication preferences that modern buyers expect.</p>
+
+<h3>Intelligent Qualification</h3>
+
+<p>The AI is not just responding — it is qualifying. Through conversational engagement, it gathers the information your sales team needs: budget range, timeline, decision-making authority, current solutions in place, specific pain points. By the time a human rep gets involved, the lead has already been scored, enriched, and pre-qualified.</p>
+
+<h3>Autonomous Follow-Up Sequences</h3>
+
+<p>If the prospect does not respond to the initial outreach, the AI executes a follow-up sequence — not a generic drip campaign, but contextual follow-ups that reference the original conversation and add new value. A second touch might include a relevant case study. A third might reference an industry-specific insight. Each message is generated fresh, not pulled from a template library.</p>
+
+<h3>Seamless Human Handoff</h3>
+
+<p>When the lead is qualified and ready for a conversation, the AI hands off to a human rep with full context: a summary of all interactions, qualification data, suggested talking points, and a booked meeting on the calendar. The rep walks into the call already knowing what the prospect needs.</p>
+
+<h2>Real-World Impact: What Happens When You Fix Speed-to-Lead</h2>
+
+<p>Consider a mid-market managed services provider generating 200 inbound leads per month across their website, partner referrals, and marketing campaigns. Their four-person sales team is solid, but constrained. Average response time: 6 hours. After-hours response time: next business day. Lead-to-opportunity conversion rate: 12%.</p>
+
+<p>After implementing an AI lead follow-up system, the numbers shift dramatically:</p>
+
+<p>Average response time drops from 6 hours to 45 seconds. After-hours leads — which represented 35% of total volume — get immediate engagement instead of waiting 12-16 hours. Lead-to-opportunity conversion rate climbs from 12% to 22%. Not because the leads got better, but because every single one received a fast, relevant, personalized response.</p>
+
+<p>On a $40,000 average deal size, that conversion improvement represents roughly $800,000 in additional annual pipeline from the same lead volume. The ROI is not marginal. It is transformational.</p>
+
+<h2>The Difference Between AI Tools and AI Systems for Lead Follow-Up</h2>
+
+<p>The market is flooded with point solutions that claim to solve speed-to-lead. Auto-responder plugins. Chatbot widgets. Email sequence tools. Each one addresses a fragment of the problem.</p>
+
+<p>An auto-responder sends a generic acknowledgment. It does not qualify. It does not personalize. It does not follow up. The prospect knows immediately it is automated and disengages.</p>
+
+<p>A chatbot handles live conversations but only when the prospect is actively on the site. It does not engage leads that come through form fills, partner referrals, or email inquiries. It creates another silo of data that does not connect to the CRM.</p>
+
+<p>An email sequence tool can drip templated messages, but it does not respond in real-time, does not handle multi-channel engagement, and does not adapt its messaging based on prospect behavior.</p>
+
+<p>What actually works is an integrated system — one that connects your lead sources, CRM, communication channels, calendar, and qualification criteria into a single autonomous workflow. The AI is not a feature bolted onto your existing stack. It is the connective tissue that makes the entire revenue operation respond as one unit.</p>
+
+<p>This is the difference between tools and systems. Tools add capabilities. Systems change how your business operates.</p>
+
+<h2>Implementation: What It Takes to Build This</h2>
+
+<p>Building an effective AI lead follow-up system is not about picking a vendor and flipping a switch. It requires intentional design around several key elements:</p>
+
+<h3>Lead Source Integration</h3>
+
+<p>Every channel that generates leads — website forms, landing pages, partner portals, referral programs, social media, third-party listings — needs to feed into the AI system in real-time. A 30-second response time means nothing if the lead data takes 15 minutes to sync from your form provider to your CRM.</p>
+
+<h3>Qualification Framework</h3>
+
+<p>The AI needs to know what a qualified lead looks like for your specific business. This means defining your ICP criteria, your qualification questions, your scoring methodology, and your routing rules. A lead from a 500-person healthcare company asking about compliance automation gets handled differently than a lead from a 20-person startup asking about basic IT support.</p>
+
+<h3>Tone and Messaging Calibration</h3>
+
+<p>The AI's communication style needs to match your brand. If your sales team is consultative and relationship-driven, the AI should reflect that — asking thoughtful questions, providing relevant insights, being helpful without being pushy. If your approach is more transactional and efficiency-focused, the messaging calibrates accordingly.</p>
+
+<h3>CRM and Calendar Integration</h3>
+
+<p>The AI system must write directly to your CRM — creating contacts, updating lead stages, logging interactions, attaching qualification data. When a lead is ready to book, the AI accesses your sales team's real-time calendar availability and schedules the meeting without any human intervention.</p>
+
+<h3>Continuous Learning</h3>
+
+<p>The system should improve over time. Which messaging approaches generate the highest response rates? Which qualification questions are most predictive of close? What follow-up cadence works best for different lead segments? An AI system captures this data and optimizes autonomously.</p>
+
+<h2>Common Objections (And Why They Are Wrong)</h2>
+
+<p><strong>"Our prospects want to talk to a human, not a bot."</strong> They do want to talk to a human — eventually. But they want an immediate acknowledgment and relevant information first. The AI is not replacing the human conversation. It is making sure the human conversation actually happens by engaging the lead before they move on.</p>
+
+<p><strong>"We do not have enough lead volume to justify this."</strong> The math actually works better at lower volumes. If you generate 50 leads per month and your average deal is $75,000, every single conversion matters. Improving your close rate by even 5 percentage points on 50 leads is worth $187,500 annually. The system pays for itself on the first converted lead.</p>
+
+<p><strong>"Our sales cycle is too complex for AI to handle."</strong> The AI is not handling your sales cycle. It is handling the first five minutes — the part where 78% of deals are won or lost based on response speed alone. Your experienced reps still run the demos, negotiate the contracts, and close the deals. They just do it with pre-qualified, pre-engaged prospects instead of cold callbacks.</p>
+
+<p><strong>"We already have automated emails set up."</strong> Template-based auto-replies are not AI follow-up. Prospects can identify generic templates immediately, and response rates to obvious automation are near zero. AI-generated responses are contextual, varied, and conversational — they read like a human wrote them because the underlying model understands the context of each specific interaction.</p>
+
+<h2>The Compounding Advantage</h2>
+
+<p>Speed-to-lead is not a one-time optimization. It is a compounding advantage. Every fast response builds brand perception — this is a company that is responsive, professional, and takes my business seriously. Every pre-qualified handoff makes your sales team more efficient, because they spend their time on conversations that matter instead of chasing unresponsive leads.</p>
+
+<p>Over 12 months, the data your AI system collects about response patterns, qualification signals, and conversion drivers becomes a strategic asset. You know exactly which lead sources produce the highest-quality prospects, which messaging resonates with different segments, and where your pipeline is strongest. That intelligence feeds back into your marketing, your positioning, and your growth strategy.</p>
+
+<p>The companies that build these systems now are not just responding faster today. They are building an operational moat that gets deeper every month.</p>
+
+<h2>Stop Leaving Revenue on the Table</h2>
+
+<p>If your team is still manually following up on inbound leads — checking the CRM queue, writing individual emails, playing phone tag — you are losing deals every single day to competitors who respond faster. Not better. Faster.</p>
+
+<p>The fix is not hiring more SDRs. It is not buying another email sequence tool. It is building an autonomous AI system that treats every inbound lead like a priority, responds in seconds, qualifies intelligently, and hands off to your sales team with everything they need to close.</p>
+
+<p>Augentic AI builds these systems for mid-market revenue teams. We integrate with your existing CRM, your lead sources, and your sales workflow to create a follow-up engine that never sleeps, never forgets, and never lets a lead go cold.</p>
+
+<p><a href="/book/">Book a strategy call</a> to see what AI-powered lead follow-up would look like for your business — and how much revenue you are leaving on the table right now.</p>
+
+    </div>
+  </div>
+</div>
+
+<div class="post-footer">
+  <div class="container">
+    <div class="cta-box">
+      <h3>Ready to Build Your AI Workforce?</h3>
+      <p>Schedule a 30-minute strategy call. We will tell you exactly what we would build for your business - and what it would cost.</p>
+      <a href="/book/" class="btn-primary">Book a Strategy Call</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo" style="display:flex;align-items:center;"><img src="/logo.svg" alt="Augentic AI" height="28" style="height:28px;width:auto;" /></div>
+        <div class="footer-tagline">Autonomous AI. Measurable Revenue.</div>
+      </div>
+      <ul class="footer-links">
+        <li><a href="/#solution">Solutions</a></li>
+        <li><a href="/#offerings">Offerings</a></li>
+        <li><a href="/blog/">Insights</a></li>
+        <li><a href="/guide/">AI Guide</a></li>
+        <li><a href="/book/">Book a Call</a></li>
+        <li><a href="mailto:hello@augenticai.com">Contact</a></li>
+      </ul>
+      <div class="footer-copy">&copy; 2026 Augentic AI. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => { mobileMenu.classList.toggle('open'); });
+  function closeMobile() { mobileMenu.classList.remove('open'); }
+  const themeToggle = document.getElementById('themeToggle');
+  const iconSun = document.getElementById('iconSun');
+  const iconMoon = document.getElementById('iconMoon');
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  if (savedTheme === 'light') { document.body.classList.add('light'); iconSun.style.display = 'block'; iconMoon.style.display = 'none'; }
+  themeToggle.addEventListener('click', () => {
+    const isLight = document.body.classList.toggle('light');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    iconSun.style.display = isLight ? 'block' : 'none';
+    iconMoon.style.display = isLight ? 'none' : 'block';
+  });
+</script>
+</body>
+</html>

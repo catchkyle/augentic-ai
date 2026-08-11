@@ -1,27 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-34XDZ0ENK7"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-34XDZ0ENK7');
-  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Insights | Augentic AI - AI Systems Integration</title>
   <meta name="description" content="Analysis, frameworks, and perspectives on autonomous AI systems for revenue-driven businesses." />
-  <meta property="og:title" content="Insights | Augentic AI - AI Systems Integration" />
-  <meta property="og:description" content="Analysis, frameworks, and perspectives on autonomous AI systems for revenue-driven businesses." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://augenticai.com/favicon.svg" />
-  <meta property="og:url" content="https://augenticai.com/blog/" />
-  <meta property="og:site_name" content="Augentic AI" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Insights | Augentic AI - AI Systems Integration" />
-  <meta name="twitter:description" content="Analysis, frameworks, and perspectives on autonomous AI systems for revenue-driven businesses." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -60,7 +43,7 @@
     .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
     .nav-links a { font-size: 0.8rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
     .nav-links a:hover { color: var(--text); }
-    .nav-cta { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; padding: 0.65rem 1.4rem; background: linear-gradient(105deg, #D4AF37 0%, #D4AF37 30%, #F5D060 50%, #D4AF37 70%, #D4AF37 100%); background-size: 300% 100%; animation: goldShimmer 4s ease infinite; color: #0A0A0A; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s; white-space: nowrap; box-shadow: 0 0 14px rgba(212,175,55,0.2); }
+    .nav-cta { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; padding: 0.65rem 1.4rem; background: var(--accent); color: #0A0A0A; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s; white-space: nowrap; }
     .nav-cta:hover { opacity: 0.88; }
     .nav-right { display: flex; align-items: center; gap: 0.75rem; }
     .theme-toggle { background: none; border: 1px solid var(--border); color: var(--text-muted); cursor: pointer; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius); transition: color 0.2s; flex-shrink: 0; }
@@ -71,50 +54,18 @@
     .mobile-menu.open { display: flex; }
     .mobile-menu a { font-size: 1.4rem; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 1.2rem; }
     footer { background: var(--bg); border-top: 1px solid var(--border); padding: 3rem 0; }
-    .footer-inner { display: flex; flex-direction: column; gap: 3rem; }
-    .footer-top { display: flex; justify-content: space-between; gap: 3rem; flex-wrap: wrap; }
-    .footer-brand { max-width: 260px; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
     .footer-tagline { font-size: 0.78rem; color: var(--text-dim); margin-top: 0.3rem; }
-    .footer-columns { display: flex; gap: 4rem; flex-wrap: wrap; }
-    .footer-col h4 { font-family: var(--font-sans); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
-    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
-    .footer-col a { font-size: 0.78rem; color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
-    .footer-col a:hover { color: var(--text-muted); }
-    .footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; border-top: 1px solid var(--border); padding-top: 1.5rem; }
-    .footer-legal { display: flex; gap: 1.5rem; }
-    .footer-legal a { font-size: 0.75rem; color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
-    .footer-legal a:hover { color: var(--text-muted); }
+    .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.78rem; color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text-muted); }
     .footer-copy { font-size: 0.75rem; color: var(--text-dim); }
-    @media (max-width: 900px) { .footer-columns { gap: 2rem; } .footer-top { flex-direction: column; } }
     .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
-    .btn-primary { display: inline-block; padding: 0.9rem 2rem; background: linear-gradient(105deg, #D4AF37 0%, #D4AF37 30%, #F5D060 50%, #D4AF37 70%, #D4AF37 100%); background-size: 300% 100%; animation: goldShimmer 4s ease infinite; color: #0A0A0A; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s, transform 0.2s; border: none; cursor: pointer; box-shadow: 0 0 18px rgba(212,175,55,0.25); }
+    .btn-primary { display: inline-block; padding: 0.9rem 2rem; background: var(--accent); color: #0A0A0A; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s, transform 0.2s; border: none; cursor: pointer; }
     .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
     .btn-outline { display: inline-block; padding: 0.85rem 1.8rem; border: 1px solid var(--border-accent); color: var(--accent); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-decoration: none; border-radius: var(--radius); transition: all 0.2s; }
     .btn-outline:hover { background: var(--accent-dim); }
     @media (max-width: 900px) { .nav-links, .nav-right .nav-cta { display: none; } .hamburger { display: flex; } }
-        .footer-logo, .nav-logo { position: relative; }
-    .footer-logo::before, .nav-logo::before {
-      content: ''; position: absolute; top: 50%; left: 50%; width: 100%; height: 100%;
-      transform: translate(-50%, -50%);
-      background: radial-gradient(ellipse, rgba(212,175,55,0.25) 0%, rgba(212,175,55,0) 60%);
-      border-radius: 50%;
-      animation: logoGlow 3s ease-in-out infinite;
-      pointer-events: none; z-index: 0;
-    }
-    .footer-logo > *, .nav-logo > * { position: relative; z-index: 1; }
-    @keyframes logoGlow {
-      0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
-      50% { opacity: 0.7; transform: translate(-50%, -50%) scale(1.15); }
-    }
-    .scroll-progress {
-      position: fixed; top: 0; left: 0; height: 3px; z-index: 101;
-      background: linear-gradient(90deg, #B8960C, #D4AF37, #F5D060, #D4AF37);
-      width: 0%; transition: width 0.1s linear;
-    }
-    @keyframes goldShimmer {
-      0% { background-position: 200% center; }
-      100% { background-position: -200% center; }
-    }
   </style>
   <style>
     .blog-header { padding: 10rem 0 5rem; border-bottom: 1px solid var(--border); }
@@ -134,7 +85,6 @@
   </style>
 </head>
 <body>
-<div class="scroll-progress" id="scrollProgress"></div>
 <nav id="nav">
   <div class="container">
     <a href="/" class="nav-logo" style="display:flex;align-items:center;text-decoration:none;"><img src="/logo_v2.svg" alt="Augentic AI" height="37" style="height:37px;width:auto;" /></a>
@@ -150,8 +100,8 @@
         <svg id="iconMoon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       </button>
       <a href="/book/" class="nav-cta">Book Strategy Call</a>
-      <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
@@ -159,7 +109,6 @@
   <a href="/#offerings" onclick="closeMobile()">Offerings</a>
   <a href="/blog/" onclick="closeMobile()">Insights</a>
   <a href="/guide/" onclick="closeMobile()">AI Guide</a>
-  <a href="tel:+18135441659" onclick="closeMobile()" style="display:flex;align-items:center;gap:0.5rem;">(813) 544-1659: Talk to Auri</a>
   <a href="/book/" onclick="closeMobile()" style="color:var(--accent);">Book Strategy Call</a>
 </div>
 
@@ -174,35 +123,119 @@
 <div style="padding:0 0 8rem;">
   <div class="container">
     <div class="blog-grid">
-      <article class="blog-card" style="border-color:var(--border-accent);">
-        <a href="/blog/10-ai-agents-deploy-business/" class="blog-card-link">
+      <article class="blog-card">
+        <a href="/blog/ai-voice-agent-cold-calling/" class="blog-card-link">
+          <div class="blog-card-meta">
+            <span class="label" style="font-size:0.65rem;">AI SDR</span>
+            <span class="blog-date">April 3, 2026</span>
+          </div>
+          <h3 class="blog-card-title">AI Voice Agents for Cold Calling: Legal, Ethical, and Practical Guide</h3>
+          <p class="blog-card-desc">A comprehensive guide for sales leaders on deploying AI voice agents for cold calling, covering TCPA/GDPR compliance, ethical transparency, implementation phases, and KPIs that prove ROI.</p>
+          <div class="blog-card-footer">
+            <span class="blog-read">13 min read</span>
+            <span class="blog-arrow">Read &rarr;</span>
+          </div>
+        </a>
+      </article>
+      <article class="blog-card">
+        <a href="/blog/data-enrichment-ai-vs-zoominfo-apollo/" class="blog-card-link">
+          <div class="blog-card-meta">
+            <span class="label" style="font-size:0.65rem;">Sales</span>
+            <span class="blog-date">April 3, 2026</span>
+          </div>
+          <h3 class="blog-card-title">AI Data Enrichment vs ZoomInfo vs Apollo: Which Feeds Your Pipeline Better?</h3>
+          <p class="blog-card-desc">A head-to-head comparison of AI-driven data enrichment against ZoomInfo and Apollo, covering real-time accuracy, cost models, automation depth, and which approach wins for modern B2B revenue teams.</p>
+          <div class="blog-card-footer">
+            <span class="blog-read">12 min read</span>
+            <span class="blog-arrow">Read &rarr;</span>
+          </div>
+        </a>
+      </article>
+      <article class="blog-card">
+        <a href="/blog/gpt-vs-claude-vs-gemini-sales-use-cases/" class="blog-card-link">
+          <div class="blog-card-meta">
+            <span class="label" style="font-size:0.65rem;">Technical</span>
+            <span class="blog-date">April 3, 2026</span>
+          </div>
+          <h3 class="blog-card-title">GPT vs Claude vs Gemini for Sales: Which Model Wins Each Use Case?</h3>
+          <p class="blog-card-desc">A practical breakdown of how OpenAI GPT, Anthropic Claude, and Google Gemini each perform across six core B2B sales use cases, plus how to orchestrate them for maximum revenue impact.</p>
+          <div class="blog-card-footer">
+            <span class="blog-read">14 min read</span>
+            <span class="blog-arrow">Read &rarr;</span>
+          </div>
+        </a>
+      </article>
+      <article class="blog-card">
+        <a href="/blog/salesforce-ai-integrations-beyond-einstein/" class="blog-card-link">
+          <div class="blog-card-meta">
+            <span class="label" style="font-size:0.65rem;">CRM</span>
+            <span class="blog-date">March 28, 2026</span>
+          </div>
+          <h3 class="blog-card-title">Salesforce AI Integrations Beyond Einstein: What RevOps Should Consider</h3>
+          <p class="blog-card-desc">Exploring Salesforce AI integrations beyond the standard Einstein features, focusing on what Revenue Operations teams need for advanced automation and insights.</p>
+          <div class="blog-card-footer">
+            <span class="blog-read">12 min read</span>
+            <span class="blog-arrow">Read &rarr;</span>
+          </div>
+        </a>
+      </article>
+      <article class="blog-card">
+        <a href="/blog/ai-meeting-scheduler-comparison/" class="blog-card-link">
           <div class="blog-card-meta">
             <span class="label" style="font-size:0.65rem;">AI Agents</span>
-            <span class="blog-date">March 6, 2026</span>
+            <span class="blog-date">March 28, 2026</span>
           </div>
-          <h3 class="blog-card-title">The 10 AI Agents Every Business Should Deploy in 2026</h3>
-          <p class="blog-card-desc">Not all AI agents are created equal. These are the 10 that deliver measurable ROI for revenue-driven businesses - ranked by impact and deployment complexity.</p>
+          <h3 class="blog-card-title">AI Meeting Schedulers Ranked: Which Actually Books More Meetings?</h3>
+          <p class="blog-card-desc">A comparative ranking of top AI meeting schedulers, analyzing their effectiveness in booking more meetings for sales and revenue teams, beyond basic calendar invites.</p>
+          <div class="blog-card-footer">
+            <span class="blog-read">10 min read</span>
+            <span class="blog-arrow">Read &rarr;</span>
+          </div>
+        </a>
+      </article>
+      <article class="blog-card">
+        <a href="/blog/ai-sales-forecasting-accuracy/" class="blog-card-link">
+          <div class="blog-card-meta">
+            <span class="label" style="font-size:0.65rem;">RevOps</span>
+            <span class="blog-date">March 28, 2026</span>
+          </div>
+          <h3 class="blog-card-title">AI Sales Forecasting: How to Get Predictions Your Board Actually Trusts</h3>
+          <p class="blog-card-desc">Unlocking the power of AI for sales forecasting that delivers accurate, trustworthy predictions for your board, moving beyond traditional methods and gut feelings.</p>
+          <div class="blog-card-footer">
+            <span class="blog-read">11 min read</span>
+            <span class="blog-arrow">Read &rarr;</span>
+          </div>
+        </a>
+      </article>
+      <article class="blog-card">
+        <a href="/blog/build-vs-buy-ai-sales-agents/" class="blog-card-link">
+          <div class="blog-card-meta">
+            <span class="label" style="font-size:0.65rem;">AI Strategy</span>
+            <span class="blog-date">March 27, 2026</span>
+          </div>
+          <h3 class="blog-card-title">Build vs Buy AI Sales Agents: Decision Framework for CROs</h3>
+          <p class="blog-card-desc">A critical strategic question for CROs: should you build AI sales agents in-house or buy a pre-built solution? This article provides a comprehensive decision framework.</p>
+          <div class="blog-card-footer">
+            <span class="blog-read">10 min read</span>
+            <span class="blog-arrow">Read &rarr;</span>
+          </div>
+        </a>
+      </article>
+      <article class="blog-card">
+        <a href="/blog/hubspot-vs-salesforce-ai-capabilities/" class="blog-card-link">
+          <div class="blog-card-meta">
+            <span class="label" style="font-size:0.65rem;">CRM</span>
+            <span class="blog-date">March 19, 2026</span>
+          </div>
+          <h3 class="blog-card-title">HubSpot vs Salesforce AI: Which CRM Has Better Autonomous Features?</h3>
+          <p class="blog-card-desc">A detailed comparison of HubSpot and Salesforce AI capabilities, focusing on autonomous features for B2B sales and revenue teams.</p>
           <div class="blog-card-footer">
             <span class="blog-read">8 min read</span>
             <span class="blog-arrow">Read &rarr;</span>
           </div>
         </a>
       </article>
-      <article class="blog-card">
-        <a href="/blog/chatgpt-54-ai-workflows-2026/" class="blog-card-link">
-          <div class="blog-card-meta">
-            <span class="label" style="font-size:0.65rem;">AI Strategy</span>
-            <span class="blog-date">March 5, 2026</span>
-          </div>
-          <h3 class="blog-card-title">ChatGPT 5.4 Just Dropped. Here Is What It Means for Your AI Workflows.</h3>
-          <p class="blog-card-desc">OpenAI released ChatGPT 5.4 on March 5, 2026. Bigger context, better tool use, native automation. Here is what actually matters for businesses running AI workflows.</p>
-          <div class="blog-card-footer">
-            <span class="blog-read">5 min read</span>
-            <span class="blog-arrow">Read &rarr;</span>
-          </div>
-        </a>
-      </article>
-      <article class="blog-card">
+      <article class="blog-card" style="border-color:var(--border-accent);">
         <a href="/blog/qwen35-local-ai-business-leaders/" class="blog-card-link">
           <div class="blog-card-meta">
             <span class="label" style="font-size:0.65rem;">AI Strategy</span>
@@ -342,6 +375,258 @@
           </div>
         </a>
       </article>
+      <article class="blog-card">
+        <a href="/blog/ai-scheduling-automation-service-businesses/" class="blog-card-link">
+          <div class="blog-card-meta">
+            <span class="label" style="font-size:0.65rem;">AI Operations</span>
+            <span class="blog-date">March 10, 2026</span>
+          </div>
+          <h3 class="blog-card-title">AI Scheduling Automation: How Service Businesses Are Eliminating No-Shows and Booking 3x More Appointments</h3>
+          <p class="blog-card-desc">AI scheduling automation is helping service businesses eliminate no-shows, book more appointments, and recover lost revenue. Learn how autonomous scheduling systems replace manual booking workflows.</p>
+          <div class="blog-card-footer">
+            <span class="blog-read">7 min read</span>
+            <span class="blog-arrow">Read &rarr;</span>
+          </div>
+        </a>
+      </article>
+      <article class="blog-card">
+        <a href="/blog/ai-lead-follow-up-speed-to-lead/" class="blog-card-link">
+          <div class="blog-card-meta">
+            <span class="label" style="font-size:0.65rem;">RevOps</span>
+            <span class="blog-date">March 11, 2026</span>
+          </div>
+          <h3 class="blog-card-title">AI Lead Follow-Up: Why Speed-to-Lead Is the Only Metric That Matters in 2026</h3>
+          <p class="blog-card-desc">Discover how AI lead follow-up systems respond to every inbound lead in under 60 seconds, 24/7. Learn why speed-to-lead determines close rates and how autonomous AI replaces manual follow-up workflows.</p>
+          <div class="blog-card-footer">
+            <span class="blog-read">10 min read</span>
+            <span class="blog-arrow">Read &rarr;</span>
+          </div>
+        </a>
+      </article>
+      <article class="blog-card">
+        <a href="/blog/ai-front-office-healthcare-practices/" class="blog-card-link">
+          <div class="blog-card-meta">
+            <span class="label" style="font-size:0.65rem;">Industry</span>
+            <span class="blog-date">March 12, 2026</span>
+          </div>
+          <h3 class="blog-card-title">AI Front Office for Healthcare Practices: Eliminate Hold Times, Reduce No-Shows, and Reclaim Revenue</h3>
+          <p class="blog-card-desc">Learn how AI front office systems help healthcare practices eliminate phone hold times, reduce patient no-shows by 40%, and recover hundreds of thousands in lost revenue annually.</p>
+          <div class="blog-card-footer">
+            <span class="blog-read">11 min read</span>
+            <span class="blog-arrow">Read &rarr;</span>
+          </div>
+        </a>
+      </article>
+      <article class="blog-card">
+        <a href="/blog/ai-front-office-law-firms/" class="blog-card-link">
+          <div class="blog-card-meta">
+            <span class="label" style="font-size:0.65rem;">Industry</span>
+            <span class="blog-date">March 13, 2026</span>
+          </div>
+          <h3 class="blog-card-title">AI Front Office for Law Firms: Capture Every Client Inquiry, Automate Intake, and Grow Revenue Without Adding Staff</h3>
+          <p class="blog-card-desc">Discover how AI front office systems help law firms capture 100% of client inquiries, automate intake workflows, and increase caseloads without hiring — with real ROI examples.</p>
+          <div class="blog-card-footer">
+            <span class="blog-read">11 min read</span>
+            <span class="blog-arrow">Read &rarr;</span>
+          </div>
+        </a>
+      </article>
+      <article class="blog-card">
+        <a href="/blog/ai-front-office-financial-advisors/" class="blog-card-link">
+          <div class="blog-card-meta">
+            <span class="label" style="font-size:0.65rem;">Industry Solutions</span>
+            <span class="blog-date">March 14, 2026</span>
+          </div>
+          <h3 class="blog-card-title">AI Front Office for Financial Advisors: Automate Client Onboarding, Never Miss a Prospect Call, and Scale Your Practice Without Adding Headcount</h3>
+          <p class="blog-card-desc">Discover how AI front office systems help financial advisors and wealth management firms automate client onboarding, capture every prospect call, and scale AUM without hiring more staff.</p>
+          <div class="blog-card-footer">
+            <span class="blog-read">11 min read</span>
+            <span class="blog-arrow">Read &rarr;</span>
+          </div>
+        </a>
+      </article>
+      <article class="blog-card">
+        <a href="/blog/ai-revops-automation-revenue-operations/" class="blog-card-link">
+          <div class="blog-card-meta">
+            <span class="label" style="font-size:0.65rem;">RevOps</span>
+            <span class="blog-date">March 16, 2026</span>
+          </div>
+          <h3 class="blog-card-title">AI RevOps Automation: How Autonomous Systems Replace Manual Revenue Operations and Accelerate Pipeline Velocity</h3>
+          <p class="blog-card-desc">Learn how AI RevOps automation eliminates manual handoffs, fixes pipeline leaks, and accelerates revenue operations across marketing, sales, and customer success teams.</p>
+          <div class="blog-card-footer">
+            <span class="blog-read">10 min read</span>
+            <span class="blog-arrow">Read &rarr;</span>
+          </div>
+        </a>
+      </article>
+      <article class="blog-card">
+        <a href="/blog/ai-sdr-vs-human-sdr-comparison/" class="blog-card-link">
+          <div class="blog-card-meta">
+            <span class="label" style="font-size:0.65rem;">AI SDR</span>
+            <span class="blog-date">March 17, 2026</span>
+          </div>
+          <h3 class="blog-card-title">AI SDR vs Human SDR: Honest Comparison for Sales Leaders</h3>
+          <p class="blog-card-desc">An honest, data-driven comparison of AI SDRs versus human SDRs. Learn where AI outperforms, where humans still win, and how the best sales teams deploy both.</p>
+          <div class="blog-card-footer">
+            <span class="blog-read">10 min read</span>
+            <span class="blog-arrow">Read &rarr;</span>
+          </div>
+        </a>
+      </article>
+      <article class="blog-card">
+        <a href="/blog/ai-pipeline-generation-playbook/" class="blog-card-link">
+          <div class="blog-card-meta">
+            <span class="label" style="font-size:0.65rem;">Sales</span>
+            <span class="blog-date">March 17, 2026</span>
+          </div>
+          <h3 class="blog-card-title">AI Pipeline Generation: The 2026 Playbook for B2B Sales Teams</h3>
+          <p class="blog-card-desc">The definitive 2026 playbook for AI-powered pipeline generation. Learn how B2B sales teams use autonomous agents, intent data, and AI orchestration to build predictable pipeline.</p>
+          <div class="blog-card-footer">
+            <span class="blog-read">11 min read</span>
+            <span class="blog-arrow">Read &rarr;</span>
+          </div>
+        </a>
+      </article>
+      <article class="blog-card">
+        <a href="/blog/conversational-ai-vs-chatbots-sales/" class="blog-card-link">
+          <div class="blog-card-meta">
+            <span class="label" style="font-size:0.65rem;">AI Agents</span>
+            <span class="blog-date">March 17, 2026</span>
+          </div>
+          <h3 class="blog-card-title">Conversational AI vs Chatbots: Why Sales Teams Need to Know the Difference</h3>
+          <p class="blog-card-desc">Conversational AI and chatbots are not the same thing. Learn the critical differences, why it matters for sales teams, and how to deploy conversational AI that actually books meetings.</p>
+          <div class="blog-card-footer">
+            <span class="blog-read">9 min read</span>
+            <span class="blog-arrow">Read &rarr;</span>
+          </div>
+        </a>
+      </article>
+      <article class="blog-card">
+        <a href="/blog/ai-lead-scoring-models-that-work/" class="blog-card-link">
+          <div class="blog-card-meta">
+            <span class="label" style="font-size:0.65rem;">Revenue Operations</span>
+            <span class="blog-date">March 18, 2026</span>
+          </div>
+          <h3 class="blog-card-title">AI Lead Scoring Models That Actually Work (and 3 That Don't)</h3>
+          <p class="blog-card-desc">Most lead scoring projects fail because they reward the wrong signals. Here is the practical framework revenue teams can use to build AI lead scoring that sales actually trusts.</p>
+          <div class="blog-card-footer">
+            <span class="blog-read">11 min read</span>
+            <span class="blog-arrow">Read &rarr;</span>
+          </div>
+        </a>
+      </article>
+      <article class="blog-card">
+        <a href="/blog/deploy-ai-agents-without-engineering-team/" class="blog-card-link">
+          <div class="blog-card-meta">
+            <span class="label" style="font-size:0.65rem;">Implementation</span>
+            <span class="blog-date">March 18, 2026</span>
+          </div>
+          <h3 class="blog-card-title">How to Deploy AI Agents Without a Full Engineering Team</h3>
+          <p class="blog-card-desc">You do not need a dozen engineers to launch revenue-focused AI agents. You do need the right architecture, ownership, integrations, and rollout plan.</p>
+          <div class="blog-card-footer">
+            <span class="blog-read">12 min read</span>
+            <span class="blog-arrow">Read &rarr;</span>
+          </div>
+        </a>
+      </article>
+      <article class="blog-card">
+        <a href="/blog/revenue-operations-ai-maturity-model/" class="blog-card-link">
+          <div class="blog-card-meta">
+            <span class="label" style="font-size:0.65rem;">RevOps</span>
+            <span class="blog-date">April 2, 2026</span>
+          </div>
+          <h3 class="blog-card-title">RevOps AI Maturity Model: Where Does Your Team Stand?</h3>
+          <p class="blog-card-desc">A five-stage framework for assessing your revenue operations AI readiness—from manual chaos to fully autonomous pipelines. Find out where your team stands and what to build next.</p>
+          <div class="blog-card-footer">
+            <span class="blog-read">13 min read</span>
+            <span class="blog-arrow">Read &rarr;</span>
+          </div>
+        </a>
+      </article>
+      <article class="blog-card">
+        <a href="/blog/ai-customer-success-agents/" class="blog-card-link">
+          <div class="blog-card-meta">
+            <span class="label" style="font-size:0.65rem;">AI Agents</span>
+            <span class="blog-date">April 2, 2026</span>
+          </div>
+          <h3 class="blog-card-title">AI Customer Success Agents: Reducing Churn with Autonomous Outreach</h3>
+          <p class="blog-card-desc">How autonomous AI agents are transforming customer success—detecting churn risk earlier, triggering personalized outreach at scale, and freeing CSMs to focus where human relationships matter most.</p>
+          <div class="blog-card-footer">
+            <span class="blog-read">12 min read</span>
+            <span class="blog-arrow">Read &rarr;</span>
+          </div>
+        </a>
+      </article>
+      <article class="blog-card">
+        <a href="/blog/multi-agent-orchestration-revenue/" class="blog-card-link">
+          <div class="blog-card-meta">
+            <span class="label" style="font-size:0.65rem;">AI Agents</span>
+            <span class="blog-date">April 2, 2026</span>
+          </div>
+          <h3 class="blog-card-title">Multi-Agent Orchestration: Running an AI Sales Team That Coordinates</h3>
+          <p class="blog-card-desc">Single AI agents automate tasks. Multi-agent orchestration automates workflows. Here's how to architect a coordinated AI sales team that prospects, qualifies, nurtures, and closes without breaking down at the handoffs.</p>
+          <div class="blog-card-footer">
+            <span class="blog-read">14 min read</span>
+            <span class="blog-arrow">Read &rarr;</span>
+          </div>
+        </a>
+      </article>
+      <article class="blog-card">
+        <a href="/blog/ai-outbound-email-sequences/" class="blog-card-link">
+          <div class="blog-card-meta">
+            <span class="label" style="font-size:0.65rem;">AI SDR</span>
+            <span class="blog-date">March 18, 2026</span>
+          </div>
+          <h3 class="blog-card-title">AI Outbound Email Sequences: Personalization at Scale Without Spam</h3>
+          <p class="blog-card-desc">The promise of AI outbound is not sending more email. It is sending fewer, better emails with stronger timing, sharper context, and cleaner follow-through.</p>
+          <div class="blog-card-footer">
+            <span class="blog-read">11 min read</span>
+            <span class="blog-arrow">Read &rarr;</span>
+          </div>
+        </a>
+      </article>
+      <article class="blog-card">
+        <a href="/blog/ai-renewals-expansion-revenue/" class="blog-card-link">
+          <div class="blog-card-meta">
+            <span class="label" style="font-size:0.65rem;">AI Agents</span>
+            <span class="blog-date">April 4, 2026</span>
+          </div>
+          <h3 class="blog-card-title">AI for Renewals and Expansion: Automated Upsell That Doesn't Feel Automated</h3>
+          <p class="blog-card-desc">Discover how autonomous AI agents drive customer renewals and expansion revenue at scale — without sounding robotic — enhancing customer lifetime value and freeing CS teams to focus on relationships.</p>
+          <div class="blog-card-footer">
+            <span class="blog-read">12 min read</span>
+            <span class="blog-arrow">Read &rarr;</span>
+          </div>
+        </a>
+      </article>
+      <article class="blog-card">
+        <a href="/blog/integrating-ai-agents-existing-tech-stack/" class="blog-card-link">
+          <div class="blog-card-meta">
+            <span class="label" style="font-size:0.65rem;">Implementation</span>
+            <span class="blog-date">April 4, 2026</span>
+          </div>
+          <h3 class="blog-card-title">Integrating AI Agents into Your Existing Sales Tech Stack</h3>
+          <p class="blog-card-desc">A practical guide for sales leaders and RevOps teams on how to integrate autonomous AI agents into your CRM, SEP, and marketing automation stack without disrupting existing operations.</p>
+          <div class="blog-card-footer">
+            <span class="blog-read">14 min read</span>
+            <span class="blog-arrow">Read &rarr;</span>
+          </div>
+        </a>
+      </article>
+      <article class="blog-card">
+        <a href="/blog/ai-proposal-generation-automation/" class="blog-card-link">
+          <div class="blog-card-meta">
+            <span class="label" style="font-size:0.65rem;">AI Agents</span>
+            <span class="blog-date">April 4, 2026</span>
+          </div>
+          <h3 class="blog-card-title">AI Proposal Generation: From Discovery Call to Sent in Under 10 Minutes</h3>
+          <p class="blog-card-desc">Learn how autonomous AI agents can compress multi-day proposal workflows into minutes — with real personalization, CRM integration, and compliance checks built in — dramatically improving sales velocity and win rates.</p>
+          <div class="blog-card-footer">
+            <span class="blog-read">11 min read</span>
+            <span class="blog-arrow">Read &rarr;</span>
+          </div>
+        </a>
+      </article>
     </div>
   </div>
 </div>
@@ -372,17 +657,21 @@
           <a href="/terms/">Terms &amp; Conditions</a>
         </div>
       </div>
+      <ul class="footer-links">
+        <li><a href="/#solution">Solutions</a></li>
+        <li><a href="/#offerings">Offerings</a></li>
+        <li><a href="/blog/">Insights</a></li>
+        <li><a href="/guide/">AI Guide</a></li>
+        <li><a href="/book/">Book a Call</a></li>
+        <li><a href="mailto:hello@augenticai.com">Contact</a></li>
+      </ul>
+      <div class="footer-copy">&copy; 2026 Augentic AI. All rights reserved.</div>
     </div>
   </div>
 </footer>
 <script>
   const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 40);
-    var h = document.documentElement.scrollHeight - window.innerHeight;
-    var sp = document.getElementById('scrollProgress');
-    if (sp) sp.style.width = h > 0 ? (window.scrollY / h * 100) + '%' : '0%';
-  }, { passive: true });
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
   hamburger.addEventListener('click', () => { mobileMenu.classList.toggle('open'); });
@@ -399,34 +688,5 @@
     iconMoon.style.display = isLight ? 'none' : 'block';
   });
 </script>
-
-<!-- COOKIE CONSENT BANNER -->
-<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#111111;border-top:1px solid rgba(212,175,55,0.3);padding:1.25rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;">
-  <p style="margin:0;color:#888880;font-size:0.875rem;font-family:Inter,system-ui,sans-serif;line-height:1.6;max-width:700px;">
-    We use cookies to improve your experience and analyze site usage. By continuing, you agree to our
-    <a href="/privacy/" style="color:#D4AF37;text-decoration:underline;">Privacy Policy</a> and
-    <a href="/terms/" style="color:#D4AF37;text-decoration:underline;">Terms</a>.
-  </p>
-  <div style="display:flex;gap:0.75rem;flex-shrink:0;">
-    <button id="cookie-decline" style="padding:0.5rem 1.25rem;background:transparent;border:1px solid rgba(255,255,255,0.15);color:#888880;font-family:Inter,system-ui,sans-serif;font-size:0.8rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;cursor:pointer;border-radius:2px;">Decline</button>
-    <button id="cookie-accept" style="padding:0.5rem 1.25rem;background:#D4AF37;border:none;color:#0A0A0A;font-family:Inter,system-ui,sans-serif;font-size:0.8rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;cursor:pointer;border-radius:2px;">Accept</button>
-  </div>
-</div>
-<script>
-  (function() {
-    var consent = localStorage.getItem('augentic_cookie_consent');
-    var banner = document.getElementById('cookie-banner');
-    if (!consent && banner) { banner.style.display = 'flex'; }
-    document.getElementById('cookie-accept').addEventListener('click', function() {
-      localStorage.setItem('augentic_cookie_consent', 'accepted');
-      banner.style.display = 'none';
-    });
-    document.getElementById('cookie-decline').addEventListener('click', function() {
-      localStorage.setItem('augentic_cookie_consent', 'declined');
-      banner.style.display = 'none';
-    });
-  })();
-</script>
-
 </body>
 </html>
