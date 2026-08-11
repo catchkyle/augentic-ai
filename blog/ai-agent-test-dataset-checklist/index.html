@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Agent Test Dataset Checklist | Augentic AI</title>
+  <meta name="description" content="Build an AI agent test dataset with real exceptions, holdout cases, expected outcomes, and production acceptance rules before launch." />
+  <meta property="og:title" content="Your AI Agent Test Set Is Lying to You" />
+  <meta property="og:description" content="A clean demo set can hide production risk. Build a test dataset with real exceptions, holdouts, expected outcomes, and release rules." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://augenticai.com/blog/ai-agent-test-dataset-checklist/" />
+  <link rel="canonical" href="https://augenticai.com/blog/ai-agent-test-dataset-checklist/" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Your AI Agent Test Set Is Lying to You",
+    "description": "A clean demo set can hide production risk. Build a test dataset with real exceptions, holdouts, expected outcomes, and release rules.",
+    "datePublished": "2026-08-09",
+    "dateModified": "2026-08-09",
+    "author": { "@type": "Organization", "name": "Augentic AI" },
+    "publisher": { "@type": "Organization", "name": "Augentic AI", "url": "https://augenticai.com/" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://augenticai.com/blog/ai-agent-test-dataset-checklist/" }
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}:root{--bg:#0A0A0A;--card:#111;--text:#F5F5F0;--muted:#888880;--dim:#555550;--accent:#D4AF37;--border:rgba(255,255,255,.07);--border-accent:rgba(212,175,55,.3);--serif:'Playfair Display',Georgia,serif;--sans:'Inter',system-ui,sans-serif}body.light{--bg:#FAFAF7;--card:#F2F2EE;--text:#0B0B0B;--muted:#444440;--dim:#999990;--border:rgba(0,0,0,.08)}html{scroll-behavior:smooth}body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.7;-webkit-font-smoothing:antialiased}h1,h2,h3{font-weight:500;line-height:1.25;letter-spacing:-.02em}h1,h2{font-family:var(--serif)}h1{font-size:clamp(2rem,4vw,3.2rem)}p{color:var(--muted)}a{color:inherit}.container{max-width:1200px;margin:auto;padding:0 2rem}.label{font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}nav{position:fixed;inset:0 0 auto;z-index:100;padding:1.5rem 0;transition:.3s}nav.scrolled{background:rgba(10,10,10,.95);border-bottom:1px solid var(--border);padding:1rem 0}body.light nav.scrolled{background:rgba(250,250,247,.95)}nav .container,.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:1.5rem}.nav-links,.footer-links{display:flex;align-items:center;gap:2rem;list-style:none}.nav-links a,.footer-links a{font-size:.8rem;color:var(--muted);text-decoration:none}.nav-right{display:flex;align-items:center;gap:.75rem}.nav-cta,.btn-primary{padding:.65rem 1.4rem;background:var(--accent);color:#0A0A0A;text-decoration:none;font-size:.78rem;font-weight:600;letter-spacing:.08em}.theme-toggle{background:none;border:1px solid var(--border);color:var(--muted);width:34px;height:34px;cursor:pointer}.hamburger{display:none;background:none;border:0}.hamburger span{display:block;width:22px;height:1px;background:var(--text);margin:5px}.mobile-menu{display:none;position:fixed;inset:0;z-index:99;background:var(--bg);padding:6rem 2rem;flex-direction:column;gap:2rem}.mobile-menu.open{display:flex}.mobile-menu a{font-size:1.4rem;text-decoration:none}.post-header{padding:10rem 0 5rem;border-bottom:1px solid var(--border)}.back-link{font-size:.8rem;color:var(--dim);text-decoration:none}.post-meta{display:flex;gap:1rem;align-items:center;margin:2.5rem 0 1.5rem;flex-wrap:wrap}.post-meta-text{font-size:.75rem;color:var(--dim)}.post-title{max-width:900px}.post-desc{font-size:1.1rem;max-width:760px;margin-top:1.5rem}.post-body{padding:5rem 0}.post-body-inner{max-width:760px;margin:auto}.post-body p{font-size:1rem;line-height:1.9;margin-bottom:1.5rem}.post-body h2{font-size:1.75rem;margin:3.5rem 0 1.25rem}.post-body a{color:var(--accent)}.table-wrap{overflow-x:auto;margin:2rem 0}table{width:100%;border-collapse:collapse;font-size:.9rem}th,td{text-align:left;padding:1rem;border:1px solid var(--border);vertical-align:top;color:var(--muted)}th{color:var(--text);background:var(--card)}.post-footer{padding:0 0 6rem}.cta-box{max-width:800px;margin:auto;padding:3rem;background:var(--card);border:1px solid var(--border-accent);text-align:center}.cta-box h3{font-family:var(--serif);font-size:1.7rem}.cta-box p{margin:1rem auto 1.8rem;max-width:620px}.btn-primary{display:inline-block;padding:.9rem 1.8rem;text-transform:uppercase}footer{border-top:1px solid var(--border);padding:3rem 0}.footer-tagline,.footer-copy{font-size:.75rem;color:var(--dim)}@media(max-width:900px){.nav-links,.nav-right .nav-cta{display:none}.hamburger{display:block}.post-header{padding-top:8rem}.footer-inner{flex-direction:column;align-items:flex-start}}@media(max-width:600px){.container{padding:0 1.25rem}.post-body{padding:3rem 0}.cta-box{padding:2rem 1.25rem}th,td{padding:.75rem}}
+  </style>
+</head>
+<body>
+<nav id="nav"><div class="container">
+  <a href="/" style="display:flex"><img src="/logo-light.svg" alt="Augentic AI" height="37" class="logo-themed" data-light="/logo-dark.svg" data-dark="/logo-light.svg" /></a>
+  <ul class="nav-links"><li><a href="/#solution">Solutions</a></li><li><a href="/#offerings">Offerings</a></li><li><a href="/blog/">Insights</a></li><li><a href="/guide/">AI Guide</a></li></ul>
+  <div class="nav-right"><button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">◐</button><a href="/book/" class="nav-cta">Book Strategy Call</a></div>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</div></nav>
+<div class="mobile-menu" id="mobileMenu"><a href="/#solution">Solutions</a><a href="/#offerings">Offerings</a><a href="/blog/">Insights</a><a href="/guide/">AI Guide</a><a href="/book/" style="color:var(--accent)">Book Strategy Call</a></div>
+
+<header class="post-header"><div class="container">
+  <a href="/blog/" class="back-link">&larr; Back to Insights</a>
+  <div class="post-meta"><span class="label">AI Testing</span><span class="post-meta-text">August 9, 2026</span><span class="post-meta-text">10 min read</span></div>
+  <h1 class="post-title">Your AI Agent Test Set Is Lying to You</h1>
+  <p class="post-desc">A clean demo set can make a weak agent look ready. Production testing needs real exceptions, holdout cases, expected outcomes, and release rules.</p>
+</div></header>
+
+<main class="post-body"><div class="container"><article class="post-body-inner">
+  <p>Your team builds an AI agent to review incoming service requests. The test file has complete customer records, clear language, current policy documents, and examples everyone has seen before.</p>
+  <p>The agent looks great. Then production sends a request with two customer IDs, an expired contract, a screenshot instead of text, and a note that contradicts the CRM.</p>
+  <p>That is when the test set stops being a technical detail. It becomes the buying decision.</p>
+  <p>A pilot should not pass because the implementation team knows the answers. It should pass because the agent can handle representative work, reject work it should not touch, recover from broken dependencies, and send uncertain cases to the right person.</p>
+
+  <h2>A demo set answers the wrong question</h2>
+  <p>A demo set asks, "Can the agent work?" Production testing asks, "Under which conditions can this workflow be trusted, and what happens outside those conditions?"</p>
+  <p>Those are different questions. A polished set of normal examples can prove basic capability. It cannot prove the workflow will hold up when data is missing, instructions conflict, a connector times out, or a person tries to push the agent outside policy.</p>
+  <p>Start with the workflow decision. Define the business outcome, the actions the agent may take, the actions it must refuse, the systems involved, and the point where a person takes over. If those boundaries are still vague, use the <a href="/blog/ai-agent-workflow-readiness-test/">workflow readiness test</a> before building a larger evaluation.</p>
+
+  <h2>Build the test set from production reality</h2>
+  <p>Do not ask the builder to invent every test case from memory. Pull patterns from real work: corrected records, reopened tickets, failed imports, policy exceptions, customer complaints, approval overrides, duplicate transactions, and incidents. Remove private data and preserve the operating condition that made each case hard.</p>
+  <p>Talk to the people who handle exceptions. They usually know which records look normal until one field changes the decision. They also know where another team quietly cleans up the process.</p>
+  <p>Segment the set by workflow condition, not just by department or output type. You need enough cases to see whether performance drops in a specific condition instead of hiding that failure inside one average score.</p>
+
+  <h2>Require eight test-case types</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Case type</th><th>What it tests</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td>Normal</td><td>Expected performance on common work</td><td>Complete request that fits one approved policy path</td></tr>
+      <tr><td>Incomplete</td><td>Whether the agent asks, stops, or guesses</td><td>Missing account ID, consent, date, or approval evidence</td></tr>
+      <tr><td>Conflicting</td><td>Source priority and escalation</td><td>CRM status disagrees with the signed order</td></tr>
+      <tr><td>Stale</td><td>Freshness checks</td><td>Old price list or expired customer entitlement</td></tr>
+      <tr><td>Duplicate</td><td>Idempotency and state awareness</td><td>Same event arrives through an API and an email</td></tr>
+      <tr><td>Unavailable</td><td>Failure behavior when a dependency breaks</td><td>Model, connector, approval service, or destination times out</td></tr>
+      <tr><td>Out of policy</td><td>Permission and action boundaries</td><td>Request exceeds a financial limit or uses prohibited data</td></tr>
+      <tr><td>Adversarial</td><td>Resistance to manipulation</td><td>Document tells the agent to ignore policy or reveal restricted data</td></tr>
+    </tbody>
+  </table></div>
+  <p>Not every workflow needs the same mix. A read-only research assistant and an agent that changes customer records have different failure costs. Weight the set toward the conditions that can create operational, financial, legal, or customer harm.</p>
+
+  <h2>Write the expected result before running the agent</h2>
+  <p>Each case needs more than an input and a preferred answer. Record the accepted outcome, allowed sources, permitted actions, required approval, stopping condition, expected downstream state, and maximum acceptable time or cost.</p>
+  <p>Some cases should have several acceptable responses. A good agent may ask for missing information or route the work to a person. That is not a failure if the workflow requires it.</p>
+  <p>Separate correctness from consequence. A minor wording correction and an unauthorized account update should not count as equal misses. Use severity levels tied to customer impact, data exposure, financial effect, reversibility, and recovery work. Then connect those levels to the <a href="/blog/ai-agent-pilot-metrics-production-scorecard/">production scorecard</a>.</p>
+
+  <h2>Keep a holdout set the builder cannot memorize</h2>
+  <p>If the same 40 cases are used to design prompts, tune tools, fix routing, and declare success, they are training material. They no longer provide an honest release test.</p>
+  <p>Split the evaluation into a development set and a protected holdout set. Builders can use the development cases while improving the system. A separate owner should control the holdout cases, expected outcomes, and final scoring. Refresh both sets as production reveals new conditions.</p>
+  <p>Do not chase a perfect score by rewriting the answer key after every miss. Investigate whether the system failed, the source record was wrong, the policy was unclear, or the expected result was badly defined. Test-set quality needs review too.</p>
+
+  <h2>Test the whole workflow, not the model response</h2>
+  <p>A correct answer in a chat window can still become a failed business process. The agent may read the wrong customer, call an outdated tool, write to the wrong field, create a duplicate, lose approval context, or report success before the downstream system commits the change.</p>
+  <p>Run representative cases through the same identity, permissions, connectors, approval path, and destination used in production. Verify the final state and the <a href="/blog/ai-agent-audit-trail-checklist/">transaction record</a>. For write actions, test authorization, duplicate prevention, confirmation, rollback, and reconciliation.</p>
+  <p>If the vendor will only demonstrate a model response, the test is incomplete. Use the <a href="/blog/ai-agent-vendor-pilot-acceptance-test/">vendor pilot acceptance test</a> to put environment-specific evidence into the buying record.</p>
+
+  <h2>Set release rules before anyone sees the score</h2>
+  <p>Define minimum performance by case type and maximum failures by severity. One average accuracy number can hide a serious problem. An agent may score 96 percent overall while failing half of the rare cases that require a stop or human approval.</p>
+  <p>Use hard blockers for unauthorized actions, restricted-data exposure, wrong-account writes, silent duplicate transactions, or any other failure the business has classified as unacceptable. Set separate thresholds for normal work, exceptions, escalations, recovery, review effort, latency, and cost.</p>
+  <p>Name the person with release authority. That person should receive the test design, results, unresolved failures, tested configuration, and recommendation. A dashboard full of green averages is not enough.</p>
+
+  <h2>NIST gives buyers a useful standard</h2>
+  <p>The <a href="https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf" target="_blank" rel="noopener noreferrer">NIST Generative AI Profile</a> says organizations should review and document the accuracy, representativeness, relevance, and suitability of data used across the AI lifecycle. It also recommends comparing AI output with known ground-truth data and using multiple evaluation methods.</p>
+  <p>NIST calls for empirically validated methods when evaluating capability claims. Its profile also says pre-deployment test results should be shared with people who have system release approval authority. That is a practical line for buyers: evidence belongs with the person making the go or no-go decision.</p>
+  <p>NIST also recommends regular adversarial testing to identify vulnerabilities and manipulation. Your test dataset should not be a one-time launch artifact. Keep adding production exceptions, policy changes, attack patterns, and failure cases. When the model, prompt, connector, policy, or data source changes, run a <a href="/blog/ai-agent-change-management-release-test/">release test</a> against the affected cases.</p>
+
+  <h2>Use this test-set release checklist</h2>
+  <p>Before production access, require a written yes to these questions:</p>
+  <ol>
+    <li>Does the set represent common work plus incomplete, conflicting, stale, duplicate, unavailable, out-of-policy, and adversarial conditions?</li>
+    <li>Was each expected outcome defined before the run, including allowed actions, approval, stopping, and downstream state?</li>
+    <li>Are failures scored by business consequence instead of one flat error count?</li>
+    <li>Was a protected holdout set kept away from repeated tuning?</li>
+    <li>Did the test run through production-like identity, permissions, connectors, approvals, and destinations?</li>
+    <li>Were release thresholds and hard blockers approved before the results were reviewed?</li>
+    <li>Can the final record identify the exact model, prompt, policy, tool, data, and workflow versions tested?</li>
+    <li>Did the person with release authority receive the failures and limits, not just the average score?</li>
+  </ol>
+  <p>If the test set contains only clean examples, do not call the agent production-ready. Call it what it is: a demo that passed its own rehearsal.</p>
+  <p>Build the ugly cases into the buying process now. They will show up later either way.</p>
+</article></div></main>
+
+<section class="post-footer"><div class="container"><div class="cta-box">
+  <h3>Would this agent survive your real workflow?</h3>
+  <p>Book an AI readiness and implementation conversation. We will review the workflow, production exceptions, acceptance rules, and evidence needed before an agent receives live access.</p>
+  <a href="/book/" class="btn-primary">Request a Test-Set Review</a>
+</div></div></section>
+
+<footer><div class="container"><div class="footer-inner">
+  <div><img src="/logo-light.svg" alt="Augentic AI" height="28" class="logo-themed" data-light="/logo-dark.svg" data-dark="/logo-light.svg" /><div class="footer-tagline">Autonomous AI. Measurable Revenue.</div></div>
+  <ul class="footer-links"><li><a href="/#solution">Solutions</a></li><li><a href="/blog/">Insights</a></li><li><a href="/guide/">AI Guide</a></li><li><a href="/book/">Book a Call</a></li><li><a href="mailto:hello@augenticai.com">Contact</a></li></ul>
+  <div class="footer-copy">&copy; 2026 Augentic AI.</div>
+</div></div></footer>
+<script>
+const nav=document.getElementById('nav');window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>40));const menu=document.getElementById('mobileMenu');document.getElementById('hamburger').onclick=()=>menu.classList.toggle('open');const toggle=document.getElementById('themeToggle');const saved=localStorage.getItem('theme')||'dark';function logos(light){document.querySelectorAll('.logo-themed').forEach(i=>i.src=light?i.dataset.light:i.dataset.dark)}if(saved==='light'){document.body.classList.add('light');logos(true)}toggle.onclick=()=>{const light=document.body.classList.toggle('light');localStorage.setItem('theme',light?'light':'dark');logos(light)};
+</script>
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#111;border-top:1px solid rgba(212,175,55,.3);padding:1.25rem 2rem;align-items:center;justify-content:space-between;gap:1.5rem"><p style="margin:0;color:#888880;font-size:.875rem">We use cookies to improve your experience and analyze site usage. See our <a href="/privacy/" style="color:#D4AF37">Privacy Policy</a>.</p><div><button id="cookie-decline">Decline</button> <button id="cookie-accept">Accept</button></div></div>
+<script>(function(){const b=document.getElementById('cookie-banner');if(!localStorage.getItem('augentic_cookie_consent'))b.style.display='flex';document.getElementById('cookie-accept').onclick=()=>{localStorage.setItem('augentic_cookie_consent','accepted');b.style.display='none'};document.getElementById('cookie-decline').onclick=()=>{localStorage.setItem('augentic_cookie_consent','declined');b.style.display='none'}})();</script>
+</body>
+</html>

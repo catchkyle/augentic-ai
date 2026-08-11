@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Agent SLA Checklist: Measure the Whole Workflow | Augentic AI</title>
+  <meta name="description" content="Use this AI agent SLA checklist to measure the full workflow, define support triggers, assign evidence, and negotiate remedies that match business impact." />
+  <meta property="og:title" content="Your AI Agent SLA Does Not Cover the Workflow Failure You Care About" />
+  <meta property="og:description" content="A model API can meet its uptime promise while your AI workflow still fails. Define service measures around completed business outcomes." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://augenticai.com/blog/ai-agent-sla-checklist/" />
+  <link rel="canonical" href="https://augenticai.com/blog/ai-agent-sla-checklist/" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Your AI Agent SLA Does Not Cover the Workflow Failure You Care About",
+    "description": "A model API can meet its uptime promise while your AI workflow still fails. Define service measures around completed business outcomes.",
+    "datePublished": "2026-08-11",
+    "dateModified": "2026-08-11",
+    "author": { "@type": "Organization", "name": "Augentic AI" },
+    "publisher": { "@type": "Organization", "name": "Augentic AI", "url": "https://augenticai.com/" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://augenticai.com/blog/ai-agent-sla-checklist/" }
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}:root{--bg:#0A0A0A;--card:#111;--text:#F5F5F0;--muted:#888880;--dim:#555550;--accent:#D4AF37;--border:rgba(255,255,255,.07);--border-accent:rgba(212,175,55,.3);--serif:'Playfair Display',Georgia,serif;--sans:'Inter',system-ui,sans-serif}body.light{--bg:#FAFAF7;--card:#F2F2EE;--text:#0B0B0B;--muted:#444440;--dim:#999990;--border:rgba(0,0,0,.08)}html{scroll-behavior:smooth}body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.7;-webkit-font-smoothing:antialiased}h1,h2,h3{font-weight:500;line-height:1.25;letter-spacing:-.02em}h1,h2{font-family:var(--serif)}h1{font-size:clamp(2rem,4vw,3.2rem)}p{color:var(--muted)}a{color:inherit}.container{max-width:1200px;margin:auto;padding:0 2rem}.label{font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}nav{position:fixed;inset:0 0 auto;z-index:100;padding:1.5rem 0;transition:.3s}nav.scrolled{background:rgba(10,10,10,.95);border-bottom:1px solid var(--border);padding:1rem 0}body.light nav.scrolled{background:rgba(250,250,247,.95)}nav .container,.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:1.5rem}.nav-links,.footer-links{display:flex;align-items:center;gap:2rem;list-style:none}.nav-links a,.footer-links a{font-size:.8rem;color:var(--muted);text-decoration:none}.nav-right{display:flex;align-items:center;gap:.75rem}.nav-cta,.btn-primary{padding:.65rem 1.4rem;background:var(--accent);color:#0A0A0A;text-decoration:none;font-size:.78rem;font-weight:600;letter-spacing:.08em}.theme-toggle{background:none;border:1px solid var(--border);color:var(--muted);width:34px;height:34px;cursor:pointer}.hamburger{display:none;background:none;border:0}.hamburger span{display:block;width:22px;height:1px;background:var(--text);margin:5px}.mobile-menu{display:none;position:fixed;inset:0;z-index:99;background:var(--bg);padding:6rem 2rem;flex-direction:column;gap:2rem}.mobile-menu.open{display:flex}.mobile-menu a{font-size:1.4rem;text-decoration:none;border-bottom:1px solid var(--border);padding-bottom:1rem}.post-header{padding:10rem 0 4rem;border-bottom:1px solid var(--border)}.back-link{font-size:.78rem;color:var(--dim);text-decoration:none}.post-meta{display:flex;gap:1rem;align-items:center;margin:2rem 0 1.5rem}.post-meta-text{font-size:.72rem;color:var(--dim)}.post-title{max-width:900px}.post-desc{font-size:1.08rem;max-width:740px;margin-top:1.5rem}.post-body{padding:5rem 0}.post-body-inner{max-width:760px;margin:auto}.post-body p{font-size:1rem;line-height:1.9;margin-bottom:1.5rem}.post-body h2{font-size:1.8rem;margin:3.5rem 0 1.2rem}.post-body h3{font-size:1.1rem;margin:2rem 0 .8rem}.post-body ul,.post-body ol{margin:0 0 1.8rem 1.5rem;color:var(--muted)}.post-body li{margin-bottom:.7rem;line-height:1.75}.post-body a{color:var(--accent)}.table-wrap{overflow-x:auto;margin:2rem 0}table{width:100%;border-collapse:collapse;font-size:.88rem;color:var(--muted)}th,td{text-align:left;vertical-align:top;padding:1rem;border:1px solid var(--border)}th{color:var(--text);background:var(--card)}.post-footer{padding:0 0 6rem}.cta-box{max-width:760px;margin:auto;border:1px solid var(--border-accent);background:var(--card);padding:2.5rem}.cta-box h3{font-family:var(--serif);font-size:1.6rem}.cta-box p{margin:1rem 0 1.5rem}.btn-primary{display:inline-block;padding:.85rem 1.5rem}footer{border-top:1px solid var(--border);padding:3rem 0}.footer-tagline,.footer-copy{font-size:.75rem;color:var(--dim)}@media(max-width:900px){.nav-links,.nav-right .nav-cta{display:none}.hamburger{display:block}.footer-inner{flex-wrap:wrap}.footer-links{flex-wrap:wrap}.post-header{padding-top:8rem}}
+  </style>
+</head>
+<body>
+<nav id="nav"><div class="container">
+  <a href="/" style="display:flex"><img src="/logo-light.svg" alt="Augentic AI" height="37" class="logo-themed" data-light="/logo-dark.svg" data-dark="/logo-light.svg" /></a>
+  <ul class="nav-links"><li><a href="/#solution">Solutions</a></li><li><a href="/#offerings">Offerings</a></li><li><a href="/blog/">Insights</a></li><li><a href="/guide/">AI Guide</a></li></ul>
+  <div class="nav-right"><button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">◐</button><a href="/book/" class="nav-cta">Book Strategy Call</a></div>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</div></nav>
+<div class="mobile-menu" id="mobileMenu"><a href="/#solution">Solutions</a><a href="/#offerings">Offerings</a><a href="/blog/">Insights</a><a href="/guide/">AI Guide</a><a href="/book/" style="color:var(--accent)">Book Strategy Call</a></div>
+
+<header class="post-header"><div class="container">
+  <a href="/blog/" class="back-link">&larr; Back to Insights</a>
+  <div class="post-meta"><span class="label">AI Vendor Evaluation</span><span class="post-meta-text">August 11, 2026</span><span class="post-meta-text">10 min read</span></div>
+  <h1 class="post-title">Your AI Agent SLA Does Not Cover the Workflow Failure You Care About</h1>
+  <p class="post-desc">A model API can meet its uptime promise while your AI workflow still fails. Define service measures around completed business outcomes.</p>
+</div></header>
+
+<main class="post-body"><div class="container"><article class="post-body-inner">
+  <p>The vendor dashboard is green. Your AI agent is accepting requests. The contract says the platform met its uptime commitment.</p>
+  <p>The work is still not getting done.</p>
+  <p>A connector may be timing out. An approval queue may be backed up. The agent may be writing incomplete records that require hours of cleanup. Every component can look available while the business workflow misses its deadline.</p>
+  <p>Most AI agent service-level discussions stop at the platform. Buyers negotiate around one metric, then operate a chain of models, APIs, identities, business rules, people, and destination systems. That platform metric covers one part of the workflow.</p>
+  <p>You still need each vendor's SLA. You also need an end-to-end service objective your company can measure. Without both, you can prove that a supplier was available and still have no useful answer for why customers, employees, or revenue teams were waiting.</p>
+
+  <h2>Start with the business outcome</h2>
+  <p>Pick one workflow and finish this sentence: "The service is working when..."</p>
+  <p>For a lead-routing agent, the answer might be that an eligible inquiry is classified, enriched, written to the correct CRM record, assigned to the right owner, and acknowledged within a defined time. A successful model response is one step. It is not the outcome.</p>
+  <p>Name the start and finish events. Define which work qualifies, what correct completion means, and how long the business can wait. Then define failure from the user's point of view: late, wrong, duplicated, incomplete, unauthorized, or lost.</p>
+  <p>This is also a scope test. If the team cannot agree on the finish event, the workflow is not ready for a contractual service target. Use the <a href="/blog/ai-agent-workflow-readiness-test/">AI agent workflow readiness test</a> before negotiating a polished percentage around a vague process.</p>
+
+  <h2>Separate four documents that buyers keep mixing together</h2>
+  <p>The acronym soup causes real confusion. Keep these records separate:</p>
+  <ol>
+    <li><strong>Service-level indicator:</strong> the measure, such as the percentage of eligible cases completed correctly within 10 minutes.</li>
+    <li><strong>Service-level objective:</strong> the internal target for that indicator, including the measurement window and allowed exceptions.</li>
+    <li><strong>Service-level agreement:</strong> the supplier's contractual commitment, exclusions, claim process, and remedy.</li>
+    <li><strong>Support commitment:</strong> who responds, through which channel, with what evidence, during which coverage hours, and what "response" means.</li>
+  </ol>
+  <p>Google's <a href="https://sre.google/sre-book/service-level-objectives/" target="_blank" rel="noopener noreferrer">Site Reliability Engineering guidance on service-level objectives</a> makes the distinction plainly. An indicator is a quantitative measure. An objective is a target for that measure. An agreement adds consequences when the expected service is not delivered. It also notes that client-side measurements can be more relevant to the user than server-side measurements, even when the server metric is easier to collect.</p>
+  <p>A provider can measure its API accurately. You have to measure whether the workflow completed.</p>
+
+  <h2>Read the vendor SLA for what it actually measures</h2>
+  <p>Take Amazon Bedrock as a public example, not a recommendation. Its current <a href="https://aws.amazon.com/bedrock/sla/" target="_blank" rel="noopener noreferrer">service-level agreement</a> defines availability around requests to Bedrock APIs and 500 errors. It calculates availability by region in five-minute intervals. The agreement also has exclusions and requires the customer to submit a credit claim with dates, times, interval availability, and request logs.</p>
+  <p>That is a real commitment with a defined measure. It does not promise that your CRM accepted a write, that an approval happened on time, that the agent chose the right policy, or that a completed transaction was commercially useful. In fact, the same vendor's <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/troubleshooting-api-error-codes.html" target="_blank" rel="noopener noreferrer">API troubleshooting documentation</a> tells customers to handle temporary 503 capacity errors and 429 throttling through application error handling and retry logic.</p>
+  <p>The SLA has a clear boundary around one component. Your implementation has to handle what happens outside it.</p>
+
+  <h2>Build the AI agent SLA checklist around the chain</h2>
+  <p>Map the workflow into measurable layers. Do not force one vendor to promise what it cannot control, but do not let component boundaries erase accountability for the finished service.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Layer</th><th>Measure</th><th>Evidence</th><th>Likely owner</th></tr></thead>
+    <tbody>
+      <tr><td>Platform</td><td>API success, latency, quota, regional availability</td><td>Provider logs, status records, request IDs</td><td>Platform vendor and technical owner</td></tr>
+      <tr><td>Integration</td><td>Connector success, queue age, retries, duplicate prevention</td><td>Orchestration logs, queue metrics, transaction IDs</td><td>Integrator or application owner</td></tr>
+      <tr><td>Decision quality</td><td>Correct classification, policy compliance, exception rate</td><td>Test set, sampled outcomes, reviewer decisions</td><td>Business owner and AI team</td></tr>
+      <tr><td>Human step</td><td>Approval time, abandonment, escalation backlog</td><td>Approval timestamps, queue history, staffing record</td><td>Operations owner</td></tr>
+      <tr><td>Business outcome</td><td>Correct completion within the required time</td><td>Source and destination records reconciled end to end</td><td>Accountable service owner</td></tr>
+    </tbody>
+  </table></div>
+  <p>For each layer, define the numerator, denominator, measurement window, clock, exclusions, data source, owner, and escalation threshold. "Fast" is not a target. "Most requests" is not a denominator. "The dashboard" is not evidence unless everyone knows which dashboard and whether it covers the final system of record.</p>
+
+  <h2>Choose support triggers before the outage</h2>
+  <p>Do not make the support team debate contract language while work piles up. Define triggers that open an incident even when the platform is technically available.</p>
+  <p>A trigger might be queue age above the business limit, an unusual rise in retries, missing downstream confirmations, a drop in correct completion, an approval backlog, unauthorized actions, or a reconciliation mismatch. Assign severity by business impact rather than by which vendor returned an error.</p>
+  <p>Then write down who takes first response, who owns the whole incident, which component specialists join, and who can pause or restart the agent. The <a href="/blog/ai-agent-support-model/">AI agent support model</a> provides the role split. The <a href="/blog/ai-agent-audit-trail-checklist/">audit trail checklist</a> defines the transaction evidence those people will need.</p>
+  <p>Be precise with the word "response." Acknowledgement, diagnosis, workaround, restoration, and final correction are different events. A 15-minute acknowledgement can coexist with an eight-hour restoration. Your support record should show the targets that fit the business risk.</p>
+
+  <h2>Negotiate remedies that help the workflow recover</h2>
+  <p>A service credit may be appropriate, but it rarely pays for delayed work, manual cleanup, customer communication, or staff pulled into reconciliation. Put operational remedies beside financial ones.</p>
+  <p>Depending on the workflow and supplier boundary, those remedies may include priority escalation, named incident coordination, access to required logs, root-cause analysis, correction of failed transactions, temporary capacity, configuration support, a tested workaround, termination rights after repeated misses, or assistance moving to an alternate component.</p>
+  <p>Keep the promise realistic. A model provider should not guarantee your employee's approval time. An integrator should not own bad source data it cannot control. The buyer should not accept a collection of narrow promises with nobody accountable for the finished outcome.</p>
+  <p>Price the gaps. If your team must monitor queues, assemble evidence, retry work, review exceptions, and chase multiple vendors, those hours belong in the <a href="/blog/ai-agent-integration-cost-model/">full operating-cost model</a>.</p>
+
+  <h2>NIST expects third-party failure planning</h2>
+  <p>The <a href="https://airc.nist.gov/airmf-resources/playbook/govern/" target="_blank" rel="noopener noreferrer">NIST AI RMF Playbook</a> says third-party systems add complexity to AI risk management. GOVERN 6.2 calls for contingency processes for failures or incidents in high-risk third-party data or AI systems. Its suggested actions include considering redundancy and making sure incident response plans cover third-party AI systems.</p>
+  <p>NIST does not tell you what uptime percentage to buy. It does support the operating point: supplier commitments, internal monitoring, incident response, and continuity have to work together.</p>
+
+  <h2>Use this buying gate</h2>
+  <p>Before signing the SLA or production support schedule, require clear answers to these questions:</p>
+  <ol>
+    <li>What exact component, request, error, region, and time window does each vendor measure?</li>
+    <li>What business outcome defines successful end-to-end completion?</li>
+    <li>Which failures can stop that outcome while every vendor dashboard remains green?</li>
+    <li>Who measures the client-side or workflow-level indicator?</li>
+    <li>Which logs and transaction IDs are retained long enough to prove a miss?</li>
+    <li>What conditions trigger acknowledgement, diagnosis, workaround, restoration, and review?</li>
+    <li>Who owns the incident when root cause crosses vendor boundaries?</li>
+    <li>Which exclusions leave work with your internal team?</li>
+    <li>What operational and commercial remedies apply after a miss?</li>
+    <li>Has the team tested the <a href="/blog/ai-agent-failure-recovery-plan/">failure and recovery path</a> at production-like volume?</li>
+  </ol>
+  <p>If the answers stop at platform uptime, you do not have a service commitment for the AI workflow. You have one input to it.</p>
+  <p>Measure the service the business buys, not only the component the vendor sells.</p>
+</article></div></main>
+
+<section class="post-footer"><div class="container"><div class="cta-box">
+  <h3>Will your SLA catch the failure that stops the work?</h3>
+  <p>Book an AI readiness and implementation conversation. We will map one workflow, its supplier boundaries, end-to-end measures, support triggers, evidence, and recovery obligations.</p>
+  <a href="/book/" class="btn-primary">Review Your AI Workflow SLA</a>
+</div></div></section>
+
+<footer><div class="container"><div class="footer-inner">
+  <div><img src="/logo-light.svg" alt="Augentic AI" height="28" class="logo-themed" data-light="/logo-dark.svg" data-dark="/logo-light.svg" /><div class="footer-tagline">Autonomous AI. Measurable Revenue.</div></div>
+  <ul class="footer-links"><li><a href="/#solution">Solutions</a></li><li><a href="/blog/">Insights</a></li><li><a href="/guide/">AI Guide</a></li><li><a href="/book/">Book a Call</a></li><li><a href="mailto:hello@augenticai.com">Contact</a></li></ul>
+  <div class="footer-copy">&copy; 2026 Augentic AI.</div>
+</div></div></footer>
+<script>
+const nav=document.getElementById('nav');window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>40));const menu=document.getElementById('mobileMenu');document.getElementById('hamburger').onclick=()=>menu.classList.toggle('open');const toggle=document.getElementById('themeToggle');const saved=localStorage.getItem('theme')||'dark';function logos(light){document.querySelectorAll('.logo-themed').forEach(i=>i.src=light?i.dataset.light:i.dataset.dark)}if(saved==='light'){document.body.classList.add('light');logos(true)}toggle.onclick=()=>{const light=document.body.classList.toggle('light');localStorage.setItem('theme',light?'light':'dark');logos(light)};
+</script>
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#111;border-top:1px solid rgba(212,175,55,.3);padding:1.25rem 2rem;align-items:center;justify-content:space-between;gap:1.5rem"><p style="margin:0;color:#888880;font-size:.875rem">We use cookies to improve your experience and analyze site usage. See our <a href="/privacy/" style="color:#D4AF37">Privacy Policy</a>.</p><div><button id="cookie-decline">Decline</button> <button id="cookie-accept">Accept</button></div></div>
+<script>(function(){const b=document.getElementById('cookie-banner');if(!localStorage.getItem('augentic_cookie_consent'))b.style.display='flex';document.getElementById('cookie-accept').onclick=()=>{localStorage.setItem('augentic_cookie_consent','accepted');b.style.display='none'};document.getElementById('cookie-decline').onclick=()=>{localStorage.setItem('augentic_cookie_consent','declined');b.style.display='none'}})();</script>
+</body>
+</html>

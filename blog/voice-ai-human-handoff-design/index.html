@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Voice AI Handoff Design: When the Agent Must Stop Talking | Augentic AI Insights</title>
+  <meta name="description" content="Design voice AI human handoffs with clear transfer triggers, context passing, fallback ownership, test cases, and production acceptance criteria." />
+  <meta property="og:title" content="Voice AI Handoff Design: When the Agent Must Stop Talking" />
+  <meta property="og:description" content="Design voice AI human handoffs with clear transfer triggers, context passing, fallback ownership, test cases, and production acceptance criteria." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://augenticai.com/blog/voice-ai-human-handoff-design/" />
+  <link rel="canonical" href="https://augenticai.com/blog/voice-ai-human-handoff-design/" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Voice AI Handoff Design: When the Agent Must Stop Talking",
+    "description": "Design voice AI human handoffs with clear transfer triggers, context passing, fallback ownership, test cases, and production acceptance criteria.",
+    "datePublished": "2026-07-30",
+    "dateModified": "2026-07-30",
+    "author": { "@type": "Organization", "name": "Augentic AI" },
+    "publisher": { "@type": "Organization", "name": "Augentic AI", "url": "https://augenticai.com/" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://augenticai.com/blog/voice-ai-human-handoff-design/" }
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0A0A0A; --bg-card: #111111; --bg-raised: #161616;
+      --text: #F5F5F0; --text-muted: #888880; --text-dim: #555550;
+      --accent: #D4AF37; --accent-dim: rgba(212,175,55,0.12);
+      --border: rgba(255,255,255,0.07); --border-accent: rgba(212,175,55,0.3);
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Inter', system-ui, sans-serif;
+      --max: 1200px; --radius: 2px;
+    }
+    body.light {
+      --bg: #FAFAF7; --bg-card: #F2F2EE; --bg-raised: #E8E8E4;
+      --text: #0B0B0B; --text-muted: #444440; --text-dim: #999990;
+      --border: rgba(0,0,0,0.08); --border-accent: rgba(212,175,55,0.4);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-weight: 400; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    ::selection { background: var(--accent-dim); color: var(--accent); }
+    h1,h2,h3,h4 { font-weight: 500; line-height: 1.25; letter-spacing: -0.02em; }
+    h1 { font-family: var(--font-serif); font-size: clamp(2rem,4vw,3.2rem); }
+    h2 { font-family: var(--font-serif); font-size: clamp(1.6rem,3vw,2.4rem); }
+    p { color: var(--text-muted); line-height: 1.85; }
+    a { color: inherit; }
+    .label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.5rem 0; transition: background 0.4s, padding 0.3s; }
+    nav.scrolled { background: rgba(10,10,10,0.95); border-bottom: 1px solid var(--border); padding: 1rem 0; backdrop-filter: blur(12px); }
+    body.light nav.scrolled { background: rgba(250,250,247,0.95); }
+    nav .container { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.8rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; padding: 0.65rem 1.4rem; background: var(--accent); color: #0A0A0A; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s; white-space: nowrap; }
+    .nav-cta:hover { opacity: 0.88; }
+    .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+    .theme-toggle { background: none; border: 1px solid var(--border); color: var(--text-muted); cursor: pointer; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius); transition: color 0.2s; flex-shrink: 0; }
+    .theme-toggle:hover { color: var(--accent); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 1px; background: var(--text); }
+    .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 99; background: var(--bg); padding: 6rem 2rem 2rem; flex-direction: column; gap: 2rem; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 1.4rem; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 1.2rem; }
+    footer { background: var(--bg); border-top: 1px solid var(--border); padding: 3rem 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-tagline { font-size: 0.78rem; color: var(--text-dim); margin-top: 0.3rem; }
+    .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.78rem; color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text-muted); }
+    .footer-copy { font-size: 0.75rem; color: var(--text-dim); }
+    .btn-primary { display: inline-block; padding: 0.9rem 2rem; background: var(--accent); color: #0A0A0A; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s, transform 0.2s; border: none; cursor: pointer; }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .post-header { padding: 10rem 0 4rem; border-bottom: 1px solid var(--border); }
+    .post-meta { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .post-meta-text { font-size: 0.8rem; color: var(--text-dim); }
+    .post-title { margin-bottom: 1.2rem; }
+    .post-desc { font-size: 1.05rem; max-width: 680px; }
+    .post-body { padding: 5rem 0; }
+    .post-body-inner { max-width: 760px; }
+    .post-body p { margin-bottom: 1.6rem; font-size: 1rem; }
+    .post-body h2 { font-size: 1.5rem; margin: 3rem 0 1rem; color: var(--text); }
+    .post-body strong { color: var(--text); font-weight: 500; }
+    .table-wrap { overflow-x: auto; margin: 2.5rem 0; border: 1px solid var(--border); }
+    .data-table { width: 100%; min-width: 700px; border-collapse: collapse; font-size: 0.86rem; }
+    .data-table th, .data-table td { padding: 0.9rem; text-align: left; vertical-align: top; border-bottom: 1px solid var(--border); color: var(--text-muted); }
+    .data-table th { color: var(--text); background: var(--bg-card); font-weight: 600; }
+    .data-table tr:last-child td { border-bottom: 0; }
+    .post-footer { padding: 4rem 0; border-top: 1px solid var(--border); }
+    .cta-box { background: var(--bg-card); border: 1px solid var(--border); padding: 3rem; text-align: center; max-width: 640px; margin: 0 auto; }
+    .cta-box h3 { font-family: var(--font-serif); font-size: 1.6rem; margin-bottom: 1rem; color: var(--text); }
+    .cta-box p { margin-bottom: 2rem; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: var(--text-muted); text-decoration: none; margin-bottom: 3rem; transition: color 0.2s; }
+    .back-link:hover { color: var(--accent); }
+    @media (max-width: 900px) { .nav-links, .nav-right .nav-cta { display: none; } .hamburger { display: flex; } }
+  </style>
+</head>
+<body>
+<nav id="nav">
+  <div class="container">
+    <a href="/" class="nav-logo" style="display:flex;align-items:center;text-decoration:none;"><img src="/logo-light.svg" alt="Augentic AI" height="37" style="height:37px;width:auto;" class="logo-themed" data-light="/logo-dark.svg" data-dark="/logo-light.svg" /></a>
+    <ul class="nav-links">
+      <li><a href="/#solution">Solutions</a></li>
+      <li><a href="/#offerings">Offerings</a></li>
+      <li><a href="/blog/">Insights</a></li>
+      <li><a href="/guide/">AI Guide</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg id="iconSun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/></svg>
+        <svg id="iconMoon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="/book/" class="nav-cta">Book Strategy Call</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/#solution" onclick="closeMobile()">Solutions</a>
+  <a href="/#offerings" onclick="closeMobile()">Offerings</a>
+  <a href="/blog/" onclick="closeMobile()">Insights</a>
+  <a href="/guide/" onclick="closeMobile()">AI Guide</a>
+  <a href="/book/" onclick="closeMobile()" style="color:var(--accent);">Book Strategy Call</a>
+</div>
+
+<div class="post-header">
+  <div class="container">
+    <a href="/blog/" class="back-link">&larr; Back to Insights</a>
+    <div class="post-meta">
+      <span class="label">Voice AI Operations</span>
+      <span class="post-meta-text">July 30, 2026</span>
+      <span class="post-meta-text">9 min read</span>
+    </div>
+    <h1 class="post-title">Voice AI Handoff Design: When the Agent Must Stop Talking</h1>
+    <p class="post-desc">A voice agent is not production ready until it knows when to stop, who owns the call next, and what happens when the transfer fails.</p>
+  </div>
+</div>
+
+<div class="post-body">
+  <div class="container">
+    <div class="post-body-inner">
+      <p>A voice AI demo usually proves one thing: the agent can handle the script the vendor expected.</p>
+      <p>Production calls do not follow that script. People interrupt. They change the subject. They ask for a person. The destination queue is closed. The CRM lookup fails. The agent hears the words but misses the reason behind them.</p>
+      <p>That is when the handoff design matters.</p>
+      <p>A transfer button is not a handoff plan. A real plan defines when the agent stops, where the call goes, which context follows it, who owns the work if nobody answers, and how the team proves the caller did not disappear between systems.</p>
+
+      <h2>Treat the handoff as part of the workflow</h2>
+      <p>Many teams design the automated path and add human transfer near the end. That is backwards. The human path is part of the same service workflow.</p>
+      <p>Pick one call type and map every state it can enter. A routine appointment request may move through greeting, identity check, intent confirmation, availability lookup, booking, and confirmation. At any point, the call may need to move to a person or become a recoverable work item.</p>
+      <p>If the approved workflow is still vague, use the <a href="/blog/ai-agent-workflow-readiness-test/">AI agent workflow readiness test</a> before selecting a platform. Voice quality cannot repair unclear ownership or a broken queue.</p>
+
+      <h2>Write the stop conditions before the script</h2>
+      <p>The agent needs explicit reasons to stop handling the call. Do not hide those reasons inside a long prompt and hope the model interprets them the same way every time.</p>
+      <p>Start with caller control. A person should be able to request a human without arguing with the agent. Test normal phrases, interruptions, short answers, and repeated requests. "Representative," "someone else," and "I need help" may all mean the same thing in your workflow.</p>
+      <p>Add policy triggers for calls the agent is not authorized to finish. Those may include complaints, account disputes, identity uncertainty, pricing exceptions, sensitive disclosures, or any commitment outside an approved rule. The business owner needs to define this list. The vendor should not make that risk decision for you.</p>
+      <p>Add failure triggers too. Repeated misunderstanding, low confidence, unavailable source data, an API timeout, conflicting records, or a failed downstream action should change the state of the call. If the agent cannot complete the job correctly, it should stop pretending that the conversation is still on track.</p>
+
+      <h2>Choose the right handoff type</h2>
+      <p>Not every exception needs the same transfer.</p>
+      <p>A live warm transfer fits a call that needs immediate attention and has a staffed destination. The agent should explain what is happening, connect the person, and keep enough context available for the employee who answers.</p>
+      <p>A callback may be better when the right specialist is unavailable and the call can wait. That path still needs an owner, response target, contact confirmation, and visible queue. "Someone will call you back" is not a workflow unless the system creates work that someone owns.</p>
+      <p>A message or case can handle lower-risk requests that do not need a live conversation. It should include the approved summary, source call ID, routing reason, urgency, and any fields the receiving team requires.</p>
+      <p>Some calls should leave the AI workflow entirely and follow an existing emergency, fraud, safety, or regulated escalation process. The correct route depends on the company and use case. Do not let a generic voice agent invent it during the call.</p>
+
+      <h2>Pass context without passing everything</h2>
+      <p>The caller should not have to repeat the entire conversation. The employee also should not receive a transcript dump and be expected to find the important part while the caller waits.</p>
+      <p>Build a small handoff payload. Include the caller identifier when verified, stated intent, steps already attempted, information collected, reason for transfer, system results, and any promise the agent made. Mark uncertain information as uncertain.</p>
+      <p>Keep the payload inside the approved data boundary. A full transcript may contain more personal or sensitive information than the receiving queue needs. The <a href="/blog/ai-agent-data-map-read-write-retain-send/">AI agent data map</a> can help define which fields may move, where the transcript is retained, and what the next system is allowed to receive.</p>
+      <p>Show the summary to the employee before or as the call connects. If the receiving system cannot display it, count that as an integration limitation in the buying decision rather than a minor setup detail.</p>
+
+      <h2>Design the no-answer path</h2>
+      <p>Transfers fail. The queue may be closed, overloaded, misconfigured, or temporarily unavailable. The employee may answer and disconnect. Telephony can connect the call while the CRM case quietly fails.</p>
+      <p>Define a fallback for each failure. The agent may return to the caller, offer a callback, create a case, route to another staffed queue, or give a verified next step. It should never loop the caller through the same failed transfer or announce success before the destination accepts ownership.</p>
+      <p>Use a transaction ID across the voice platform, telephony event, CRM record, and work queue. That gives support teams a way to reconstruct the handoff without guessing which systems participated.</p>
+
+      <h2>Separate conversation control from system authority</h2>
+      <p>Stopping the conversation does not automatically stop every action already in motion.</p>
+      <p>If a caller requests a person while the agent is creating an appointment, determine whether the write is canceled, completed, or held for approval. If the CRM update succeeds but the transfer fails, determine who checks the record. If the agent has already sent a confirmation, the employee needs to know that before making another promise.</p>
+      <p>This is why the handoff needs an event model, not only a script. Record what the agent heard, which state it entered, what tool calls started, which writes completed, which actions were canceled, and who took ownership next.</p>
+      <p>The <a href="https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf" target="_blank" rel="noopener noreferrer">NIST Generative AI Profile</a> recommends documenting human oversight roles, known issues, model versions, and access modes in the AI system inventory. It also calls for pre-deployment testing and protocols to deactivate a system when needed. Apply that discipline to the full voice workflow, including telephony, integrations, queues, and human takeover.</p>
+
+      <h2>Build the handoff test matrix</h2>
+      <p>Do not ask the vendor to show that transfer works. Give the vendor the conditions and expected outcome, then watch what happens.</p>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr><th>Test condition</th><th>Expected agent behavior</th><th>Human destination</th><th>Evidence to inspect</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Caller asks for a person during the greeting</td><td>Acknowledge once and start the approved handoff</td><td>Primary staffed queue</td><td>Trigger, transfer event, queue acceptance, call outcome</td></tr>
+            <tr><td>Two failed intent attempts</td><td>Stop repeating the same question and explain the next route</td><td>General support or callback queue</td><td>Failure count, summary, created work item, owner</td></tr>
+            <tr><td>CRM lookup times out</td><td>Do not guess or expose another record</td><td>Limited-service queue</td><td>API error, data shown, canceled actions, transfer result</td></tr>
+            <tr><td>Destination does not answer</td><td>Return to a defined fallback without looping</td><td>Callback or case workflow</td><td>No-answer event, caller confirmation, assigned owner</td></tr>
+            <tr><td>Caller interrupts during a pending write</td><td>State what happened and apply the cancel or approval rule</td><td>Employee with action context</td><td>Write status, transcript marker, handoff payload</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Add accents, background noise, long pauses, callers who change intent, after-hours calls, unsupported languages, and abrupt disconnects. Use synthetic accounts when testing system actions. Review both successful and failed transfers, because a clean transfer can still carry the wrong context.</p>
+
+      <h2>Measure resolution, not containment</h2>
+      <p>A vendor may report that the agent contained a high share of calls. That does not tell you whether callers got the right outcome.</p>
+      <p>Track correct self-service completion, correct handoffs, unnecessary handoffs, blocked handoffs, repeat calls, abandoned calls during transfer, time until a human accepts ownership, and cases created without an owner. Measure how often employees must ask the caller to start over.</p>
+      <p>Then add the operating cost. Human review, failed-call recovery, queue staffing, integration support, transcript storage, telephony, and ongoing tuning belong in the model. The <a href="/blog/ai-agent-pilot-metrics-production-scorecard/">AI agent production scorecard</a> provides a broader structure for comparing business outcome, quality, reliability, controls, and cost.</p>
+
+      <h2>Ask vendors for evidence in your environment</h2>
+      <p>A serious evaluation should answer practical questions before contract expansion:</p>
+      <p><strong>Configuration:</strong> Can your team change transfer triggers, destinations, hours, retry rules, and fallback behavior without a professional-services project?</p>
+      <p><strong>Integration:</strong> Which systems receive the handoff payload, how quickly does it appear, and what happens when one system is unavailable?</p>
+      <p><strong>Operations:</strong> Can supervisors take over a live call, inspect failed transfers, replay the event path, and correct routing without vendor support?</p>
+      <p><strong>Commercials:</strong> Which minutes, transfers, telephony charges, integrations, support tiers, and tuning services affect the full cost?</p>
+      <p><strong>Exit:</strong> Can you export call events, summaries, recordings, configuration, and test results in a usable format?</p>
+      <p>If the use case includes outbound AI-generated voice calls, bring legal and compliance reviewers into the design early. In its <a href="https://docs.fcc.gov/public/attachments/FCC-24-17A1.pdf" target="_blank" rel="noopener noreferrer">February 2024 declaratory ruling</a>, the FCC confirmed that TCPA restrictions on artificial or prerecorded voices include current AI-generated voices and that covered calls require prior express consent unless an emergency purpose or exemption applies. That ruling is not a complete compliance plan. Call purpose, audience, jurisdiction, consent record, disclosure, and contract obligations still need qualified review.</p>
+
+      <h2>Make the handoff earn production approval</h2>
+      <p>Approve a controlled pilot when callers can reach a person without a fight, policy and failure triggers work, the employee receives useful context, no-answer paths create owned work, and logs connect the entire event.</p>
+      <p>Revise the design when the agent transfers too early, too late, or without the information the employee needs. Stop when blocked escalation, missing ownership, unbounded system actions, or unrecoverable call loss remains unresolved.</p>
+      <p>The voice may sound natural. Great. Now prove the workflow knows when the agent should stop talking.</p>
+    </div>
+  </div>
+</div>
+
+<div class="post-footer">
+  <div class="container">
+    <div class="cta-box">
+      <h3>Need a handoff design for a real voice workflow?</h3>
+      <p>Book an AI readiness and implementation conversation. We will map the call states, transfer triggers, context payload, fallback ownership, integrations, and acceptance tests before the agent handles live traffic.</p>
+      <a href="/book/" class="btn-primary">Book a Voice Workflow Design Session</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo" style="display:flex;align-items:center;"><img src="/logo-light.svg" alt="Augentic AI" height="28" style="height:28px;width:auto;" class="logo-themed" data-light="/logo-dark.svg" data-dark="/logo-light.svg" /></div>
+        <div class="footer-tagline">Autonomous AI. Measurable Revenue.</div>
+      </div>
+      <ul class="footer-links">
+        <li><a href="/#solution">Solutions</a></li>
+        <li><a href="/#offerings">Offerings</a></li>
+        <li><a href="/blog/">Insights</a></li>
+        <li><a href="/guide/">AI Guide</a></li>
+        <li><a href="/book/">Book a Call</a></li>
+        <li><a href="mailto:hello@augenticai.com">Contact</a></li>
+      </ul>
+      <div class="footer-copy">&copy; 2026 Augentic AI. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => { mobileMenu.classList.toggle('open'); });
+  function closeMobile() { mobileMenu.classList.remove('open'); }
+  const themeToggle = document.getElementById('themeToggle');
+  const iconSun = document.getElementById('iconSun');
+  const iconMoon = document.getElementById('iconMoon');
+  function updateLogos(isLight) { document.querySelectorAll('.logo-themed').forEach(function(img) { img.src = isLight ? img.dataset.light : img.dataset.dark; }); }
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  if (savedTheme === 'light') { document.body.classList.add('light'); iconSun.style.display = 'block'; iconMoon.style.display = 'none'; updateLogos(true); }
+  themeToggle.addEventListener('click', () => {
+    const isLight = document.body.classList.toggle('light');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    iconSun.style.display = isLight ? 'block' : 'none';
+    iconMoon.style.display = isLight ? 'none' : 'block';
+    updateLogos(isLight);
+  });
+</script>
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#111111;border-top:1px solid rgba(212,175,55,0.3);padding:1.25rem 2rem;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;">
+  <p style="margin:0;color:#888880;font-size:0.875rem;font-family:Inter,system-ui,sans-serif;line-height:1.6;max-width:700px;">We use cookies to improve your experience and analyze site usage. By continuing, you agree to our <a href="/privacy/" style="color:#D4AF37;text-decoration:underline;">Privacy Policy</a> and <a href="/terms/" style="color:#D4AF37;text-decoration:underline;">Terms</a>.</p>
+  <div style="display:flex;gap:0.75rem;flex-shrink:0;">
+    <button id="cookie-decline" style="padding:0.5rem 1.25rem;background:transparent;border:1px solid rgba(255,255,255,0.15);color:#888880;cursor:pointer;">Decline</button>
+    <button id="cookie-accept" style="padding:0.5rem 1.25rem;background:#D4AF37;border:none;color:#0A0A0A;cursor:pointer;">Accept</button>
+  </div>
+</div>
+<script>
+  (function() {
+    var consent = localStorage.getItem('augentic_cookie_consent');
+    var banner = document.getElementById('cookie-banner');
+    if (!consent && banner) { banner.style.display = 'flex'; }
+    document.getElementById('cookie-accept').addEventListener('click', function() { localStorage.setItem('augentic_cookie_consent', 'accepted'); banner.style.display = 'none'; });
+    document.getElementById('cookie-decline').addEventListener('click', function() { localStorage.setItem('augentic_cookie_consent', 'declined'); banner.style.display = 'none'; });
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Before You Build an AI Agent, Fix the Workflow: A 7-Point Readiness Test | Augentic AI Insights</title>
+  <meta name="description" content="AI agents do not repair broken operations. Use this seven-point readiness test to decide whether a workflow is ready for automation." />
+  <link rel="canonical" href="https://augenticai.com/blog/ai-agent-workflow-readiness-test/" />
+  <meta property="og:title" content="Before You Build an AI Agent, Fix the Workflow: A 7-Point Readiness Test" />
+  <meta property="og:description" content="AI agents do not repair broken operations. Use this seven-point readiness test to decide whether a workflow is ready for automation." />
+  <meta property="og:type" content="article" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0A0A0A; --bg-card: #111111; --bg-raised: #161616;
+      --text: #F5F5F0; --text-muted: #888880; --text-dim: #555550;
+      --accent: #D4AF37; --accent-dim: rgba(212,175,55,0.12);
+      --border: rgba(255,255,255,0.07); --border-accent: rgba(212,175,55,0.3);
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Inter', system-ui, sans-serif;
+      --max: 1200px; --radius: 2px;
+    }
+    body.light {
+      --bg: #FAFAF7; --bg-card: #F2F2EE; --bg-raised: #E8E8E4;
+      --text: #0B0B0B; --text-muted: #444440; --text-dim: #999990;
+      --border: rgba(0,0,0,0.08); --border-accent: rgba(212,175,55,0.4);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-weight: 400; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    ::selection { background: var(--accent-dim); color: var(--accent); }
+    h1,h2,h3,h4 { font-weight: 500; line-height: 1.25; letter-spacing: -0.02em; }
+    h1 { font-family: var(--font-serif); font-size: clamp(2rem,4vw,3.2rem); }
+    h2 { font-family: var(--font-serif); font-size: clamp(1.6rem,3vw,2.4rem); }
+    h3 { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; letter-spacing: 0; }
+    p { color: var(--text-muted); line-height: 1.85; }
+    a { color: inherit; }
+    .label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.5rem 0; transition: background 0.4s, padding 0.3s; }
+    nav.scrolled { background: rgba(10,10,10,0.95); border-bottom: 1px solid var(--border); padding: 1rem 0; backdrop-filter: blur(12px); }
+    body.light nav.scrolled { background: rgba(250,250,247,0.95); }
+    nav .container { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.8rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; padding: 0.65rem 1.4rem; background: var(--accent); color: #0A0A0A; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s; white-space: nowrap; }
+    .nav-cta:hover { opacity: 0.88; }
+    .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+    .theme-toggle { background: none; border: 1px solid var(--border); color: var(--text-muted); cursor: pointer; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius); transition: color 0.2s; flex-shrink: 0; }
+    .theme-toggle:hover { color: var(--accent); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 1px; background: var(--text); }
+    .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 99; background: var(--bg); padding: 6rem 2rem 2rem; flex-direction: column; gap: 2rem; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 1.4rem; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 1.2rem; }
+    footer { background: var(--bg); border-top: 1px solid var(--border); padding: 3rem 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-tagline { font-size: 0.78rem; color: var(--text-dim); margin-top: 0.3rem; }
+    .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.78rem; color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text-muted); }
+    .footer-copy { font-size: 0.75rem; color: var(--text-dim); }
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
+    .btn-primary { display: inline-block; padding: 0.9rem 2rem; background: var(--accent); color: #0A0A0A; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s, transform 0.2s; border: none; cursor: pointer; }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-outline { display: inline-block; padding: 0.85rem 1.8rem; border: 1px solid var(--border-accent); color: var(--accent); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-decoration: none; border-radius: var(--radius); transition: all 0.2s; }
+    .btn-outline:hover { background: var(--accent-dim); }
+    @media (max-width: 900px) { .nav-links, .nav-right .nav-cta { display: none; } .hamburger { display: flex; } }
+  </style>
+  <style>
+    .post-header { padding: 10rem 0 4rem; border-bottom: 1px solid var(--border); }
+    .post-meta { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .post-meta .label { margin: 0; }
+    .post-meta-text { font-size: 0.8rem; color: var(--text-dim); }
+    .post-title { margin-bottom: 1.2rem; }
+    .post-desc { font-size: 1.05rem; max-width: 640px; }
+    .post-body { padding: 5rem 0; }
+    .post-body-inner { max-width: 720px; }
+    .post-body p { margin-bottom: 1.6rem; font-size: 1rem; }
+    .post-body h2 { font-size: 1.5rem; margin: 3rem 0 1rem; color: var(--text); }
+    .post-body strong { color: var(--text); font-weight: 500; }
+    .x-credit { background: var(--bg-card); border: 1px solid var(--border-accent); border-left: 3px solid var(--accent); padding: 1.2rem 1.5rem; margin: 2.5rem 0; font-size: 0.88rem; color: var(--text-muted); font-style: italic; border-radius: 0 var(--radius) var(--radius) 0; }
+    .post-footer { padding: 4rem 0; border-top: 1px solid var(--border); }
+    .cta-box { background: var(--bg-card); border: 1px solid var(--border); padding: 3rem; text-align: center; max-width: 600px; margin: 0 auto; }
+    .cta-box h3 { font-family: var(--font-serif); font-size: 1.6rem; margin-bottom: 1rem; color: var(--text); }
+    .cta-box p { margin-bottom: 2rem; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: var(--text-muted); text-decoration: none; margin-bottom: 3rem; transition: color 0.2s; }
+    .back-link:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+<nav id="nav">
+  <div class="container">
+    <a href="/" class="nav-logo" style="display:flex;align-items:center;text-decoration:none;"><img src="/logo-light.svg" alt="Augentic AI" height="37" style="height:37px;width:auto;" class="logo-themed" data-light="/logo-dark.svg" data-dark="/logo-light.svg" /></a>
+    <ul class="nav-links">
+      <li><a href="/#solution">Solutions</a></li>
+      <li><a href="/#offerings">Offerings</a></li>
+      <li><a href="/blog/">Insights</a></li>
+      <li><a href="/guide/">AI Guide</a></li>
+    </ul>
+    <div class="nav-right">
+
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <svg id="iconSun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg id="iconMoon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+
+      <a href="/book/" class="nav-cta">Book Strategy Call</a>
+
+    </div>
+
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/#solution" onclick="closeMobile()">Solutions</a>
+  <a href="/#offerings" onclick="closeMobile()">Offerings</a>
+  <a href="/blog/" onclick="closeMobile()">Insights</a>
+  <a href="/guide/" onclick="closeMobile()">AI Guide</a>
+  <a href="/book/" onclick="closeMobile()" style="color:var(--accent);">Book Strategy Call</a>
+</div>
+
+<div class="post-header">
+  <div class="container">
+    <a href="/blog/" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M13 7H1M6 2L1 7l5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to Insights
+    </a>
+    <div class="post-meta">
+      <span class="label">AI Operations</span>
+      <span class="post-meta-text">July 25, 2026</span>
+      <span class="post-meta-text">7 min read</span>
+    </div>
+    <h1 class="post-title">Before You Build an AI Agent, Fix the Workflow: A 7-Point Readiness Test</h1>
+    <p class="post-desc">AI agents do not repair broken operations. Use this seven-point readiness test to decide whether a workflow is ready for automation.</p>
+  </div>
+</div>
+
+<div class="post-body">
+  <div class="container">
+    <div class="post-body-inner">
+      <p>Most companies start an AI agent project by choosing a model.</p>
+<p>That is backwards.</p>
+<p>The model is rarely the first thing that determines whether an agent works. The workflow does. If the process is unclear, the data is scattered, and nobody owns the exceptions, adding an AI agent will not create order. It will automate confusion.</p>
+<p>Before you pay anyone to build an agent, run the workflow through this seven-point readiness test.</p>
+<h2>1. Can You Name the Trigger?</h2>
+<p>Every useful agent needs a clear starting signal. A lead submits a form. A contract enters its renewal window. An invoice becomes overdue. A support ticket reaches a certain severity.</p>
+<p>"Help the sales team" is not a trigger. Neither is "improve customer experience." Those are goals. The agent needs an observable event that tells it when to begin working.</p>
+<p>If your team cannot agree on the trigger, the workflow is not ready.</p>
+<h2>2. Is the Required Data Available?</h2>
+<p>An agent can only make decisions from the data it can access. Map the exact information needed at each step and where that information lives today.</p>
+<p>Does it need CRM fields, contract documents, call transcripts, product inventory, or account status? Is the data structured? Is it current? Can the system access it through a reliable API, or does a person still pull it from an inbox and paste it into a spreadsheet?</p>
+<p>Do not confuse "we have the data somewhere" with "the agent can use the data safely and consistently." Those are very different things.</p>
+<h2>3. Are the Decision Rules Clear?</h2>
+<p>Agents perform well when the boundaries are specific.</p>
+<p>For example: if an inbound lead matches the target industry, has more than 50 employees, and requests a supported service, assign it to sales and draft a response. If key information is missing, request it. If the prospect asks about legal terms, escalate to a person.</p>
+<p>That is a workflow. "Use your judgment and follow up with good leads" is a wish.</p>
+<p>You do not need to document every edge case before starting. You do need a defined path for the normal case and a safe path for anything outside it.</p>
+<h2>4. Is There a Measurable Output?</h2>
+<p>An agent should produce something the business can count or evaluate: a qualified meeting, a completed record, a routed ticket, a renewal alert, a reconciled invoice, or a draft ready for approval.</p>
+<p>If success is described as "better productivity," tighten the definition. How much time does the workflow consume now? How long does it take? How often does it fail? What business result should change?</p>
+<p>Without a baseline and a measurable output, you will end up debating whether the demo felt impressive instead of whether the system created value.</p>
+<h2>5. Does a Human Own the Exceptions?</h2>
+<p>No production workflow stays on the happy path forever. A customer replies with an unusual request. An integration times out. A record contains conflicting dates. A high-value deal falls outside the scoring rules.</p>
+<p>The agent needs to know when to stop and who gets the exception. That person needs enough context to take over without rebuilding the entire history.</p>
+<p>Human approval is not a failure of automation. It is a control. The goal is not maximum autonomy. The goal is reliable business output at an acceptable level of risk.</p>
+<h2>6. Are Permissions Narrow Enough?</h2>
+<p>Start with the least access the agent needs. Read-only access is often enough for the first version. If the agent must write data, limit which records and fields it can change. If it can send messages, define approved channels, recipients, and templates.</p>
+<p>Do not hand an experimental agent broad CRM, email, and financial permissions because it makes the prototype easier. Convenience during the build can become exposure in production.</p>
+<p>The right question is simple: what is the smallest permission set that still lets the agent complete the job?</p>
+<h2>7. Can You Review What It Did?</h2>
+<p>A production agent needs a record of what it saw, what decision it made, what action it took, and whether the action succeeded.</p>
+<p>If you cannot audit the workflow, you cannot improve it. You also cannot investigate failures, prove controls, or decide when the agent has earned more autonomy.</p>
+<p>Logging is not an optional technical detail. It is part of the operating model.</p>
+<h2>How to Score the Workflow</h2>
+<p>Give the workflow one point for every question you can answer with evidence, not optimism.</p>
+<p><strong>0 to 2 points:</strong> Do not build the agent yet. Document and clean up the process first.</p>
+<p><strong>3 to 5 points:</strong> A controlled pilot may make sense, but keep the scope narrow and require human approval.</p>
+<p><strong>6 to 7 points:</strong> The workflow is a strong candidate for a production pilot with clear metrics, permissions, monitoring, and ownership.</p>
+<h2>Build the System, Not the Demo</h2>
+<p>A polished agent demo can hide a weak workflow for five minutes. Production exposes it immediately.</p>
+<p>The companies getting real value from AI are not simply buying smarter models. They are choosing narrow, valuable workflows and doing the operational work required to make automation dependable.</p>
+<p>Start with the workflow. Make the rules visible. Define the controls. Then build the agent.</p>
+
+    </div>
+  </div>
+</div>
+
+<div class="post-footer">
+  <div class="container">
+    <div class="cta-box">
+      <h3>Ready to Build Your AI Workforce?</h3>
+      <p>Schedule a 30-minute strategy call. We will identify the best workflow to automate first, the controls it needs, and what a production build would require.</p>
+      <a href="/book/" class="btn-primary">Book a Strategy Call</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo" style="display:flex;align-items:center;"><img src="/logo-light.svg" alt="Augentic AI" height="28" style="height:28px;width:auto;" class="logo-themed" data-light="/logo-dark.svg" data-dark="/logo-light.svg" /></div>
+        <div class="footer-tagline">Autonomous AI. Measurable Revenue.</div>
+      </div>
+      <ul class="footer-links">
+        <li><a href="/#solution">Solutions</a></li>
+        <li><a href="/#offerings">Offerings</a></li>
+        <li><a href="/blog/">Insights</a></li>
+        <li><a href="/guide/">AI Guide</a></li>
+        <li><a href="/book/">Book a Call</a></li>
+        <li><a href="mailto:hello@augenticai.com">Contact</a></li>
+      </ul>
+      <div class="footer-copy">&copy; 2026 Augentic AI. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => { mobileMenu.classList.toggle('open'); });
+  function closeMobile() { mobileMenu.classList.remove('open'); }
+  const themeToggle = document.getElementById('themeToggle');
+  const iconSun = document.getElementById('iconSun');
+  const iconMoon = document.getElementById('iconMoon');
+  function updateLogos(isLight) {
+    document.querySelectorAll('.logo-themed').forEach(function(img) {
+      img.src = isLight ? img.dataset.light : img.dataset.dark;
+    });
+  }
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  if (savedTheme === 'light') { document.body.classList.add('light'); iconSun.style.display = 'block'; iconMoon.style.display = 'none'; updateLogos(true); }
+  themeToggle.addEventListener('click', () => {
+    const isLight = document.body.classList.toggle('light');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    iconSun.style.display = isLight ? 'block' : 'none';
+    iconMoon.style.display = isLight ? 'none' : 'block';
+    updateLogos(isLight);
+  });
+</script>
+
+<!-- COOKIE CONSENT BANNER -->
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#111111;border-top:1px solid rgba(212,175,55,0.3);padding:1.25rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;">
+  <p style="margin:0;color:#888880;font-size:0.875rem;font-family:Inter,system-ui,sans-serif;line-height:1.6;max-width:700px;">
+    We use cookies to improve your experience and analyze site usage. By continuing, you agree to our
+    <a href="/privacy/" style="color:#D4AF37;text-decoration:underline;">Privacy Policy</a> and
+    <a href="/terms/" style="color:#D4AF37;text-decoration:underline;">Terms</a>.
+  </p>
+  <div style="display:flex;gap:0.75rem;flex-shrink:0;">
+    <button id="cookie-decline" style="padding:0.5rem 1.25rem;background:transparent;border:1px solid rgba(255,255,255,0.15);color:#888880;font-family:Inter,system-ui,sans-serif;font-size:0.8rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;cursor:pointer;border-radius:2px;">Decline</button>
+    <button id="cookie-accept" style="padding:0.5rem 1.25rem;background:#D4AF37;border:none;color:#0A0A0A;font-family:Inter,system-ui,sans-serif;font-size:0.8rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;cursor:pointer;border-radius:2px;">Accept</button>
+  </div>
+</div>
+<script>
+  (function() {
+    var consent = localStorage.getItem('augentic_cookie_consent');
+    var banner = document.getElementById('cookie-banner');
+    if (!consent && banner) { banner.style.display = 'flex'; }
+    document.getElementById('cookie-accept').addEventListener('click', function() {
+      localStorage.setItem('augentic_cookie_consent', 'accepted');
+      banner.style.display = 'none';
+    });
+    document.getElementById('cookie-decline').addEventListener('click', function() {
+      localStorage.setItem('augentic_cookie_consent', 'declined');
+      banner.style.display = 'none';
+    });
+  })();
+</script>
+
+</body>
+</html>

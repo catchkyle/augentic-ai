@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Build, Buy, or Integrate an AI Agent? Choose Based on the Workflow | Augentic AI Insights</title>
+  <meta name="description" content="Use this AI agent build-versus-buy framework to decide what to purchase, integrate, or own based on workflow value, risk, data, and operating cost." />
+  <meta property="og:title" content="Build, Buy, or Integrate an AI Agent? Choose Based on the Workflow" />
+  <meta property="og:description" content="Use this AI agent build-versus-buy framework to decide what to purchase, integrate, or own based on workflow value, risk, data, and operating cost." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://augenticai.com/blog/ai-agent-build-vs-buy-workflow/" />
+  <link rel="canonical" href="https://augenticai.com/blog/ai-agent-build-vs-buy-workflow/" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Build, Buy, or Integrate an AI Agent? Choose Based on the Workflow",
+    "description": "Use this AI agent build-versus-buy framework to decide what to purchase, integrate, or own based on workflow value, risk, data, and operating cost.",
+    "datePublished": "2026-07-28",
+    "dateModified": "2026-07-28",
+    "author": { "@type": "Organization", "name": "Augentic AI" },
+    "publisher": { "@type": "Organization", "name": "Augentic AI", "url": "https://augenticai.com/" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://augenticai.com/blog/ai-agent-build-vs-buy-workflow/" }
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0A0A0A; --bg-card: #111111; --bg-raised: #161616;
+      --text: #F5F5F0; --text-muted: #888880; --text-dim: #555550;
+      --accent: #D4AF37; --accent-dim: rgba(212,175,55,0.12);
+      --border: rgba(255,255,255,0.07); --border-accent: rgba(212,175,55,0.3);
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Inter', system-ui, sans-serif;
+      --max: 1200px; --radius: 2px;
+    }
+    body.light {
+      --bg: #FAFAF7; --bg-card: #F2F2EE; --bg-raised: #E8E8E4;
+      --text: #0B0B0B; --text-muted: #444440; --text-dim: #999990;
+      --border: rgba(0,0,0,0.08); --border-accent: rgba(212,175,55,0.4);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-weight: 400; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    ::selection { background: var(--accent-dim); color: var(--accent); }
+    h1,h2,h3,h4 { font-weight: 500; line-height: 1.25; letter-spacing: -0.02em; }
+    h1 { font-family: var(--font-serif); font-size: clamp(2rem,4vw,3.2rem); }
+    h2 { font-family: var(--font-serif); font-size: clamp(1.6rem,3vw,2.4rem); }
+    h3 { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; letter-spacing: 0; }
+    p { color: var(--text-muted); line-height: 1.85; }
+    a { color: inherit; }
+    .label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.5rem 0; transition: background 0.4s, padding 0.3s; }
+    nav.scrolled { background: rgba(10,10,10,0.95); border-bottom: 1px solid var(--border); padding: 1rem 0; backdrop-filter: blur(12px); }
+    body.light nav.scrolled { background: rgba(250,250,247,0.95); }
+    nav .container { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.8rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; padding: 0.65rem 1.4rem; background: var(--accent); color: #0A0A0A; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s; white-space: nowrap; }
+    .nav-cta:hover { opacity: 0.88; }
+    .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+    .theme-toggle { background: none; border: 1px solid var(--border); color: var(--text-muted); cursor: pointer; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius); transition: color 0.2s; flex-shrink: 0; }
+    .theme-toggle:hover { color: var(--accent); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 1px; background: var(--text); }
+    .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 99; background: var(--bg); padding: 6rem 2rem 2rem; flex-direction: column; gap: 2rem; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 1.4rem; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 1.2rem; }
+    footer { background: var(--bg); border-top: 1px solid var(--border); padding: 3rem 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-tagline { font-size: 0.78rem; color: var(--text-dim); margin-top: 0.3rem; }
+    .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.78rem; color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text-muted); }
+    .footer-copy { font-size: 0.75rem; color: var(--text-dim); }
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
+    .btn-primary { display: inline-block; padding: 0.9rem 2rem; background: var(--accent); color: #0A0A0A; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s, transform 0.2s; border: none; cursor: pointer; }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-outline { display: inline-block; padding: 0.85rem 1.8rem; border: 1px solid var(--border-accent); color: var(--accent); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-decoration: none; border-radius: var(--radius); transition: all 0.2s; }
+    .btn-outline:hover { background: var(--accent-dim); }
+    @media (max-width: 900px) { .nav-links, .nav-right .nav-cta { display: none; } .hamburger { display: flex; } }
+  </style>
+  <style>
+    .post-header { padding: 10rem 0 4rem; border-bottom: 1px solid var(--border); }
+    .post-meta { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .post-meta .label { margin: 0; }
+    .post-meta-text { font-size: 0.8rem; color: var(--text-dim); }
+    .post-title { margin-bottom: 1.2rem; }
+    .post-desc { font-size: 1.05rem; max-width: 640px; }
+    .post-body { padding: 5rem 0; }
+    .post-body-inner { max-width: 720px; }
+    .post-body p { margin-bottom: 1.6rem; font-size: 1rem; }
+    .post-body h2 { font-size: 1.5rem; margin: 3rem 0 1rem; color: var(--text); }
+    .post-body strong { color: var(--text); font-weight: 500; }
+    .x-credit { background: var(--bg-card); border: 1px solid var(--border-accent); border-left: 3px solid var(--accent); padding: 1.2rem 1.5rem; margin: 2.5rem 0; font-size: 0.88rem; color: var(--text-muted); font-style: italic; border-radius: 0 var(--radius) var(--radius) 0; }
+    .post-footer { padding: 4rem 0; border-top: 1px solid var(--border); }
+    .cta-box { background: var(--bg-card); border: 1px solid var(--border); padding: 3rem; text-align: center; max-width: 600px; margin: 0 auto; }
+    .cta-box h3 { font-family: var(--font-serif); font-size: 1.6rem; margin-bottom: 1rem; color: var(--text); }
+    .cta-box p { margin-bottom: 2rem; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: var(--text-muted); text-decoration: none; margin-bottom: 3rem; transition: color 0.2s; }
+    .back-link:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+<nav id="nav">
+  <div class="container">
+    <a href="/" class="nav-logo" style="display:flex;align-items:center;text-decoration:none;"><img src="/logo-light.svg" alt="Augentic AI" height="37" style="height:37px;width:auto;" class="logo-themed" data-light="/logo-dark.svg" data-dark="/logo-light.svg" /></a>
+    <ul class="nav-links">
+      <li><a href="/#solution">Solutions</a></li>
+      <li><a href="/#offerings">Offerings</a></li>
+      <li><a href="/blog/">Insights</a></li>
+      <li><a href="/guide/">AI Guide</a></li>
+    </ul>
+    <div class="nav-right">
+
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <svg id="iconSun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg id="iconMoon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+
+      <a href="/book/" class="nav-cta">Book Strategy Call</a>
+
+    </div>
+
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/#solution" onclick="closeMobile()">Solutions</a>
+  <a href="/#offerings" onclick="closeMobile()">Offerings</a>
+  <a href="/blog/" onclick="closeMobile()">Insights</a>
+  <a href="/guide/" onclick="closeMobile()">AI Guide</a>
+  <a href="/book/" onclick="closeMobile()" style="color:var(--accent);">Book Strategy Call</a>
+</div>
+
+<div class="post-header">
+  <div class="container">
+    <a href="/blog/" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M13 7H1M6 2L1 7l5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to Insights
+    </a>
+    <div class="post-meta">
+      <span class="label">AI Architecture</span>
+      <span class="post-meta-text">July 28, 2026</span>
+      <span class="post-meta-text">9 min read</span>
+    </div>
+    <h1 class="post-title">Build, Buy, or Integrate an AI Agent? Choose Based on the Workflow</h1>
+    <p class="post-desc">The build-versus-buy question is too blunt for an AI agent. Decide which parts of the workflow are standard, which create value, and which risks your team must control.</p>
+  </div>
+</div>
+
+<div class="post-body">
+  <div class="container">
+    <div class="post-body-inner">
+      <p>Most teams ask the AI agent question too early: should we build it or buy it?</p>
+<p>That sounds responsible. It is also too blunt to produce a good architecture decision.</p>
+<p>An agent is not one thing. It may include a model, user interface, workflow logic, connectors, identity, approval rules, memory, monitoring, and support. Buying a platform does not remove the integration work. Building a custom agent does not mean you should train a model or recreate commodity infrastructure.</p>
+<p>The better decision is component by component: what should we buy, what should we configure, what must we integrate, and what is worth owning?</p>
+<p>Start with the workflow. The workflow tells you where the business value sits, where mistakes become expensive, and where a generic product stops fitting.</p>
+
+<h2>First, split the agent into parts</h2>
+<p>A polished demo hides architecture. It makes the agent look like one product doing one job. Production is messier.</p>
+<p>The model interprets requests and produces output. The workflow layer decides what happens next. Connectors move information between the agent and systems such as your CRM, ERP, ticketing platform, document store, or phone system. Identity and permissions control what the agent can see and change. Approval rules keep selected actions with a person. Logs, evaluation, and support tell you whether the system worked and who fixes it when it did not.</p>
+<p>Your company does not need to own every layer. It does need to know who owns each one.</p>
+<p>The <a href="https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf" target="_blank" rel="noopener noreferrer">NIST Generative AI Profile</a> recommends inventorying generative AI systems and defining any inventory exemptions for AI embedded in application software. Suggested inventory details include data provenance, known issues, human oversight roles, underlying models, model versions, and access modes. NIST also recommends updating procurement reviews for AI vendors, APIs, embedded tools, and open-source components.</p>
+<p>This record becomes useful when a vendor changes the model, a connector fails, or an employee questions an action. The team can identify which layer produced the result and who can correct it.</p>
+
+<h2>Buy the parts that are already commodities</h2>
+<p>Buy when the requirement is common, the product fits the workflow without heavy distortion, and the vendor can meet your control and service requirements.</p>
+<p>User authentication, model access, basic orchestration, administrative interfaces, standard connectors, and routine monitoring may not create any competitive value for your company. Rebuilding them can create a larger maintenance burden without making the business outcome better.</p>
+<p>A packaged agent can also make sense when one application already contains the people, data, and actions needed for the workflow. If the job starts and ends inside a mature CRM or service platform, its embedded automation may be easier to deploy and support than a separate custom system.</p>
+<p>But "available in our current platform" is not the same as "ready for our workflow." Test permissions, data use, exception handling, export options, usage charges, support boundaries, and the exact actions the agent can take. Ask what changes when the vendor swaps an underlying model or retires a connector.</p>
+<p>Buy the commodity capability. Do not outsource the decision about how work should run.</p>
+
+<h2>Integrate when the value lives between systems</h2>
+<p>Many useful AI workflows cross application boundaries. A lead-intake agent might capture a request, check account context, route it, create a CRM record, draft a response, and ask a person to approve the next action. No single system owns that entire job.</p>
+<p>This is where integration usually matters more than model selection.</p>
+<p>You may buy the model and orchestration platform, use existing systems of record, and build the workflow logic and connectors that make them work together. The custom value sits in the operating path that reflects your rules, data, handoffs, and customer commitments.</p>
+<p>Integration earns its keep when it removes rekeying, reduces lost handoffs, enforces an approval, or gives the business one traceable result across several tools. It becomes expensive glue when the team keeps connecting a poorly defined process to more software.</p>
+<p>If the workflow is still changing every week, stop. Use the <a href="/blog/ai-agent-workflow-readiness-test/">seven-point workflow readiness test</a> before adding more architecture. AI does not settle an argument about who owns the work.</p>
+
+<h2>Build only where ownership matters</h2>
+<p>A custom build deserves consideration when the workflow creates meaningful differentiation, packaged products cannot support a necessary control, or the economics at your expected volume clearly favor ownership.</p>
+<p>There are other reasonable triggers. Your team may need a specialized data boundary, a unique approval model, portability across model providers, or control over the interface customers use. A packaged tool may force employees into a process that conflicts with how the business operates.</p>
+<p>Custom does not mean starting from zero. A sensible build may still use a commercial model API, an identity provider, managed databases, and proven monitoring tools. Own the workflow behavior that matters. Rent the plumbing when renting it is cheaper and safe.</p>
+<p>Be honest about the operating commitment. Someone must maintain prompts and rules, test model changes, repair connectors, review failures, manage access, watch costs, and support users. If the project budget pays for a launch but nobody owns month six, you did not choose to build. You chose to accumulate an unsupported system.</p>
+
+<h2>Score the workflow before scoring vendors</h2>
+<p>Use these questions to choose the ownership boundary:</p>
+<p><strong>How unique is the workflow?</strong> If your competitors run nearly the same process, a packaged product may be enough. If the workflow carries your pricing logic, customer experience, or operating advantage, own more of its behavior.</p>
+<p><strong>Where does the source of truth live?</strong> A workflow contained in one platform favors buying. A workflow that depends on several systems usually requires deliberate integration.</p>
+<p><strong>How costly is a wrong action?</strong> High-consequence work may require custom approval gates, narrower permissions, stronger logs, or a design that keeps final authority with a person.</p>
+<p><strong>How much change should you expect?</strong> Frequent policy, data, or system changes raise maintenance costs. Decide whether a vendor or your team is better positioned to absorb them.</p>
+<p><strong>What must remain portable?</strong> Identify the workflow definitions, prompts, evaluations, data mappings, logs, and records you need if a model or platform changes.</p>
+<p><strong>Can you operate what you build?</strong> Name the owner, support path, monitoring process, change test, and shutdown authority. If those names and processes do not exist, reduce the custom scope.</p>
+<p><strong>What does a successful case cost?</strong> Compare full cost per correctly completed business outcome. Include licenses, model usage, integration, testing, review, exceptions, monitoring, and support. The site's <a href="/blog/evaluating-ai-roi-framework/">AI ROI framework</a> can help you build the broader cost model.</p>
+
+<h2>Watch the hidden cost in every option</h2>
+<p>Buying hides implementation work. A license does not clean data, settle permissions, redesign approvals, or train the team.</p>
+<p>Integrating hides dependency risk. Every API, webhook, credential, and field mapping can fail or change. The design needs retry rules, duplicate protection, alerting, and a manual path.</p>
+<p>Building hides operating work. The first release is only the start. Models, policies, source systems, and user behavior all change.</p>
+<p>Ask vendors and implementation partners for one cost model that covers setup and steady-state operation. Require assumptions for transaction volume, model usage, connector fees, environments, monitoring, support, and internal labor. Then model a normal month, a growth month, and a bad month with extra exceptions.</p>
+<p>A low subscription price can still support an expensive workflow. A larger implementation can still be the better choice if it removes enough manual work and remains supportable. Architecture should follow the business case, not the other way around.</p>
+
+<h2>Protect the exit before signing</h2>
+<p>The ownership decision is incomplete until you can explain how the company changes direction.</p>
+<p>Ask which parts can be exported in a usable format. Confirm who owns workflow configurations, prompts, logs, evaluation data, and custom code. Document API rate limits, connector dependencies, model substitutions, data retention, deletion, and post-termination access. Put support responsibilities and service expectations in writing.</p>
+<p>NIST's GenAI Profile recommends well-defined contracts and service-level agreements for areas including ownership, usage rights, quality, and security. It also calls for supplier risk assessment and ongoing monitoring of third-party AI risk. Those questions apply whether you buy a complete product or assemble several services behind a custom interface.</p>
+<p>Some vendor dependence is normal. Make it intentional, price it, and keep a workable exit.</p>
+
+<h2>Pilot the ownership boundary, not only the agent</h2>
+<p>A pilot should prove more than output quality. It should test whether your chosen split between vendor, integrator, and internal team works under real conditions.</p>
+<p>Run normal cases and ugly ones. Use missing data. Revoke a credential. Make an API unavailable. Send an out-of-scope request. Trigger an action that requires approval. Confirm that the system stops correctly, preserves context, and tells the right owner what happened.</p>
+<p>Measure the business outcome, correction work, exceptions, reliability, control performance, and full cost. Use the <a href="/blog/ai-agent-pilot-metrics-production-scorecard/">production scorecard</a> to keep the decision tied to the workflow.</p>
+<p>Then make the call. Buy more if the product handles the requirement cleanly. Build the narrow piece the business needs to control. Integrate only where the handoff creates measurable value. Stop if the workflow or economics do not hold up.</p>
+<p>Own the decisions that shape the workflow. Rent or buy the rest when the controls and economics hold up.</p>
+
+    </div>
+  </div>
+</div>
+
+<div class="post-footer">
+  <div class="container">
+    <div class="cta-box">
+      <h3>Need a build, buy, and integration decision for a real workflow?</h3>
+      <p>Book an AI readiness and implementation conversation. We will map the workflow, define the ownership boundaries, and build a practical path from assessment to controlled pilot.</p>
+      <a href="/book/" class="btn-primary">Book an AI Readiness Call</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo" style="display:flex;align-items:center;"><img src="/logo-light.svg" alt="Augentic AI" height="28" style="height:28px;width:auto;" class="logo-themed" data-light="/logo-dark.svg" data-dark="/logo-light.svg" /></div>
+        <div class="footer-tagline">Autonomous AI. Measurable Revenue.</div>
+      </div>
+      <ul class="footer-links">
+        <li><a href="/#solution">Solutions</a></li>
+        <li><a href="/#offerings">Offerings</a></li>
+        <li><a href="/blog/">Insights</a></li>
+        <li><a href="/guide/">AI Guide</a></li>
+        <li><a href="/book/">Book a Call</a></li>
+        <li><a href="mailto:hello@augenticai.com">Contact</a></li>
+      </ul>
+      <div class="footer-copy">&copy; 2026 Augentic AI. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => { mobileMenu.classList.toggle('open'); });
+  function closeMobile() { mobileMenu.classList.remove('open'); }
+  const themeToggle = document.getElementById('themeToggle');
+  const iconSun = document.getElementById('iconSun');
+  const iconMoon = document.getElementById('iconMoon');
+  function updateLogos(isLight) {
+    document.querySelectorAll('.logo-themed').forEach(function(img) {
+      img.src = isLight ? img.dataset.light : img.dataset.dark;
+    });
+  }
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  if (savedTheme === 'light') { document.body.classList.add('light'); iconSun.style.display = 'block'; iconMoon.style.display = 'none'; updateLogos(true); }
+  themeToggle.addEventListener('click', () => {
+    const isLight = document.body.classList.toggle('light');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    iconSun.style.display = isLight ? 'block' : 'none';
+    iconMoon.style.display = isLight ? 'none' : 'block';
+    updateLogos(isLight);
+  });
+</script>
+
+<!-- COOKIE CONSENT BANNER -->
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#111111;border-top:1px solid rgba(212,175,55,0.3);padding:1.25rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;">
+  <p style="margin:0;color:#888880;font-size:0.875rem;font-family:Inter,system-ui,sans-serif;line-height:1.6;max-width:700px;">
+    We use cookies to improve your experience and analyze site usage. By continuing, you agree to our
+    <a href="/privacy/" style="color:#D4AF37;text-decoration:underline;">Privacy Policy</a> and
+    <a href="/terms/" style="color:#D4AF37;text-decoration:underline;">Terms</a>.
+  </p>
+  <div style="display:flex;gap:0.75rem;flex-shrink:0;">
+    <button id="cookie-decline" style="padding:0.5rem 1.25rem;background:transparent;border:1px solid rgba(255,255,255,0.15);color:#888880;font-family:Inter,system-ui,sans-serif;font-size:0.8rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;cursor:pointer;border-radius:2px;">Decline</button>
+    <button id="cookie-accept" style="padding:0.5rem 1.25rem;background:#D4AF37;border:none;color:#0A0A0A;font-family:Inter,system-ui,sans-serif;font-size:0.8rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;cursor:pointer;border-radius:2px;">Accept</button>
+  </div>
+</div>
+<script>
+  (function() {
+    var consent = localStorage.getItem('augentic_cookie_consent');
+    var banner = document.getElementById('cookie-banner');
+    if (!consent && banner) { banner.style.display = 'flex'; }
+    document.getElementById('cookie-accept').addEventListener('click', function() {
+      localStorage.setItem('augentic_cookie_consent', 'accepted');
+      banner.style.display = 'none';
+    });
+    document.getElementById('cookie-decline').addEventListener('click', function() {
+      localStorage.setItem('augentic_cookie_consent', 'declined');
+      banner.style.display = 'none';
+    });
+  })();
+</script>
+
+</body>
+</html>

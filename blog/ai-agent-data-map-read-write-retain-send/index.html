@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The AI Agent Data Map: What It Can Read, Write, Retain, and Send | Augentic AI Insights</title>
+  <meta name="description" content="Use this AI agent data mapping worksheet to define what an agent may read, write, retain, and send before approving a controlled production pilot." />
+  <meta property="og:title" content="The AI Agent Data Map: What It Can Read, Write, Retain, and Send" />
+  <meta property="og:description" content="Use this AI agent data mapping worksheet to define what an agent may read, write, retain, and send before approving a controlled production pilot." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://augenticai.com/blog/ai-agent-data-map-read-write-retain-send/" />
+  <link rel="canonical" href="https://augenticai.com/blog/ai-agent-data-map-read-write-retain-send/" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The AI Agent Data Map: What It Can Read, Write, Retain, and Send",
+    "description": "Use this AI agent data mapping worksheet to define what an agent may read, write, retain, and send before approving a controlled production pilot.",
+    "datePublished": "2026-07-29",
+    "dateModified": "2026-07-29",
+    "author": { "@type": "Organization", "name": "Augentic AI" },
+    "publisher": { "@type": "Organization", "name": "Augentic AI", "url": "https://augenticai.com/" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://augenticai.com/blog/ai-agent-data-map-read-write-retain-send/" }
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0A0A0A; --bg-card: #111111; --bg-raised: #161616;
+      --text: #F5F5F0; --text-muted: #888880; --text-dim: #555550;
+      --accent: #D4AF37; --accent-dim: rgba(212,175,55,0.12);
+      --border: rgba(255,255,255,0.07); --border-accent: rgba(212,175,55,0.3);
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Inter', system-ui, sans-serif;
+      --max: 1200px; --radius: 2px;
+    }
+    body.light {
+      --bg: #FAFAF7; --bg-card: #F2F2EE; --bg-raised: #E8E8E4;
+      --text: #0B0B0B; --text-muted: #444440; --text-dim: #999990;
+      --border: rgba(0,0,0,0.08); --border-accent: rgba(212,175,55,0.4);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-weight: 400; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    ::selection { background: var(--accent-dim); color: var(--accent); }
+    h1,h2,h3,h4 { font-weight: 500; line-height: 1.25; letter-spacing: -0.02em; }
+    h1 { font-family: var(--font-serif); font-size: clamp(2rem,4vw,3.2rem); }
+    h2 { font-family: var(--font-serif); font-size: clamp(1.6rem,3vw,2.4rem); }
+    p { color: var(--text-muted); line-height: 1.85; }
+    a { color: inherit; }
+    .label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.5rem 0; transition: background 0.4s, padding 0.3s; }
+    nav.scrolled { background: rgba(10,10,10,0.95); border-bottom: 1px solid var(--border); padding: 1rem 0; backdrop-filter: blur(12px); }
+    body.light nav.scrolled { background: rgba(250,250,247,0.95); }
+    nav .container { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.8rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; padding: 0.65rem 1.4rem; background: var(--accent); color: #0A0A0A; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s; white-space: nowrap; }
+    .nav-cta:hover { opacity: 0.88; }
+    .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+    .theme-toggle { background: none; border: 1px solid var(--border); color: var(--text-muted); cursor: pointer; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius); transition: color 0.2s; flex-shrink: 0; }
+    .theme-toggle:hover { color: var(--accent); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 1px; background: var(--text); }
+    .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 99; background: var(--bg); padding: 6rem 2rem 2rem; flex-direction: column; gap: 2rem; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 1.4rem; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 1.2rem; }
+    footer { background: var(--bg); border-top: 1px solid var(--border); padding: 3rem 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-tagline { font-size: 0.78rem; color: var(--text-dim); margin-top: 0.3rem; }
+    .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.78rem; color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text-muted); }
+    .footer-copy { font-size: 0.75rem; color: var(--text-dim); }
+    .btn-primary { display: inline-block; padding: 0.9rem 2rem; background: var(--accent); color: #0A0A0A; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s, transform 0.2s; border: none; cursor: pointer; }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .post-header { padding: 10rem 0 4rem; border-bottom: 1px solid var(--border); }
+    .post-meta { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .post-meta-text { font-size: 0.8rem; color: var(--text-dim); }
+    .post-title { margin-bottom: 1.2rem; }
+    .post-desc { font-size: 1.05rem; max-width: 680px; }
+    .post-body { padding: 5rem 0; }
+    .post-body-inner { max-width: 760px; }
+    .post-body p { margin-bottom: 1.6rem; font-size: 1rem; }
+    .post-body h2 { font-size: 1.5rem; margin: 3rem 0 1rem; color: var(--text); }
+    .post-body strong { color: var(--text); font-weight: 500; }
+    .table-wrap { overflow-x: auto; margin: 2.5rem 0; border: 1px solid var(--border); }
+    .data-table { width: 100%; min-width: 700px; border-collapse: collapse; font-size: 0.86rem; }
+    .data-table th, .data-table td { padding: 0.9rem; text-align: left; vertical-align: top; border-bottom: 1px solid var(--border); color: var(--text-muted); }
+    .data-table th { color: var(--text); background: var(--bg-card); font-weight: 600; }
+    .data-table tr:last-child td { border-bottom: 0; }
+    .post-footer { padding: 4rem 0; border-top: 1px solid var(--border); }
+    .cta-box { background: var(--bg-card); border: 1px solid var(--border); padding: 3rem; text-align: center; max-width: 640px; margin: 0 auto; }
+    .cta-box h3 { font-family: var(--font-serif); font-size: 1.6rem; margin-bottom: 1rem; color: var(--text); }
+    .cta-box p { margin-bottom: 2rem; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: var(--text-muted); text-decoration: none; margin-bottom: 3rem; transition: color 0.2s; }
+    .back-link:hover { color: var(--accent); }
+    @media (max-width: 900px) { .nav-links, .nav-right .nav-cta { display: none; } .hamburger { display: flex; } }
+  </style>
+</head>
+<body>
+<nav id="nav">
+  <div class="container">
+    <a href="/" class="nav-logo" style="display:flex;align-items:center;text-decoration:none;"><img src="/logo-light.svg" alt="Augentic AI" height="37" style="height:37px;width:auto;" class="logo-themed" data-light="/logo-dark.svg" data-dark="/logo-light.svg" /></a>
+    <ul class="nav-links">
+      <li><a href="/#solution">Solutions</a></li>
+      <li><a href="/#offerings">Offerings</a></li>
+      <li><a href="/blog/">Insights</a></li>
+      <li><a href="/guide/">AI Guide</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg id="iconSun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/></svg>
+        <svg id="iconMoon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="/book/" class="nav-cta">Book Strategy Call</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/#solution" onclick="closeMobile()">Solutions</a>
+  <a href="/#offerings" onclick="closeMobile()">Offerings</a>
+  <a href="/blog/" onclick="closeMobile()">Insights</a>
+  <a href="/guide/" onclick="closeMobile()">AI Guide</a>
+  <a href="/book/" onclick="closeMobile()" style="color:var(--accent);">Book Strategy Call</a>
+</div>
+
+<div class="post-header">
+  <div class="container">
+    <a href="/blog/" class="back-link">&larr; Back to Insights</a>
+    <div class="post-meta">
+      <span class="label">AI Data Governance</span>
+      <span class="post-meta-text">July 29, 2026</span>
+      <span class="post-meta-text">9 min read</span>
+    </div>
+    <h1 class="post-title">The AI Agent Data Map: What It Can Read, Write, Retain, and Send</h1>
+    <p class="post-desc">A data map turns a vague promise about "secure AI" into a testable boundary for one real workflow. Build it before the agent receives production access.</p>
+  </div>
+</div>
+
+<div class="post-body">
+  <div class="container">
+    <div class="post-body-inner">
+      <p>An AI agent can pass a demo and still have no business touching your production data.</p>
+      <p>The demo usually proves that the model can produce a useful answer. It rarely proves which customer records the agent can retrieve, which fields it can change, where prompts and outputs are stored, or what happens when it calls another service.</p>
+      <p>That gap matters. A normal software tool may wait for a person to choose an action. An agent can retrieve information, make a decision, and trigger a downstream write in one run. If the team cannot trace that path, it has not approved a controlled workflow. It has approved a black box with credentials.</p>
+      <p>Build a data map for the specific workflow. Keep it practical. One page should show what the agent can read, write, retain, and send, plus the identity, approval, logging, and deletion rules around those actions.</p>
+
+      <h2>Start with one transaction, not the whole platform</h2>
+      <p>"The agent connects to Salesforce and Microsoft 365" is an inventory statement. It is not a data map.</p>
+      <p>Pick one transaction and follow it from trigger to completed outcome. For example: a customer emails a service request, the agent identifies the account, checks entitlement, creates a ticket, drafts a response, and routes an exception to a person.</p>
+      <p>That workflow may touch an inbox, identity provider, CRM, contract repository, ticketing system, model provider, orchestration layer, logging platform, and notification service. Each step may create a new copy, log entry, cache, or write permission.</p>
+      <p>If the workflow is still vague, stop and use the <a href="/blog/ai-agent-workflow-readiness-test/">seven-point workflow readiness test</a>. Data mapping cannot rescue a process nobody has defined.</p>
+
+      <h2>Map the trigger and every data hop</h2>
+      <p>Draw the workflow left to right. Start with the event that wakes the agent up. Then record each system it calls, the data it receives, the decision it makes, and the action it attempts.</p>
+      <p>Do not merge several steps into "processes the request." That phrase can hide the exact behavior leadership needs to approve. Does the agent search all customer records or one account? Does it retrieve a full contract or only an entitlement field? Does it update the source record or create a proposed change somewhere else?</p>
+      <p>Your map should answer these questions for every hop:</p>
+      <p><strong>System:</strong> Which application, database, API, model, or queue is involved?</p>
+      <p><strong>Data:</strong> Which fields, documents, transcripts, metadata, and identifiers move?</p>
+      <p><strong>Purpose:</strong> Why does the agent need that information for this transaction?</p>
+      <p><strong>Authority:</strong> Is the step read, prepare, write with approval, or automatic action within limits?</p>
+      <p><strong>Evidence:</strong> Which log proves what happened, and who can review it?</p>
+
+      <h2>Separate read access from discovery access</h2>
+      <p>Read access sounds harmless. It is not one permission.</p>
+      <p>An agent that can retrieve one account by an approved identifier has a different boundary from an agent that can search every account, browse shared drives, follow links, or query a data warehouse. Discovery access expands what the agent may encounter, including records the workflow never needed.</p>
+      <p>For each source, document the approved data set, fields, filters, record classes, and retrieval method. Note whether source permissions are enforced at query time. Then test what happens after a user loses access or a record changes classification.</p>
+      <p>Start narrower than the final vision. One mailbox folder is better than the whole tenant. One CRM object is better than unrestricted API scope. A purpose-built view can be safer than giving the agent broad database access and asking the prompt to behave.</p>
+
+      <h2>Treat every write as a business decision</h2>
+      <p>Write access includes more than editing a database. Sending an email, opening a ticket, scheduling an appointment, triggering a payment, changing a status, posting a message, or calling another automation can alter the business.</p>
+      <p>List each allowed action separately. Define the record types, fields, amounts, recipients, status transitions, and frequency limits. Mark whether the action is reversible. Name the approval rule for anything that creates a customer commitment, financial impact, legal exposure, access change, or hard-to-reverse result.</p>
+      <p>A good rollout often moves through four levels: read, prepare, act with approval, and act within tested limits. Do not jump from a clean draft to unrestricted writes because the interface makes approval feel inconvenient.</p>
+      <p>The <a href="/blog/ai-agent-pilot-metrics-production-scorecard/">AI agent production scorecard</a> gives you a way to measure correct completions, good escalations, false completions, and control failures before adding authority.</p>
+
+      <h2>Find every place the workflow retains data</h2>
+      <p>"We do not train on your data" does not answer the retention question.</p>
+      <p>Prompts, retrieved records, tool parameters, outputs, feedback, traces, support records, vector indexes, caches, and audit logs may follow different retention rules. The source application may keep one copy while the agent platform, model provider, and monitoring system each keep another.</p>
+      <p>Record the storage location, owner, retention period, deletion method, backup behavior, legal-hold impact, and administrator control for each copy. Also record whether users can change a setting that affects the company policy.</p>
+      <p>Be careful with logs. A detailed trace can help reconstruct a bad action, but a log that copies full prompts and retrieved documents may create another sensitive repository. Keep enough evidence to investigate the transaction without collecting everything forever.</p>
+
+      <h2>Document where the agent sends data</h2>
+      <p>Outbound data does not stop at the model endpoint. The workflow may call a search provider, enrichment service, speech processor, email system, webhook, analytics platform, support tool, or vendor subprocessor.</p>
+      <p>Inventory every external recipient and state exactly what it receives. Include destination region, contract owner, encryption requirement, permitted use, retention rule, and failure behavior. If the vendor can add subprocessors, document how your team receives notice and who reviews the change.</p>
+      <p>The <a href="https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf" target="_blank" rel="noopener noreferrer">NIST Generative AI Profile</a> recommends inventorying third parties with access to organizational content and updating procurement reviews for data privacy, security, APIs, embedded tools, and service providers. It also recommends inventory entries that include data provenance, human oversight roles, sensitive-data considerations, underlying models, model versions, and access modes.</p>
+      <p>That is useful implementation guidance. A team should know which service received the data, under which terms, through which route, before a live transaction sends it.</p>
+
+      <h2>Build the one-page worksheet</h2>
+      <p>A useful map can start as a table. Add a row for every system hop and do not approve the pilot while a required cell remains "unknown."</p>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr><th>Step</th><th>System and identity</th><th>Data read</th><th>Data written or sent</th><th>Retention and evidence</th><th>Approval or limit</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1. Receive request</td><td>Approved inbox; dedicated agent identity</td><td>Sender, subject, body, attachments</td><td>Workflow ID to orchestration queue</td><td>Message follows mailbox policy; trace stores IDs, not full attachment</td><td>Reject unsupported file types</td></tr>
+            <tr><td>2. Find account</td><td>CRM connector; read-only scope</td><td>Account ID, status, service tier</td><td>No source write</td><td>Query result cached for one run</td><td>Escalate ambiguous matches</td></tr>
+            <tr><td>3. Create ticket</td><td>Ticket API; create-only scope</td><td>Approved account and request fields</td><td>New ticket with source reference</td><td>Ticket and action log follow support policy</td><td>Human approval for priority-one classification</td></tr>
+            <tr><td>4. Draft response</td><td>Model endpoint; no direct send right</td><td>Minimum ticket context and approved knowledge</td><td>Draft returned to workflow</td><td>Vendor and platform retention documented</td><td>Person approves customer-facing response</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Add the business owner, technical owner, risk owner, data classification, production environment, contract references, and next review date at the top. Record the stop procedure and credential revocation path at the bottom.</p>
+      <p>This is an implementation artifact, not a policy deck. The people who configure the connectors and approval rules should be able to build directly from it.</p>
+
+      <h2>Test the map with synthetic data</h2>
+      <p>Documentation is a claim until the system proves it.</p>
+      <p>Create synthetic records that look like real workflow data without exposing a real customer or employee. Include a permitted record, a restricted record, an ambiguous match, a revoked user, a missing field, a request that requires approval, and an action beyond the agent's limit.</p>
+      <p>Run the workflow and inspect the source systems, admin console, audit logs, model traces, downstream records, and notifications. Confirm that blocked data stays blocked, required approvals appear, denied writes fail safely, and the trace contains enough context for investigation.</p>
+      <p>Then test deletion and decommissioning. Remove the synthetic source record, revoke the agent identity, disconnect the connector, and follow the retained copies. NIST calls for deactivation protocols and asks organizations to consider retention, leakage, and upstream or downstream dependencies when decommissioning a generative AI system.</p>
+      <p>If the team cannot show what remains, the data boundary is still unknown.</p>
+
+      <h2>Use the map to make the pilot decision</h2>
+      <p>Approve a controlled pilot when the workflow is narrow, the identities are distinguishable, permissions match the job, downstream actions have real limits, retention is understood, external recipients are known, and the evidence path works.</p>
+      <p>Revise the design when the agent needs broad access because the data architecture is messy, when a prompt is doing the job of an access control, or when nobody can explain where traces and connector data go.</p>
+      <p>Stop when a deal breaker remains unclear. Restricted data, unbounded writes, missing logs, no deletion path, and no tested shutdown procedure do not become acceptable because the model output looked good.</p>
+      <p>Map one transaction. Test the boundary. Let the agent earn more access with evidence.</p>
+    </div>
+  </div>
+</div>
+
+<div class="post-footer">
+  <div class="container">
+    <div class="cta-box">
+      <h3>Need a data boundary for a real AI workflow?</h3>
+      <p>Book an AI readiness and implementation conversation. We will map what the agent needs to read, write, retain, and send, then define a controlled pilot your team can test.</p>
+      <a href="/book/" class="btn-primary">Request a Data-Boundary Review</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo" style="display:flex;align-items:center;"><img src="/logo-light.svg" alt="Augentic AI" height="28" style="height:28px;width:auto;" class="logo-themed" data-light="/logo-dark.svg" data-dark="/logo-light.svg" /></div>
+        <div class="footer-tagline">Autonomous AI. Measurable Revenue.</div>
+      </div>
+      <ul class="footer-links">
+        <li><a href="/#solution">Solutions</a></li>
+        <li><a href="/#offerings">Offerings</a></li>
+        <li><a href="/blog/">Insights</a></li>
+        <li><a href="/guide/">AI Guide</a></li>
+        <li><a href="/book/">Book a Call</a></li>
+        <li><a href="mailto:hello@augenticai.com">Contact</a></li>
+      </ul>
+      <div class="footer-copy">&copy; 2026 Augentic AI. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => { mobileMenu.classList.toggle('open'); });
+  function closeMobile() { mobileMenu.classList.remove('open'); }
+  const themeToggle = document.getElementById('themeToggle');
+  const iconSun = document.getElementById('iconSun');
+  const iconMoon = document.getElementById('iconMoon');
+  function updateLogos(isLight) { document.querySelectorAll('.logo-themed').forEach(function(img) { img.src = isLight ? img.dataset.light : img.dataset.dark; }); }
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  if (savedTheme === 'light') { document.body.classList.add('light'); iconSun.style.display = 'block'; iconMoon.style.display = 'none'; updateLogos(true); }
+  themeToggle.addEventListener('click', () => {
+    const isLight = document.body.classList.toggle('light');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    iconSun.style.display = isLight ? 'block' : 'none';
+    iconMoon.style.display = isLight ? 'none' : 'block';
+    updateLogos(isLight);
+  });
+</script>
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#111111;border-top:1px solid rgba(212,175,55,0.3);padding:1.25rem 2rem;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;">
+  <p style="margin:0;color:#888880;font-size:0.875rem;font-family:Inter,system-ui,sans-serif;line-height:1.6;max-width:700px;">We use cookies to improve your experience and analyze site usage. By continuing, you agree to our <a href="/privacy/" style="color:#D4AF37;text-decoration:underline;">Privacy Policy</a> and <a href="/terms/" style="color:#D4AF37;text-decoration:underline;">Terms</a>.</p>
+  <div style="display:flex;gap:0.75rem;flex-shrink:0;">
+    <button id="cookie-decline" style="padding:0.5rem 1.25rem;background:transparent;border:1px solid rgba(255,255,255,0.15);color:#888880;cursor:pointer;">Decline</button>
+    <button id="cookie-accept" style="padding:0.5rem 1.25rem;background:#D4AF37;border:none;color:#0A0A0A;cursor:pointer;">Accept</button>
+  </div>
+</div>
+<script>
+  (function() {
+    var consent = localStorage.getItem('augentic_cookie_consent');
+    var banner = document.getElementById('cookie-banner');
+    if (!consent && banner) { banner.style.display = 'flex'; }
+    document.getElementById('cookie-accept').addEventListener('click', function() { localStorage.setItem('augentic_cookie_consent', 'accepted'); banner.style.display = 'none'; });
+    document.getElementById('cookie-decline').addEventListener('click', function() { localStorage.setItem('augentic_cookie_consent', 'declined'); banner.style.display = 'none'; });
+  })();
+</script>
+</body>
+</html>

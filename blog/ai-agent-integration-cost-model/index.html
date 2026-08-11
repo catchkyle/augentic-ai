@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Hidden Cost of AI Agent Integrations: Build the Full Cost Model | Augentic AI Insights</title>
+  <meta name="description" content="Build a complete AI agent implementation cost model covering integrations, identity, monitoring, support, exceptions, change, and vendor exit." />
+  <meta property="og:title" content="The Hidden Cost of AI Agent Integrations: Build the Full Cost Model" />
+  <meta property="og:description" content="Build a complete AI agent implementation cost model covering integrations, identity, monitoring, support, exceptions, change, and vendor exit." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://augenticai.com/blog/ai-agent-integration-cost-model/" />
+  <link rel="canonical" href="https://augenticai.com/blog/ai-agent-integration-cost-model/" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The Hidden Cost of AI Agent Integrations: Build the Full Cost Model",
+    "description": "Build a complete AI agent implementation cost model covering integrations, identity, monitoring, support, exceptions, change, and vendor exit.",
+    "datePublished": "2026-07-31",
+    "dateModified": "2026-07-31",
+    "author": { "@type": "Organization", "name": "Augentic AI" },
+    "publisher": { "@type": "Organization", "name": "Augentic AI", "url": "https://augenticai.com/" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://augenticai.com/blog/ai-agent-integration-cost-model/" }
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0A0A0A; --bg-card: #111111; --bg-raised: #161616;
+      --text: #F5F5F0; --text-muted: #888880; --text-dim: #555550;
+      --accent: #D4AF37; --accent-dim: rgba(212,175,55,0.12);
+      --border: rgba(255,255,255,0.07); --border-accent: rgba(212,175,55,0.3);
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Inter', system-ui, sans-serif;
+      --max: 1200px; --radius: 2px;
+    }
+    body.light {
+      --bg: #FAFAF7; --bg-card: #F2F2EE; --bg-raised: #E8E8E4;
+      --text: #0B0B0B; --text-muted: #444440; --text-dim: #999990;
+      --border: rgba(0,0,0,0.08); --border-accent: rgba(212,175,55,0.4);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-weight: 400; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    ::selection { background: var(--accent-dim); color: var(--accent); }
+    h1,h2,h3,h4 { font-weight: 500; line-height: 1.25; letter-spacing: -0.02em; }
+    h1 { font-family: var(--font-serif); font-size: clamp(2rem,4vw,3.2rem); }
+    h2 { font-family: var(--font-serif); font-size: clamp(1.6rem,3vw,2.4rem); }
+    p { color: var(--text-muted); line-height: 1.85; }
+    a { color: inherit; }
+    .label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.5rem 0; transition: background 0.4s, padding 0.3s; }
+    nav.scrolled { background: rgba(10,10,10,0.95); border-bottom: 1px solid var(--border); padding: 1rem 0; backdrop-filter: blur(12px); }
+    body.light nav.scrolled { background: rgba(250,250,247,0.95); }
+    nav .container { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.8rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; padding: 0.65rem 1.4rem; background: var(--accent); color: #0A0A0A; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s; white-space: nowrap; }
+    .nav-cta:hover { opacity: 0.88; }
+    .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+    .theme-toggle { background: none; border: 1px solid var(--border); color: var(--text-muted); cursor: pointer; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius); transition: color 0.2s; flex-shrink: 0; }
+    .theme-toggle:hover { color: var(--accent); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 1px; background: var(--text); }
+    .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 99; background: var(--bg); padding: 6rem 2rem 2rem; flex-direction: column; gap: 2rem; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 1.4rem; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 1.2rem; }
+    footer { background: var(--bg); border-top: 1px solid var(--border); padding: 3rem 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-tagline { font-size: 0.78rem; color: var(--text-dim); margin-top: 0.3rem; }
+    .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.78rem; color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text-muted); }
+    .footer-copy { font-size: 0.75rem; color: var(--text-dim); }
+    .btn-primary { display: inline-block; padding: 0.9rem 2rem; background: var(--accent); color: #0A0A0A; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s, transform 0.2s; border: none; cursor: pointer; }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .post-header { padding: 10rem 0 4rem; border-bottom: 1px solid var(--border); }
+    .post-meta { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .post-meta-text { font-size: 0.8rem; color: var(--text-dim); }
+    .post-title { margin-bottom: 1.2rem; }
+    .post-desc { font-size: 1.05rem; max-width: 680px; }
+    .post-body { padding: 5rem 0; }
+    .post-body-inner { max-width: 760px; }
+    .post-body p { margin-bottom: 1.6rem; font-size: 1rem; }
+    .post-body h2 { font-size: 1.5rem; margin: 3rem 0 1rem; color: var(--text); }
+    .post-body strong { color: var(--text); font-weight: 500; }
+    .table-wrap { overflow-x: auto; margin: 2.5rem 0; border: 1px solid var(--border); }
+    .data-table { width: 100%; min-width: 700px; border-collapse: collapse; font-size: 0.86rem; }
+    .data-table th, .data-table td { padding: 0.9rem; text-align: left; vertical-align: top; border-bottom: 1px solid var(--border); color: var(--text-muted); }
+    .data-table th { color: var(--text); background: var(--bg-card); font-weight: 600; }
+    .data-table tr:last-child td { border-bottom: 0; }
+    .post-footer { padding: 4rem 0; border-top: 1px solid var(--border); }
+    .cta-box { background: var(--bg-card); border: 1px solid var(--border); padding: 3rem; text-align: center; max-width: 640px; margin: 0 auto; }
+    .cta-box h3 { font-family: var(--font-serif); font-size: 1.6rem; margin-bottom: 1rem; color: var(--text); }
+    .cta-box p { margin-bottom: 2rem; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: var(--text-muted); text-decoration: none; margin-bottom: 3rem; transition: color 0.2s; }
+    .back-link:hover { color: var(--accent); }
+    @media (max-width: 900px) { .nav-links, .nav-right .nav-cta { display: none; } .hamburger { display: flex; } }
+  </style>
+</head>
+<body>
+<nav id="nav">
+  <div class="container">
+    <a href="/" class="nav-logo" style="display:flex;align-items:center;text-decoration:none;"><img src="/logo-light.svg" alt="Augentic AI" height="37" style="height:37px;width:auto;" class="logo-themed" data-light="/logo-dark.svg" data-dark="/logo-light.svg" /></a>
+    <ul class="nav-links">
+      <li><a href="/#solution">Solutions</a></li>
+      <li><a href="/#offerings">Offerings</a></li>
+      <li><a href="/blog/">Insights</a></li>
+      <li><a href="/guide/">AI Guide</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg id="iconSun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/></svg>
+        <svg id="iconMoon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="/book/" class="nav-cta">Book Strategy Call</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/#solution" onclick="closeMobile()">Solutions</a>
+  <a href="/#offerings" onclick="closeMobile()">Offerings</a>
+  <a href="/blog/" onclick="closeMobile()">Insights</a>
+  <a href="/guide/" onclick="closeMobile()">AI Guide</a>
+  <a href="/book/" onclick="closeMobile()" style="color:var(--accent);">Book Strategy Call</a>
+</div>
+
+<div class="post-header">
+  <div class="container">
+    <a href="/blog/" class="back-link">&larr; Back to Insights</a>
+    <div class="post-meta">
+      <span class="label">AI Implementation Economics</span>
+      <span class="post-meta-text">July 31, 2026</span>
+      <span class="post-meta-text">9 min read</span>
+    </div>
+    <h1 class="post-title">The Hidden Cost of AI Agent Integrations: Build the Full Cost Model</h1>
+    <p class="post-desc">The model bill is usually the easy number. Identity, APIs, monitoring, exceptions, support, and change determine whether the implementation still makes financial sense.</p>
+  </div>
+</div>
+
+<div class="post-body">
+  <div class="container">
+    <div class="post-body-inner">
+      <p>AI agent proposals tend to put the cleanest numbers at the top: platform license, model usage, implementation fee, maybe a support plan.</p>
+      <p>Those numbers matter. They are also incomplete.</p>
+      <p>The agent has to authenticate, read data, call APIs, write to business systems, handle exceptions, create evidence, survive vendor changes, and give someone enough information to support it on Monday morning. Each requirement adds work and cost. Leave them out, and a project with an attractive demo can become an expensive way to move the same bottleneck somewhere else.</p>
+      <p>Before approving a pilot or signing a platform agreement, build the cost model around one workflow. If the workflow is still vague, start with the <a href="/blog/ai-agent-workflow-readiness-test/">AI agent workflow readiness test</a>. You cannot price a system that nobody has defined.</p>
+
+      <h2>Separate the model bill from the system bill</h2>
+      <p>Model usage is one line item. The system bill covers everything required to turn a model response into reliable work.</p>
+      <p>Imagine an agent that reviews inbound requests and updates a CRM. It may need an identity in the CRM, an integration service, secrets management, API capacity, a queue for retries, logs, alerting, a human review screen, test accounts, and a process for changing prompts or field mappings. The model can be cheap while that surrounding system takes real engineering and operating time.</p>
+      <p>Price the project you are actually buying. The surrounding system belongs in the estimate.</p>
+
+      <h2>Map every system touch before estimating cost</h2>
+      <p>Take one transaction and list every system it touches. Record the trigger, data read, decision, downstream write, exception route, approval, notification, and retained evidence.</p>
+      <p>The <a href="/blog/ai-agent-data-map-read-write-retain-send/">AI agent data map</a> helps document what the workflow can read, write, retain, and send. Add a commercial field to that map. For each touch, identify the owner, licensing requirement, API limit, build effort, test effort, monitoring need, and recovery path.</p>
+      <p>A single "CRM integration" line hides too much. Reading contacts may use standard access. Writing opportunities may require a higher plan, a custom permission set, duplicate controls, sandbox testing, and approval from the CRM owner. Those are different cost drivers with different failure modes.</p>
+
+      <h2>Price identity and access as implementation work</h2>
+      <p>Production agents need more than a shared user account and a long-lived token.</p>
+      <p>Budget for service identities, least-privilege roles, credential rotation, environment separation, access reviews, emergency revocation, and evidence of what each identity did. If the platform cannot support the access model your security team requires, the workaround will either cost more or create risk the project should not accept.</p>
+      <p>Ask who owns each credential and what happens when that owner changes roles. Ask whether test and production use separate identities. Ask how quickly access can be shut down without breaking unrelated automations.</p>
+      <p>The <a href="https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf" target="_blank" rel="noopener noreferrer">NIST Generative AI Profile</a> calls for inventories that cover AI system components, data, models, access modes, third-party connections, human oversight roles, and deactivation needs. That inventory is useful for governance, but it also exposes work that belongs in the budget.</p>
+
+      <h2>Do not treat API access as free plumbing</h2>
+      <p>An API can create direct charges, but the less obvious costs are usually around limits and failure handling.</p>
+      <p>Estimate request volume, payload size, peak demand, retries, rate limits, batch windows, and the cost of calls that fail after another system already completed its step. Determine whether the current software tier includes the endpoints and capacity you need. Some integrations require middleware or event infrastructure because a direct connection cannot support the workflow safely.</p>
+      <p>Then test what happens when the source system is slow, unavailable, or changed. A retry may be cheap in compute and expensive in business impact if it creates a duplicate order, message, or case.</p>
+
+      <h2>Budget for observability before production</h2>
+      <p>If the agent makes or influences business decisions, somebody needs to reconstruct what happened.</p>
+      <p>That requires logs that connect the trigger, model version, prompt or policy version, tool calls, approvals, system responses, final outcome, and transaction ID. It may require dashboards, alert rules, log storage, access controls, and a retention schedule. Someone also has to review the alerts.</p>
+      <p>A support person should be able to find a failed transaction, see which step broke, determine whether a write completed, and recover the work without creating another error. Logs that cannot answer those questions do not justify their storage bill.</p>
+      <p>Include this in the pilot. Waiting until production to add monitoring usually means the team discovers it cannot explain failures after real records are involved.</p>
+
+      <h2>Count human work honestly</h2>
+      <p>Human approval is not free, and exception work does not disappear because the happy path is automated.</p>
+      <p>Estimate the review rate, time per review, information the reviewer needs, escalation rate, and rework created by weak output. Include workflow ownership, support triage, security review, model and prompt evaluation, vendor management, training, and change communication.</p>
+      <p>Be careful with "hours saved." If employees spend less time entering data but more time checking uncertain suggestions, resolving duplicates, or rebuilding context after a bad handoff, the capacity did not vanish. It moved.</p>
+      <p>Use the <a href="/blog/ai-agent-pilot-metrics-production-scorecard/">AI agent production scorecard</a> to compare business outcome, quality, reliability, controls, and full operating cost. Adoption and task counts are not enough.</p>
+
+      <h2>Add change cost to the recurring model</h2>
+      <p>The workflow will change. Source-system fields move. API versions retire. Policies change. Model behavior shifts. A vendor releases a new connector. The business adds an approval step.</p>
+      <p>Every meaningful change may require impact review, test data, regression testing, approval, deployment, monitoring, documentation, and rollback preparation. A system that is cheap to launch but expensive to change can become the wrong architecture within a year.</p>
+      <p>Ask the vendor which configuration your team can change, which changes require paid services, how versions are tracked, and whether you can test before release. If the answer is "we handle that," ask for the process, evidence, response target, and price.</p>
+
+      <h2>Put support and recovery in the estimate</h2>
+      <p>Every production workflow needs a named owner, a support route, and a manual fallback.</p>
+      <p>Estimate support coverage by business impact. A back-office summary agent may tolerate next-day review. An agent creating orders or handling live callers may need faster detection and response. Price the people, tooling, vendor tier, and on-call expectations that match the actual workflow.</p>
+      <p>Include the cost of recovery exercises. Can the team replay a failed item, reconcile partial writes, pause the workflow, and process work manually? If nobody has tested those paths, the operating estimate is missing part of the job.</p>
+
+      <h2>Use a full-cost worksheet</h2>
+      <p>Build a three-year estimate even if the first decision is a short pilot. The numbers can remain ranges until the architecture is known, but every range needs an owner and an assumption.</p>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr><th>Cost area</th><th>One-time work</th><th>Recurring cost</th><th>Question that exposes the estimate</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Platform and model</td><td>Configuration, evaluation, environments</td><td>License, usage, storage</td><td>Which usage assumptions drive the quote?</td></tr>
+            <tr><td>Systems and APIs</td><td>Connectors, mappings, error paths, tests</td><td>API tiers, middleware, maintenance</td><td>Which endpoints, limits, and retries are included?</td></tr>
+            <tr><td>Identity and security</td><td>Roles, service identities, threat review</td><td>Access reviews, rotation, audit storage</td><td>Who owns and can revoke every credential?</td></tr>
+            <tr><td>Operations</td><td>Logging, dashboards, runbooks, fallback</td><td>Monitoring, support, incident recovery</td><td>Who responds when the workflow fails?</td></tr>
+            <tr><td>People and change</td><td>Training, process redesign, launch support</td><td>Reviews, tuning, regression tests</td><td>Whose time is required after launch?</td></tr>
+            <tr><td>Exit and replacement</td><td>Export design, migration test</td><td>Backup access, overlap during transition</td><td>What can we export in a usable format?</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Do not hide uncertainty by choosing the lowest number. Use a low, expected, and high case. Tie each case to volume, exception rate, support level, number of systems, change frequency, and human review. That makes the estimate testable during the pilot.</p>
+      <p>AWS's <a href="https://docs.aws.amazon.com/wellarchitected/latest/machine-learning-lens/cost-optimization.html" target="_blank" rel="noopener noreferrer">Machine Learning Lens cost guidance</a> describes cost optimization as continual refinement over the workload's entire lifecycle, from the first proof of concept through production operations. Google Cloud's <a href="https://docs.cloud.google.com/architecture/framework/cost-optimization" target="_blank" rel="noopener noreferrer">cost optimization framework</a> tells teams to align spending with business value, provision only what they need, monitor usage and cost, and adjust as conditions change. The platform may differ, but the buying lesson holds: cost management does not end when the implementation quote is approved.</p>
+
+      <h2>Set the decision rule before the pilot</h2>
+      <p>A pilot should update the cost model with observed evidence. Measure transaction volume, model and API usage, exception rate, human review time, support effort, failed writes, recovery time, and change requests. Compare those numbers with the business outcome the workflow was supposed to improve.</p>
+      <p>Proceed when the expected case supports the business case and the team can operate the system. Revise when the outcome is useful but one integration, review queue, or support burden breaks the economics. Stop when the project only works under perfect volume, perfect data, and free internal labor.</p>
+      <p>The cheapest agent is not the one with the lowest model bill. It is the one that produces the required outcome without hiding the cost in your people, integrations, and operational risk.</p>
+    </div>
+  </div>
+</div>
+
+<div class="post-footer">
+  <div class="container">
+    <div class="cta-box">
+      <h3>Need the full cost before you approve the build?</h3>
+      <p>Book an AI readiness and implementation conversation. We will map the workflow, integrations, access model, operating work, cost assumptions, and pilot evidence needed for a defensible decision.</p>
+      <a href="/book/" class="btn-primary">Request an Implementation Cost Model</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo" style="display:flex;align-items:center;"><img src="/logo-light.svg" alt="Augentic AI" height="28" style="height:28px;width:auto;" class="logo-themed" data-light="/logo-dark.svg" data-dark="/logo-light.svg" /></div>
+        <div class="footer-tagline">Autonomous AI. Measurable Revenue.</div>
+      </div>
+      <ul class="footer-links">
+        <li><a href="/#solution">Solutions</a></li>
+        <li><a href="/#offerings">Offerings</a></li>
+        <li><a href="/blog/">Insights</a></li>
+        <li><a href="/guide/">AI Guide</a></li>
+        <li><a href="/book/">Book a Call</a></li>
+        <li><a href="mailto:hello@augenticai.com">Contact</a></li>
+      </ul>
+      <div class="footer-copy">&copy; 2026 Augentic AI. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => { mobileMenu.classList.toggle('open'); });
+  function closeMobile() { mobileMenu.classList.remove('open'); }
+  const themeToggle = document.getElementById('themeToggle');
+  const iconSun = document.getElementById('iconSun');
+  const iconMoon = document.getElementById('iconMoon');
+  function updateLogos(isLight) { document.querySelectorAll('.logo-themed').forEach(function(img) { img.src = isLight ? img.dataset.light : img.dataset.dark; }); }
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  if (savedTheme === 'light') { document.body.classList.add('light'); iconSun.style.display = 'block'; iconMoon.style.display = 'none'; updateLogos(true); }
+  themeToggle.addEventListener('click', () => {
+    const isLight = document.body.classList.toggle('light');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    iconSun.style.display = isLight ? 'block' : 'none';
+    iconMoon.style.display = isLight ? 'none' : 'block';
+    updateLogos(isLight);
+  });
+</script>
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#111111;border-top:1px solid rgba(212,175,55,0.3);padding:1.25rem 2rem;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;">
+  <p style="margin:0;color:#888880;font-size:0.875rem;font-family:Inter,system-ui,sans-serif;line-height:1.6;max-width:700px;">We use cookies to improve your experience and analyze site usage. By continuing, you agree to our <a href="/privacy/" style="color:#D4AF37;text-decoration:underline;">Privacy Policy</a> and <a href="/terms/" style="color:#D4AF37;text-decoration:underline;">Terms</a>.</p>
+  <div style="display:flex;gap:0.75rem;flex-shrink:0;">
+    <button id="cookie-decline" style="padding:0.5rem 1.25rem;background:transparent;border:1px solid rgba(255,255,255,0.15);color:#888880;cursor:pointer;">Decline</button>
+    <button id="cookie-accept" style="padding:0.5rem 1.25rem;background:#D4AF37;border:none;color:#0A0A0A;cursor:pointer;">Accept</button>
+  </div>
+</div>
+<script>
+  (function() {
+    var consent = localStorage.getItem('augentic_cookie_consent');
+    var banner = document.getElementById('cookie-banner');
+    if (!consent && banner) { banner.style.display = 'flex'; }
+    document.getElementById('cookie-accept').addEventListener('click', function() { localStorage.setItem('augentic_cookie_consent', 'accepted'); banner.style.display = 'none'; });
+    document.getElementById('cookie-decline').addEventListener('click', function() { localStorage.setItem('augentic_cookie_consent', 'declined'); banner.style.display = 'none'; });
+  })();
+</script>
+</body>
+</html>
