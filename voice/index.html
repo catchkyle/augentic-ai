@@ -12,16 +12,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AI Front Desk | Augentic AI</title>
-  <meta name="description" content="AI-powered front desk that handles inbound calls, scheduling, and lead qualification 24/7. Plans starting at $199/month." />
+  <meta name="description" content="AI-powered front desk that handles inbound calls, scheduling, and lead qualification 24/7. Plans from $99/month billed annually, or try it with a $99 Test Drive." />
   <meta property="og:title" content="AI Front Desk | Augentic AI" />
-  <meta property="og:description" content="AI-powered front desk that handles inbound calls, scheduling, and lead qualification 24/7. Plans starting at $199/month." />
+  <meta property="og:description" content="AI-powered front desk that handles inbound calls, scheduling, and lead qualification 24/7. Plans from $99/month billed annually, or try it with a $99 Test Drive." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://augenticai.com/favicon.svg" />
   <meta property="og:url" content="https://augenticai.com/voice/" />
   <meta property="og:site_name" content="Augentic AI" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="AI Front Desk | Augentic AI" />
-  <meta name="twitter:description" content="AI-powered front desk that handles inbound calls, scheduling, and lead qualification 24/7. Plans starting at $199/month." />
+  <meta name="twitter:description" content="AI-powered front desk that handles inbound calls, scheduling, and lead qualification 24/7. Plans from $99/month billed annually, or try it with a $99 Test Drive." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Poppins:ital,wght@1,700&display=swap" rel="stylesheet" />
@@ -91,7 +91,7 @@
     .btn-primary { display: inline-block; padding: 0.9rem 2rem; background: linear-gradient(105deg, #D4AF37 0%, #D4AF37 30%, #F5D060 50%, #D4AF37 70%, #D4AF37 100%); background-size: 300% 100%; animation: goldShimmer 4s ease infinite; color: #0A0A0A; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s, transform 0.2s; border: none; cursor: pointer; box-shadow: 0 0 18px rgba(212,175,55,0.25); }
     .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
     .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
-    @media (max-width: 900px) { .nav-links, .nav-right .nav-cta { display: none; } .hamburger { display: flex; } }
+    @media (max-width: 900px) { .nav-links, .nav-right .nav-cta, .nav-right .nav-login { display: none; } .hamburger { display: flex; } }
 
     /* ── PAGE-SPECIFIC ── */
     .voice-hero { padding: 12rem 0 6rem; text-align: center; background: var(--bg-card); }
@@ -180,6 +180,7 @@
         <svg id="iconSun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
         <svg id="iconMoon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       </button>
+      <a href="https://app.augenticai.com/login" class="nav-login" style="font-size:0.78rem;font-weight:500;letter-spacing:0.08em;padding:0.6rem 1.2rem;color:var(--text);text-decoration:none;white-space:nowrap;border:1px solid var(--border);border-radius:var(--radius);background:transparent;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text)'">Log In</a>
       <a href="/book/" class="nav-cta">Book Strategy Call</a>
       <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
@@ -191,6 +192,7 @@
   <a href="/blog/" onclick="closeMobile()">Insights</a>
   <a href="/guide/" onclick="closeMobile()">AI Guide</a>
   <a href="tel:+18135441659" onclick="closeMobile()" style="display:flex;align-items:center;gap:0.5rem;">(813) 544-1659: Talk to Auri</a>
+  <a href="https://app.augenticai.com/login" onclick="closeMobile()">Log In</a>
   <a href="/book/" onclick="closeMobile()" style="color:var(--accent);">Book Strategy Call</a>
 </div>
 
@@ -206,69 +208,149 @@
 <div class="divider"></div>
 
 <!-- ── PRICING ── -->
+<style>
+  .pricing-grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin-top: 3rem; }
+  @media (max-width: 1100px) { .pricing-grid4 { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 640px) { .pricing-grid4 { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; } }
+  .pricing-annual { font-size: 0.8rem; color: var(--accent); margin-bottom: 0.2rem; font-weight: 600; }
+  .pricing-annual span { color: var(--text-dim); font-weight: 400; }
+  .tier-pill { display: inline-block; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #0A0A0A; background: linear-gradient(105deg,#D4AF37,#F5D060); border-radius: 999px; padding: 0.15rem 0.6rem; margin-left: 0.4rem; vertical-align: 2px; }
+  .testdrive-band { border: 1px solid var(--border-accent); background: var(--bg-card); border-radius: var(--radius); padding: 1.4rem 1.75rem; margin-top: 1.5rem; }
+  .testdrive-band h3 { color: var(--text); margin-bottom: 0.4rem; }
+  .testdrive-band .price { color: var(--accent); font-weight: 700; }
+  .testdrive-band p { font-size: 0.88rem; }
+  .addons-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 3rem; }
+  @media (max-width: 1100px) { .addons-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 640px) { .addons-grid { grid-template-columns: 1fr; } }
+  .addon-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem 1.6rem; }
+  .addon-card h3 { color: var(--text); display: flex; justify-content: space-between; align-items: baseline; gap: 0.75rem; }
+  .addon-card h3 .price { color: var(--accent); font-size: 0.95rem; font-weight: 700; white-space: nowrap; }
+  .addon-card p { font-size: 0.85rem; margin-top: 0.5rem; line-height: 1.7; }
+  .addon-card.bundle { border-color: var(--border-accent); background: var(--accent-dim); }
+  .premium-note { max-width: 760px; margin: 3rem auto 0; border-left: 2px solid var(--accent); padding: 0.4rem 0 0.4rem 1.5rem; }
+  .premium-note p { font-size: 0.95rem; }
+</style>
 <section style="background:var(--bg);">
   <div class="container">
     <div style="text-align:center;">
       <span class="label">Pricing</span>
       <h2 style="margin-top:0.75rem;">Simple, Transparent Plans</h2>
+      <p style="max-width:560px;margin:1rem auto 0;font-size:0.95rem;">One flat price. No credit math, no per-user seats, no 36-month contracts. Save 13% with annual billing.</p>
     </div>
-    <div class="pricing-grid">
+    <div class="pricing-grid4">
+
+      <!-- LAUNCH -->
+      <div class="pricing-card">
+        <div class="pricing-tier">Launch</div>
+        <div class="pricing-amount">$114 <span>/ month</span></div>
+        <div class="pricing-annual">$99/mo <span>billed annually ($1,188)</span></div>
+        <div class="pricing-setup">Setup: $299</div>
+        <div class="pricing-includes">Includes</div>
+        <ul class="pricing-features">
+          <li>250 AI call minutes / month</li>
+          <li>24/7 AI receptionist</li>
+          <li>1 dedicated phone number</li>
+          <li>Call summaries</li>
+          <li>Client dashboard</li>
+          <li>Instant call notifications</li>
+        </ul>
+        <a href="/book/" class="btn-secondary" style="width:100%;text-align:center;font-size:0.78rem;padding:0.85rem;">Get Started</a>
+      </div>
 
       <!-- STARTER -->
       <div class="pricing-card">
         <div class="pricing-tier">Starter</div>
-        <div class="pricing-amount">$199 <span>/ month</span></div>
-        <div class="pricing-setup">Setup: $497</div>
+        <div class="pricing-amount">$229 <span>/ month</span></div>
+        <div class="pricing-annual">$199/mo <span>billed annually ($2,388)</span></div>
+        <div class="pricing-setup">Setup: $499</div>
         <div class="pricing-includes">Includes</div>
         <ul class="pricing-features">
-          <li>200 AI call minutes</li>
-          <li>Inbound AI receptionist</li>
-          <li>Basic FAQ responses</li>
-          <li>Message capture or call routing</li>
-          <li>Optional appointment booking</li>
+          <li>600 AI call minutes / month</li>
+          <li>Everything in Launch</li>
+          <li>Calendar appointment booking</li>
+          <li>Lead capture</li>
         </ul>
-        <div class="pricing-overage">Overage: <strong>$0.85 / minute</strong></div>
-        <a href="/book/" class="btn-primary" style="width:100%;text-align:center;font-size:0.78rem;padding:0.85rem;">Get Started</a>
+        <a href="/book/" class="btn-secondary" style="width:100%;text-align:center;font-size:0.78rem;padding:0.85rem;">Get Started</a>
       </div>
 
-      <!-- STANDARD -->
+      <!-- GROWTH -->
       <div class="pricing-card featured">
-        <div class="pricing-tier">Standard</div>
-        <div class="pricing-amount">$349 <span>/ month</span></div>
-        <div class="pricing-setup">Setup: $997</div>
+        <div class="pricing-tier">Growth<span class="tier-pill">Advanced AI</span></div>
+        <div class="pricing-amount">$629 <span>/ month</span></div>
+        <div class="pricing-annual">$549/mo <span>billed annually ($6,588)</span></div>
+        <div class="pricing-setup">Setup: $999</div>
         <div class="pricing-includes">Includes</div>
         <ul class="pricing-features">
-          <li>500 AI call minutes</li>
+          <li>1,500 AI call minutes / month</li>
           <li>Everything in Starter</li>
-          <li>Deeper prompt customization</li>
-          <li>Appointment booking + confirmations</li>
-          <li>Missed-call capture + follow-up text</li>
-          <li>Call summaries</li>
-          <li>Call analytics</li>
+          <li>Up to 3 AI agents</li>
+          <li>Web chat included</li>
+          <li>Priority support</li>
         </ul>
-        <div class="pricing-overage">Overage: <strong>$0.75 / minute</strong></div>
         <a href="/book/" class="btn-primary" style="width:100%;text-align:center;font-size:0.78rem;padding:0.85rem;">Get Started</a>
       </div>
 
-      <!-- PREMIUM -->
+      <!-- PRO -->
       <div class="pricing-card">
-        <div class="pricing-tier">Premium</div>
-        <div class="pricing-amount">$599 <span>/ month</span></div>
-        <div class="pricing-setup">Setup: $1,497</div>
+        <div class="pricing-tier">Pro<span class="tier-pill">Advanced AI</span></div>
+        <div class="pricing-amount">$1,379 <span>/ month</span></div>
+        <div class="pricing-annual">$1,199/mo <span>billed annually ($14,388)</span></div>
+        <div class="pricing-setup">Setup: $1,999</div>
         <div class="pricing-includes">Includes</div>
         <ul class="pricing-features">
-          <li>1,000 AI call minutes</li>
-          <li>Everything in Standard</li>
-          <li>Advanced conversation training</li>
-          <li>CRM/email integrations</li>
-          <li>Call summaries + tagging</li>
-          <li>Priority support</li>
-          <li>Monthly prompt optimization</li>
+          <li>3,500 AI call minutes / month</li>
+          <li>Everything in Growth</li>
+          <li>Unlimited AI agents</li>
+          <li>Web chat + SMS included</li>
+          <li>White-glove service</li>
         </ul>
-        <div class="pricing-overage">Overage: <strong>$0.65 / minute</strong></div>
-        <a href="/book/" class="btn-primary" style="width:100%;text-align:center;font-size:0.78rem;padding:0.85rem;">Get Started</a>
+        <a href="/book/" class="btn-secondary" style="width:100%;text-align:center;font-size:0.78rem;padding:0.85rem;">Get Started</a>
       </div>
 
+    </div>
+    <p style="text-align:center;font-size:0.82rem;color:var(--text-dim);margin-top:1.5rem;">Overage 35&cent;/minute, dropping to 27&cent; at volume &middot; monthly plans are month-to-month, cancel anytime &middot; add-ons bill monthly</p>
+
+    <!-- TEST DRIVE -->
+    <div class="testdrive-band">
+      <h3>Test Drive <span class="price">$99 one-time</span></h3>
+      <p>75 minutes on a live number, use within 60 days. One per business. Self-serve setup through the portal (done-for-you configuration not included). Your $99 is credited toward the setup fee when you upgrade to any plan.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── ADD-ONS ── -->
+<section style="background:var(--bg-card);">
+  <div class="container">
+    <div style="text-align:center;">
+      <span class="label">Add-ons</span>
+      <h2 style="margin-top:0.75rem;">Extend Your Agent to Every Channel</h2>
+    </div>
+    <div class="addons-grid">
+      <div class="addon-card">
+        <h3>Web Chat <span class="price">$29/mo</span></h3>
+        <p>AI chat on your website with the same knowledge base as your phone agent, and live handoff to your staff.</p>
+      </div>
+      <div class="addon-card">
+        <h3>SMS &amp; Texting <span class="price">$59/mo + $99 activation</span></h3>
+        <p>Your agent texts callers from your existing business number. 500 messages included, 5&cent; each after. Requires carrier approval.</p>
+      </div>
+      <div class="addon-card">
+        <h3>PHI Protection <span class="price">$149/mo + $299 onboarding</span></h3>
+        <p>HIPAA-ready: PHI redacted from transcripts, summaries, and notifications. For medical, dental, and benefits offices. Standard plan and above.</p>
+      </div>
+      <div class="addon-card">
+        <h3>Extra Phone Number <span class="price">$5/mo</span></h3>
+        <p>Add lines for locations, departments, or marketing tracking. All route to the same agent.</p>
+      </div>
+      <div class="addon-card bundle">
+        <h3>All Channels Bundle <span class="price">$79/mo</span></h3>
+        <p>Web Chat + SMS together, applied automatically. Saves $9 every month.</p>
+      </div>
+    </div>
+    <div class="premium-note">
+      <p><strong style="color:var(--accent);">Premium by design.</strong> Top-tier ElevenLabs voices and frontier AI models on every call. This is a premium voice product; we do not compete with lower-quality voice agents.</p>
     </div>
   </div>
 </section>
@@ -375,6 +457,7 @@
             <ul>
               <li><a href="/about/">About</a></li>
               <li><a href="/voice/">Pricing</a></li>
+              <li><a href="/partners/">Partners</a></li>
               <li><a href="/book/">Book a Call</a></li>
               <li><a href="mailto:hello@augenticai.com">Contact</a></li>
             </ul>
