@@ -20,6 +20,36 @@ This is a **zero-dependency static site** — no build tools, no frameworks, no 
 - `privacy/index.html` — Privacy policy
 - `terms/index.html` — Terms of service
 - `404.html` — Custom 404 page
+- `assets/hero3d.js` — Cinematic WebGL hero for the homepage (see below)
+
+### WebGL hero (`assets/hero3d.js`)
+
+The homepage hero renders a Three.js scene into `#hero3dCanvas`: two fresnel-weighted
+icosahedral lattice cages, a noise-displaced glowing core, the integration icons
+rasterised from the existing `.floating-icon` SVG markup onto beveled metal slabs that
+orbit on tilted rings (draggable/throwable), proximity energy links with travelling
+pulses, a pointer-reactive particle field, three-point lighting + IBL, and a post chain
+of ACES tone mapping → unreal bloom → `OutputPass` → chromatic aberration/vignette/grain.
+
+- **This is the one file that is not inlined.** It is ~700 lines and homepage-only, so
+  it lives in `assets/` to stay cacheable independently of the HTML. Everything else on
+  the site still follows the self-contained convention.
+- Three.js loads from a jsDelivr import map pinned to `three@0.169.0` in `index.html`.
+- Progressive enhancement: the inline loader probes for WebGL and only then imports the
+  module. On success it adds `body.hero3d`, which fades the canvas in and hides the
+  original 2D hero (`#heroCanvas`, `#connectionCanvas`, `.floating-icons`). Those 2D
+  loops self-terminate when they see `window.__hero3dReady`. Any failure leaves the old
+  hero running untouched — do not delete it.
+- `prefers-reduced-motion` renders one settled still and stops the clock. The loop also
+  pauses when the hero scrolls out of view or the tab is hidden.
+- The grade pass must stay **after** `OutputPass` — film grain added in linear HDR space
+  lifts the blacks to flat grey once they are tone mapped and sRGB encoded.
+- Orbit radii, ring tilt, link range, and core size/position are all derived from the
+  live headline bounding box in `layoutRings()`, and tiles fade on contact with the copy's
+  screen-space box. Hard-coded world units will land slabs on the headline at some viewport.
+- `window.__hero3d` exposes `seek(t)` / `settle(t)` for inspecting any point on the
+  timeline — necessary because a single rendered frame catches the billboard slerp
+  mid-turn (tiles appear edge-on).
 
 ### Build script
 
@@ -58,7 +88,8 @@ Auto-deploys to Cloudflare Pages on push to `main`. No build command configured 
 
 ## Editing guidelines
 
-- Each page is fully self-contained (CSS + JS embedded). Changes to shared elements (nav, footer, theme toggle, cookie banner) must be replicated across all pages manually or by updating `_build_site.py` and regenerating.
+- Each page is fully self-contained (CSS + JS embedded) — the sole exception is
+  `assets/hero3d.js`, documented above. Changes to shared elements (nav, footer, theme toggle, cookie banner) must be replicated across all pages manually or by updating `_build_site.py` and regenerating.
 - The `index.html` homepage is standalone and not managed by the build script.
 - `robots.txt` disallows `build-prompt.md` and `_build_site.py` from indexing.
 - `build-prompt.md` contains the original design spec/prompt used to generate the site — useful as a reference for tone, structure, and design intent.

@@ -45,6 +45,7 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=Poppins:ital,wght@1,700&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <style>
@@ -206,6 +207,26 @@
     .floating-icon:hover svg { stroke: var(--accent); }
     .floating-icon.filled:hover svg { fill: var(--accent); }
     @media (max-width: 900px) { .floating-icon { width: 40px; height: 40px; border-radius: 10px; } .floating-icon svg { width: 20px; height: 20px; } }
+    /* ── WEBGL HERO ── */
+    #hero3dCanvas {
+      position: absolute; inset: 0; z-index: 0;
+      width: 100%; height: 100%;
+      display: block;
+      opacity: 0;
+      transition: opacity 1.2s ease;
+      touch-action: pan-y;
+    }
+    body.hero3d #hero3dCanvas { opacity: 1; }
+    @media (prefers-reduced-motion: reduce) {
+      #hero3dCanvas { transition: none; }
+    }
+    /* The WebGL core replaces the CSS glow; the grid drops back to a whisper. */
+    body.hero3d .hero-glow { display: none; }
+    body.hero3d .hero-grid { opacity: 0.45; }
+    body.hero3d #heroCanvas,
+    body.hero3d #connectionCanvas,
+    body.hero3d .floating-icons { display: none; }
+
     .hero-grid {
       position: absolute; inset: 0; z-index: 0;
       background-image:
@@ -1074,6 +1095,8 @@
     <div class="floating-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
   </div>
   <canvas id="heroCanvas" style="position:absolute;inset:0;z-index:0;pointer-events:none;"></canvas>
+  <!-- WebGL hero (three.js). Progressively enhances over the 2D canvases above. -->
+  <canvas id="hero3dCanvas" aria-hidden="true"></canvas>
   <div class="hero-grid"></div>
   <div class="hero-glow"></div>
   <div class="hero-content">
@@ -1699,6 +1722,20 @@
               <li><a href="/industries/real-estate/">Real Estate</a></li>
               <li><a href="/industries/home-services/">Home Services</a></li>
               <li><a href="/industries/financial-services/">Financial Services</a></li>
+              <li><a href="/industries/insurance/">Insurance</a></li>
+              <li><a href="/industries/hvac/">HVAC</a></li>
+              <li><a href="/industries/roofing/">Roofing</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Features</h4>
+            <ul>
+              <li><a href="/features/ai-receptionist/">AI Receptionist</a></li>
+              <li><a href="/features/outbound-branded-caller-id/">Outbound Calls</a></li>
+              <li><a href="/features/sms-ai-agent/">SMS AI Agent</a></li>
+              <li><a href="/features/ai-web-chat/">AI Web Chat</a></li>
+              <li><a href="/features/ai-front-desk-slack/">Slack Integration</a></li>
+              <li><a href="/features/ai-front-desk-teams/">Teams Integration</a></li>
             </ul>
           </div>
           <div class="footer-col">
@@ -1967,6 +2004,8 @@
     var CONNECTION_DIST = 180;
 
     function tick() {
+      // The WebGL hero owns these visuals once it is up — stand down.
+      if (window.__hero3dReady) { connCtx.clearRect(0, 0, connCanvas.width, connCanvas.height); return; }
       W = hero.offsetWidth; H = hero.offsetHeight;
       connCanvas.width = W;
       connCanvas.height = H;
@@ -2089,6 +2128,8 @@
     hero.addEventListener('mouseleave', () => { mouseX = -1; mouseY = -1; });
 
     function draw() {
+      // The WebGL hero owns these visuals once it is up — stand down.
+      if (window.__hero3dReady) { ctx.clearRect(0, 0, canvas.width, canvas.height); raf = null; return; }
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       // Mouse glow
@@ -2406,6 +2447,31 @@
     status.textContent = 'Call ended';
     status.style.color = 'var(--text-dim)';
   });
+</script>
+
+<!-- ── CINEMATIC WEBGL HERO (three.js) ──
+     Progressive enhancement: if the import map, WebGL, or the module itself
+     fails, the 2D canvas hero above simply keeps running. -->
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"
+  }
+}
+</script>
+<script type="module">
+  (function () {
+    // Bail before we pay for the download if the GPU path isn't there.
+    try {
+      var probe = document.createElement('canvas');
+      if (!(probe.getContext('webgl2') || probe.getContext('webgl'))) return;
+    } catch (e) { return; }
+
+    import('/assets/hero3d.js')
+      .then(function () { document.body.classList.add('hero3d'); })
+      .catch(function (err) { console.warn('[hero3d] falling back to 2D hero:', err); });
+  })();
 </script>
 </body>
 </html>
