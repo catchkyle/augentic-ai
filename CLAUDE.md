@@ -54,7 +54,37 @@ python3 _build_site.py
 
 ## Deployment
 
-Auto-deploys to Cloudflare Pages on push to `main`. No build command configured — Cloudflare serves the files directly.
+Cloudflare Pages project **`augenticai`** (account `50dfc07933b2a9bb4a914ab22bf682d8`),
+serving `augenticai.pages.dev` and `augenticai.com`. No build command — Cloudflare serves
+the files directly from `/`.
+
+**Two remotes, only one deploys.** This has burned a deploy already:
+
+| Remote | Repo | Deploys? |
+|--------|------|----------|
+| `origin` | `catchkyle/augentic-ai` | **No.** Pushing here changes nothing on the live site. |
+| `upstream` | `cora-catchadvisors/augentic-ai` | **Yes** — Pages is git-connected to this, branch `main`. |
+
+The two have diverged in the past. Always confirm which one you pushed to.
+
+A push to `upstream/main` is also not always sufficient: recent deployments carry trigger
+type `ad_hoc` (manually created), and the live site has sat on a stale build for days while
+`upstream/main` already had newer content. To force a production deploy of current `main`:
+
+```bash
+TOK=$(grep -E '^oauth_token' ~/.wrangler/config/default.toml | sed -E 's/^[^=]+= *"?([^"]*)"?.*/\1/')
+curl -X POST -H "Authorization: Bearer $TOK" -F "branch=main" \
+  "https://api.cloudflare.com/client/v4/accounts/50dfc07933b2a9bb4a914ab22bf682d8/pages/projects/augenticai/deployments"
+```
+
+Builds take ~60s. **Do not use `wrangler pages deploy`** — the project is git-connected and
+a direct upload fights that integration.
+
+The wrangler OAuth token in `~/.wrangler/config/default.toml` expires frequently, but the
+`refresh_token` next to it is long-lived: run any `npx wrangler@latest` command (e.g.
+`whoami`) to silently refresh it before making raw CF API calls.
+
+Always verify by fetching the live URL — never assume a successful push means a live change.
 
 ## Editing guidelines
 
