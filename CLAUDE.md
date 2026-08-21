@@ -67,9 +67,16 @@ the files directly from `/`.
 
 The two have diverged in the past. Always confirm which one you pushed to.
 
-A push to `upstream/main` is also not always sufficient: recent deployments carry trigger
-type `ad_hoc` (manually created), and the live site has sat on a stale build for days while
-`upstream/main` already had newer content. To force a production deploy of current `main`:
+Pushes to `upstream/main` **do** auto-deploy (trigger type `github:push`, live in ~60s).
+
+The failure mode to watch for is a **manual `ad_hoc` deployment pinning a foreign commit**.
+On 2026-08-17 someone ad_hoc-deployed `2de87c9` — a commit that only ever existed on the
+`origin` lineage, never on `upstream/main`. That build stuck as production for four days
+even though `upstream/main` had correct content the whole time, and no push came along to
+displace it. If the live site disagrees with `upstream/main`, check the deployment list for
+an `ad_hoc` entry before assuming the repo is wrong.
+
+To force a production deploy of current `main` (the fix for exactly that situation):
 
 ```bash
 TOK=$(grep -E '^oauth_token' ~/.wrangler/config/default.toml | sed -E 's/^[^=]+= *"?([^"]*)"?.*/\1/')
